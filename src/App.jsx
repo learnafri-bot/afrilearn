@@ -145,6 +145,19 @@ const Footer = () => (
   </div>
 );
 
+// ─── BANDEAU ADMIN EN MODE PRÉVISUALISATION ───────────────────────────────────
+const AdminPreviewBar = ({ onBackToAdmin }) => (
+  <div style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, background:"linear-gradient(90deg,#f5a623,#d97706)", padding:"8px 20px", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+    <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+      <span style={{ fontSize:14 }}>👁️</span>
+      <span style={{ fontSize:12, fontWeight:700, color:"#fff" }}>Mode Prévisualisation — Vue élève (Premium)</span>
+    </div>
+    <button onClick={onBackToAdmin} style={{ background:"rgba(0,0,0,0.2)", border:"1px solid rgba(255,255,255,0.3)", color:"#fff", borderRadius:8, padding:"5px 14px", fontSize:11, fontWeight:700, cursor:"pointer", fontFamily:"Sora,sans-serif" }}>
+      ← Retour à l'Admin
+    </button>
+  </div>
+);
+
 // ─── CGU MODAL ───────────────────────────────────────────────────────────────
 const CGUModal = ({ onAccept, onDecline }) => (
   <div style={{ position:"fixed", inset:0, background:"rgba(0,0,0,0.85)", zIndex:1000, display:"flex", alignItems:"center", justifyContent:"center", padding:20 }}>
@@ -155,13 +168,13 @@ const CGUModal = ({ onAccept, onDecline }) => (
       </div>
       <div style={{ flex:1, overflowY:"auto", padding:"20px 24px", fontSize:12, lineHeight:1.8, color:"#9ca3af" }}>
         {[
-          ["1. Objet", "AfriLearn est une plateforme éducative numérique destinée aux élèves d'Afrique francophone. L'utilisation de cette plateforme implique l'acceptation pleine et entière des présentes CGU."],
-          ["2. Propriété intellectuelle", "L'ensemble des contenus disponibles sur AfriLearn (cours, exercices, corrigés, illustrations, logo, nom de marque) sont la propriété exclusive d'AfriLearn et sont protégés par les lois relatives au droit d'auteur. Toute reproduction, copie, distribution ou exploitation commerciale sans autorisation écrite préalable est strictement interdite."],
-          ["3. Abonnements et paiements", "Les abonnements sont mensuels et renouvelables. Le paiement s'effectue via Mobile Money ou carte bancaire via CinetPay. Aucun remboursement ne sera effectué après accès au contenu."],
-          ["4. Tuteur IA Kodjo", "Le tuteur Kodjo est fourni à titre pédagogique. AfriLearn ne saurait être tenu responsable des erreurs éventuelles du tuteur IA. Il est recommandé de croiser les informations avec un enseignant qualifié."],
-          ["5. Données personnelles", "AfriLearn collecte uniquement les données nécessaires au fonctionnement du service (nom, email, pays, niveau). Ces données ne sont jamais vendues à des tiers."],
-          ["6. Comportement des utilisateurs", "Tout comportement abusif, triche dans les compétitions, ou tentative de contournement du système d'abonnement entraînera la suspension immédiate du compte sans remboursement."],
-          ["7. Droit applicable", "Les présentes CGU sont soumises au droit gabonais. Tout litige sera soumis aux tribunaux compétents de Libreville, Gabon."],
+          ["1. Objet","AfriLearn est une plateforme éducative numérique destinée aux élèves d'Afrique francophone. L'utilisation de cette plateforme implique l'acceptation pleine et entière des présentes CGU."],
+          ["2. Propriété intellectuelle","L'ensemble des contenus disponibles sur AfriLearn (cours, exercices, corrigés, illustrations, logo, nom de marque) sont la propriété exclusive d'AfriLearn et sont protégés par les lois relatives au droit d'auteur. Toute reproduction, copie, distribution ou exploitation commerciale sans autorisation écrite préalable est strictement interdite."],
+          ["3. Abonnements et paiements","Les abonnements sont mensuels et renouvelables. Le paiement s'effectue via Mobile Money ou carte bancaire via CinetPay. Aucun remboursement ne sera effectué après accès au contenu."],
+          ["4. Tuteur IA Kodjo","Le tuteur Kodjo est fourni à titre pédagogique. AfriLearn ne saurait être tenu responsable des erreurs éventuelles du tuteur IA. Il est recommandé de croiser les informations avec un enseignant qualifié."],
+          ["5. Données personnelles","AfriLearn collecte uniquement les données nécessaires au fonctionnement du service (nom, email, pays, niveau). Ces données ne sont jamais vendues à des tiers."],
+          ["6. Comportement des utilisateurs","Tout comportement abusif, triche dans les compétitions, ou tentative de contournement du système d'abonnement entraînera la suspension immédiate du compte sans remboursement."],
+          ["7. Droit applicable","Les présentes CGU sont soumises au droit gabonais. Tout litige sera soumis aux tribunaux compétents de Libreville, Gabon."],
         ].map(([t,c]) => (
           <div key={t} style={{ marginBottom:16 }}>
             <p style={{ fontWeight:700, color:"#e8f4f0", marginBottom:6 }}>{t}</p>
@@ -209,11 +222,11 @@ const Auth = ({ mode, onAuth, onSwitch }) => {
   const [error, setError] = useState("");
 
   const handleSubmit = () => {
-    if (!form.email || !form.password) { setError("Veuillez remplir tous les champs."); return; }
-    if (mode==="register" && !cguAccepted) { setError("Vous devez accepter les CGU."); return; }
-    if (form.email===SUPER_ADMIN.email && form.password===SUPER_ADMIN.password) { onAuth({ name:"Super Administrateur", email:form.email, role:"superadmin", plan:"SuperAdmin", country:"Gabon", level:"Admin" }); return; }
-    const admin = ADMIN_ACCOUNTS.find(a => a.email===form.email && a.password===form.password);
-    if (admin) { onAuth({ ...admin, plan:"Admin", country:"Gabon", level:"Admin" }); return; }
+    if (!form.email||!form.password) { setError("Veuillez remplir tous les champs."); return; }
+    if (mode==="register"&&!cguAccepted) { setError("Vous devez accepter les CGU."); return; }
+    if (form.email===SUPER_ADMIN.email&&form.password===SUPER_ADMIN.password) { onAuth({ name:"Super Administrateur", email:form.email, role:"superadmin", plan:"SuperAdmin", country:"Gabon", level:"Admin" }); return; }
+    const admin = ADMIN_ACCOUNTS.find(a=>a.email===form.email&&a.password===form.password);
+    if (admin) { onAuth({...admin, plan:"Admin", country:"Gabon", level:"Admin"}); return; }
     onAuth({ name:form.name||"Élève", email:form.email, country:form.country, level:form.level, plan:"Gratuit", role:"user" });
   };
 
@@ -228,22 +241,22 @@ const Auth = ({ mode, onAuth, onSwitch }) => {
         </div>
         <Card>
           <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
-            {mode==="register" && <input placeholder="Ton prénom" value={form.name} onChange={e => setForm({...form,name:e.target.value})} style={inputStyle} />}
-            <input placeholder="Email" type="email" value={form.email} onChange={e => setForm({...form,email:e.target.value})} style={inputStyle} />
-            <input placeholder="Mot de passe" type="password" value={form.password} onChange={e => setForm({...form,password:e.target.value})} style={inputStyle} />
-            {mode==="register" && <>
-              <select value={form.country} onChange={e => setForm({...form,country:e.target.value})} style={inputStyle}>
-                {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+            {mode==="register"&&<input placeholder="Ton prénom" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} style={inputStyle} />}
+            <input placeholder="Email" type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} style={inputStyle} />
+            <input placeholder="Mot de passe" type="password" value={form.password} onChange={e=>setForm({...form,password:e.target.value})} style={inputStyle} />
+            {mode==="register"&&<>
+              <select value={form.country} onChange={e=>setForm({...form,country:e.target.value})} style={inputStyle}>
+                {COUNTRIES.map(c=><option key={c} value={c}>{c}</option>)}
               </select>
-              <select value={form.level} onChange={e => setForm({...form,level:e.target.value})} style={inputStyle}>
-                {["6ème","5ème","4ème","3ème","2nde","1ère","Terminale"].map(l => <option key={l} value={l}>{l}</option>)}
+              <select value={form.level} onChange={e=>setForm({...form,level:e.target.value})} style={inputStyle}>
+                {["6ème","5ème","4ème","3ème","2nde","1ère","Terminale"].map(l=><option key={l} value={l}>{l}</option>)}
               </select>
               <label style={{ fontSize:12, color:"#7a9e8e", display:"flex", alignItems:"center", gap:8, cursor:"pointer" }}>
-                <input type="checkbox" checked={cguAccepted} onChange={e => setCguAccepted(e.target.checked)} />
-                J'accepte les <span onClick={() => setShowCGU(true)} style={{ color:"#f5a623", cursor:"pointer", textDecoration:"underline" }}>Conditions Générales d'Utilisation</span>
+                <input type="checkbox" checked={cguAccepted} onChange={e=>setCguAccepted(e.target.checked)} />
+                J'accepte les <span onClick={()=>setShowCGU(true)} style={{ color:"#f5a623", cursor:"pointer", textDecoration:"underline" }}>Conditions Générales d'Utilisation</span>
               </label>
             </>}
-            {error && <p style={{ color:"#ef4444", fontSize:12 }}>{error}</p>}
+            {error&&<p style={{ color:"#ef4444", fontSize:12 }}>{error}</p>}
             <Btn onClick={handleSubmit} color="#f5a623" style={{ marginTop:4, padding:"13px", fontSize:14 }}>{mode==="login"?"Se connecter →":"Créer mon compte →"}</Btn>
           </div>
         </Card>
@@ -258,7 +271,7 @@ const Auth = ({ mode, onAuth, onSwitch }) => {
 };
 
 // ─── SUPER ADMIN ──────────────────────────────────────────────────────────────
-const SuperAdmin = ({ user, onLogout }) => {
+const SuperAdmin = ({ user, onLogout, onPreview }) => {
   const [tab, setTab] = useState("dashboard");
   const [users, setUsers] = useState(FAKE_USERS);
   const stats = {
@@ -276,26 +289,42 @@ const SuperAdmin = ({ user, onLogout }) => {
     {id:"finance",  label:"💰 Finances"},
     {id:"settings", label:"⚙️ Paramètres"},
   ];
+
   return (
     <div style={{ minHeight:"100vh", display:"flex" }}>
+      {/* Sidebar */}
       <div style={{ width:220, background:"rgba(0,0,0,0.4)", borderRight:"1px solid rgba(255,255,255,0.07)", padding:"20px 0", display:"flex", flexDirection:"column", flexShrink:0 }}>
         <div style={{ padding:"0 20px 20px", borderBottom:"1px solid rgba(255,255,255,0.07)" }}>
           <div style={{ fontSize:22, marginBottom:4 }}>🌍</div>
           <div style={{ fontFamily:"'Crimson Pro',serif", fontSize:18, color:"#f5a623", fontWeight:600 }}>AfriLearn</div>
           <Badge color={user.role==="superadmin"?"#f5a623":"#3b82f6"}>{user.role==="superadmin"?"Super Admin":"Admin"}</Badge>
         </div>
-        <div style={{ flex:1, padding:"16px 12px" }}>
-          {tabs.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={{ display:"block", width:"100%", textAlign:"left", padding:"10px 12px", borderRadius:10, background:tab===t.id?"rgba(245,166,35,0.12)":"transparent", color:tab===t.id?"#f5a623":"#7a9e8e", border:"none", cursor:"pointer", fontFamily:"Sora,sans-serif", fontSize:12, fontWeight:tab===t.id?600:400, marginBottom:4, transition:"all 0.2s" }}>{t.label}</button>
+
+        {/* Bouton Voir le site — bien visible */}
+        <div style={{ padding:"16px 12px 8px" }}>
+          <button onClick={onPreview} style={{ display:"flex", alignItems:"center", gap:8, width:"100%", padding:"12px 14px", borderRadius:12, background:"linear-gradient(135deg,rgba(34,197,94,0.2),rgba(59,130,246,0.1))", border:"1px solid rgba(34,197,94,0.3)", color:"#22c55e", cursor:"pointer", fontFamily:"Sora,sans-serif", fontSize:12, fontWeight:700, transition:"all 0.2s" }}
+            onMouseEnter={e=>e.currentTarget.style.background="linear-gradient(135deg,rgba(34,197,94,0.3),rgba(59,130,246,0.2))"}
+            onMouseLeave={e=>e.currentTarget.style.background="linear-gradient(135deg,rgba(34,197,94,0.2),rgba(59,130,246,0.1))"}
+          >
+            <span style={{ fontSize:16 }}>👁️</span> Voir le site
+          </button>
+        </div>
+
+        <div style={{ flex:1, padding:"8px 12px" }}>
+          {tabs.map(t=>(
+            <button key={t.id} onClick={()=>setTab(t.id)} style={{ display:"block", width:"100%", textAlign:"left", padding:"10px 12px", borderRadius:10, background:tab===t.id?"rgba(245,166,35,0.12)":"transparent", color:tab===t.id?"#f5a623":"#7a9e8e", border:"none", cursor:"pointer", fontFamily:"Sora,sans-serif", fontSize:12, fontWeight:tab===t.id?600:400, marginBottom:4, transition:"all 0.2s" }}>{t.label}</button>
           ))}
         </div>
+
         <div style={{ padding:"16px 20px", borderTop:"1px solid rgba(255,255,255,0.07)" }}>
           <div style={{ fontSize:11, color:"#556b5e", marginBottom:8 }}>{user.email}</div>
           <Btn onClick={onLogout} outline color="#ef4444" style={{ width:"100%", padding:"8px", fontSize:11 }}>Déconnexion</Btn>
         </div>
       </div>
+
+      {/* Contenu principal */}
       <div style={{ flex:1, overflow:"auto", padding:24 }}>
-        {tab==="dashboard" && (
+        {tab==="dashboard"&&(
           <div className="fade-in">
             <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24, marginBottom:20 }}>📊 Tableau de bord</h2>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))", gap:12, marginBottom:24 }}>
@@ -306,7 +335,7 @@ const SuperAdmin = ({ user, onLogout }) => {
                 {label:"Comptes gratuits",   value:stats.free,                               color:"#6b7280", icon:"🆓"},
                 {label:"Revenus du mois",    value:`${stats.revenue.toLocaleString()} FCFA`, color:"#f5a623", icon:"💰"},
                 {label:"Pays représentés",   value:"8",                                      color:"#8b5cf6", icon:"🌍"},
-              ].map(s => (
+              ].map(s=>(
                 <Card key={s.label} style={{ textAlign:"center" }}>
                   <div style={{ fontSize:24, marginBottom:8 }}>{s.icon}</div>
                   <div style={{ fontSize:20, fontWeight:700, color:s.color }}>{s.value}</div>
@@ -317,11 +346,11 @@ const SuperAdmin = ({ user, onLogout }) => {
             <Card>
               <div style={{ fontWeight:700, fontSize:14, marginBottom:12 }}>📈 Activité récente</div>
               {[
-                {action:"Nouvel abonné Premium",       detail:"Aminata D. — Sénégal",   time:"Il y a 2h", color:"#22c55e"},
-                {action:"Nouvelle inscription",        detail:"Jean M. — Cameroun",     time:"Il y a 4h", color:"#3b82f6"},
-                {action:"Upgrade Essentiel → Premium", detail:"Marie O. — Gabon",       time:"Il y a 6h", color:"#f5a623"},
-                {action:"Nouvelle inscription",        detail:"Kofi A. — Côte d'Ivoire",time:"Il y a 8h", color:"#3b82f6"},
-              ].map((a,i) => (
+                {action:"Nouvel abonné Premium",       detail:"Aminata D. — Sénégal",    time:"Il y a 2h",  color:"#22c55e"},
+                {action:"Nouvelle inscription",        detail:"Jean M. — Cameroun",      time:"Il y a 4h",  color:"#3b82f6"},
+                {action:"Upgrade Essentiel → Premium", detail:"Marie O. — Gabon",        time:"Il y a 6h",  color:"#f5a623"},
+                {action:"Nouvelle inscription",        detail:"Kofi A. — Côte d'Ivoire", time:"Il y a 8h",  color:"#3b82f6"},
+              ].map((a,i)=>(
                 <div key={i} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"10px 0", borderBottom:i<3?"1px solid rgba(255,255,255,0.05)":"none" }}>
                   <div><div style={{ fontSize:13, fontWeight:600, color:a.color }}>{a.action}</div><div style={{ fontSize:11, color:"#556b5e" }}>{a.detail}</div></div>
                   <div style={{ fontSize:11, color:"#334155" }}>{a.time}</div>
@@ -330,7 +359,8 @@ const SuperAdmin = ({ user, onLogout }) => {
             </Card>
           </div>
         )}
-        {tab==="users" && (
+
+        {tab==="users"&&(
           <div className="fade-in">
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:20 }}>
               <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24 }}>👥 Gestion des utilisateurs</h2>
@@ -340,7 +370,7 @@ const SuperAdmin = ({ user, onLogout }) => {
               <table style={{ width:"100%", borderCollapse:"separate", borderSpacing:"0 6px", fontSize:12 }}>
                 <thead><tr style={{ color:"#556b5e" }}>{["Nom","Email","Pays","Niveau","Plan","Inscrit","Statut","Actions"].map(h=><th key={h} style={{ padding:"8px 12px", textAlign:"left", fontWeight:600 }}>{h}</th>)}</tr></thead>
                 <tbody>
-                  {users.map(u => (
+                  {users.map(u=>(
                     <tr key={u.id} style={{ background:"rgba(255,255,255,0.02)" }}>
                       <td style={{ padding:"10px 12px", borderRadius:"8px 0 0 8px", fontWeight:600 }}>{u.name}</td>
                       <td style={{ padding:"10px 12px", color:"#7a9e8e" }}>{u.email}</td>
@@ -350,7 +380,7 @@ const SuperAdmin = ({ user, onLogout }) => {
                       <td style={{ padding:"10px 12px", color:"#556b5e" }}>{u.joined}</td>
                       <td style={{ padding:"10px 12px" }}><span style={{ color:u.active?"#22c55e":"#ef4444", fontSize:11 }}>{u.active?"● Actif":"● Inactif"}</span></td>
                       <td style={{ padding:"10px 12px", borderRadius:"0 8px 8px 0" }}>
-                        <button onClick={() => setUsers(users.map(x=>x.id===u.id?{...x,active:!x.active}:x))} style={{ background:"rgba(255,255,255,0.05)", border:"none", color:u.active?"#ef4444":"#22c55e", borderRadius:6, padding:"4px 10px", cursor:"pointer", fontSize:11, fontFamily:"Sora,sans-serif" }}>{u.active?"Suspendre":"Activer"}</button>
+                        <button onClick={()=>setUsers(users.map(x=>x.id===u.id?{...x,active:!x.active}:x))} style={{ background:"rgba(255,255,255,0.05)", border:"none", color:u.active?"#ef4444":"#22c55e", borderRadius:6, padding:"4px 10px", cursor:"pointer", fontSize:11, fontFamily:"Sora,sans-serif" }}>{u.active?"Suspendre":"Activer"}</button>
                       </td>
                     </tr>
                   ))}
@@ -359,22 +389,47 @@ const SuperAdmin = ({ user, onLogout }) => {
             </div>
           </div>
         )}
-        {tab==="content" && (
+
+        {tab==="content"&&(
           <div className="fade-in">
             <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24, marginBottom:20 }}>📚 Gestion du contenu</h2>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:12, marginBottom:20 }}>
-              {SUBJECTS.map(s => (
+              {SUBJECTS.map(s=>(
                 <Card key={s.id} style={{ textAlign:"center" }}>
                   <div style={{ fontSize:28, marginBottom:8 }}>{s.icon}</div>
                   <div style={{ fontWeight:600, fontSize:13, marginBottom:8 }}>{s.name}</div>
                   <Badge color={s.available?"#22c55e":"#6b7280"}>{s.available?"Publié":"À venir"}</Badge>
-                  <div style={{ marginTop:12 }}><Btn color="#f5a623" style={{ padding:"6px 14px", fontSize:11 }}>Gérer</Btn></div>
+                  <div style={{ marginTop:12, display:"flex", gap:8, justifyContent:"center" }}>
+                    <Btn color="#f5a623" style={{ padding:"6px 12px", fontSize:11 }}>Modifier</Btn>
+                    <Btn onClick={onPreview} color="#22c55e" style={{ padding:"6px 12px", fontSize:11 }}>Prévisualiser</Btn>
+                  </div>
                 </Card>
               ))}
             </div>
+            <Card>
+              <div style={{ fontWeight:700, fontSize:14, marginBottom:14 }}>📐 Maths 6ème — {CHAPTERS.length} chapitres</div>
+              <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+                {CHAPTERS.map(ch=>{
+                  const part = PARTS.find(p=>p.id===ch.part);
+                  return (
+                    <div key={ch.id} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"8px 12px", background:"rgba(255,255,255,0.02)", borderRadius:8 }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                        <span style={{ fontSize:12, color:part.color }}>{part.icon}</span>
+                        <span style={{ fontSize:12 }}>{ch.id}. {ch.title}</span>
+                      </div>
+                      <div style={{ display:"flex", gap:6 }}>
+                        <Badge color="#22c55e">Publié</Badge>
+                        <Btn color="#3b82f6" style={{ padding:"3px 10px", fontSize:10 }}>Modifier</Btn>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </Card>
           </div>
         )}
-        {tab==="admins" && (
+
+        {tab==="admins"&&(
           <div className="fade-in">
             <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24, marginBottom:20 }}>👑 Gestion des administrateurs</h2>
             <Card style={{ marginBottom:16, border:"1px solid rgba(245,166,35,0.2)" }}>
@@ -389,7 +444,7 @@ const SuperAdmin = ({ user, onLogout }) => {
                 <div style={{ fontWeight:700, fontSize:14 }}>🛡️ Administrateurs</div>
                 <Btn color="#22c55e" style={{ padding:"6px 14px", fontSize:11 }}>+ Ajouter</Btn>
               </div>
-              {ADMIN_ACCOUNTS.map((a,i) => (
+              {ADMIN_ACCOUNTS.map((a,i)=>(
                 <div key={i} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"12px", background:"rgba(255,255,255,0.02)", borderRadius:10 }}>
                   <div><div style={{ fontWeight:600, fontSize:13 }}>{a.name}</div><div style={{ fontSize:11, color:"#7a9e8e" }}>{a.email}</div></div>
                   <div style={{ display:"flex", gap:8 }}><Badge color="#3b82f6">Admin</Badge><Btn outline color="#ef4444" style={{ padding:"4px 10px", fontSize:10 }}>Supprimer</Btn></div>
@@ -398,16 +453,17 @@ const SuperAdmin = ({ user, onLogout }) => {
             </Card>
           </div>
         )}
-        {tab==="finance" && (
+
+        {tab==="finance"&&(
           <div className="fade-in">
             <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24, marginBottom:20 }}>💰 Finances</h2>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:12, marginBottom:20 }}>
               {[
-                {label:"Revenus ce mois",  value:`${stats.revenue.toLocaleString()} FCFA`, color:"#22c55e", icon:"💵"},
-                {label:"Abonnés payants",  value:stats.premium+stats.essential,            color:"#f5a623", icon:"👥"},
-                {label:"Ticket moyen",     value:"2 350 FCFA",                             color:"#3b82f6", icon:"📊"},
-                {label:"Taux conversion",  value:"62%",                                    color:"#8b5cf6", icon:"📈"},
-              ].map(s => (
+                {label:"Revenus ce mois", value:`${stats.revenue.toLocaleString()} FCFA`, color:"#22c55e", icon:"💵"},
+                {label:"Abonnés payants", value:stats.premium+stats.essential,            color:"#f5a623", icon:"👥"},
+                {label:"Ticket moyen",    value:"2 350 FCFA",                             color:"#3b82f6", icon:"📊"},
+                {label:"Taux conversion", value:"62%",                                    color:"#8b5cf6", icon:"📈"},
+              ].map(s=>(
                 <Card key={s.label} style={{ textAlign:"center" }}>
                   <div style={{ fontSize:24, marginBottom:8 }}>{s.icon}</div>
                   <div style={{ fontSize:20, fontWeight:700, color:s.color }}>{s.value}</div>
@@ -417,7 +473,7 @@ const SuperAdmin = ({ user, onLogout }) => {
             </div>
             <Card>
               <div style={{ fontWeight:700, fontSize:14, marginBottom:14 }}>💳 Tarifs actuels</div>
-              {PLANS.filter(p=>p.price>0).map(p => (
+              {PLANS.filter(p=>p.price>0).map(p=>(
                 <div key={p.id} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"12px 0", borderBottom:"1px solid rgba(255,255,255,0.05)" }}>
                   <div><div style={{ fontWeight:600, fontSize:13 }}>{p.name}</div><div style={{ fontSize:11, color:"#7a9e8e" }}>Abonnement mensuel</div></div>
                   <div style={{ display:"flex", alignItems:"center", gap:10 }}>
@@ -429,19 +485,20 @@ const SuperAdmin = ({ user, onLogout }) => {
             </Card>
           </div>
         )}
-        {tab==="settings" && (
+
+        {tab==="settings"&&(
           <div className="fade-in">
             <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24, marginBottom:20 }}>⚙️ Paramètres</h2>
             <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
               {[
                 {label:"🔑 Changer le mot de passe Super Admin", desc:"Modifier les identifiants de connexion"},
-                {label:"🌍 Gérer les pays disponibles",         desc:"Activer ou désactiver des pays"},
-                {label:"📱 Configuration CinetPay",             desc:"Clés API et paramètres de paiement"},
-                {label:"🤖 Configuration Kodjo (IA)",           desc:"Paramètres du tuteur IA"},
-                {label:"📧 Notifications email",                desc:"Alertes et emails automatiques"},
-                {label:"🛡️ Sécurité et accès",                  desc:"Journaux de connexion, sessions actives"},
-              ].map(s => (
-                <Card key={s.label} onClick={() => {}} style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                {label:"🌍 Gérer les pays disponibles",          desc:"Activer ou désactiver des pays"},
+                {label:"📱 Configuration CinetPay",              desc:"Clés API et paramètres de paiement"},
+                {label:"🤖 Configuration Kodjo (IA)",            desc:"Paramètres du tuteur IA"},
+                {label:"📧 Notifications email",                 desc:"Alertes et emails automatiques"},
+                {label:"🛡️ Sécurité et accès",                   desc:"Journaux de connexion, sessions actives"},
+              ].map(s=>(
+                <Card key={s.label} onClick={()=>{}} style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                   <div><div style={{ fontWeight:600, fontSize:13 }}>{s.label}</div><div style={{ fontSize:11, color:"#556b5e", marginTop:4 }}>{s.desc}</div></div>
                   <span style={{ color:"#556b5e" }}>›</span>
                 </Card>
@@ -455,11 +512,12 @@ const SuperAdmin = ({ user, onLogout }) => {
   );
 };
 
-// ─── DASHBOARD ÉLÈVE ─────────────────────────────────────────────────────────
+// ─── VUE ÉLÈVE (PREVIEW) ─────────────────────────────────────────────────────
 const Dashboard = ({ user, onNav }) => {
   const pct = Math.round((4/25)*100);
+  const topPad = user.isPreview ? { paddingTop:48 } : {};
   return (
-    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:800, margin:"0 auto" }}>
+    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:800, margin:"0 auto", ...topPad }}>
       <div style={{ marginBottom:28 }}>
         <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:26, fontWeight:600 }}>Bonjour, <span style={{ color:"#f5a623" }}>{user.name}</span> 👋</h2>
         <p style={{ color:"#7a9e8e", fontSize:13, marginTop:4 }}>{user.level} · {user.country} · Plan {user.plan}</p>
@@ -478,11 +536,10 @@ const Dashboard = ({ user, onNav }) => {
         {[
           {icon:"📖", label:"Continuer le cours", color:"#f5a623", action:()=>onNav("chapters")},
           {icon:"🤖", label:"Parler à Kodjo",     color:"#3b82f6", action:()=>onNav("tutor")},
-          {icon:"🏆", label:"Compétition",         color:"#22c55e", action:()=>onNav("competition"), premium:true},
+          {icon:"🏆", label:"Compétition",         color:"#22c55e", action:()=>onNav("competition")},
           {icon:"💳", label:"Mon abonnement",      color:"#8b5cf6", action:()=>onNav("pricing")},
-        ].map(item => (
-          <Card key={item.label} onClick={item.action} style={{ textAlign:"center", padding:16, position:"relative" }}>
-            {item.premium&&user.plan!=="Premium"&&<div style={{ position:"absolute", top:8, right:8 }}><Badge color="#22c55e">Premium</Badge></div>}
+        ].map(item=>(
+          <Card key={item.label} onClick={item.action} style={{ textAlign:"center", padding:16 }}>
             <div style={{ fontSize:28, marginBottom:8 }}>{item.icon}</div>
             <div style={{ fontSize:12, fontWeight:600, color:item.color }}>{item.label}</div>
           </Card>
@@ -490,7 +547,7 @@ const Dashboard = ({ user, onNav }) => {
       </div>
       <h3 style={{ fontSize:13, fontWeight:700, color:"#7a9e8e", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:14 }}>Matières disponibles</h3>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))", gap:10 }}>
-        {SUBJECTS.map(s => (
+        {SUBJECTS.map(s=>(
           <Card key={s.id} onClick={s.available?()=>onNav("chapters"):null} style={{ textAlign:"center", padding:14, opacity:s.available?1:0.4 }}>
             <div style={{ fontSize:22, marginBottom:6 }}>{s.icon}</div>
             <div style={{ fontSize:12, fontWeight:600 }}>{s.name}</div>
@@ -503,19 +560,19 @@ const Dashboard = ({ user, onNav }) => {
   );
 };
 
-// ─── CHAPTERS ────────────────────────────────────────────────────────────────
 const Chapters = ({ user, onChapter }) => {
   const [filter, setFilter] = useState(0);
   const filtered = filter===0?CHAPTERS:CHAPTERS.filter(c=>c.part===filter);
+  const topPad = user.isPreview ? { paddingTop:48 } : {};
   return (
-    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:800, margin:"0 auto" }}>
+    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:800, margin:"0 auto", ...topPad }}>
       <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:24, fontWeight:600, marginBottom:4 }}>📐 Mathématiques — <span style={{ color:"#f5a623" }}>6ème</span></h2>
       <p style={{ color:"#7a9e8e", fontSize:13, marginBottom:20 }}>25 chapitres · 5 parties</p>
       <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:20 }}>
-        <button onClick={() => setFilter(0)} style={filterBtn(filter===0)}>Tous</button>
-        {PARTS.map(p => <button key={p.id} onClick={() => setFilter(p.id)} style={filterBtn(filter===p.id,p.color)}>{p.icon} {p.name}</button>)}
+        <button onClick={()=>setFilter(0)} style={filterBtn(filter===0)}>Tous</button>
+        {PARTS.map(p=><button key={p.id} onClick={()=>setFilter(p.id)} style={filterBtn(filter===p.id,p.color)}>{p.icon} {p.name}</button>)}
       </div>
-      {(filter===0?PARTS:PARTS.filter(p=>p.id===filter)).map(part => {
+      {(filter===0?PARTS:PARTS.filter(p=>p.id===filter)).map(part=>{
         const chs = filtered.filter(c=>c.part===part.id);
         if (!chs.length) return null;
         return (
@@ -525,12 +582,13 @@ const Chapters = ({ user, onChapter }) => {
               <span style={{ fontWeight:700, fontSize:13, color:part.color, letterSpacing:"0.04em", textTransform:"uppercase" }}>{part.name}</span>
             </div>
             <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-              {chs.map(ch => {
-                const locked = user.plan==="Gratuit"&&ch.id>3;
+              {chs.map(ch=>{
+                // En prévisualisation admin, tout est déverrouillé
+                const locked = !user.isPreview && user.plan==="Gratuit" && ch.id>3;
                 return (
-                  <div key={ch.id} onClick={() => !locked&&onChapter(ch)} style={{ display:"flex", alignItems:"center", gap:14, padding:"14px 16px", background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.07)", borderRadius:12, cursor:locked?"not-allowed":"pointer", opacity:locked?0.45:1, transition:"all 0.2s" }}
-                    onMouseEnter={e => !locked&&(e.currentTarget.style.background="rgba(255,255,255,0.06)")}
-                    onMouseLeave={e => !locked&&(e.currentTarget.style.background="rgba(255,255,255,0.03)")}
+                  <div key={ch.id} onClick={()=>!locked&&onChapter(ch)} style={{ display:"flex", alignItems:"center", gap:14, padding:"14px 16px", background:"rgba(255,255,255,0.03)", border:"1px solid rgba(255,255,255,0.07)", borderRadius:12, cursor:locked?"not-allowed":"pointer", opacity:locked?0.45:1, transition:"all 0.2s" }}
+                    onMouseEnter={e=>!locked&&(e.currentTarget.style.background="rgba(255,255,255,0.06)")}
+                    onMouseLeave={e=>!locked&&(e.currentTarget.style.background="rgba(255,255,255,0.03)")}
                   >
                     <div style={{ width:32, height:32, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", background:locked?"rgba(255,255,255,0.05)":`${part.color}22`, fontSize:13, fontWeight:700, color:locked?"#556b5e":part.color, flexShrink:0 }}>{locked?"🔒":ch.id}</div>
                     <div style={{ flex:1 }}>
@@ -550,12 +608,11 @@ const Chapters = ({ user, onChapter }) => {
   );
 };
 
-// ─── CHAPTER DETAIL ───────────────────────────────────────────────────────────
 const ChapterDetail = ({ chapter, user, onBack, onTutor }) => {
   const part = PARTS.find(p=>p.id===chapter.part);
-  const hasPremium = user.plan==="Premium";
+  const topPad = user.isPreview ? { paddingTop:48 } : {};
   return (
-    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:700, margin:"0 auto" }}>
+    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:700, margin:"0 auto", ...topPad }}>
       <button onClick={onBack} style={{ background:"none", border:"none", color:"#7a9e8e", cursor:"pointer", fontSize:13, marginBottom:16, fontFamily:"Sora,sans-serif" }}>← Retour</button>
       <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:20 }}>
         <div style={{ width:44, height:44, borderRadius:12, background:`${part.color}22`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:20 }}>{part.icon}</div>
@@ -571,16 +628,16 @@ const ChapterDetail = ({ chapter, user, onBack, onTutor }) => {
             <Btn color={part.color} style={{ padding:"8px 16px", fontSize:12 }}>Lire</Btn>
           </div>
         </Card>
-        <Card style={{ borderLeft:`3px solid ${hasPremium?"#22c55e":"#333"}`, opacity:hasPremium?1:0.5 }}>
+        <Card style={{ borderLeft:"3px solid #22c55e" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-            <div><div style={{ fontWeight:700, fontSize:14, marginBottom:4 }}>✏️ Exercices {!hasPremium&&"🔒"}</div><div style={{ color:"#7a9e8e", fontSize:12 }}>15 exercices gradués</div></div>
-            {hasPremium?<Btn color="#22c55e" style={{ padding:"8px 16px", fontSize:12 }}>Pratiquer</Btn>:<Badge color="#22c55e">Premium</Badge>}
+            <div><div style={{ fontWeight:700, fontSize:14, marginBottom:4 }}>✏️ Exercices</div><div style={{ color:"#7a9e8e", fontSize:12 }}>15 exercices gradués</div></div>
+            <Btn color="#22c55e" style={{ padding:"8px 16px", fontSize:12 }}>Pratiquer</Btn>
           </div>
         </Card>
-        <Card style={{ borderLeft:`3px solid ${hasPremium?"#3b82f6":"#333"}`, opacity:hasPremium?1:0.5 }}>
+        <Card style={{ borderLeft:"3px solid #3b82f6" }}>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-            <div><div style={{ fontWeight:700, fontSize:14, marginBottom:4 }}>✅ Corrigés {!hasPremium&&"🔒"}</div><div style={{ color:"#7a9e8e", fontSize:12 }}>Solutions étape par étape</div></div>
-            {hasPremium?<Btn color="#3b82f6" style={{ padding:"8px 16px", fontSize:12 }}>Voir</Btn>:<Badge color="#22c55e">Premium</Badge>}
+            <div><div style={{ fontWeight:700, fontSize:14, marginBottom:4 }}>✅ Corrigés détaillés</div><div style={{ color:"#7a9e8e", fontSize:12 }}>Solutions étape par étape</div></div>
+            <Btn color="#3b82f6" style={{ padding:"8px 16px", fontSize:12 }}>Voir</Btn>
           </div>
         </Card>
         <Card style={{ borderLeft:"3px solid #f5a623", background:"rgba(245,166,35,0.05)" }}>
@@ -595,15 +652,15 @@ const ChapterDetail = ({ chapter, user, onBack, onTutor }) => {
   );
 };
 
-// ─── TUTOR ───────────────────────────────────────────────────────────────────
 const Tutor = ({ user, chapter }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState([]);
   const endRef = useRef(null);
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior:"smooth" }); }, [messages]);
-  useEffect(() => { if (messages.length===0) startChat(); }, []);
+  const topPad = user.isPreview ? 88 : 120;
+  useEffect(()=>{endRef.current?.scrollIntoView({behavior:"smooth"});},[messages]);
+  useEffect(()=>{if(messages.length===0)startChat();},[]);
   const startChat = async () => {
     setLoading(true);
     const context = chapter?`Le sujet du jour est : ${chapter.title} en Maths 6ème.`:"Aide l'élève sur n'importe quelle matière de 6ème.";
@@ -613,27 +670,27 @@ const Tutor = ({ user, chapter }) => {
       const reply = data.content?.[0]?.text||"Bonjour ! Je suis Kodjo. Comment tu t'appelles ?";
       setHistory([{role:"user",content:"Bonjour Kodjo !"},{role:"assistant",content:reply}]);
       setMessages([{role:"assistant",content:reply}]);
-    } catch { setMessages([{role:"assistant",content:"Bonjour ! Je suis Kodjo, ton tuteur AfriLearn. Comment tu t'appelles ?"}]); }
+    } catch {setMessages([{role:"assistant",content:"Bonjour ! Je suis Kodjo. Comment tu t'appelles ?"}]);}
     setLoading(false);
   };
   const send = async () => {
     if (!input.trim()||loading) return;
-    const text = input.trim(); setInput("");
-    const newMsgs = [...messages,{role:"user",content:text}];
+    const text=input.trim(); setInput("");
+    const newMsgs=[...messages,{role:"user",content:text}];
     setMessages(newMsgs);
-    const newHist = [...history,{role:"user",content:text}];
+    const newHist=[...history,{role:"user",content:text}];
     setLoading(true);
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:SYSTEM_PROMPT,messages:newHist})});
       const data = await res.json();
-      const reply = data.content?.[0]?.text||"Je n'ai pas bien compris. Peux-tu reformuler ?";
+      const reply = data.content?.[0]?.text||"Je n'ai pas bien compris.";
       setMessages([...newMsgs,{role:"assistant",content:reply}]);
       setHistory([...newHist,{role:"assistant",content:reply}]);
-    } catch { setMessages([...newMsgs,{role:"assistant",content:"Oups, une erreur. Réessaie !"}]); }
+    } catch {setMessages([...newMsgs,{role:"assistant",content:"Oups, une erreur. Réessaie !"}]);}
     setLoading(false);
   };
   return (
-    <div className="fade-in" style={{ display:"flex", flexDirection:"column", height:"calc(100vh - 120px)", maxWidth:700, margin:"0 auto", padding:"0 20px" }}>
+    <div className="fade-in" style={{ display:"flex", flexDirection:"column", height:`calc(100vh - ${topPad}px)`, maxWidth:700, margin:"0 auto", padding:"0 20px" }}>
       <div style={{ display:"flex", alignItems:"center", gap:12, padding:"16px 0", borderBottom:"1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ width:42, height:42, borderRadius:"50%", background:"linear-gradient(135deg,#f5a623,#d97706)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:20 }}>🦅</div>
         <div>
@@ -642,7 +699,7 @@ const Tutor = ({ user, chapter }) => {
         </div>
       </div>
       <div style={{ flex:1, overflowY:"auto", padding:"16px 0", display:"flex", flexDirection:"column", gap:12 }}>
-        {messages.map((msg,i) => (
+        {messages.map((msg,i)=>(
           <div key={i} style={{ display:"flex", gap:10, justifyContent:msg.role==="assistant"?"flex-start":"flex-end" }}>
             {msg.role==="assistant"&&<div style={{ width:32, height:32, borderRadius:"50%", background:"linear-gradient(135deg,#f5a623,#d97706)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:16, flexShrink:0 }}>🦅</div>}
             <div style={{ maxWidth:"75%", padding:"10px 14px", fontSize:13, lineHeight:1.7, background:msg.role==="assistant"?"rgba(255,255,255,0.05)":"linear-gradient(135deg,#1e6b3c,#166534)", borderRadius:msg.role==="assistant"?"4px 16px 16px 16px":"16px 4px 16px 16px", color:"#e8f4f0", border:"1px solid rgba(255,255,255,0.06)" }}>{msg.content}</div>
@@ -655,94 +712,60 @@ const Tutor = ({ user, chapter }) => {
         <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&send()} placeholder="Pose ta question à Kodjo..." style={{...inputStyle,flex:1}} />
         <Btn onClick={send} disabled={loading||!input.trim()} color="#f5a623" style={{ padding:"11px 18px" }}>↗</Btn>
       </div>
-      <div style={{ textAlign:"center", padding:"6px 0", fontSize:10, color:"#1e293b" }}>© {new Date().getFullYear()} AfriLearn — Contenu protégé par le droit d'auteur</div>
     </div>
   );
 };
 
-// ─── COMPETITION ─────────────────────────────────────────────────────────────
-const Competition = ({ user }) => {
-  const isPremium = user.plan==="Premium";
-  return (
-    <div className="fade-in" style={{ padding:"24px 20px", maxWidth:700, margin:"0 auto" }}>
-      <div style={{ textAlign:"center", marginBottom:28 }}>
-        <div style={{ fontSize:48, marginBottom:8 }}>🏆</div>
-        <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:26, fontWeight:600 }}>Compétition Africaine</h2>
-        <p style={{ color:"#7a9e8e", fontSize:13, marginTop:6 }}>Défie les meilleurs élèves de toute l'Afrique francophone</p>
+const Competition = ({ user }) => (
+  <div className="fade-in" style={{ padding:`${user.isPreview?64:24}px 20px 24px`, maxWidth:700, margin:"0 auto" }}>
+    <div style={{ textAlign:"center", marginBottom:28 }}>
+      <div style={{ fontSize:48, marginBottom:8 }}>🏆</div>
+      <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:26, fontWeight:600 }}>Compétition Africaine</h2>
+      <p style={{ color:"#7a9e8e", fontSize:13, marginTop:6 }}>Défie les meilleurs élèves de toute l'Afrique francophone</p>
+    </div>
+    <Card style={{ marginBottom:16, background:"linear-gradient(135deg,rgba(34,197,94,0.08),rgba(59,130,246,0.05))", border:"1px solid rgba(34,197,94,0.2)" }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+        <div><Badge color="#22c55e">🔴 En direct</Badge><div style={{ fontWeight:700, fontSize:15, marginTop:8 }}>Défi Maths — Fractions</div><div style={{ color:"#7a9e8e", fontSize:12, marginTop:4 }}>247 élèves · Se termine dans 2h</div></div>
+        <Btn color="#22c55e" style={{ padding:"10px 18px", fontSize:12 }}>Participer</Btn>
       </div>
-      {!isPremium?(
-        <Card style={{ textAlign:"center", padding:32, border:"1px solid rgba(34,197,94,0.2)" }}>
-          <div style={{ fontSize:40, marginBottom:12 }}>🔒</div>
-          <h3 style={{ fontWeight:700, marginBottom:8 }}>Fonctionnalité Premium</h3>
-          <p style={{ color:"#7a9e8e", fontSize:13, marginBottom:20, lineHeight:1.7 }}>Disponible avec le plan Premium à <strong style={{ color:"#22c55e" }}>2 995 FCFA/mois</strong>.</p>
-          <Badge color="#22c55e">Passer en Premium</Badge>
-        </Card>
-      ):(<>
-        <Card style={{ marginBottom:16, background:"linear-gradient(135deg,rgba(34,197,94,0.08),rgba(59,130,246,0.05))", border:"1px solid rgba(34,197,94,0.2)" }}>
-          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-            <div><Badge color="#22c55e">🔴 En direct</Badge><div style={{ fontWeight:700, fontSize:15, marginTop:8 }}>Défi Maths — Fractions</div><div style={{ color:"#7a9e8e", fontSize:12, marginTop:4 }}>247 élèves · Se termine dans 2h</div></div>
-            <Btn color="#22c55e" style={{ padding:"10px 18px", fontSize:12 }}>Participer</Btn>
-          </div>
-        </Card>
-        <h3 style={{ fontSize:13, fontWeight:700, color:"#7a9e8e", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:12 }}>🌍 Classement continental</h3>
-        <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-          {LEADERBOARD.map(p => (
-            <div key={p.rank} style={{ display:"flex", alignItems:"center", gap:12, padding:"12px 16px", background:p.rank<=3?"rgba(245,166,35,0.06)":"rgba(255,255,255,0.02)", border:p.rank<=3?"1px solid rgba(245,166,35,0.2)":"1px solid rgba(255,255,255,0.06)", borderRadius:12 }}>
-              <div style={{ width:28, textAlign:"center", fontSize:16 }}>{p.badge}</div>
-              <div style={{ flex:1 }}><div style={{ fontWeight:600, fontSize:13 }}>{p.name} {p.country}</div></div>
-              <div style={{ fontWeight:700, fontSize:13, color:"#f5a623" }}>{p.score.toLocaleString()} pts</div>
-            </div>
-          ))}
+    </Card>
+    <h3 style={{ fontSize:13, fontWeight:700, color:"#7a9e8e", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:12 }}>🌍 Classement continental</h3>
+    <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+      {LEADERBOARD.map(p=>(
+        <div key={p.rank} style={{ display:"flex", alignItems:"center", gap:12, padding:"12px 16px", background:p.rank<=3?"rgba(245,166,35,0.06)":"rgba(255,255,255,0.02)", border:p.rank<=3?"1px solid rgba(245,166,35,0.2)":"1px solid rgba(255,255,255,0.06)", borderRadius:12 }}>
+          <div style={{ width:28, textAlign:"center", fontSize:16 }}>{p.badge}</div>
+          <div style={{ flex:1 }}><div style={{ fontWeight:600, fontSize:13 }}>{p.name} {p.country}</div></div>
+          <div style={{ fontWeight:700, fontSize:13, color:"#f5a623" }}>{p.score.toLocaleString()} pts</div>
         </div>
-        <Card style={{ marginTop:16, textAlign:"center", border:"1px solid rgba(59,130,246,0.2)" }}>
-          <div style={{ color:"#7a9e8e", fontSize:12, marginBottom:4 }}>Ton classement</div>
-          <div style={{ fontWeight:700, fontSize:22, color:"#3b82f6" }}>#1 284</div>
-          <div style={{ color:"#556b5e", fontSize:12, marginTop:4 }}>sur 18 432 élèves</div>
-        </Card>
-      </>)}
-      <Footer />
+      ))}
     </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
-// ─── PRICING ─────────────────────────────────────────────────────────────────
 const Pricing = ({ user, onUpgrade }) => (
-  <div className="fade-in" style={{ padding:"24px 20px", maxWidth:800, margin:"0 auto" }}>
+  <div className="fade-in" style={{ padding:`${user.isPreview?64:24}px 20px 24px`, maxWidth:800, margin:"0 auto" }}>
     <div style={{ textAlign:"center", marginBottom:28 }}>
       <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:26, fontWeight:600 }}>Nos abonnements</h2>
       <p style={{ color:"#7a9e8e", fontSize:13, marginTop:6 }}>Accès complet · Mobile Money ou Visa · Via CinetPay</p>
     </div>
     <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:16, marginBottom:28 }}>
-      {PLANS.map(plan => (
+      {PLANS.map(plan=>(
         <div key={plan.id} style={{ background:plan.popular?"linear-gradient(135deg,rgba(34,197,94,0.1),rgba(59,130,246,0.05))":"rgba(255,255,255,0.03)", border:plan.popular?"1px solid rgba(34,197,94,0.3)":"1px solid rgba(255,255,255,0.07)", borderRadius:20, padding:24, position:"relative" }}>
           {plan.popular&&<div style={{ position:"absolute", top:-10, left:"50%", transform:"translateX(-50%)" }}><Badge color="#22c55e">⭐ Recommandé</Badge></div>}
           <div style={{ fontWeight:700, fontSize:16, marginBottom:4 }}>{plan.name}</div>
           <div style={{ marginBottom:16 }}><span style={{ fontSize:28, fontWeight:800, color:plan.color }}>{plan.price===0?"Gratuit":plan.price.toLocaleString()}</span>{plan.price>0&&<span style={{ color:"#7a9e8e", fontSize:12 }}> FCFA/mois</span>}</div>
-          <div style={{ display:"flex", flexDirection:"column", gap:8, marginBottom:20 }}>
-            {plan.features.map(f=><div key={f} style={{ display:"flex", gap:8, fontSize:12, color:"#9ca3af" }}><span style={{ color:plan.color }}>✓</span>{f}</div>)}
-          </div>
-          <Btn color={plan.color} onClick={() => onUpgrade(plan.id)} disabled={user.plan===plan.name} style={{ width:"100%", padding:"11px", fontSize:13 }}>{user.plan===plan.name?"✓ Plan actuel":plan.cta}</Btn>
+          <div style={{ display:"flex", flexDirection:"column", gap:8, marginBottom:20 }}>{plan.features.map(f=><div key={f} style={{ display:"flex", gap:8, fontSize:12, color:"#9ca3af" }}><span style={{ color:plan.color }}>✓</span>{f}</div>)}</div>
+          <Btn color={plan.color} onClick={()=>onUpgrade&&onUpgrade(plan.id)} style={{ width:"100%", padding:"11px", fontSize:13 }}>{plan.cta}</Btn>
         </div>
       ))}
     </div>
-    <Card>
-      <div style={{ fontWeight:700, fontSize:14, marginBottom:14 }}>💳 Moyens de paiement — Powered by CinetPay</div>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))", gap:10 }}>
-        {[["🇬🇦","Gabon","Airtel · Moov"],["🇨🇲","Cameroun","MTN · Orange"],["🇨🇮","Côte d'Ivoire","MTN · Orange · Wave"],["🇸🇳","Sénégal","Orange · Wave"],["🇨🇩","RDC","M-Pesa · Airtel"],["🌍","Tous pays","Visa · Mastercard"]].map(([f,c,m])=>(
-          <div key={c} style={{ padding:"10px 12px", background:"rgba(255,255,255,0.03)", borderRadius:10 }}>
-            <div style={{ fontSize:14, marginBottom:4 }}>{f} <span style={{ fontSize:12, fontWeight:600 }}>{c}</span></div>
-            <div style={{ fontSize:11, color:"#556b5e" }}>{m}</div>
-          </div>
-        ))}
-      </div>
-    </Card>
     <Footer />
   </div>
 );
 
-// ─── PROFILE ─────────────────────────────────────────────────────────────────
 const Profile = ({ user, onLogout }) => (
-  <div className="fade-in" style={{ padding:"24px 20px", maxWidth:500, margin:"0 auto" }}>
+  <div className="fade-in" style={{ padding:`${user.isPreview?64:24}px 20px 24px`, maxWidth:500, margin:"0 auto" }}>
     <div style={{ textAlign:"center", marginBottom:28 }}>
       <div style={{ width:72, height:72, borderRadius:"50%", background:"linear-gradient(135deg,#f5a623,#22c55e)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:32, margin:"0 auto 12px" }}>{user.name[0].toUpperCase()}</div>
       <h2 style={{ fontFamily:"'Crimson Pro',serif", fontSize:22, fontWeight:600 }}>{user.name}</h2>
@@ -750,20 +773,19 @@ const Profile = ({ user, onLogout }) => (
       <div style={{ marginTop:8 }}><Badge color="#f5a623">Plan {user.plan}</Badge></div>
     </div>
     <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
-      {[["🌍 Pays",user.country],["🎓 Niveau",user.level],["📅 Membre depuis","Avril 2026"],["📖 Chapitres complétés","4 / 25"],["🏆 Points","2 340 pts"]].map(([l,v])=>(
+      {[["🌍 Pays",user.country],["🎓 Niveau",user.level],["📅 Membre depuis","Avril 2026"],["📖 Chapitres complétés","25 / 25"],["🏆 Points","9 840 pts"]].map(([l,v])=>(
         <Card key={l} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"14px 16px" }}>
           <span style={{ fontSize:13, color:"#7a9e8e" }}>{l}</span>
           <span style={{ fontSize:13, fontWeight:600 }}>{v}</span>
         </Card>
       ))}
     </div>
-    <Btn onClick={onLogout} outline color="#ef4444" style={{ width:"100%", marginTop:20, padding:"12px" }}>Se déconnecter</Btn>
+    {!user.isPreview&&<Btn onClick={onLogout} outline color="#ef4444" style={{ width:"100%", marginTop:20, padding:"12px" }}>Se déconnecter</Btn>}
     <Footer />
   </div>
 );
 
-// ─── NAV & TOPBAR ────────────────────────────────────────────────────────────
-const NavBar = ({ active, onNav }) => (
+const NavBar = ({ active, onNav, topOffset=0 }) => (
   <div style={{ position:"fixed", bottom:0, left:0, right:0, zIndex:100, background:"rgba(6,13,26,0.95)", backdropFilter:"blur(12px)", borderTop:"1px solid rgba(255,255,255,0.07)", display:"flex", justifyContent:"space-around", padding:"8px 0 12px" }}>
     {[{id:"dashboard",icon:"🏠",label:"Accueil"},{id:"chapters",icon:"📚",label:"Cours"},{id:"tutor",icon:"🤖",label:"Kodjo"},{id:"competition",icon:"🏆",label:"Défi"},{id:"profile",icon:"👤",label:"Profil"}].map(t=>(
       <button key={t.id} onClick={()=>onNav(t.id)} style={{ background:"none", border:"none", cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center", gap:3, padding:"4px 12px", fontFamily:"Sora,sans-serif" }}>
@@ -778,13 +800,13 @@ const NavBar = ({ active, onNav }) => (
 const TopBar = ({ user, screen }) => {
   const titles = { dashboard:"", chapters:"Mathématiques", tutor:"Tuteur Kodjo", competition:"Compétition", pricing:"Abonnements", profile:"Mon profil", chapterDetail:"Chapitre" };
   return (
-    <div style={{ position:"sticky", top:0, zIndex:50, background:"rgba(6,13,26,0.9)", backdropFilter:"blur(12px)", borderBottom:"1px solid rgba(255,255,255,0.07)", padding:"14px 20px", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+    <div style={{ position:"sticky", top:user.isPreview?40:0, zIndex:50, background:"rgba(6,13,26,0.9)", backdropFilter:"blur(12px)", borderBottom:"1px solid rgba(255,255,255,0.07)", padding:"14px 20px", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
       <div style={{ display:"flex", alignItems:"center", gap:8 }}>
         <span style={{ fontSize:20 }}>🌍</span>
         <span style={{ fontFamily:"'Crimson Pro',serif", fontSize:20, fontWeight:600, background:"linear-gradient(90deg,#f5a623,#22c55e)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent" }}>AfriLearn</span>
         {titles[screen]&&<span style={{ color:"#556b5e", fontSize:13, marginLeft:4 }}>· {titles[screen]}</span>}
       </div>
-      <Badge color={user.plan==="Premium"?"#22c55e":user.plan==="Essentiel"?"#f5a623":"#6b7280"}>{user.plan}</Badge>
+      <Badge color="#22c55e">{user.plan}</Badge>
     </div>
   );
 };
@@ -794,6 +816,7 @@ export default function App() {
   const [screen, setScreen] = useState("landing");
   const [user, setUser] = useState(null);
   const [activeChapter, setActiveChapter] = useState(null);
+  const [isPreview, setIsPreview] = useState(false);
 
   const handleAuth = (form) => {
     setUser(form);
@@ -805,26 +828,45 @@ export default function App() {
   const handleChapter = (ch) => { setActiveChapter(ch); setScreen("chapterDetail"); };
   const handleUpgrade = (planId) => {
     const names = { free:"Gratuit", essential:"Essentiel", premium:"Premium" };
-    setUser(u => ({...u, plan:names[planId]}));
+    setUser(u=>({...u,plan:names[planId]}));
   };
+
+  // Passer en mode prévisualisation
+  const handlePreview = () => {
+    setIsPreview(true);
+    setScreen("dashboard");
+  };
+
+  // Retour au panneau admin
+  const handleBackToAdmin = () => {
+    setIsPreview(false);
+    setScreen("admin");
+  };
+
+  // Utilisateur prévisualisation : Super Admin avec accès Premium total
+  const previewUser = user ? { ...user, name:"Super Administrateur", plan:"Premium", level:"6ème", country:"Gabon", isPreview:true } : null;
+  const activeUser = isPreview ? previewUser : user;
 
   return (
     <>
       <style>{css}</style>
-      {screen==="landing" && <Landing onEnter={s=>setScreen(s)} />}
-      {screen==="login" && <Auth mode="login" onAuth={handleAuth} onSwitch={()=>setScreen("register")} />}
-      {screen==="register" && <Auth mode="register" onAuth={handleAuth} onSwitch={()=>setScreen("login")} />}
-      {screen==="admin" && user && <SuperAdmin user={user} onLogout={()=>{ setUser(null); setScreen("landing"); }} />}
-      {user && !["landing","login","register","admin"].includes(screen) && (
+      {screen==="landing"&&<Landing onEnter={s=>setScreen(s)} />}
+      {screen==="login"&&<Auth mode="login" onAuth={handleAuth} onSwitch={()=>setScreen("register")} />}
+      {screen==="register"&&<Auth mode="register" onAuth={handleAuth} onSwitch={()=>setScreen("login")} />}
+      {screen==="admin"&&!isPreview&&user&&<SuperAdmin user={user} onLogout={()=>{setUser(null);setScreen("landing");}} onPreview={handlePreview} />}
+
+      {/* Mode prévisualisation ou élève normal */}
+      {activeUser&&!["landing","login","register","admin"].includes(screen)&&(
         <div style={{ paddingBottom:80 }}>
-          <TopBar user={user} screen={screen} />
-          {screen==="dashboard"     && <Dashboard user={user} onNav={handleNav} />}
-          {screen==="chapters"      && <Chapters user={user} onChapter={handleChapter} />}
-          {screen==="chapterDetail" && activeChapter && <ChapterDetail chapter={activeChapter} user={user} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} />}
-          {screen==="tutor"         && <Tutor user={user} chapter={activeChapter} />}
-          {screen==="competition"   && <Competition user={user} />}
-          {screen==="pricing"       && <Pricing user={user} onUpgrade={handleUpgrade} />}
-          {screen==="profile"       && <Profile user={user} onLogout={()=>{ setUser(null); setScreen("landing"); }} />}
+          {isPreview&&<AdminPreviewBar onBackToAdmin={handleBackToAdmin} />}
+          <TopBar user={activeUser} screen={screen} />
+          {screen==="dashboard"     && <Dashboard    user={activeUser} onNav={handleNav} />}
+          {screen==="chapters"      && <Chapters     user={activeUser} onChapter={handleChapter} />}
+          {screen==="chapterDetail" && activeChapter && <ChapterDetail chapter={activeChapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} />}
+          {screen==="tutor"         && <Tutor        user={activeUser} chapter={activeChapter} />}
+          {screen==="competition"   && <Competition  user={activeUser} />}
+          {screen==="pricing"       && <Pricing      user={activeUser} onUpgrade={!isPreview?handleUpgrade:null} />}
+          {screen==="profile"       && <Profile      user={activeUser} onLogout={!isPreview?()=>{setUser(null);setScreen("landing");}:null} />}
           <NavBar active={screen} onNav={handleNav} />
         </div>
       )}

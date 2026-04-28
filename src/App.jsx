@@ -2075,6 +2075,1774 @@ FRACTIONS DÉCIMALES UTILES À CONNAÎTRE :
       {id:15, niveau:"Difficile", enonce:"Montrer que 2/3 de 3/4 = 1/2. Que signifie concrètement cette opération ?", solution:"2/3 de 3/4 = 3/4 × 2 ÷ 3 = (3×2)÷(4×3) = 6/12 = 1/2. Concrètement : si on prend 3/4 d'une tarte, puis 2/3 de ce morceau, on obtient exactement la moitié de la tarte entière."},
     ],
   },
+
+  9: {
+    id:9, title:"Droites et angles", duration:"3 semaines",
+    objectives:[
+      "Distinguer droite, demi-droite et segment",
+      "Reconnaître et nommer des angles",
+      "Mesurer et construire des angles avec le rapporteur",
+      "Connaître les différents types d'angles",
+      "Reconnaître et tracer des droites perpendiculaires et parallèles",
+    ],
+    cours:[
+      { id:"9-1", titre:"Droites, demi-droites et segments",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LA DROITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Une DROITE est une ligne rectiligne qui s'étend infiniment dans les deux sens.
+
+Représentation :   ←──────────────→
+                        (d)
+
+• Une droite n'a ni début ni fin
+• On la note avec une lettre minuscule : (d), (Δ), (ℓ)...
+• Ou par deux points qu'elle contient : la droite (AB)
+• Elle est infinie : on ne peut jamais la dessiner entièrement (on dessine une portion)
+
+PROPRIÉTÉ FONDAMENTALE :
+Par deux points distincts, il passe UNE ET UNE SEULE droite.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LA DEMI-DROITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Une DEMI-DROITE a une ORIGINE (un début) mais s'étend infiniment d'un seul côté.
+
+Représentation :   A──────────────→
+                   (origine)
+
+• Elle a un début (l'origine) mais pas de fin
+• On la note [AB) : origine A, passant par B
+• La demi-droite [AB) et la demi-droite [BA) sont DIFFÉRENTES !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE SEGMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un SEGMENT a deux EXTRÉMITÉS. C'est la portion de droite entre deux points.
+
+Représentation :   A──────────────B
+                   (extrémité)    (extrémité)
+
+• Il a un début (A) et une fin (B)
+• On le note [AB] ou [BA] (même segment)
+• Sa LONGUEUR se note AB (sans crochets)
+• On mesure sa longueur avec une règle graduée
+
+COMPARAISON :
+• Droite (AB)   : ←────A────B────→  (infinie dans les 2 sens)
+• Demi-droite [AB) : A────B────→    (infinie vers la droite)
+• Segment [AB]  : A────────────B    (finie des 2 côtés)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MILIEU D'UN SEGMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le MILIEU d'un segment [AB] est le point M tel que AM = MB.
+M est à égale distance de A et de B.
+
+Si AB = 8 cm, alors M est le milieu → AM = MB = 4 cm.
+
+CONSTRUCTION DU MILIEU :
+Méthode 1 : On mesure AB, on divise par 2, on reporte depuis A.
+Méthode 2 : Au compas → tracer des arcs de même rayon depuis A et B,
+les points d'intersection donnent la médiatrice, qui coupe [AB] en son milieu.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POINTS ALIGNÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Des points sont ALIGNÉS s'ils appartiennent tous à la même droite.
+
+EXEMPLE :
+A, B, C sont alignés :   A────B────C────→
+A, B, C ne sont pas alignés :
+         A
+          \
+    ───────B───────
+                C
+
+🌍 EXEMPLES AFRICAINS :
+• Les poteaux électriques le long d'une route sont alignés
+• La route de Libreville à Owendo est un segment (elle a un début et une fin)
+• Le fleuve Ogooué s'étend comme une droite (vue de loin)`,
+        exemples:[
+          {question:"Quelle est la différence entre [AB], [AB) et (AB) ?", reponse:"[AB] = segment (de A à B, fini). [AB) = demi-droite (de A vers B, infini d'un côté). (AB) = droite (infinie des deux côtés)."},
+          {question:"M est le milieu de [AB] avec AB = 12 cm. Calculer AM.", reponse:"AM = AB ÷ 2 = 12 ÷ 2 = 6 cm"},
+          {question:"Peut-on tracer plusieurs droites passant par un seul point ?", reponse:"Oui, une infinité de droites passent par un point. Mais par DEUX points, une seule droite est possible."},
+        ]
+      },
+      { id:"9-2", titre:"Les angles",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION D'UN ANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un ANGLE est formé par deux demi-droites ayant la même ORIGINE appelée SOMMET.
+Les deux demi-droites s'appellent les CÔTÉS de l'angle.
+
+REPRÉSENTATION :
+         B
+          \
+           \  ← l'angle est ici (l'espace entre les deux côtés)
+            \
+             S──────────→ A
+             (sommet)
+
+NOTATION : angle en S, noté :
+• Â S B  (avec le sommet au milieu)
+• ∠ASB ou ∠BSA
+• ∠S (si on parle d'un seul angle en S)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MESURE D'UN ANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La mesure d'un angle s'exprime en DEGRÉS (symbole : °).
+
+• Un tour complet = 360°
+• Un demi-tour = 180°
+• Un quart de tour = 90°
+
+UTILISATION DU RAPPORTEUR :
+1. Placer le centre du rapporteur sur le SOMMET de l'angle
+2. Aligner le zéro du rapporteur avec un des CÔTÉS de l'angle
+3. Lire la mesure sur le rapporteur là où passe l'autre côté
+4. Choisir la bonne graduation (0° à 180° selon le sens)
+
+⚠️ ATTENTION : Le rapporteur a deux échelles (0→180° et 180→0°).
+Toujours partir du côté où se trouve le zéro !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPES D'ANGLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• ANGLE NUL : mesure = 0° (les deux côtés sont confondus)
+
+• ANGLE AIGU : 0° < mesure < 90°
+  Exemple : angle de 45°, 30°, 60°
+     B
+      \
+       \  ← angle aigu
+        \
+         S──────→ A
+
+• ANGLE DROIT : mesure = 90° (exactement)
+  Symbole : un petit carré au sommet
+     B
+     |
+     |  ← 90°
+     |□
+     S──────→ A
+
+• ANGLE OBTUS : 90° < mesure < 180°
+  Exemple : angle de 120°, 150°
+  B
+   \
+    \      ← angle obtus
+     \
+      S──────→ A
+
+• ANGLE PLAT : mesure = 180°
+  Les deux côtés forment une droite.
+  A ←──────S──────→ B
+
+• ANGLE RENTRANT : 180° < mesure < 360°
+  (angle "vers l'intérieur")
+
+• ANGLE PLEIN : mesure = 360° (tour complet)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ANGLES PARTICULIERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• ANGLES COMPLÉMENTAIRES : leur somme = 90°
+  Ex : 30° et 60° sont complémentaires (30+60=90)
+
+• ANGLES SUPPLÉMENTAIRES : leur somme = 180°
+  Ex : 45° et 135° sont supplémentaires (45+135=180)
+
+• ANGLES ADJACENTS : même sommet, un côté commun, et ne se chevauchent pas.
+  Deux angles adjacents supplémentaires forment un angle plat.
+
+🌍 EXEMPLES AFRICAINS :
+• Les aiguilles d'une montre à 3h forment un angle droit (90°)
+• Le toit d'une maison africaine forme souvent un angle aigu
+• Une route en ligne droite fait un angle plat (180°) avec elle-même
+• Un éventail ouvert à moitié forme un angle d'environ 90°`,
+        exemples:[
+          {question:"Classer ces angles : 30°, 90°, 120°, 180°, 45°", reponse:"30°→aigu ; 90°→droit ; 120°→obtus ; 180°→plat ; 45°→aigu"},
+          {question:"Deux angles sont complémentaires. L'un mesure 35°. Mesure de l'autre ?", reponse:"90° − 35° = 55°"},
+          {question:"Deux angles sont supplémentaires. L'un mesure 110°. Mesure de l'autre ?", reponse:"180° − 110° = 70°"},
+          {question:"Comment reconnaître un angle droit sans rapporteur ?", reponse:"On utilise une équerre ou le coin d'une feuille de papier (qui fait exactement 90°)."},
+        ]
+      },
+      { id:"9-3", titre:"Droites perpendiculaires et parallèles",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DROITES PERPENDICULAIRES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Deux droites sont PERPENDICULAIRES si elles se coupent en formant un ANGLE DROIT (90°).
+
+NOTATION : (d₁) ⊥ (d₂)  se lit "d1 est perpendiculaire à d2"
+
+REPRÉSENTATION :
+     (d₂)
+      │
+      │□ ← angle droit (90°)
+──────┼──────── (d₁)
+      │
+
+PROPRIÉTÉ : Deux droites perpendiculaires à une même droite sont PARALLÈLES entre elles.
+
+CONSTRUCTION D'UNE PERPENDICULAIRE :
+Tracer la perpendiculaire à (d) passant par le point A :
+1. Poser l'équerre sur la droite (d)
+2. Faire glisser l'équerre jusqu'à ce qu'un côté passe par A
+3. Tracer la droite le long du côté de l'équerre
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DROITES PARALLÈLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Deux droites sont PARALLÈLES si elles ne se coupent JAMAIS
+(même dans les deux sens à l'infini).
+
+NOTATION : (d₁) // (d₂)  se lit "d1 est parallèle à d2"
+
+REPRÉSENTATION :
+──────────────────── (d₁)
+
+──────────────────── (d₂)
+
+(Les deux droites sont à égale distance l'une de l'autre)
+
+PROPRIÉTÉ IMPORTANTE :
+Si (d₁) // (d₂) et si une droite (d₃) coupe (d₁),
+alors (d₃) coupe aussi (d₂).
+
+PROPRIÉTÉ : Deux droites parallèles à une même droite sont parallèles entre elles.
+
+CONSTRUCTION DE PARALLÈLES :
+Tracer la parallèle à (d) passant par le point A :
+1. Tracer la perpendiculaire à (d) passant par A → on obtient (p)
+2. Tracer la perpendiculaire à (p) passant par A → on obtient la parallèle à (d)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POSITION RELATIVE DE DEUX DROITES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans un plan, deux droites peuvent être :
+• SÉCANTES : elles se coupent en un point (cas général)
+  - Perpendiculaires si l'angle = 90° (cas particulier)
+• PARALLÈLES : elles ne se coupent jamais
+  - Confondues si ce sont exactement les mêmes points (cas limite)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DISTANCE D'UN POINT À UNE DROITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La DISTANCE d'un point A à une droite (d) est la longueur du segment
+perpendiculaire abaissé de A sur (d).
+
+C'est la PLUS COURTE distance entre le point et la droite.
+
+     A
+     |\
+     | \  ← pas le plus court chemin
+     |  \
+     |   \
+─────H────────── (d)
+  ↑
+  AH est la distance (H = pied de la perpendiculaire)
+  AH ⊥ (d)
+
+🌍 EXEMPLES AFRICAINS :
+• Les rails d'un chemin de fer sont parallèles
+• Les lignes d'un cahier sont parallèles
+• Le mur d'une maison est perpendiculaire au sol
+• Les deux rives d'un canal sont parallèles
+• Les barreaux d'une échelle sont parallèles entre eux et perpendiculaires aux montants`,
+        exemples:[
+          {question:"Les rails d'un train font-ils des droites parallèles ou perpendiculaires ?", reponse:"Parallèles (// ) : les rails ne se croisent jamais, ils restent à la même distance."},
+          {question:"Deux droites forment un angle de 90°. Comment les appelle-t-on ?", reponse:"Droites perpendiculaires (⊥). L'angle droit est symbolisé par un petit carré."},
+          {question:"Comment tracer la perpendiculaire à une droite (d) passant par un point A ?", reponse:"1. Placer l'équerre sur (d). 2. Faire glisser jusqu'à ce qu'un côté passe par A. 3. Tracer la droite le long du bord perpendiculaire de l'équerre."},
+          {question:"(d1) // (d2) et (d2) // (d3). Que peut-on dire de (d1) et (d3) ?", reponse:"(d1) // (d3) : deux droites parallèles à une même droite sont parallèles entre elles."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Donner la notation correcte pour : un segment entre A et B, une droite passant par C et D, une demi-droite d'origine E passant par F.", solution:"Segment : [AB]. Droite : (CD). Demi-droite : [EF)"},
+      {id:2,  niveau:"Facile",    enonce:"M est le milieu de [PQ] avec PQ = 10 cm. Calculer PM et MQ.", solution:"PM = MQ = PQ ÷ 2 = 10 ÷ 2 = 5 cm"},
+      {id:3,  niveau:"Facile",    enonce:"Classer ces angles du plus petit au plus grand : 75°, 90°, 15°, 180°, 120°.", solution:"15° (aigu) < 75° (aigu) < 90° (droit) < 120° (obtus) < 180° (plat)"},
+      {id:4,  niveau:"Facile",    enonce:"Quel type d'angle fait une aiguille de montre entre 12h et 3h ?", solution:"Angle droit (90°) : le quart d'un tour complet de 360°."},
+      {id:5,  niveau:"Facile",    enonce:"Deux droites sont-elles parallèles si elles ne se coupent pas sur la feuille ?", solution:"Pas nécessairement ! Deux droites peuvent sembler ne pas se couper sur la feuille mais se croiseraient si on prolongeait. Il faut vérifier avec l'équerre et la règle."},
+      {id:6,  niveau:"Moyen",     enonce:"Deux angles sont supplémentaires. L'un mesure 72°. Quelle est la mesure de l'autre ?", solution:"180° − 72° = 108°. Vérif : 72° + 108° = 180° ✓"},
+      {id:7,  niveau:"Moyen",     enonce:"Un angle mesure 35°. Quel est son angle complémentaire ? Son angle supplémentaire ?", solution:"Complémentaire : 90° − 35° = 55°. Supplémentaire : 180° − 35° = 145°."},
+      {id:8,  niveau:"Moyen",     enonce:"M est un point du segment [AB] tel que AM = 4 cm et MB = 6 cm. M est-il le milieu de [AB] ?", solution:"AB = AM + MB = 4 + 6 = 10 cm. Le milieu serait à 5 cm de A. Comme AM = 4 ≠ 5, M n'est PAS le milieu."},
+      {id:9,  niveau:"Moyen",     enonce:"Sur la figure, (d1) ⊥ (d2) et (d2) ⊥ (d3). Que peut-on dire de (d1) et (d3) ?", solution:"(d1) // (d3) : deux droites perpendiculaires à une même droite sont parallèles entre elles."},
+      {id:10, niveau:"Moyen",     enonce:"La distance de A à la droite (d) est 3 cm. Expliquer ce que cela signifie.", solution:"Il existe un point H sur (d) tel que AH ⊥ (d) et AH = 3 cm. C'est le plus court chemin de A à (d). Tout autre chemin de A à (d) est plus long que 3 cm."},
+      {id:11, niveau:"Difficile", enonce:"Un angle mesure x°. Son complémentaire mesure le double de son supplémentaire. Trouver x.", solution:"Complémentaire : (90−x)°. Supplémentaire : (180−x)°. Équation : 90−x = 2×(180−x) → 90−x = 360−2x → x = 270°. Mais 270° n'a pas de complémentaire (>90°) ! → Problème impossible."},
+      {id:12, niveau:"Difficile", enonce:"ABCD est un quadrilatère. On sait que (AB) // (DC) et (AD) ⊥ (AB). Quel type de quadrilatère est ABCD ? Justifier.", solution:"(AB) // (DC) → deux côtés parallèles → trapèze au minimum. (AD) ⊥ (AB) → un angle droit. Si de plus (BC) ⊥ (AB), c'est un rectangle ou un carré."},
+      {id:13, niveau:"Difficile", enonce:"Sur une droite (d), on place les points A, B, C dans cet ordre avec AB = 5 cm et AC = 9 cm. Calculer BC. Trouver le milieu de [AC].", solution:"BC = AC − AB = 9 − 5 = 4 cm. Milieu de [AC] : à 9÷2 = 4,5 cm de A → point M avec AM = 4,5 cm."},
+      {id:14, niveau:"Difficile", enonce:"Deux droites se coupent et forment 4 angles. L'un mesure 70°. Calculer les 3 autres.", solution:"Angle opposé = 70° (angles opposés par le sommet sont égaux). Les deux autres sont supplémentaires à 70° : 180°−70°=110°. Les 4 angles : 70°, 110°, 70°, 110°. Vérif : 70+110+70+110=360° ✓"},
+      {id:15, niveau:"Difficile", enonce:"Un terrain rectangulaire a un angle de 90°. En utilisant les propriétés des perpendiculaires et parallèles, expliquer pourquoi les 4 angles d'un rectangle sont tous droits.", solution:"Un rectangle a (AB) // (DC) et (AD) // (BC). De plus (AB) ⊥ (AD). Comme (AB) ⊥ (AD) et (DC) // (AB), alors (DC) ⊥ (AD) → angle D = 90°. Comme (AD) ⊥ (AB) et (BC) // (AD), alors (BC) ⊥ (AB) → angle B = 90°. Comme (AB) ⊥ (BC) et (DC) // (AB), alors (DC) ⊥ (BC) → angle C = 90°. Tous les angles = 90° ✓"},
+    ],
+  },
+
+  10: {
+    id:10, title:"Triangles", duration:"3 semaines",
+    objectives:[
+      "Reconnaître et nommer les éléments d'un triangle",
+      "Connaître et utiliser la propriété de la somme des angles",
+      "Distinguer les différents types de triangles",
+      "Construire un triangle à la règle et au compas",
+      "Calculer le périmètre d'un triangle",
+      "Connaître l'inégalité triangulaire",
+    ],
+    cours:[
+      { id:"10-1", titre:"Définition et éléments d'un triangle",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un TRIANGLE est une figure géométrique plane formée par TROIS POINTS
+non alignés réunis par TROIS SEGMENTS.
+
+REPRÉSENTATION :
+              A
+             /\
+            /  \
+           /    \
+          /      \
+         B────────C
+
+• A, B, C sont les SOMMETS du triangle (points de rencontre des côtés)
+• [AB], [BC], [CA] sont les CÔTÉS du triangle
+• Les angles en A, B et C sont les ANGLES du triangle
+
+NOTATION : Triangle ABC → écrit △ABC (le symbole △ signifie "triangle")
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ÉLÉMENTS D'UN TRIANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CÔTÉS : Les trois segments [AB], [BC] et [CA].
+  • On note leur longueur : AB, BC et CA (sans crochets)
+
+ANGLES :
+  • L'angle en A (noté ∠A ou  B̂AC) est formé par les côtés [AB] et [AC]
+  • L'angle en B (noté ∠B) est formé par les côtés [BA] et [BC]
+  • L'angle en C (noté ∠C) est formé par les côtés [CA] et [CB]
+
+HAUTEURS : La hauteur issue de A est le segment perpendiculaire
+  de A au côté opposé (ou son prolongement). Un triangle a 3 hauteurs.
+
+MÉDIANES : La médiane issue de A relie A au milieu du côté opposé [BC].
+  Un triangle a 3 médianes, elles se croisent en un point appelé CENTRE DE GRAVITÉ.
+
+MÉDIATRICES : La médiatrice d'un côté est la droite perpendiculaire à ce côté
+  passant par son milieu. Les 3 médiatrices se croisent au CENTRE DU CERCLE CIRCONSCRIT.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROPRIÉTÉ FONDAMENTALE — SOMME DES ANGLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans TOUT triangle, la somme des trois angles est TOUJOURS égale à 180°.
+
+∠A + ∠B + ∠C = 180°
+
+Cette propriété est universelle — elle est vraie pour TOUS les triangles !
+
+DÉMONSTRATION INTUITIVE :
+Découpe un triangle en papier. Arrache les 3 angles.
+Mets-les bout à bout → ils forment exactement un angle plat (180°) !
+
+APPLICATIONS :
+• Si ∠A = 60° et ∠B = 80°, alors ∠C = 180° − 60° − 80° = 40°
+• Si ∠A = ∠B = ∠C, alors 3∠A = 180° → ∠A = 60°
+• Si ∠A = 90°, alors ∠B + ∠C = 90° (les deux autres angles sont complémentaires)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INÉGALITÉ TRIANGULAIRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONDITION D'EXISTENCE D'UN TRIANGLE :
+Trois longueurs a, b, c peuvent former un triangle si et seulement si
+CHAQUE côté est STRICTEMENT PLUS PETIT que la SOMME des deux autres.
+
+a < b + c   ET   b < a + c   ET   c < a + b
+
+En pratique, il suffit de vérifier que LE PLUS GRAND côté est inférieur
+à la somme des deux autres.
+
+EXEMPLES :
+• 3 cm, 4 cm, 5 cm : 5 < 3+4=7 ✓ → triangle possible
+• 2 cm, 3 cm, 7 cm : 7 < 2+3=5 ✗ → triangle IMPOSSIBLE (7 > 5)
+• 5 cm, 5 cm, 5 cm : 5 < 5+5=10 ✓ → triangle possible
+
+🌍 EXEMPLES AFRICAINS :
+• Un terrain triangulaire à Libreville avec des côtés de 15 m, 20 m et 25 m
+  → 25 < 15+20=35 ✓ → terrain possible
+• Un triangle de drapeaux : côtés 3 m, 3 m et 5 m
+  → 5 < 3+3=6 ✓ → possible`,
+        exemples:[
+          {question:"Dans le △ABC, ∠A = 50° et ∠B = 70°. Calculer ∠C.", reponse:"∠C = 180° − 50° − 70° = 60°"},
+          {question:"Peut-on construire un triangle avec 2 cm, 5 cm et 8 cm ?", reponse:"8 < 2+5=7 ? NON, 8 > 7 → triangle IMPOSSIBLE"},
+          {question:"Un triangle a deux angles de 45° chacun. Quel est le troisième ?", reponse:"∠C = 180° − 45° − 45° = 90° → c'est un triangle rectangle isocèle"},
+        ]
+      },
+      { id:"10-2", titre:"Types de triangles",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CLASSIFICATION SELON LES CÔTÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. TRIANGLE SCALÈNE : les TROIS côtés ont des longueurs DIFFÉRENTES.
+   (et les trois angles sont différents)
+         A
+        /\
+       /  \
+      /    \
+     B──────C
+   AB ≠ BC ≠ CA
+
+2. TRIANGLE ISOCÈLE : exactement DEUX côtés ont la MÊME longueur.
+   • Les deux côtés égaux s'appellent les CÔTÉS ISOCÈLES (ou jambes)
+   • Le troisième côté s'appelle la BASE
+   • Les deux angles à la BASE sont ÉGAUX
+         A
+        /\
+       /  \  ← côtés égaux (AB = AC)
+      /    \
+     B──────C
+     (base BC)
+   PROPRIÉTÉ : Dans un triangle isocèle (AB=AC), ∠B = ∠C
+
+3. TRIANGLE ÉQUILATÉRAL : les TROIS côtés ont la MÊME longueur.
+   • Les trois angles sont TOUS ÉGAUX à 60° (car 180°÷3=60°)
+         A
+        /\
+       /  \
+      /    \
+     B──────C
+   AB = BC = CA   et   ∠A = ∠B = ∠C = 60°
+   ⚠️ Un triangle équilatéral est un cas particulier de triangle isocèle !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CLASSIFICATION SELON LES ANGLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. TRIANGLE RECTANGLE : UN des angles est droit (= 90°).
+   • Le côté opposé à l'angle droit s'appelle l'HYPOTÉNUSE (le plus long côté)
+   • Les deux autres côtés s'appellent les CATHÈTES
+   • Le symbole □ indique l'angle droit
+
+         A
+         |\ 
+         | \  ← hypoténuse [BC]
+         |  \
+         |□  \
+         B────C
+   ∠B = 90°, [AC] est l'hypoténuse
+
+   PROPRIÉTÉ DE PYTHAGORE (à retenir pour la 4ème) :
+   Dans un triangle rectangle en B : AC² = AB² + BC²
+
+5. TRIANGLE ACUTANGLE : les TROIS angles sont aigus (< 90°).
+
+6. TRIANGLE OBTUSANGLE : UN des angles est obtus (> 90°).
+   (Les deux autres sont forcément aigus car leur somme doit faire < 90°)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMBINAISONS POSSIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+On peut combiner les deux classifications :
+• Triangle rectangle isocèle : angle droit ET deux côtés égaux
+• Triangle rectangle scalène : angle droit ET trois côtés différents
+• Triangle isocèle acutangle : deux côtés égaux ET tous angles aigus
+• Triangle équilatéral (toujours acutangle car 60° < 90°)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PÉRIMÈTRE D'UN TRIANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le PÉRIMÈTRE est la longueur du contour (la somme des trois côtés).
+
+FORMULE : P = AB + BC + CA
+
+EXEMPLES :
+• △ABC avec AB=5 cm, BC=7 cm, CA=4 cm → P = 5+7+4 = 16 cm
+• Triangle équilatéral de côté 6 cm → P = 6+6+6 = 3×6 = 18 cm
+• Triangle isocèle avec côtés égaux = 8 cm et base = 5 cm → P = 8+8+5 = 21 cm
+
+🌍 EXEMPLES AFRICAINS :
+• Un toit de maison triangulaire avec des pentes de 4 m, 4 m et une base de 6 m
+  → C'est un triangle isocèle ! P = 4+4+6 = 14 m
+• Un terrain triangulaire au Cameroun : 120 m, 85 m, 95 m
+  → Triangle scalène. P = 120+85+95 = 300 m (il faut 300 m de clôture)
+• Un drapeau triangulaire équilatéral de côté 50 cm
+  → P = 3×50 = 150 cm = 1,5 m`,
+        exemples:[
+          {question:"Un triangle a les angles 60°, 60° et 60°. Quel type est-ce ?", reponse:"Triangle équilatéral (trois angles égaux à 60° ET trois côtés égaux)"},
+          {question:"△ABC avec AB=AC=7 cm et ∠B=50°. Calculer ∠A et ∠C.", reponse:"Isocèle (AB=AC) → ∠B=∠C=50°. Donc ∠A=180°−50°−50°=80°"},
+          {question:"Calculer le périmètre d'un triangle isocèle de base 4 cm et de côtés égaux 6 cm.", reponse:"P = 6 + 6 + 4 = 16 cm"},
+          {question:"Un triangle rectangle a ses cathètes égales à 3 cm et 4 cm. Quelle est la longueur de l'hypoténuse ? (Utiliser le fait que 3²+4²=5²)", reponse:"Hypoténuse = 5 cm (triangle 3-4-5, triangle rectangle classique)"},
+        ]
+      },
+      { id:"10-3", titre:"Construction d'un triangle",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUAND PEUT-ON CONSTRUIRE UN TRIANGLE ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour construire un triangle de manière unique, il faut connaître :
+• Les trois côtés (CCC)
+• Deux côtés et l'angle compris entre eux (CAC)
+• Un côté et les deux angles adjacents (ACA)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONSTRUCTION AVEC LES 3 CÔTÉS (AU COMPAS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Construire △ABC avec AB=6 cm, BC=5 cm, CA=4 cm
+
+ÉTAPE 1 : Tracer le segment [AB] = 6 cm.
+   A──────────────B  (6 cm)
+
+ÉTAPE 2 : Ouvrir le compas à 5 cm (= BC). Piquer en B.
+   Tracer un arc de cercle.
+
+ÉTAPE 3 : Ouvrir le compas à 4 cm (= CA). Piquer en A.
+   Tracer un arc de cercle qui coupe le premier.
+
+ÉTAPE 4 : Le point d'intersection des deux arcs est le point C.
+   Tracer les segments [AC] et [BC].
+
+VÉRIFICATION : Mesurer les côtés et vérifier AB+BC+CA=15 cm.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONSTRUCTION D'UN TRIANGLE RECTANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Construire △ABC rectangle en B avec AB=5 cm et BC=3 cm.
+
+ÉTAPE 1 : Tracer le segment [AB] = 5 cm.
+ÉTAPE 2 : En B, tracer la perpendiculaire à [AB] à l'aide de l'équerre.
+ÉTAPE 3 : Sur cette perpendiculaire, reporter BC = 3 cm → placer C.
+ÉTAPE 4 : Tracer [AC].
+
+VÉRIFICATION : L'angle en B doit être droit (vérifier avec l'équerre).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONSTRUCTION D'UN TRIANGLE ISOCÈLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Construire △ABC isocèle en A avec AB=AC=5 cm et BC=6 cm.
+
+ÉTAPE 1 : Tracer la base [BC] = 6 cm.
+ÉTAPE 2 : Trouver le milieu M de [BC] (à 3 cm de B et C).
+ÉTAPE 3 : Tracer la médiatrice de [BC] passant par M (perpendiculaire à BC en M).
+ÉTAPE 4 : Sur cette médiatrice, placer A tel que AB = 5 cm (utiliser le compas).
+ÉTAPE 5 : Tracer [AB] et [AC].
+
+⚠️ Le sommet A d'un triangle isocèle est toujours sur la médiatrice de la base !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HAUTEUR D'UN TRIANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La HAUTEUR issue de A est le segment [AH] où :
+• H est sur le côté [BC] (ou son prolongement)
+• [AH] ⊥ [BC]
+
+CONSTRUCTION :
+1. Tracer la perpendiculaire à [BC] passant par A (avec équerre)
+2. H est le pied de cette perpendiculaire sur [BC]
+3. [AH] est la hauteur issue de A
+
+🌍 EXEMPLES AFRICAINS :
+• Construire un triangle représentant un toit de maison gabonaise :
+  Base = 8 m (largeur de la maison), deux pentes = 5 m chacun
+  → Triangle isocèle !
+• Un terrain triangulaire à Douala : on mesure les 3 côtés sur le terrain
+  et on construit la figure à l'échelle 1:1000 sur papier.`,
+        exemples:[
+          {question:"Peut-on construire un triangle avec côtés 3, 3 et 3 cm ? Quel type ?", reponse:"Oui (3 < 3+3=6 ✓). C'est un triangle équilatéral."},
+          {question:"Combien de triangles différents peut-on construire avec AB=5, BC=4, CA=3 cm ?", reponse:"Un seul (à la position et à l'orientation près). La construction avec compas donne un résultat unique."},
+          {question:"Dans △ABC rectangle en B, si AB=6 cm et BC=8 cm, calculer le périmètre.", solution:"AC = hypoténuse. 6²+8²=36+64=100=10² → AC=10 cm. P=6+8+10=24 cm."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Dans △ABC, ∠A = 40° et ∠B = 65°. Calculer ∠C.", solution:"∠C = 180° − 40° − 65° = 75°. Vérif : 40+65+75=180° ✓"},
+      {id:2,  niveau:"Facile",    enonce:"Calculer le périmètre du △ABC avec AB = 7 cm, BC = 5 cm et CA = 6 cm.", solution:"P = AB + BC + CA = 7 + 5 + 6 = 18 cm"},
+      {id:3,  niveau:"Facile",    enonce:"Peut-on construire un triangle avec les côtés 4 cm, 6 cm et 3 cm ?", solution:"Le plus grand côté est 6. 6 < 4+3=7 ✓ → OUI, triangle possible."},
+      {id:4,  niveau:"Facile",    enonce:"Peut-on construire un triangle avec les côtés 2 cm, 3 cm et 7 cm ?", solution:"Le plus grand côté est 7. 7 < 2+3=5 ? NON, 7 > 5 → triangle IMPOSSIBLE."},
+      {id:5,  niveau:"Facile",    enonce:"Un triangle équilatéral a un côté de 8 cm. Calculer son périmètre et ses angles.", solution:"P = 3 × 8 = 24 cm. Angles : ∠A = ∠B = ∠C = 60° (car 180÷3=60)."},
+      {id:6,  niveau:"Moyen",     enonce:"△ABC est isocèle en A avec ∠B = 55°. Calculer ∠A et ∠C.", solution:"Isocèle en A → AB=AC → ∠B=∠C=55°. ∠A = 180°−55°−55° = 70°."},
+      {id:7,  niveau:"Moyen",     enonce:"Un triangle a un angle obtus de 110° et un angle de 35°. Calculer le troisième angle. Quel type de triangle est-ce ?", solution:"3e angle = 180°−110°−35°=35°. Deux angles égaux (35°) → triangle ISOCÈLE et OBTUSANGLE."},
+      {id:8,  niveau:"Moyen",     enonce:"△ABC rectangle en C avec ∠A = 30°. Calculer ∠B.", solution:"∠C = 90°. ∠A + ∠B + ∠C = 180° → 30° + ∠B + 90° = 180° → ∠B = 60°."},
+      {id:9,  niveau:"Moyen",     enonce:"Un terrain triangulaire a des côtés de 45 m, 60 m et 75 m. Calculer le périmètre. Est-ce un triangle rectangle ? (vérifier si 45²+60²=75²)", solution:"P = 45+60+75 = 180 m. 45²=2025, 60²=3600, 75²=5625. 2025+3600=5625=75² ✓ → OUI, triangle rectangle !"},
+      {id:10, niveau:"Moyen",     enonce:"Construire le triangle △ABC isocèle en A avec BC = 5 cm et AB = AC = 4 cm. Décrire les étapes.", solution:"1. Tracer [BC]=5cm. 2. Trouver le milieu M de [BC] (à 2,5 cm de B). 3. Tracer la médiatrice de [BC] (⊥ en M). 4. Ouvrir compas à 4 cm depuis B → trouver A sur la médiatrice. 5. Tracer [AB] et [AC]."},
+      {id:11, niveau:"Difficile", enonce:"Dans △ABC, ∠A = 2×∠B et ∠C = 3×∠B. Calculer les trois angles.", solution:"∠A + ∠B + ∠C = 180° → 2∠B + ∠B + 3∠B = 180° → 6∠B = 180° → ∠B = 30°. Donc ∠A = 60°, ∠B = 30°, ∠C = 90°. C'est un triangle RECTANGLE !"},
+      {id:12, niveau:"Difficile", enonce:"Un triangle isocèle a un périmètre de 32 cm. La base mesure 8 cm. Calculer la longueur des côtés égaux.", solution:"Somme des côtés égaux = 32 − 8 = 24 cm. Chaque côté = 24 ÷ 2 = 12 cm. Vérif : 12+12+8=32 ✓ et inégalité : 12 < 12+8=20 ✓"},
+      {id:13, niveau:"Difficile", enonce:"△ABC a pour angles ∠A = 45°, ∠B = 90°, ∠C = 45°. Quel type de triangle est-ce ? Que peut-on dire de ses côtés ?", solution:"∠B = 90° → rectangle. ∠A = ∠C = 45° → isocèle. C'est un triangle RECTANGLE ISOCÈLE. Les côtés : AB = BC (côtés de l'angle droit égaux). [AC] est l'hypoténuse."},
+      {id:14, niveau:"Difficile", enonce:"Trois poteaux A, B, C forment un triangle. AB = 50 m, BC = 80 m. Pour que le triangle soit rectangle en B, quelle doit être la longueur de AC ?", solution:"Rectangle en B → AC² = AB² + BC² = 50² + 80² = 2500 + 6400 = 8900. AC = √8900 ≈ 94,3 m."},
+      {id:15, niveau:"Difficile", enonce:"Un terrain triangulaire ABC a AB = 120 m, BC = 90 m, CA = 150 m. Vérifier si ce terrain est rectangle. Calculer son périmètre.", solution:"P = 120+90+150 = 360 m. Vérification rectangle : le plus grand côté est CA=150 m. 120²+90² = 14400+8100 = 22500 = 150² ✓ → Triangle RECTANGLE en B ! (120² + 90² = 150²)"},
+    ],
+  },
+
+  11: {
+    id:11, title:"Quadrilatères", duration:"3 semaines",
+    objectives:[
+      "Reconnaître et nommer les différents quadrilatères",
+      "Connaître les propriétés complètes du carré, rectangle, losange, parallélogramme et trapèze",
+      "Construire des quadrilatères avec les instruments de géométrie",
+      "Calculer le périmètre de tous les quadrilatères",
+      "Comprendre et appliquer les relations d'inclusion entre les quadrilatères",
+      "Utiliser les axes de symétrie des quadrilatères",
+    ],
+    cours:[
+      { id:"11-1", titre:"Définition et éléments d'un quadrilatère",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un QUADRILATÈRE est une figure géométrique plane formée par
+QUATRE POINTS non alignés trois par trois, réunis par QUATRE SEGMENTS.
+
+REPRÉSENTATION :
+   A──────────B
+   |          |
+   |          |
+   D──────────C
+
+• A, B, C, D sont les SOMMETS (dans l'ordre)
+• [AB], [BC], [CD], [DA] sont les CÔTÉS
+• [AC] et [BD] sont les DIAGONALES
+• Les angles ∠A, ∠B, ∠C, ∠D sont les angles intérieurs
+
+NOTATION : Quadrilatère ABCD (les sommets dans l'ordre du contour)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROPRIÉTÉ FONDAMENTALE — SOMME DES ANGLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans TOUT quadrilatère, la somme des quatre angles intérieurs est 360°.
+
+∠A + ∠B + ∠C + ∠D = 360°
+
+DÉMONSTRATION : Une diagonale divise le quadrilatère en 2 triangles.
+Chaque triangle a une somme d'angles de 180°.
+Donc : 180° + 180° = 360° ✓
+
+APPLICATION :
+Si ∠A = 80°, ∠B = 100°, ∠C = 90°, alors ∠D = 360°−80°−100°−90° = 90°
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPES DE QUADRILATÈRES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• QUADRILATÈRE QUELCONQUE : aucune propriété particulière
+• TRAPÈZE : au moins une paire de côtés parallèles
+• PARALLÉLOGRAMME : deux paires de côtés parallèles
+• RECTANGLE : parallélogramme avec 4 angles droits
+• LOSANGE : parallélogramme avec 4 côtés égaux
+• CARRÉ : rectangle ET losange (4 côtés égaux ET 4 angles droits)
+
+🌍 EXEMPLES AFRICAINS :
+• Une fenêtre → rectangle
+• Un terrain carré → carré
+• Les motifs d'un tissu wax → souvent des losanges ou carrés
+• La base d'une case ronde → cercle, mais les cases rectangulaires → rectangle`,
+        exemples:[
+          {question:"La somme des angles d'un quadrilatère est-elle toujours 360° ?", reponse:"Oui, TOUJOURS. On peut le vérifier en découpant un quadrilatère et en assemblant les 4 angles → ils forment un tour complet (360°)."},
+          {question:"Un quadrilatère a trois angles de 90° chacun. Quel est le quatrième ?", reponse:"∠D = 360° − 90° − 90° − 90° = 90°. Tous les angles sont droits → c'est un rectangle !"},
+          {question:"Quelle est la différence entre un quadrilatère et un trapèze ?", reponse:"Un trapèze EST un quadrilatère (avec en plus au moins une paire de côtés parallèles). Tout trapèze est un quadrilatère, mais tout quadrilatère n'est pas un trapèze."},
+        ]
+      },
+      { id:"11-2", titre:"Parallélogramme, rectangle, losange et carré",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE PARALLÉLOGRAMME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION : Quadrilatère dont les DEUX PAIRES de côtés opposés sont PARALLÈLES.
+
+REPRÉSENTATION :
+   A──────────B
+  /          /
+ /          /
+D──────────C
+(AB // DC et AD // BC)
+
+PROPRIÉTÉS :
+• Les côtés opposés sont ÉGAUX : AB = DC et AD = BC
+• Les angles opposés sont ÉGAUX : ∠A = ∠C et ∠B = ∠D
+• Les angles consécutifs sont SUPPLÉMENTAIRES : ∠A + ∠B = 180°
+• Les DIAGONALES se COUPENT EN LEUR MILIEU (elles se bissectent mutuellement)
+
+PÉRIMÈTRE : P = 2 × (AB + AD)   (deux fois la somme de deux côtés adjacents)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE RECTANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION : Parallélogramme dont tous les angles sont DROITS (= 90°).
+
+REPRÉSENTATION :
+   A□─────────B
+   |          |
+   |          |
+   D□─────────C□
+(les □ indiquent les angles droits)
+
+PROPRIÉTÉS (toutes celles du parallélogramme, plus) :
+• Les 4 angles sont droits : ∠A = ∠B = ∠C = ∠D = 90°
+• Les côtés opposés sont parallèles ET égaux : AB = DC et AD = BC
+• Les DIAGONALES sont ÉGALES : AC = BD
+• Les diagonales se coupent en leur milieu
+
+VOCABULAIRE : longueur (L) = côté le plus long ; largeur (ℓ) = côté le plus court
+
+PÉRIMÈTRE : P = 2 × (L + ℓ)   ou   P = 2L + 2ℓ
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE LOSANGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION : Parallélogramme dont tous les côtés sont ÉGAUX.
+
+REPRÉSENTATION :
+       A
+      / \
+     /   \
+    D     B
+     \   /
+      \ /
+       C
+(AB = BC = CD = DA)
+
+PROPRIÉTÉS (toutes celles du parallélogramme, plus) :
+• Les 4 côtés sont ÉGAUX : AB = BC = CD = DA
+• Les DIAGONALES sont PERPENDICULAIRES : [AC] ⊥ [BD]
+• Les diagonales sont les AXES DE SYMÉTRIE du losange
+• Les diagonales BISSECTENT les angles (partagent les angles en 2 égaux)
+
+PÉRIMÈTRE : P = 4 × côté
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE CARRÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION : Rectangle dont tous les côtés sont ÉGAUX.
+           = Losange dont tous les angles sont droits.
+
+REPRÉSENTATION :
+   A□─────────B
+   |          |
+   |          |
+   D□─────────C□
+(AB = BC = CD = DA ET ∠A = ∠B = ∠C = ∠D = 90°)
+
+PROPRIÉTÉS (TOUTES celles du rectangle ET du losange) :
+• 4 côtés ÉGAUX
+• 4 angles DROITS (90°)
+• Les 2 diagonales sont ÉGALES (comme le rectangle)
+• Les 2 diagonales sont PERPENDICULAIRES (comme le losange)
+• Les diagonales se coupent en leur milieu
+• 4 axes de symétrie (les 2 diagonales + les 2 médiatrices des côtés)
+
+PÉRIMÈTRE : P = 4 × côté
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE TRAPÈZE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION : Quadrilatère ayant EXACTEMENT UNE PAIRE de côtés parallèles.
+
+• Les côtés parallèles s'appellent les BASES (grande base et petite base)
+• Les deux autres côtés s'appellent les CÔTÉS NON PARALLÈLES
+
+REPRÉSENTATION :
+      A────────B      (petite base AB)
+     /          \
+    /            \
+   D──────────────C  (grande base DC)
+
+TRAPÈZE RECTANGLE : un des côtés non parallèles est perpendiculaire aux bases.
+TRAPÈZE ISOCÈLE : les deux côtés non parallèles sont égaux.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU RÉCAPITULATIF DES PROPRIÉTÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                   Parallél. Rectangle  Losange   Carré
+Côtés opp. //         ✓         ✓         ✓        ✓
+Côtés opp. =          ✓         ✓         ✓        ✓
+Angles opp. =         ✓         ✓         ✓        ✓
+4 angles droits       ✗         ✓         ✗        ✓
+4 côtés =             ✗         ✗         ✓        ✓
+Diag. = (égales)      ✗         ✓         ✗        ✓
+Diag. ⊥               ✗         ✗         ✓        ✓
+Diag. se coupent ½    ✓         ✓         ✓        ✓
+
+🌍 EXEMPLES AFRICAINS :
+• Un champ rectangulaire au Sénégal : L=45 m, ℓ=30 m → P=2×(45+30)=150 m
+• Un motif de tissu losange : côté 8 cm → P=4×8=32 cm
+• Une place publique carrée à Abidjan : côté 25 m → P=4×25=100 m`,
+        exemples:[
+          {question:"ABCD est un rectangle avec AB=8 cm et BC=5 cm. Calculer le périmètre.", reponse:"P = 2×(AB+BC) = 2×(8+5) = 2×13 = 26 cm"},
+          {question:"Un losange a un côté de 7 cm. Calculer son périmètre.", reponse:"P = 4×7 = 28 cm"},
+          {question:"Dans un parallélogramme ABCD, ∠A = 70°. Calculer les trois autres angles.", reponse:"∠C = ∠A = 70° (opposés égaux). ∠B = ∠D = 180°−70° = 110° (consécutifs supplémentaires). Vérif : 70+110+70+110=360° ✓"},
+          {question:"Quelle est la différence entre un carré et un losange ?", reponse:"Un carré a 4 côtés égaux ET 4 angles droits. Un losange a 4 côtés égaux mais ses angles ne sont pas forcément droits. Tout carré est un losange, mais tout losange n'est pas un carré."},
+        ]
+      },
+      { id:"11-3", titre:"Construction et relations entre quadrilatères",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONSTRUCTION D'UN RECTANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Construire le rectangle ABCD avec AB = 7 cm et BC = 4 cm.
+
+MÉTHODE 1 (avec équerre) :
+ÉTAPE 1 : Tracer [AB] = 7 cm.
+ÉTAPE 2 : En A, tracer la perpendiculaire à [AB] avec l'équerre.
+ÉTAPE 3 : Sur cette perpendiculaire, reporter AD = 4 cm → placer D.
+ÉTAPE 4 : En B, tracer la perpendiculaire à [AB].
+ÉTAPE 5 : Sur cette perpendiculaire, reporter BC = 4 cm → placer C.
+ÉTAPE 6 : Tracer [DC]. Vérifier que DC = 7 cm.
+
+VÉRIFICATION : Mesurer les diagonales AC et BD → elles doivent être égales !
+
+MÉTHODE 2 (avec les diagonales) :
+Les diagonales d'un rectangle se coupent en leur milieu et sont égales.
+→ Tracer les 2 diagonales de même longueur se coupant en leur milieu.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONSTRUCTION D'UN LOSANGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Construire le losange ABCD de côté 5 cm avec ∠A = 60°.
+
+MÉTHODE 1 (avec rapporteur) :
+ÉTAPE 1 : Tracer [AB] = 5 cm.
+ÉTAPE 2 : En A, tracer un angle de 60° → marquer la direction de [AD].
+ÉTAPE 3 : Sur ce côté, reporter AD = 5 cm → placer D.
+ÉTAPE 4 : Ouvrir le compas à 5 cm. Depuis B et D, tracer des arcs.
+ÉTAPE 5 : L'intersection donne C. Tracer [BC] et [DC].
+
+MÉTHODE 2 (avec les diagonales) :
+Les diagonales d'un losange sont perpendiculaires et se coupent en leur milieu.
+→ Tracer 2 segments perpendiculaires se coupant en leur milieu.
+→ Les 4 extrémités donnent les 4 sommets du losange.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RELATIONS D'INCLUSION (HIÉRARCHIE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Les quadrilatères sont organisés en une HIÉRARCHIE :
+
+        Quadrilatères
+             │
+          Trapèzes
+             │
+        Parallélogrammes
+          /           \
+    Rectangles       Losanges
+          \           /
+            Carrés
+
+LECTURE : "Tout carré est un rectangle ET un losange"
+         "Tout rectangle est un parallélogramme"
+         "Tout parallélogramme est un trapèze"
+         "Tout trapèze est un quadrilatère"
+
+⚠️ MAIS :
+• Un rectangle n'est pas forcément un carré
+• Un losange n'est pas forcément un carré
+• Un parallélogramme n'est pas forcément un rectangle
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PÉRIMÈTRES — FORMULES RÉCAPITULATIVES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Quadrilatère quelconque : P = AB + BC + CD + DA
+• Parallélogramme :         P = 2 × (a + b)
+• Rectangle :               P = 2 × (L + ℓ)
+• Losange :                 P = 4 × c
+• Carré :                   P = 4 × c
+• Trapèze :                 P = a + b + c + d (somme des 4 côtés)
+
+🌍 EXEMPLES AFRICAINS :
+• Terrain rectangulaire de 80 m × 50 m à Libreville :
+  Clôture nécessaire = P = 2×(80+50) = 260 m
+• Jardin carré de 15 m de côté à Dakar :
+  Clôture = P = 4×15 = 60 m
+• Parcelle en losange, côté = 25 m :
+  Périmètre = 4×25 = 100 m`,
+        exemples:[
+          {question:"Construire le carré ABCD de côté 4 cm. Décrire les étapes.", reponse:"1. Tracer [AB]=4cm. 2. En A, perpendiculaire à AB. 3. Reporter AD=4cm → D. 4. En B, perpendiculaire à AB. 5. Reporter BC=4cm → C. 6. Vérifier DC=4cm et les diagonales égales et perpendiculaires."},
+          {question:"ABCD est un parallélogramme avec AB = 8 cm et AD = 5 cm. Calculer le périmètre.", reponse:"P = 2×(AB+AD) = 2×(8+5) = 2×13 = 26 cm"},
+          {question:"Est-ce qu'un carré est un rectangle ? Est-ce qu'un rectangle est un carré ?", reponse:"OUI, tout carré est un rectangle (4 côtés égaux + 4 angles droits → toutes les propriétés du rectangle). NON, un rectangle n'est pas forcément un carré (ses côtés peuvent être inégaux)."},
+        ]
+      },
+      { id:"11-4", titre:"Symétries, diagonales et reconnaissance des quadrilatères",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AXES DE SYMÉTRIE DES QUADRILATÈRES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un axe de symétrie est une droite qui partage la figure en deux
+parties identiques (l'une est le reflet de l'autre).
+
+CARRÉ : 4 axes de symétrie
+• Les 2 médiatrices des côtés (horizontale et verticale)
+• Les 2 diagonales
+   ↕  ↖↗
+   ─ et ─  (4 axes)
+
+RECTANGLE : 2 axes de symétrie
+• Les 2 médiatrices des côtés (parallèles aux côtés)
+• (PAS les diagonales, sauf si c'est un carré)
+   ↕  ↔  (2 axes)
+
+LOSANGE : 2 axes de symétrie
+• Les 2 DIAGONALES
+• (PAS les médiatrices des côtés, sauf si c'est un carré)
+
+PARALLÉLOGRAMME : 0 axe de symétrie
+• (Sauf le rectangle et le losange qui sont des cas particuliers)
+• Le parallélogramme a un CENTRE DE SYMÉTRIE (le point de croisement des diagonales)
+
+TRAPÈZE QUELCONQUE : 0 axe de symétrie
+TRAPÈZE ISOCÈLE : 1 axe de symétrie (la médiatrice des bases)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROPRIÉTÉS DES DIAGONALES — TABLEAU COMPLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Figure          │ Diag. égales │ Diag. ⊥  │ Diag. se coupent en ½
+────────────────┼──────────────┼──────────┼──────────────────────
+Parallélogramme │      ✗       │    ✗     │          ✓
+Rectangle       │      ✓       │    ✗     │          ✓
+Losange         │      ✗       │    ✓     │          ✓
+Carré           │      ✓       │    ✓     │          ✓
+Trapèze         │      ✗       │    ✗     │          ✗
+
+REMARQUE IMPORTANTE :
+• Si les diagonales sont ÉGALES et se coupent en leur milieu → RECTANGLE
+• Si les diagonales sont PERPENDICULAIRES et se coupent en leur milieu → LOSANGE
+• Si les deux → CARRÉ
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RECONNAÎTRE UN QUADRILATÈRE PAR SES PROPRIÉTÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour identifier un quadrilatère, on peut utiliser cet algorithme :
+
+ÉTAPE 1 : A-t-il des côtés parallèles ?
+  → Non du tout → quadrilatère quelconque
+  → Une seule paire → TRAPÈZE
+  → Deux paires → PARALLÉLOGRAMME (au minimum)
+
+ÉTAPE 2 (si parallélogramme) : Ses angles sont-ils droits ?
+  → Oui → RECTANGLE (au minimum)
+  → Non → parallélogramme simple ou losange
+
+ÉTAPE 3 (si rectangle) : Ses côtés sont-ils tous égaux ?
+  → Oui → CARRÉ
+  → Non → rectangle simple
+
+ÉTAPE 4 (si parallélogramme non rectangle) : Ses côtés sont-ils égaux ?
+  → Oui → LOSANGE
+  → Non → parallélogramme simple
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CALCUL AVEC LES DIAGONALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Propriété : Dans un parallélogramme ABCD, les diagonales [AC] et [BD]
+se coupent en leur milieu O.
+→ OA = OC = AC/2  et  OB = OD = BD/2
+
+EXEMPLE : ABCD parallélogramme, AC = 10 cm et BD = 14 cm.
+→ OA = OC = 5 cm  et  OB = OD = 7 cm
+
+Dans un rectangle : AC = BD (les deux diagonales sont aussi égales)
+→ OA = OB = OC = OD = AC/2 = BD/2
+(O est équidistant des 4 sommets → O est le centre du cercle circonscrit)
+
+🌍 EXEMPLES AFRICAINS :
+• Les motifs géométriques des tissus wax africains utilisent des carrés
+  et des losanges imbriqués — on peut vérifier leurs axes de symétrie
+• La toiture d'une maison traditionnelle vue du dessus forme souvent
+  un rectangle avec 2 axes de symétrie
+• Un terrain en losange avec diagonales de 20 m et 16 m :
+  côté du losange = √(10² + 8²) = √164 ≈ 12,8 m`,
+        exemples:[
+          {question:"Combien d'axes de symétrie a un rectangle qui n'est pas un carré ?", reponse:"2 axes : les médiatrices des deux paires de côtés opposés (horizontal et vertical). Les diagonales ne sont PAS des axes de symétrie pour un rectangle quelconque."},
+          {question:"Les diagonales d'un quadrilatère se coupent en leur milieu et sont perpendiculaires. Quel est ce quadrilatère ?", reponse:"C'est un LOSANGE (diagonales ⊥ et se coupent en leur milieu). Si en plus elles sont égales, c'est un CARRÉ."},
+          {question:"ABCD est un parallélogramme avec AC = 12 cm. Calculer OA et OC (O = intersection des diagonales).", reponse:"Les diagonales se coupent en leur milieu → OA = OC = AC/2 = 12/2 = 6 cm"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Calculer le périmètre du rectangle ABCD avec AB = 9 cm et BC = 4 cm.", solution:"P = 2×(AB+BC) = 2×(9+4) = 2×13 = 26 cm"},
+      {id:2,  niveau:"Facile",    enonce:"Calculer le périmètre du carré EFGH avec EF = 6 cm.", solution:"P = 4×EF = 4×6 = 24 cm"},
+      {id:3,  niveau:"Facile",    enonce:"Calculer le périmètre du losange ABCD avec AB = 7 cm.", solution:"P = 4×AB = 4×7 = 28 cm"},
+      {id:4,  niveau:"Facile",    enonce:"Dans le quadrilatère ABCD, ∠A = 85°, ∠B = 95°, ∠C = 75°. Calculer ∠D.", solution:"∠D = 360° − 85° − 95° − 75° = 105°. Vérif : 85+95+75+105=360° ✓"},
+      {id:5,  niveau:"Facile",    enonce:"Vrai ou Faux : 'Tout carré est un rectangle.' Justifier.", solution:"VRAI. Un carré a 4 angles droits et ses côtés opposés sont égaux et parallèles → il possède toutes les propriétés d'un rectangle."},
+      {id:6,  niveau:"Moyen",     enonce:"ABCD est un parallélogramme avec ∠A = 65°. Calculer les 3 autres angles.", solution:"∠C = ∠A = 65° (angles opposés). ∠B = ∠D = 180°−65° = 115° (angles consécutifs supplémentaires). Vérif : 65+115+65+115=360° ✓"},
+      {id:7,  niveau:"Moyen",     enonce:"Un terrain rectangulaire a un périmètre de 80 m. Sa largeur est 15 m. Calculer sa longueur.", solution:"P = 2×(L+ℓ) → 80 = 2×(L+15) → 40 = L+15 → L = 25 m. Vérif : 2×(25+15)=2×40=80 ✓"},
+      {id:8,  niveau:"Moyen",     enonce:"ABCD est un losange avec ∠A = 70°. Calculer les trois autres angles.", solution:"∠C = ∠A = 70° (angles opposés du losange). ∠B = ∠D = 180°−70° = 110°. Vérif : 70+110+70+110=360° ✓"},
+      {id:9,  niveau:"Moyen",     enonce:"Un carré a un périmètre de 36 cm. Calculer la longueur de son côté.", solution:"P = 4×c → 36 = 4×c → c = 36÷4 = 9 cm. Vérif : 4×9=36 ✓"},
+      {id:10, niveau:"Moyen",     enonce:"ABCD est un rectangle avec AB = 10 cm et AC = 13 cm (diagonale). Calculer BC.", solution:"Dans un rectangle, les diagonales sont égales donc BD = AC = 13 cm. Le triangle ABC est rectangle en B (angle droit en B). BC² = AC² − AB² = 13² − 10² = 169 − 100 = 69. BC = √69 ≈ 8,3 cm."},
+      {id:11, niveau:"Difficile", enonce:"Un terrain en forme de parallélogramme ABCD a AB = 120 m, AD = 80 m et ∠A = 70°. Calculer le périmètre et les 4 angles.", solution:"P = 2×(120+80) = 2×200 = 400 m. ∠A = ∠C = 70°. ∠B = ∠D = 180°−70° = 110°. Vérif : 70+110+70+110=360° ✓"},
+      {id:12, niveau:"Difficile", enonce:"ABCD est un losange avec ses diagonales AC = 8 cm et BD = 6 cm. Calculer le côté du losange. (Les diagonales d'un losange sont perpendiculaires et se coupent en leur milieu)", solution:"Les diagonales se coupent en O (milieu). AO=4cm, BO=3cm. Triangle AOB rectangle en O → AB² = AO²+OB² = 16+9 = 25 → AB = 5 cm. P = 4×5 = 20 cm."},
+      {id:13, niveau:"Difficile", enonce:"Un carré et un rectangle ont le même périmètre de 48 cm. Le rectangle a une longueur de 15 cm. Comparer leurs aires. (Aire = longueur × largeur pour le rectangle et côté² pour le carré)", solution:"Carré : côté = 48÷4 = 12 cm. Aire carré = 12² = 144 cm². Rectangle : ℓ = 48÷2−15 = 24−15 = 9 cm. Aire rectangle = 15×9 = 135 cm². Le carré a une aire plus grande (144 > 135). À périmètre égal, le carré maximise l'aire !"},
+      {id:14, niveau:"Difficile", enonce:"ABCD est un trapèze avec AB // DC. AB = 12 cm, DC = 8 cm, AD = 5 cm, BC = 7 cm. Calculer son périmètre.", solution:"P = AB + BC + CD + DA = 12 + 7 + 8 + 5 = 32 cm"},
+      {id:15, niveau:"Difficile", enonce:"Un enclos pour animaux est en forme de rectangle de 25 m × 18 m. On veut diviser cet enclos en deux parties égales avec une clôture parallèle à la largeur. Calculer la longueur totale de clôture nécessaire (périmètre + clôture intérieure).", solution:"Périmètre extérieur = 2×(25+18) = 2×43 = 86 m. Clôture intérieure parallèle à la largeur (18m) : longueur = 18 m. Total = 86 + 18 = 104 m de clôture."},
+    ],
+  },
+
+  12: {
+    id:12, title:"Cercle", duration:"3 semaines",
+    objectives:[
+      "Connaître et utiliser le vocabulaire du cercle",
+      "Distinguer cercle et disque",
+      "Connaître les relations entre rayon, diamètre et corde",
+      "Calculer la circonférence d'un cercle",
+      "Construire un cercle et des figures liées au cercle",
+      "Résoudre des problèmes faisant intervenir des cercles",
+    ],
+    cours:[
+      { id:"12-1", titre:"Vocabulaire du cercle",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION DU CERCLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un CERCLE est l'ensemble de TOUS les points situés à une même distance
+d'un point fixe appelé CENTRE.
+
+Cette distance fixe s'appelle le RAYON du cercle.
+
+REPRÉSENTATION :
+              * * *
+           *         *
+          *     O     *   ← O est le centre
+          *     |     *
+           *    r    *    ← r est le rayon
+              * * *
+
+NOTATION : Cercle de centre O et de rayon r → cercle (O, r) ou ⊙O
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CERCLE vs DISQUE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ DISTINCTION IMPORTANTE :
+• Le CERCLE = uniquement la LIGNE (le contour), sans l'intérieur
+• Le DISQUE = le cercle ET toute la surface intérieure
+
+Analogie : 
+  Cercle = le bord d'une pièce de monnaie
+  Disque = la pièce de monnaie entière (bord + face)
+
+En langage courant on dit souvent "cercle" pour les deux,
+mais en géométrie la distinction est importante !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VOCABULAIRE COMPLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. CENTRE (O) : point équidistant de tous les points du cercle.
+
+2. RAYON [OA] : segment reliant le centre à un point du cercle.
+   • Tous les rayons d'un cercle sont ÉGAUX.
+   • Notation de la longueur : r (minuscule)
+
+3. DIAMÈTRE [AB] : segment reliant deux points du cercle en passant par le centre.
+   • Le diamètre passe TOUJOURS par le centre.
+   • Un cercle a une INFINITÉ de diamètres.
+   • RELATION FONDAMENTALE : d = 2r  (ou r = d/2)
+   • C'est le plus long segment qu'on puisse tracer dans un cercle.
+
+4. CORDE [CD] : segment reliant deux points du cercle SANS passer par le centre.
+   • Le diamètre est la corde la plus longue (cas particulier).
+   • Une corde divise le disque en deux parties.
+
+5. ARC de cercle : portion de cercle entre deux points.
+   • L'arc CD (noté CD⌢) est la portion de cercle de C à D.
+   • Deux points du cercle définissent deux arcs (petit et grand).
+
+6. TANGENTE : droite qui touche le cercle en un seul point.
+   • La tangente est perpendiculaire au rayon au point de contact.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RELATIONS FONDAMENTALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DIAMÈTRE ET RAYON :
+  d = 2 × r    (le diamètre vaut deux fois le rayon)
+  r = d ÷ 2   (le rayon vaut la moitié du diamètre)
+
+EXEMPLES :
+• r = 5 cm → d = 2 × 5 = 10 cm
+• d = 14 cm → r = 14 ÷ 2 = 7 cm
+• r = 3,5 cm → d = 2 × 3,5 = 7 cm
+
+PROPRIÉTÉ UTILE : Un point M est sur le cercle (O, r) si et seulement si OM = r.
+• Si OM < r → M est à l'INTÉRIEUR du cercle
+• Si OM = r → M est SUR le cercle
+• Si OM > r → M est à l'EXTÉRIEUR du cercle
+
+🌍 EXEMPLES AFRICAINS :
+• Un puits circulaire au Mali a un diamètre de 1,2 m → rayon = 0,6 m
+• La base d'une case ronde au Cameroun a un diamètre de 6 m → rayon = 3 m
+• Un plat africain circulaire a un rayon de 15 cm → diamètre = 30 cm`,
+        exemples:[
+          {question:"Un cercle a un rayon de 8 cm. Quel est son diamètre ?", reponse:"d = 2 × r = 2 × 8 = 16 cm"},
+          {question:"Un cercle a un diamètre de 9 cm. Quel est son rayon ?", reponse:"r = d ÷ 2 = 9 ÷ 2 = 4,5 cm"},
+          {question:"Le point M est à 7 cm du centre d'un cercle de rayon 5 cm. M est-il sur, dans ou hors du cercle ?", reponse:"OM = 7 cm > r = 5 cm → M est à l'EXTÉRIEUR du cercle."},
+          {question:"Quelle différence entre un rayon, un diamètre et une corde ?", reponse:"Rayon : du centre à un point du cercle. Diamètre : entre deux points du cercle EN PASSANT PAR LE CENTRE. Corde : entre deux points du cercle SANS passer par le centre. Le diamètre est la plus grande corde."},
+        ]
+      },
+      { id:"12-2", titre:"Circonférence du cercle",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE NOMBRE PI (π)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour TOUT cercle, le rapport entre la circonférence et le diamètre
+est une constante universelle appelée PI (π).
+
+   Circonférence
+  ─────────────── = π   pour TOUT cercle
+      Diamètre
+
+La valeur de π est approximativement :
+  π ≈ 3,14159265358979...  (nombre irrationnel, infini non périodique)
+  
+Valeurs approchées utilisées au collège :
+  π ≈ 3,14       (au centième)
+  π ≈ 22/7       (fraction approchée très utile)
+  π ≈ 3,1416     (au dix-millième)
+
+📌 π est le même pour TOUS les cercles, quelle que soit leur taille !
+Un cercle de r=1m et un cercle de r=1km ont le même rapport C/d = π.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE DE LA CIRCONFÉRENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La CIRCONFÉRENCE (C) est le périmètre du cercle (longueur du contour).
+
+  C = π × d = 2 × π × r
+
+EXEMPLES :
+• Cercle de rayon 5 cm :
+  C = 2 × π × 5 = 10π ≈ 10 × 3,14 = 31,4 cm
+
+• Cercle de diamètre 8 cm :
+  C = π × 8 = 8π ≈ 8 × 3,14 = 25,12 cm
+
+• Cercle de rayon 7 cm (utiliser π ≈ 22/7) :
+  C = 2 × (22/7) × 7 = 2 × 22 = 44 cm
+
+TROUVER r ou d si on connaît C :
+  C = 2πr → r = C ÷ (2π)
+  C = πd  → d = C ÷ π
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LONGUEUR D'UN ARC DE CERCLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un arc de cercle correspondant à un angle de α° au centre :
+  Longueur de l'arc = (α/360) × C = (α/360) × 2πr
+
+EXEMPLES :
+• Arc de 90° (quart de cercle) sur un cercle de rayon 6 cm :
+  L = (90/360) × 2π × 6 = (1/4) × 12π = 3π ≈ 9,42 cm
+
+• Arc de 180° (demi-cercle) sur un cercle de rayon 4 cm :
+  L = (180/360) × 2π × 4 = (1/2) × 8π = 4π ≈ 12,57 cm
+
+🌍 EXEMPLES AFRICAINS :
+• Diamètre d'un puits = 1,2 m
+  Circonférence = π × 1,2 ≈ 3,14 × 1,2 ≈ 3,77 m
+  (longueur de la margelle circulaire)
+
+• Un stade circulaire de rayon 50 m :
+  Tour complet = 2 × π × 50 = 100π ≈ 314 m
+
+• Une piste de course circulaire de diamètre 100 m :
+  C = π × 100 ≈ 314 m par tour`,
+        exemples:[
+          {question:"Calculer la circonférence d'un cercle de rayon 10 cm. (π ≈ 3,14)", reponse:"C = 2 × π × r = 2 × 3,14 × 10 = 62,8 cm"},
+          {question:"Calculer la circonférence d'un cercle de diamètre 7 cm. (π ≈ 22/7)", reponse:"C = π × d = (22/7) × 7 = 22 cm (résultat exact avec cette approximation !)"},
+          {question:"La circonférence d'un cercle est 31,4 cm. Calculer son rayon.", reponse:"r = C ÷ (2π) = 31,4 ÷ (2×3,14) = 31,4 ÷ 6,28 = 5 cm"},
+        ]
+      },
+      { id:"12-3", titre:"Construction et positions relatives",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONSTRUCTION D'UN CERCLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OUTIL : Le COMPAS sert à tracer des cercles.
+
+MÉTHODE :
+1. Placer la pointe sèche du compas sur le CENTRE O
+2. Ouvrir le compas à la mesure du RAYON r
+3. Tracer le cercle en faisant tourner le compas
+
+⚠️ ERREURS FRÉQUENTES :
+• Ne pas appuyer trop fort sur le centre (le point doit rester fixe)
+• Ne pas changer l'ouverture du compas en traçant
+• Vérifier l'ouverture avant de tracer
+
+CONSTRUCTIONS LIÉES AU CERCLE :
+1. Tracer le diamètre : placer deux points A et B tels que O est le milieu de [AB].
+2. Tracer une corde de longueur donnée : utiliser le compas.
+3. Tracer la tangente en un point : tracer la perpendiculaire au rayon en ce point.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POSITIONS RELATIVES DE DEUX CERCLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Deux cercles de centres O et O', de rayons r et r', peuvent être :
+
+1. EXTÉRIEURS l'un à l'autre : OO' > r + r'
+   (ils ne se touchent pas, chacun est hors de l'autre)
+   O ──────── O'    (distance > somme des rayons)
+
+2. TANGENTS EXTÉRIEUREMENT : OO' = r + r'
+   (ils se touchent en exactement 1 point, à l'extérieur)
+
+3. SÉCANTS : |r − r'| < OO' < r + r'
+   (ils se coupent en 2 points)
+
+4. TANGENTS INTÉRIEUREMENT : OO' = |r − r'|
+   (ils se touchent en exactement 1 point, l'un dans l'autre)
+
+5. INTÉRIEURS l'un à l'autre : OO' < |r − r'|
+   (l'un est entièrement à l'intérieur de l'autre)
+
+6. CONCENTRIQUES : OO' = 0 (même centre)
+   (même centre, rayons différents)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CERCLE ET TRIANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CERCLE INSCRIT dans un triangle :
+→ Cercle tangent aux 3 côtés du triangle (à l'intérieur)
+→ Son centre est le point d'intersection des 3 BISSECTRICES
+
+CERCLE CIRCONSCRIT à un triangle :
+→ Cercle passant par les 3 sommets du triangle (à l'extérieur)
+→ Son centre est le point d'intersection des 3 MÉDIATRICES
+
+PROPRIÉTÉ : Dans un triangle rectangle, le centre du cercle
+circonscrit est le MILIEU de l'hypoténuse.
+
+🌍 EXEMPLES AFRICAINS :
+• Un puits (cercle) et un autre puits sont à 15 m de distance.
+  Leurs diamètres sont 1 m et 1 m. OO'=15 m > r+r'=0,5+0,5=1 m → extérieurs ✓
+• Deux ronds-points concentriques à Libreville :
+  même centre, rayons différents → concentriques`,
+        exemples:[
+          {question:"Deux cercles ont des rayons de 3 cm et 5 cm, et leurs centres sont à 10 cm. Quelle est leur position relative ?", reponse:"r+r' = 3+5 = 8 cm. OO' = 10 cm > 8 cm → cercles EXTÉRIEURS l'un à l'autre."},
+          {question:"Deux cercles ont des rayons de 4 cm et 6 cm, et leurs centres sont à 2 cm. Quelle est leur position relative ?", reponse:"|r−r'| = |4−6| = 2 cm = OO' → cercles TANGENTS INTÉRIEUREMENT (se touchent en 1 point)."},
+          {question:"Comment construire le centre du cercle circonscrit à un triangle ?", reponse:"Tracer les médiatrices des 3 côtés. Leur point d'intersection est le centre du cercle circonscrit."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Un cercle a un rayon de 12 cm. Quel est son diamètre ?", solution:"d = 2 × r = 2 × 12 = 24 cm"},
+      {id:2,  niveau:"Facile",    enonce:"Un cercle a un diamètre de 15 cm. Quel est son rayon ?", solution:"r = d ÷ 2 = 15 ÷ 2 = 7,5 cm"},
+      {id:3,  niveau:"Facile",    enonce:"Le point M est à 4 cm du centre O d'un cercle de rayon 6 cm. M est-il à l'intérieur, sur, ou à l'extérieur du cercle ?", solution:"OM = 4 cm < r = 6 cm → M est à l'INTÉRIEUR du disque."},
+      {id:4,  niveau:"Facile",    enonce:"Calculer la circonférence d'un cercle de rayon 5 cm. (π ≈ 3,14)", solution:"C = 2 × π × r = 2 × 3,14 × 5 = 31,4 cm"},
+      {id:5,  niveau:"Facile",    enonce:"Calculer la circonférence d'un cercle de diamètre 14 cm. (π ≈ 22/7)", solution:"C = π × d = (22/7) × 14 = 22 × 2 = 44 cm"},
+      {id:6,  niveau:"Moyen",     enonce:"Un cercle a une circonférence de 62,8 cm. Calculer son rayon et son diamètre. (π ≈ 3,14)", solution:"r = C ÷ (2π) = 62,8 ÷ 6,28 = 10 cm. d = 2r = 20 cm."},
+      {id:7,  niveau:"Moyen",     enonce:"Deux cercles concentriques ont des rayons de 3 cm et 7 cm. Calculer la différence de leurs circonférences.", solution:"C1 = 2π×3 = 6π. C2 = 2π×7 = 14π. Différence = 14π−6π = 8π ≈ 8×3,14 = 25,12 cm."},
+      {id:8,  niveau:"Moyen",     enonce:"Un vélo a des roues de diamètre 66 cm. Quelle distance parcourt-il en 100 tours de roue ? (π ≈ 3,14)", solution:"Circonférence = π × d = 3,14 × 66 = 207,24 cm par tour. Distance = 100 × 207,24 = 20 724 cm = 207,24 m."},
+      {id:9,  niveau:"Moyen",     enonce:"O est le centre d'un cercle. A et B sont deux points du cercle avec OA = 8 cm. Calculer AB si [AB] est un diamètre.", solution:"AB est un diamètre → AB = 2 × OA = 2 × 8 = 16 cm."},
+      {id:10, niveau:"Moyen",     enonce:"Deux cercles ont des rayons de 5 cm et 3 cm, et leurs centres sont à 8 cm. Quelle est leur position relative ?", solution:"r + r' = 5 + 3 = 8 cm = OO' → les cercles sont TANGENTS EXTÉRIEUREMENT (se touchent en 1 point)."},
+      {id:11, niveau:"Difficile", enonce:"Une piste circulaire a une circonférence de 400 m. Un athlète court 5 tours. Quelle distance a-t-il parcourue ? Quel est le rayon de la piste ? (π ≈ 3,14)", solution:"Distance = 5 × 400 = 2 000 m = 2 km. Rayon : C = 2πr → r = 400 ÷ (2×3,14) = 400 ÷ 6,28 ≈ 63,7 m."},
+      {id:12, niveau:"Difficile", enonce:"Un cercle de centre O a un rayon de 10 cm. Un point A est sur le cercle. On trace la corde [AB] de longueur 12 cm. Calculer la distance de O au milieu M de [AB].", solution:"OM ⊥ AB (propriété : la perpendiculaire d'un centre à une corde coupe la corde en son milieu). OA = 10 cm (rayon), AM = 6 cm (moitié de AB=12). Triangle OAM rectangle en M : OM² = OA² − AM² = 100 − 36 = 64 → OM = 8 cm."},
+      {id:13, niveau:"Difficile", enonce:"Deux cercles de rayons 6 cm et 4 cm sont sécants. La distance entre leurs centres est 7 cm. Vérifier qu'ils sont bien sécants.", solution:"|r−r'| = |6−4| = 2 cm < OO' = 7 cm < r+r' = 10 cm. Comme 2 < 7 < 10 ✓ → les cercles sont bien SÉCANTS (se coupent en 2 points)."},
+      {id:14, niveau:"Difficile", enonce:"Un jardin circulaire de rayon 7 m est entouré d'une allée de 1 m de large. Calculer la circonférence extérieure de l'allée. (π ≈ 22/7)", solution:"Le grand cercle a pour rayon : 7 + 1 = 8 m. Circonférence extérieure = 2 × (22/7) × 8 = (44/7) × 8 = 352/7 ≈ 50,3 m."},
+      {id:15, niveau:"Difficile", enonce:"Un triangle rectangle a ses cathètes de 6 cm et 8 cm. Calculer le rayon du cercle circonscrit. (Rappel : dans un triangle rectangle, le centre du cercle circonscrit est le milieu de l'hypoténuse)", solution:"Hypoténuse² = 6² + 8² = 36 + 64 = 100 → hypoténuse = 10 cm. Rayon du cercle = hypoténuse ÷ 2 = 10 ÷ 2 = 5 cm."},
+    ],
+  },
+
+  13: {
+    id:13, title:"Symétrie axiale", duration:"3 semaines",
+    objectives:[
+      "Comprendre la notion de symétrie axiale",
+      "Reconnaître un axe de symétrie d'une figure",
+      "Construire le symétrique d'un point par rapport à une droite",
+      "Construire le symétrique d'une figure par rapport à un axe",
+      "Utiliser les propriétés de conservation de la symétrie axiale",
+    ],
+    cours:[
+      { id:"13-1", titre:"Notion de symétrie axiale",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉCOUVERTE DE LA SYMÉTRIE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La SYMÉTRIE AXIALE est la transformation qui associe à chaque point
+son image "de l'autre côté" d'une droite appelée AXE DE SYMÉTRIE.
+
+EXPÉRIENCE PRATIQUE :
+Plie une feuille en deux → les deux parties se superposent exactement.
+Le pli est l'AXE DE SYMÉTRIE.
+Chaque point d'un côté correspond exactement à un point de l'autre côté.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION RIGOUREUSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le SYMÉTRIQUE d'un point A par rapport à une droite (d) est le point A'
+tel que :
+  1. La droite (d) est la MÉDIATRICE du segment [AA']
+  C'est-à-dire :
+  • (d) est perpendiculaire à [AA'] : (d) ⊥ [AA']
+  • (d) coupe [AA'] en son MILIEU : le pied H vérifie HA = HA'
+
+REPRÉSENTATION :
+     A          A'
+     •          •
+     |          |
+     |    (d)   |
+     •──────────•
+          H
+     (H est le milieu de [AA'] et AH ⊥ (d))
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CAS PARTICULIERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Si A est SUR l'axe (d) → son symétrique est lui-même : A' = A
+• Si A est à gauche de (d) → A' est à droite, à la même distance
+• Si A est à droite de (d) → A' est à gauche, à la même distance
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AXE DE SYMÉTRIE D'UNE FIGURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Une droite (d) est un AXE DE SYMÉTRIE d'une figure si, en repliant
+la figure selon (d), les deux parties se superposent exactement.
+
+EXEMPLES DE FIGURES ET LEURS AXES :
+• Segment [AB] → 2 axes : la médiatrice de [AB] ET la droite (AB) elle-même
+• Triangle isocèle → 1 axe (la médiatrice de la base)
+• Triangle équilatéral → 3 axes (les 3 médiatrices)
+• Rectangle → 2 axes (les médiatrices des côtés)
+• Losange → 2 axes (les diagonales)
+• Carré → 4 axes (les 2 diagonales + les 2 médiatrices des côtés)
+• Cercle → une INFINITÉ d'axes (tout diamètre est axe de symétrie)
+• Triangle scalène → 0 axe
+• Lettre A → 1 axe (vertical)
+• Lettre H → 2 axes (vertical et horizontal)
+• Lettre O → une infinité d'axes
+
+🌍 EXEMPLES AFRICAINS :
+• Le drapeau du Rwanda → axe de symétrie vertical
+• Un masque africain traditionnel → souvent 1 axe vertical
+• Les motifs du tissu kente → souvent plusieurs axes de symétrie
+• Un papillon → axe vertical au milieu
+• Une feuille d'arbre → axe de la nervure centrale`,
+        exemples:[
+          {question:"Combien d'axes de symétrie a un carré ?", reponse:"4 axes : les 2 médiatrices des côtés (horizontale et verticale) + les 2 diagonales."},
+          {question:"Une figure a une infinité d'axes de symétrie. Quelle est-elle ?", reponse:"Le cercle (tout diamètre est un axe de symétrie)."},
+          {question:"Le triangle scalène a-t-il des axes de symétrie ?", reponse:"Non, 0 axe de symétrie (les 3 côtés sont tous de longueurs différentes)."},
+        ]
+      },
+      { id:"13-2", titre:"Construction du symétrique d'un point",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE 1 — AVEC ÉQUERRE ET RÈGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour construire A', symétrique de A par rapport à la droite (d) :
+
+ÉTAPE 1 : Tracer la perpendiculaire à (d) passant par A.
+  → Poser l'équerre sur (d), faire glisser jusqu'à A, tracer la perpendiculaire.
+
+ÉTAPE 2 : Cette perpendiculaire coupe (d) en un point H.
+  → H est le pied de la perpendiculaire (milieu futur de [AA']).
+
+ÉTAPE 3 : Reporter la distance AH de l'autre côté de (d).
+  → A' est tel que HA' = HA et H est entre A et A'.
+
+REPRÉSENTATION :
+   A                         A'
+   •─────────────────────────•
+              H
+   ←── AH ───→←─── HA' ────→
+                  (égales !)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE 2 — AVEC LE COMPAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ÉTAPE 1 : Tracer la perpendiculaire à (d) passant par A (avec équerre).
+ÉTAPE 2 : Ouvrir le compas à la distance AH (de A au point d'intersection H avec (d)).
+ÉTAPE 3 : Piquer le compas en H et reporter la même distance de l'autre côté → A'.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE 3 — SUR PAPIER QUADRILLÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Sur un quadrillage, si l'axe est vertical ou horizontal :
+
+1. Compter le nombre de carreaux de A à l'axe (d).
+2. Reporter le même nombre de carreaux de l'autre côté de l'axe.
+3. Placer A'.
+
+EXEMPLE : A est à 3 carreaux à gauche de l'axe vertical (d).
+→ A' est à 3 carreaux à droite de (d).
+
+Si l'axe est oblique (à 45°) :
+• Compter les décalages horizontal et vertical de A par rapport à un point de (d).
+• Inverser les deux décalages pour obtenir A'.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SYMÉTRIQUE D'UN SEGMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour construire le symétrique du segment [AB] par rapport à (d) :
+1. Construire A', symétrique de A.
+2. Construire B', symétrique de B.
+3. Tracer [A'B'].
+
+Le segment [A'B'] est le symétrique de [AB].
+PROPRIÉTÉ : A'B' = AB (les longueurs sont conservées !).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SYMÉTRIQUE D'UN TRIANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour construire le symétrique du △ABC par rapport à (d) :
+1. Construire A', B', C' symétriques de A, B, C.
+2. Tracer le triangle A'B'C'.
+
+PROPRIÉTÉS CONSERVÉES :
+• A'B' = AB, B'C' = BC, C'A' = CA (longueurs des côtés)
+• Les angles sont conservés : ∠A' = ∠A, ∠B' = ∠B, ∠C' = ∠C
+• Les périmètres sont égaux
+
+🌍 EXEMPLES AFRICAINS :
+• Le reflet d'un arbre dans l'eau du fleuve → symétrie axiale
+• L'axe est la surface de l'eau, l'arbre et son reflet sont symétriques
+• Un oiseau en vol → le plan de symétrie vertical donne deux ailes symétriques`,
+        exemples:[
+          {question:"A est à 4 cm de l'axe (d). Où est son symétrique A' ?", reponse:"A' est à 4 cm de (d) de l'autre côté. AA' = 2×4 = 8 cm et H (milieu de AA') est sur (d)."},
+          {question:"Sur un quadrillage, A est à 3 carreaux à gauche de l'axe vertical. Où est A' ?", reponse:"A' est à 3 carreaux à droite de l'axe vertical (même ligne)."},
+          {question:"Le symétrique de [AB] (longueur 7 cm) est [A'B']. Quelle est la longueur de [A'B'] ?", reponse:"A'B' = AB = 7 cm (la symétrie conserve les longueurs)."},
+        ]
+      },
+      { id:"13-3", titre:"Propriétés de la symétrie axiale",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROPRIÉTÉS DE CONSERVATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La symétrie axiale CONSERVE (ne change pas) :
+
+1. LES DISTANCES (longueurs) :
+   Si A' est le symétrique de A et B' est le symétrique de B,
+   alors A'B' = AB.
+   → Les figures symétriques sont CONGRUENTES (même forme, même taille).
+
+2. LES ANGLES :
+   ∠A'B'C' = ∠ABC
+   → Les angles sont conservés.
+
+3. L'ALIGNEMENT :
+   Si A, B, C sont alignés, alors A', B', C' sont aussi alignés.
+
+4. LE MILIEU :
+   Si M est le milieu de [AB], alors M' (symétrique de M) est le milieu de [A'B'].
+
+La symétrie axiale NE CONSERVE PAS l'orientation (sens de parcours).
+Un triangle orienté dans le sens horaire devient anti-horaire après symétrie.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FIGURES AYANT UN AXE DE SYMÉTRIE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Une figure est SYMÉTRIQUE par rapport à (d) si elle est son propre symétrique.
+Cela signifie que (d) est un AXE DE SYMÉTRIE de la figure.
+
+MÉTHODE POUR VÉRIFIER :
+1. Plier la figure selon (d).
+2. Si les deux parties se superposent exactement → (d) est un axe de symétrie.
+
+TABLEAU RÉCAPITULATIF :
+Figure               │ Nombre d'axes │ Description des axes
+─────────────────────┼───────────────┼────────────────────────────────
+Segment [AB]         │      2        │ Médiatrice + droite (AB)
+Triangle scalène     │      0        │ Aucun
+Triangle isocèle     │      1        │ Médiatrice de la base
+Triangle équilatéral │      3        │ Les 3 médiatrices des côtés
+Parallélogramme      │      0        │ Aucun (sauf cas particuliers)
+Rectangle            │      2        │ Médiatrices des côtés
+Losange              │      2        │ Les 2 diagonales
+Carré                │      4        │ 2 diagonales + 2 médiatrices
+Cercle               │      ∞        │ Tous les diamètres
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UTILISATION EN GÉOMÉTRIE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La symétrie permet de RÉSOUDRE DES PROBLÈMES :
+
+EXEMPLE : Trouver le point M sur la droite (d) tel que AM + MB soit minimum
+(problème du chemin le plus court).
+
+MÉTHODE :
+1. Construire A', symétrique de A par rapport à (d).
+2. Tracer la droite A'B.
+3. M est l'intersection de A'B avec (d).
+4. AM + MB = A'M + MB = A'B (longueur minimale !)
+
+🌍 EXEMPLES AFRICAINS :
+• Architecture traditionnelle : les cases rectangulaires ont 2 axes de symétrie
+• Le kele-kele (jeu africain) utilise des figures symétriques
+• Les broderies et tissages africains sont souvent basés sur la symétrie
+• La disposition de plats sur une table lors d'un festin → souvent symétrique
+• Les motifs des pagnes et boubous → symétries multiples`,
+        exemples:[
+          {question:"△ABC et △A'B'C' sont symétriques par rapport à (d). Si AB = 5 cm, que vaut A'B' ?", reponse:"A'B' = AB = 5 cm (la symétrie conserve les longueurs)."},
+          {question:"Un parallélogramme a-t-il des axes de symétrie ?", reponse:"Non (en général). Un parallélogramme quelconque n'a pas d'axe de symétrie. Sauf s'il est un rectangle (2 axes), un losange (2 axes) ou un carré (4 axes)."},
+          {question:"Comment vérifier qu'une lettre a un axe de symétrie ?", reponse:"On peut la plier (mentalement ou physiquement) : si les deux parties se superposent, l'axe est confirmé. Ex : A, H, M, O, T, U, V, W, X, Y ont des axes. B, C, D, E, K ont un axe horizontal. F, G, J, L, N, P, Q, R, S, Z n'en ont pas."},
+          {question:"△ABC a pour symétriques A', B', C' par rapport à (d). Si ∠B = 70°, que vaut ∠B' ?", reponse:"∠B' = ∠B = 70° (la symétrie conserve les angles)."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Combien d'axes de symétrie possède un triangle équilatéral ?", solution:"3 axes : les 3 médiatrices des côtés (qui sont aussi les 3 hauteurs et 3 médianes pour un triangle équilatéral)."},
+      {id:2,  niveau:"Facile",    enonce:"Combien d'axes de symétrie possède un rectangle (non carré) ?", solution:"2 axes : la médiatrice du côté long et la médiatrice du côté court (les deux axes passent par le centre)."},
+      {id:3,  niveau:"Facile",    enonce:"A est à 5 cm de l'axe (d). Quelle est la longueur du segment [AA'] où A' est le symétrique de A ?", solution:"AA' = 2 × 5 = 10 cm (A' est de l'autre côté, à la même distance)."},
+      {id:4,  niveau:"Facile",    enonce:"Sur un quadrillage avec un axe vertical, le point A est en position (3, 2). Quel est le symétrique A' par rapport à l'axe x = 0 ?", solution:"A' est à la même hauteur (ordonnée 2) mais à l'opposé en abscisse : A' = (−3, 2)."},
+      {id:5,  niveau:"Facile",    enonce:"Le segment [AB] mesure 8 cm. Son symétrique [A'B'] mesure combien ?", solution:"A'B' = AB = 8 cm (la symétrie conserve les longueurs)."},
+      {id:6,  niveau:"Moyen",     enonce:"Construire le symétrique du point A par rapport à la droite (d). Décrire les 3 étapes.", solution:"Étape 1 : Tracer la perpendiculaire à (d) passant par A (avec équerre). Étape 2 : Appeler H le point d'intersection avec (d). Étape 3 : Reporter HA de l'autre côté → A' tel que HA' = HA."},
+      {id:7,  niveau:"Moyen",     enonce:"△ABC est symétrique par rapport à (d). ∠A = 45°, AB = 7 cm, BC = 5 cm. Donner les mesures du triangle image △A'B'C'.", solution:"Par conservation : ∠A' = 45°, A'B' = 7 cm, B'C' = 5 cm. Tous les éléments sont conservés."},
+      {id:8,  niveau:"Moyen",     enonce:"Quelle lettre majuscule parmi A, B, C, D, H, I, M, O, S, X possède 2 axes de symétrie ?", solution:"H, I, O, X possèdent 2 axes de symétrie (un horizontal et un vertical). Parmi celles-ci : H (vertical + horizontal), I (vertical + horizontal), O (infinité d'axes), X (2 diagonales)."},
+      {id:9,  niveau:"Moyen",     enonce:"Un triangle isocèle ABC a AB = AC = 8 cm et BC = 5 cm. (d) est l'axe de symétrie. Que peut-on dire de B et C par rapport à (d) ?", solution:"B et C sont symétriques l'un de l'autre par rapport à (d) car l'axe de symétrie d'un triangle isocèle est la médiatrice de la base. Donc B' = C et C' = B."},
+      {id:10, niveau:"Moyen",     enonce:"ABCD est un losange. Justifier que les diagonales [AC] et [BD] sont des axes de symétrie.", solution:"[AC] est axe de symétrie : B et D sont symétriques par rapport à [AC] (car AB=AD et CB=CD). [BD] est axe de symétrie : A et C sont symétriques par rapport à [BD] (car AB=BC et AD=DC)."},
+      {id:11, niveau:"Difficile", enonce:"Construire le symétrique du triangle ABC (A(1,3), B(4,3), C(4,1)) par rapport à l'axe (d) d'équation x=2 sur un quadrillage.", solution:"A est à 1 carreau à gauche de x=2 → A'=(3,3). B est à 2 carreaux à droite de x=2 → B'=(0,3). C est à 2 carreaux à droite de x=2 → C'=(0,1). Triangle A'B'C' avec A'(3,3), B'(0,3), C'(0,1)."},
+      {id:12, niveau:"Difficile", enonce:"Déterminer le nombre d'axes de symétrie de chaque figure : carré, losange non carré, rectangle non carré, triangle rectangle isocèle.", solution:"Carré : 4 axes. Losange non carré : 2 axes (les diagonales). Rectangle non carré : 2 axes (médiatrices des côtés). Triangle rectangle isocèle : 1 axe (la médiatrice de l'hypoténuse = hauteur issue de l'angle droit)."},
+      {id:13, niveau:"Difficile", enonce:"M est le milieu de [AB]. (d) est l'axe de symétrie. Montrer que M' (symétrique de M) est le milieu de [A'B'].", solution:"M milieu de [AB] → AM = MB. Par conservation des longueurs : A'M' = AM et M'B' = MB. Donc A'M' = M'B' → M' est le milieu de [A'B'] ✓."},
+      {id:14, niveau:"Difficile", enonce:"A(2,5) et B(8,1) sont deux points. (d) est la droite verticale x=5. Construire A' et B' symétriques. Vérifier que A'B' = AB.", solution:"A à 3 carreaux à gauche de x=5 → A'=(8,5). B à 3 carreaux à droite de x=5 → B'=(2,1). AB² = (8−2)²+(1−5)² = 36+16 = 52. A'B'² = (2−8)²+(1−5)² = 36+16 = 52. Donc A'B' = AB ✓."},
+      {id:15, niveau:"Difficile", enonce:"On veut aller de A à un point M sur la droite (d), puis de M à B, en parcourant la distance minimale. Expliquer comment trouver M en utilisant la symétrie.", solution:"Construire A', symétrique de A par rapport à (d). Tracer la droite A'B. M est le point d'intersection de A'B avec (d). Justification : AM + MB = A'M + MB (car A'M = AM par symétrie) ≥ A'B (inégalité triangulaire), avec égalité ssi A', M, B sont alignés ✓."},
+    ],
+  },
+
+  14: {
+    id:14, title:"Périmètre et aire", duration:"4 semaines",
+    objectives:[
+      "Distinguer périmètre et aire",
+      "Calculer le périmètre des figures usuelles",
+      "Calculer l'aire du carré, rectangle, triangle, parallélogramme, trapèze et disque",
+      "Convertir des unités d'aire",
+      "Résoudre des problèmes faisant intervenir périmètres et aires",
+    ],
+    cours:[
+      { id:"14-1", titre:"Périmètre — définition et formules",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION DU PÉRIMÈTRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le PÉRIMÈTRE d'une figure est la LONGUEUR TOTALE de son contour.
+C'est la distance qu'on parcourt si on fait le tour de la figure.
+
+UNITÉ : le périmètre s'exprime en unités de LONGUEUR : mm, cm, m, km.
+
+MÉTHODE GÉNÉRALE : P = somme de tous les côtés
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULES DE PÉRIMÈTRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TRIANGLE (côtés a, b, c) :
+  P = a + b + c
+
+TRIANGLE ÉQUILATÉRAL (côté a) :
+  P = 3a
+
+CARRÉ (côté c) :
+  P = 4c
+
+RECTANGLE (longueur L, largeur ℓ) :
+  P = 2L + 2ℓ = 2(L + ℓ)
+
+PARALLÉLOGRAMME (côtés a et b) :
+  P = 2a + 2b = 2(a + b)
+
+LOSANGE (côté c) :
+  P = 4c
+
+TRAPÈZE (côtés a, b, c, d) :
+  P = a + b + c + d  (somme des 4 côtés)
+
+CERCLE (rayon r, diamètre d) :
+  C = 2πr = πd  (la circonférence est le périmètre du cercle)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLES DÉTAILLÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Rectangle 12 cm × 7 cm :
+P = 2 × (12 + 7) = 2 × 19 = 38 cm
+
+Triangle avec côtés 5 cm, 8 cm, 6 cm :
+P = 5 + 8 + 6 = 19 cm
+
+Cercle de rayon 4 cm (π ≈ 3,14) :
+C = 2 × 3,14 × 4 = 25,12 cm
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TROUVER UN CÔTÉ DEPUIS LE PÉRIMÈTRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Un rectangle a un périmètre de 30 cm et une longueur de 10 cm. Trouver la largeur.
+P = 2(L + ℓ) → 30 = 2(10 + ℓ) → 15 = 10 + ℓ → ℓ = 5 cm
+
+EXEMPLE : Un carré a un périmètre de 28 cm. Trouver le côté.
+P = 4c → 28 = 4c → c = 7 cm
+
+🌍 EXEMPLES AFRICAINS :
+• Clôture d'un terrain rectangulaire 50 m × 30 m :
+  P = 2×(50+30) = 160 m → besoin de 160 m de grillage
+• Tour d'un stade circulaire de rayon 50 m :
+  C = 2×π×50 ≈ 314 m
+• Périmètre d'un tissu triangulaire : 25 cm + 30 cm + 35 cm = 90 cm`,
+        exemples:[
+          {question:"Calculer le périmètre d'un rectangle de 15 cm × 8 cm.", reponse:"P = 2×(15+8) = 2×23 = 46 cm"},
+          {question:"Un carré a un périmètre de 52 cm. Calculer son côté.", reponse:"c = 52 ÷ 4 = 13 cm"},
+          {question:"Calculer la circonférence d'un cercle de diamètre 10 cm. (π ≈ 3,14)", reponse:"C = π × d = 3,14 × 10 = 31,4 cm"},
+        ]
+      },
+      { id:"14-2", titre:"Aire — définition et unités",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION DE L'AIRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+L'AIRE (ou superficie) d'une figure est la mesure de sa SURFACE,
+c'est-à-dire la quantité de surface qu'elle occupe.
+
+⚠️ DIFFÉRENCE FONDAMENTALE :
+• Le PÉRIMÈTRE mesure le CONTOUR (une longueur, 1D)
+• L'AIRE mesure la SURFACE (une surface, 2D)
+
+ANALOGIE :
+• Périmètre = la longueur de la clôture autour d'un terrain
+• Aire = la quantité de gazon à planter dans le terrain
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UNITÉS D'AIRE ET CONVERSIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Les unités d'aire sont les CARRÉS des unités de longueur :
+
+mm²  cm²  dm²   m²    dam²   hm²   km²
+  ×100  ×100 ×100  ×100   ×100   ×100
+  ÷100  ÷100 ÷100  ÷100   ÷100   ÷100
+
+CONVERSIONS IMPORTANTES :
+• 1 cm² = 100 mm²       (10 × 10)
+• 1 dm² = 100 cm²       (10 × 10)
+• 1 m²  = 100 dm²       (10 × 10)
+• 1 m²  = 10 000 cm²    (100 × 100)
+• 1 km² = 1 000 000 m²
+
+UNITÉS AGRAIRES (pour les terrains) :
+• 1 are (a) = 100 m²
+• 1 hectare (ha) = 100 ares = 10 000 m²
+• 1 km² = 100 ha
+
+EXEMPLES DE CONVERSIONS :
+• 3,5 m² = 3,5 × 10 000 = 35 000 cm²
+• 45 000 cm² = 45 000 ÷ 10 000 = 4,5 m²
+• 2,5 ha = 2,5 × 10 000 = 25 000 m²
+
+ASTUCE : Pour convertir en unités d'aire,
+on multiplie/divise par des puissances de 100 (pas 10 !)
+car les unités d'aire sont des carrés.
+
+🌍 EXEMPLES AFRICAINS :
+• Surface du Gabon ≈ 268 000 km²
+• Un terrain à Libreville ≈ 500 m² = 5 ares = 0,05 ha
+• Une case ronde ≈ 12 m² de surface au sol`,
+        exemples:[
+          {question:"Convertir 4,5 m² en cm².", reponse:"4,5 × 10 000 = 45 000 cm²"},
+          {question:"Convertir 350 cm² en dm².", reponse:"350 ÷ 100 = 3,5 dm²"},
+          {question:"Un terrain de 2 500 m². Combien d'ares ? Combien d'hectares ?", reponse:"2 500 m² = 2 500÷100 = 25 ares. 25 ares = 25÷100 = 0,25 ha."},
+        ]
+      },
+      { id:"14-3", titre:"Formules d'aire des figures usuelles",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AIRE DU CARRÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : A = c × c = c²   (c = côté)
+
+DÉMONSTRATION : Un carré de côté c contient c × c = c² petits carrés unités.
+
+EXEMPLE : Carré de côté 7 cm → A = 7² = 49 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AIRE DU RECTANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : A = L × ℓ   (L = longueur, ℓ = largeur)
+
+DÉMONSTRATION : On peut diviser le rectangle en L × ℓ petits carrés unités.
+
+EXEMPLE : Rectangle 12 cm × 5 cm → A = 12 × 5 = 60 cm²
+
+TROUVER UN CÔTÉ : L = A ÷ ℓ   ou   ℓ = A ÷ L
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AIRE DU PARALLÉLOGRAMME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : A = base × hauteur = b × h
+
+DÉMONSTRATION VISUELLE :
+   ┌──────────────┐
+  /              /   On "coupe" le triangle de gauche
+ /              /    et on le place à droite
+/──────────────/     → on obtient un rectangle de base b et de hauteur h !
+└──────────────┘
+
+⚠️ La HAUTEUR est la distance perpendiculaire entre les deux bases parallèles.
+   Elle n'est PAS forcément un côté du parallélogramme !
+
+EXEMPLE : Parallélogramme de base 8 cm et hauteur 5 cm → A = 8 × 5 = 40 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AIRE DU TRIANGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : A = (base × hauteur) ÷ 2 = (b × h) / 2
+
+DÉMONSTRATION : Un triangle est la moitié d'un parallélogramme de même base et même hauteur.
+
+        A
+       /|
+      / |  h (hauteur)
+     /  |
+    B───H───C    b (base)
+
+EXEMPLE : Triangle de base 10 cm et hauteur 6 cm → A = (10 × 6) ÷ 2 = 30 cm²
+
+⚠️ La HAUTEUR est perpendiculaire à la BASE (pas forcément un côté).
+   Il faut bien identifier la hauteur correspondant à la base choisie !
+
+CAS PARTICULIER — Triangle rectangle :
+A = (cathète₁ × cathète₂) ÷ 2
+(Les deux cathètes jouent le rôle de base et hauteur)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AIRE DU TRAPÈZE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : A = ((grande base + petite base) × hauteur) ÷ 2
+          A = ((B + b) × h) ÷ 2
+
+DÉMONSTRATION : Le trapèze peut être divisé en 2 triangles de même hauteur.
+
+      ┌────────────┐  b (petite base)
+     /│            │\
+    / │    h       │ \
+   /  │            │  \
+  └───┴────────────┴───┘  B (grande base)
+
+EXEMPLE : Trapèze avec B=12 cm, b=7 cm, h=5 cm
+→ A = (12 + 7) × 5 ÷ 2 = 19 × 5 ÷ 2 = 95 ÷ 2 = 47,5 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AIRE DU DISQUE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : A = π × r²   (r = rayon)
+
+EXEMPLES :
+• Disque de rayon 5 cm : A = π × 5² = 25π ≈ 25 × 3,14 = 78,5 cm²
+• Disque de diamètre 8 cm : r = 4 cm → A = π × 4² = 16π ≈ 50,24 cm²
+
+⚠️ NE PAS CONFONDRE :
+• Circonférence = 2πr  (longueur du contour, en cm)
+• Aire du disque = πr²  (surface intérieure, en cm²)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU RÉCAPITULATIF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Figure         │ Périmètre            │ Aire
+───────────────┼──────────────────────┼──────────────────
+Carré (c)      │ 4c                   │ c²
+Rectangle(L,ℓ) │ 2(L+ℓ)              │ L×ℓ
+Parallélogramme│ 2(a+b)              │ b×h
+Triangle       │ a+b+c                │ (b×h)÷2
+Trapèze        │ a+b+c+d              │ ((B+b)×h)÷2
+Disque (r)     │ 2πr                  │ πr²
+
+🌍 EXEMPLES AFRICAINS :
+• Terrain rectangulaire 40m×25m : Aire=40×25=1000 m²=10 ares
+• Champ triangulaire : base=60m, hauteur=40m → Aire=(60×40)÷2=1200 m²
+• Rond-point circulaire r=15m : Aire=π×225≈707 m²
+• Toit trapézoïdal : B=10m, b=6m, h=3m → Aire=(10+6)×3÷2=24 m²`,
+        exemples:[
+          {question:"Calculer l'aire d'un rectangle de 15 cm × 8 cm.", reponse:"A = 15 × 8 = 120 cm²"},
+          {question:"Calculer l'aire d'un triangle de base 12 cm et hauteur 7 cm.", reponse:"A = (12 × 7) ÷ 2 = 84 ÷ 2 = 42 cm²"},
+          {question:"Calculer l'aire d'un disque de rayon 6 cm. (π ≈ 3,14)", reponse:"A = π × r² = 3,14 × 36 = 113,04 cm²"},
+          {question:"Calculer l'aire d'un trapèze de bases 10 cm et 6 cm, et de hauteur 4 cm.", reponse:"A = (10+6) × 4 ÷ 2 = 16 × 4 ÷ 2 = 64 ÷ 2 = 32 cm²"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Calculer le périmètre d'un carré de côté 9 cm.", solution:"P = 4 × 9 = 36 cm"},
+      {id:2,  niveau:"Facile",    enonce:"Calculer l'aire d'un carré de côté 9 cm.", solution:"A = 9² = 81 cm²"},
+      {id:3,  niveau:"Facile",    enonce:"Calculer le périmètre et l'aire d'un rectangle de 14 cm × 6 cm.", solution:"P = 2×(14+6) = 2×20 = 40 cm. A = 14×6 = 84 cm²."},
+      {id:4,  niveau:"Facile",    enonce:"Calculer l'aire d'un triangle de base 10 cm et de hauteur 8 cm.", solution:"A = (10 × 8) ÷ 2 = 80 ÷ 2 = 40 cm²"},
+      {id:5,  niveau:"Facile",    enonce:"Convertir 3 m² en cm².", solution:"3 × 10 000 = 30 000 cm²"},
+      {id:6,  niveau:"Moyen",     enonce:"Un parallélogramme a une base de 12 cm et une hauteur de 7 cm. Calculer son aire.", solution:"A = base × hauteur = 12 × 7 = 84 cm²"},
+      {id:7,  niveau:"Moyen",     enonce:"Un trapèze a des bases de 15 cm et 9 cm, et une hauteur de 6 cm. Calculer son aire.", solution:"A = (15+9) × 6 ÷ 2 = 24 × 6 ÷ 2 = 144 ÷ 2 = 72 cm²"},
+      {id:8,  niveau:"Moyen",     enonce:"Calculer l'aire d'un disque de diamètre 10 cm. (π ≈ 3,14)", solution:"r = 10÷2 = 5 cm. A = π × r² = 3,14 × 25 = 78,5 cm²"},
+      {id:9,  niveau:"Moyen",     enonce:"Un terrain rectangulaire de 45 m × 30 m. Calculer son aire en m², en ares et en hectares.", solution:"A = 45×30 = 1 350 m². En ares : 1 350÷100 = 13,5 ares. En hectares : 1 350÷10 000 = 0,135 ha."},
+      {id:10, niveau:"Moyen",     enonce:"Un rectangle a une aire de 84 cm² et une longueur de 12 cm. Calculer sa largeur et son périmètre.", solution:"ℓ = A÷L = 84÷12 = 7 cm. P = 2×(12+7) = 2×19 = 38 cm."},
+      {id:11, niveau:"Difficile", enonce:"Un jardin est composé d'un rectangle de 20 m × 12 m auquel on a enlevé un triangle de base 8 m et hauteur 6 m dans un coin. Calculer l'aire du jardin.", solution:"Aire rectangle = 20×12 = 240 m². Aire triangle = (8×6)÷2 = 24 m². Aire jardin = 240−24 = 216 m²."},
+      {id:12, niveau:"Difficile", enonce:"Un terrain circulaire de rayon 7 m est entouré d'une allée de 1 m de large. Calculer l'aire de l'allée uniquement. (π ≈ 22/7)", solution:"Aire grand disque (r=8) = π×64 = (22/7)×64 = 1408/7 ≈ 201,1 m². Aire petit disque (r=7) = π×49 = (22/7)×49 = 22×7 = 154 m². Aire allée = 201,1−154 ≈ 47,1 m²."},
+      {id:13, niveau:"Difficile", enonce:"Un carré et un rectangle ont la même aire de 100 cm². Le rectangle a une longueur de 25 cm. Calculer le côté du carré et la largeur du rectangle. Comparer leurs périmètres.", solution:"Carré : c = √100 = 10 cm. P carré = 4×10 = 40 cm. Rectangle : ℓ = 100÷25 = 4 cm. P rectangle = 2×(25+4) = 58 cm. Le carré a le plus petit périmètre (40 < 58) : à aire égale, le carré minimise le périmètre !"},
+      {id:14, niveau:"Difficile", enonce:"Un agriculteur gabonais a un champ triangulaire de base 80 m et hauteur 60 m. Il veut le clôturer (les 3 côtés mesurent 80 m, 61 m et 61 m). Prix de la clôture : 2 500 FCFA/m. Prix de la culture : 1 500 FCFA/m². Calculer le coût total.", solution:"Aire = (80×60)÷2 = 2 400 m². Coût culture = 2 400×1 500 = 3 600 000 FCFA. Périmètre = 80+61+61 = 202 m. Coût clôture = 202×2 500 = 505 000 FCFA. Coût total = 3 600 000+505 000 = 4 105 000 FCFA."},
+      {id:15, niveau:"Difficile", enonce:"Une figure est composée d'un demi-disque de diamètre 8 cm posé sur un rectangle de 8 cm × 5 cm. Calculer son périmètre et son aire. (π ≈ 3,14)", solution:"PÉRIMÈTRE : 3 côtés du rectangle (pas le côté sur lequel est le demi-disque) + demi-circonférence. P = 8+5+5 + (2π×4)÷2 = 18 + 4π ≈ 18+12,56 = 30,56 cm. AIRE : Aire rectangle + Aire demi-disque = 8×5 + (π×4²)÷2 = 40 + 8π ≈ 40+25,12 = 65,12 cm²."},
+    ],
+  },
 };
 
 // ─── DONNÉES ──────────────────────────────────────────────────────────────────

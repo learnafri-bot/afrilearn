@@ -5411,6 +5411,1374 @@ Sphère (r)           │ (4/3) × π × r³
       {id:15, niveau:"Difficile", enonce:"Une case africaine traditionnelle est composée d'un cylindre (murs) de rayon 3 m et hauteur 2,5 m, surmonté d'un cône (toit) de même rayon et hauteur 2 m. Calculer le volume total de la case et l'aire latérale des murs. (π ≈ 3,14)", solution:"V_cyl = π×9×2,5 = 22,5π ≈ 70,65 m³. V_cône = (1/3)×π×9×2 = 6π ≈ 18,84 m³. V_total ≈ 89,49 m³. A_lat_murs = 2×π×3×2,5 = 15π ≈ 47,1 m²."},
     ],
   },
+
+  21: {
+    id:21, title:"Patrons", duration:"2 semaines",
+    objectives:[
+      "Comprendre la notion de patron d'un solide",
+      "Reconnaître et construire le patron d'un cube et d'un pavé droit",
+      "Construire le patron d'un prisme et d'une pyramide",
+      "Construire le patron d'un cylindre et d'un cône",
+      "Calculer l'aire totale d'un solide à partir de son patron",
+    ],
+    cours:[
+      { id:"21-1", titre:"Qu'est-ce qu'un patron ?",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le PATRON d'un solide est une figure plane (2D) que l'on peut PLIER
+pour obtenir le solide (3D), sans superposition ni espace vide.
+
+EN PRATIQUE :
+• On découpe le patron dans du carton ou du papier
+• On le plie selon les arêtes
+• On obtient le solide
+
+EXEMPLE CONCRET : Le patron d'une boîte de céréales.
+Avant d'être assemblée, la boîte est découpée à plat. Ce "découpé à plat" est le patron !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROPRIÉTÉS D'UN PATRON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Un solide peut avoir PLUSIEURS patrons différents.
+• Un patron contient TOUTES les faces du solide.
+• Les faces adjacentes dans le solide sont reliées par une arête commune dans le patron.
+• L'AIRE du patron = l'AIRE TOTALE du solide.
+
+COMMENT VÉRIFIER QU'UNE FIGURE EST UN PATRON VALIDE :
+1. Compter les faces : le patron doit avoir le bon nombre de faces.
+2. Vérifier les dimensions : les faces qui doivent s'assembler ont les mêmes mesures.
+3. Tester mentalement le pliage : aucune face ne doit se superposer.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PATRON DU CUBE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un cube a 6 faces carrées identiques.
+Il existe 11 patrons différents pour un cube !
+
+PATRON LE PLUS COURANT (en croix) :
+        ┌───┐
+        │ 2 │  (face du haut)
+    ┌───┼───┼───┬───┐
+    │ 1 │ 3 │ 4 │ 5 │  (ceinture)
+    └───┼───┼───┴───┘
+        │ 6 │  (face du bas)
+        └───┘
+
+Les 6 carrés sont tous de côté a (arête du cube).
+Aire totale = 6 × a²
+
+EXEMPLE : Cube d'arête 4 cm :
+• Aire totale = 6 × 4² = 6 × 16 = 96 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PATRON DU PAVÉ DROIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un pavé droit (L × ℓ × h) a 6 faces rectangulaires en 3 paires :
+• 2 faces L × ℓ (dessus et dessous)
+• 2 faces L × h (avant et arrière)
+• 2 faces ℓ × h (gauche et droite)
+
+PATRON (forme développée) :
+              ┌───────┐
+              │  L×ℓ  │  (dessus)
+    ┌───┬─────┼───────┼─────┬───┐
+    │ℓ×h│ L×h │  L×ℓ  │ L×h │ℓ×h│
+    └───┴─────┼───────┼─────┴───┘
+              │  L×h  │  (dessous - variante)
+              └───────┘
+
+AIRE TOTALE :
+A = 2(L×ℓ) + 2(L×h) + 2(ℓ×h)
+A = 2(Lℓ + Lh + ℓh)
+
+EXEMPLE : Pavé 6 cm × 4 cm × 3 cm :
+A = 2(6×4 + 6×3 + 4×3)
+A = 2(24 + 18 + 12)
+A = 2 × 54 = 108 cm²
+
+🌍 EXEMPLES AFRICAINS :
+• Une boîte cadeau rectangulaire 30 cm × 20 cm × 10 cm.
+  A = 2(30×20 + 30×10 + 20×10) = 2(600+300+200) = 2 200 cm² de papier nécessaire.
+• Un container maritime : patron impossible à construire à la main
+  mais le principe est le même !`,
+        exemples:[
+          {question:"Le patron d'un cube a-t-il toujours la même forme ?", reponse:"Non ! Il existe 11 patrons différents pour un cube. Ils ont tous 6 carrés identiques mais arrangés différemment."},
+          {question:"Calculer l'aire totale d'un cube d'arête 5 cm.", reponse:"A = 6 × 5² = 6 × 25 = 150 cm²"},
+          {question:"Calculer l'aire totale d'un pavé 8 cm × 5 cm × 4 cm.", reponse:"A = 2(8×5 + 8×4 + 5×4) = 2(40+32+20) = 2×92 = 184 cm²"},
+          {question:"Combien de cm² de carton faut-il pour fabriquer une boîte sans couvercle de 20 cm × 15 cm × 8 cm ?", reponse:"Sans couvercle = sans une face L×ℓ. A = 20×15 + 2(20×8) + 2(15×8) = 300+320+240 = 860 cm²"},
+        ]
+      },
+      { id:"21-2", titre:"Patrons du prisme et de la pyramide",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PATRON D'UN PRISME DROIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un PRISME DROIT à base polygonale est formé de :
+• 2 bases polygonales identiques et parallèles
+• Des faces latérales rectangulaires (autant que de côtés de la base)
+
+PATRON D'UN PRISME TRIANGULAIRE :
+(triangle équilatéral de côté a et hauteur du prisme h)
+
+    ┌──────────────────────────┐
+    │    a×h    a×h    a×h    │  ← 3 faces rectangulaires
+    └──────────────────────────┘
+         ╱╲          ╱╲
+        ╱  ╲        ╱  ╲
+       ╱    ╲      ╱    ╲        ← 2 bases triangulaires
+      ╱______╲    ╱______╲
+
+AIRE LATÉRALE = somme des rectangles = périmètre de la base × hauteur
+A_lat = P_base × h
+
+AIRE TOTALE = Aire latérale + 2 × Aire de la base
+A_tot = P_base × h + 2 × A_base
+
+EXEMPLE : Prisme triangulaire (triangle équilatéral de côté 4 cm, h = 10 cm)
+• A_base = (4 × √3×4/2)/2... Pour un triangle équilatéral : A = (a²√3)/4 ≈ 6,93 cm²
+• A_lat = (3 × 4) × 10 = 120 cm²
+• A_tot = 120 + 2 × 6,93 ≈ 133,86 cm²
+
+EXEMPLE SIMPLE : Prisme triangulaire rectangle (base : triangle 3-4-5, h=8 cm)
+• A_base = (3×4)/2 = 6 cm²
+• Périmètre base = 3+4+5 = 12 cm
+• A_lat = 12 × 8 = 96 cm²
+• A_tot = 96 + 2×6 = 108 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PATRON D'UNE PYRAMIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Une PYRAMIDE est formée de :
+• 1 base polygonale
+• Des faces latérales TRIANGULAIRES (autant que de côtés de la base)
+
+PATRON D'UNE PYRAMIDE À BASE CARRÉE :
+
+         △
+        ╱│╲
+       ╱ │ ╲
+      ╱  │  ╲
+  △ ╱ ┌───┐ ╲ △
+     │       │
+     └───────┘
+         △
+
+• La base carrée est au centre
+• Les 4 triangles latéraux sont "dépliés" autour
+
+APOTHÈME DE LA PYRAMIDE (ℓ) :
+C'est la hauteur d'une face latérale triangulaire (mesurée depuis le milieu du côté de la base jusqu'au sommet).
+
+AIRE LATÉRALE :
+A_lat = (1/2) × périmètre de la base × apothème
+A_lat = (1/2) × P × ℓ
+
+AIRE TOTALE :
+A_tot = A_lat + A_base = (1/2)×P×ℓ + A_base
+
+EXEMPLE : Pyramide à base carrée de côté 6 cm, apothème 5 cm
+• A_base = 6² = 36 cm²
+• A_lat = (1/2) × (4×6) × 5 = (1/2) × 24 × 5 = 60 cm²
+• A_tot = 60 + 36 = 96 cm²
+
+🌍 EXEMPLES AFRICAINS :
+• Toit d'une case africaine en forme de pyramide à base carrée de 5 m
+  et apothème 3,5 m. Quantité de chaume (toit) :
+  A_lat = (1/2)×(4×5)×3,5 = 35 m²
+  → Il faut au moins 35 m² de matériau pour couvrir le toit.`,
+        exemples:[
+          {question:"Calculer l'aire latérale d'un prisme rectangulaire (4 cm × 3 cm × 8 cm).", reponse:"Périmètre de la base = 2(4+3) = 14 cm. A_lat = 14 × 8 = 112 cm²"},
+          {question:"Calculer l'aire totale d'une pyramide à base carrée de côté 10 cm et d'apothème 8 cm.", reponse:"A_base = 10² = 100 cm². A_lat = (1/2)×(4×10)×8 = 160 cm². A_tot = 100+160 = 260 cm²"},
+          {question:"Un prisme triangulaire a une base en triangle rectangle (cathètes 3 et 4 cm) et une hauteur de 12 cm. Calculer l'aire totale.", reponse:"Hypoténuse = 5 cm. A_base = (3×4)/2 = 6 cm². P_base = 3+4+5=12. A_lat = 12×12=144. A_tot = 144+2×6 = 156 cm²"},
+        ]
+      },
+      { id:"21-3", titre:"Patrons du cylindre et du cône",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PATRON DU CYLINDRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un cylindre de rayon r et hauteur h est formé de :
+• 2 bases circulaires (disques de rayon r)
+• 1 face latérale courbe
+
+EN DÉPLIANT le cylindre, la face latérale devient un RECTANGLE :
+• Largeur = h (hauteur du cylindre)
+• Longueur = 2πr (circonférence de la base, car c'est la "ceinture" qui s'enroule)
+
+PATRON DU CYLINDRE :
+    ┌────────────────────────────┐
+    │    Longueur = 2πr          │ h
+    │    (face latérale)         │
+    └────────────────────────────┘
+      ○               ○
+    (base)          (base)
+    rayon r         rayon r
+
+FORMULES :
+• Aire latérale : A_lat = 2πr × h
+• Aire d'une base : A_base = πr²
+• Aire totale : A_tot = 2πrh + 2πr² = 2πr(h + r)
+
+EXEMPLE : Cylindre r = 4 cm, h = 10 cm (π ≈ 3,14)
+• A_lat = 2 × 3,14 × 4 × 10 = 251,2 cm²
+• A_base = 3,14 × 16 = 50,24 cm²
+• A_tot = 251,2 + 2 × 50,24 = 351,68 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PATRON DU CÔNE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un cône de rayon r, hauteur h et génératrice (apothème) ℓ est formé de :
+• 1 base circulaire (disque de rayon r)
+• 1 face latérale courbe
+
+EN DÉPLIANT le cône, la face latérale devient un SECTEUR CIRCULAIRE :
+• Rayon du secteur = ℓ (la génératrice du cône)
+• Arc du secteur = 2πr (la circonférence de la base)
+
+GÉNÉRATRICE : ℓ = √(r² + h²)  (Pythagore dans le triangle axial)
+
+PATRON DU CÔNE :
+     ←──── ℓ ────→
+    ╱──────────────╲  ←── secteur circulaire
+   ╱                ╲     d'arc = 2πr
+  ╱                  ╲
+ ╱                    ╲
+└──────────────────────┘
+       ○
+     (base)
+     rayon r
+
+FORMULES :
+• Génératrice : ℓ = √(r² + h²)
+• Aire latérale : A_lat = π × r × ℓ
+• Aire totale : A_tot = πrℓ + πr² = πr(ℓ + r)
+
+EXEMPLE : Cône r = 3 cm, h = 4 cm (π ≈ 3,14)
+• Génératrice : ℓ = √(9 + 16) = √25 = 5 cm
+• A_lat = 3,14 × 3 × 5 = 47,1 cm²
+• A_base = 3,14 × 9 = 28,26 cm²
+• A_tot = 47,1 + 28,26 = 75,36 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU RÉCAPITULATIF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Solide        │ Aire latérale          │ Aire totale
+──────────────┼────────────────────────┼──────────────────────
+Cube (a)      │ 4a²                    │ 6a²
+Pavé (L,ℓ,h) │ 2(Lh + ℓh) = 2h(L+ℓ) │ 2(Lℓ + Lh + ℓh)
+Prisme        │ P_base × h             │ P_base×h + 2×A_base
+Pyramide      │ (1/2) × P_base × ℓ    │ (1/2)×P×ℓ + A_base
+Cylindre(r,h) │ 2πrh                   │ 2πr(r + h)
+Cône (r,ℓ)   │ πrℓ                    │ πr(r + ℓ)
+
+🌍 EXEMPLES AFRICAINS :
+• Boîte de conserve (cylindre) r=4 cm, h=11 cm :
+  Métal nécessaire = A_tot = 2π×4×(4+11) = 8π×15 = 120π ≈ 377 cm²
+
+• Chapeau traditionnel conique r=15 cm, h=20 cm :
+  Génératrice = √(225+400) = √625 = 25 cm
+  Tissu = A_lat = π×15×25 = 375π ≈ 1 178 cm² ≈ 0,12 m²`,
+        exemples:[
+          {question:"Calculer l'aire totale d'un cylindre de rayon 5 cm et hauteur 8 cm. (π ≈ 3,14)", reponse:"A_lat = 2×3,14×5×8 = 251,2 cm². A_base = 3,14×25 = 78,5 cm². A_tot = 251,2 + 2×78,5 = 408,2 cm²"},
+          {question:"Calculer la génératrice d'un cône de rayon 6 cm et hauteur 8 cm.", reponse:"ℓ = √(6²+8²) = √(36+64) = √100 = 10 cm"},
+          {question:"Calculer l'aire totale d'un cône de rayon 6 cm et génératrice 10 cm. (π ≈ 3,14)", reponse:"A_lat = π×6×10 = 60π ≈ 188,4 cm². A_base = π×36 ≈ 113,04 cm². A_tot ≈ 301,44 cm²"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Calculer l'aire totale d'un cube d'arête 6 cm.", solution:"A = 6 × 6² = 6 × 36 = 216 cm²"},
+      {id:2,  niveau:"Facile",    enonce:"Calculer l'aire totale d'un pavé droit de 10 cm × 6 cm × 4 cm.", solution:"A = 2(10×6 + 10×4 + 6×4) = 2(60+40+24) = 2×124 = 248 cm²"},
+      {id:3,  niveau:"Facile",    enonce:"Un cylindre a un rayon de 3 cm et une hauteur de 7 cm. Calculer son aire latérale. (π ≈ 3,14)", solution:"A_lat = 2 × 3,14 × 3 × 7 = 131,88 cm²"},
+      {id:4,  niveau:"Facile",    enonce:"Un cône a un rayon de 4 cm et une hauteur de 3 cm. Calculer sa génératrice.", solution:"ℓ = √(4²+3²) = √(16+9) = √25 = 5 cm"},
+      {id:5,  niveau:"Facile",    enonce:"Parmi ces figures, laquelle n'est PAS un patron valide d'un cube : (A) une croix de 6 carrés, (B) une rangée de 6 carrés en ligne, (C) un L de 4 carrés avec 2 carrés sur le côté ?", solution:"(B) une rangée de 6 carrés en ligne n'est PAS un patron valide car en pliant, certaines faces se superposeront."},
+      {id:6,  niveau:"Moyen",     enonce:"Calculer l'aire totale d'un prisme triangulaire dont la base est un triangle rectangle (cathètes 5 cm et 12 cm) et la hauteur du prisme est 15 cm.", solution:"Hypoténuse = √(25+144) = √169 = 13 cm. A_base = (5×12)/2 = 30 cm². P_base = 5+12+13=30 cm. A_lat = 30×15=450 cm². A_tot = 450+2×30=510 cm²"},
+      {id:7,  niveau:"Moyen",     enonce:"Calculer l'aire totale d'une pyramide à base carrée de côté 8 cm et d'apothème 6 cm.", solution:"A_base = 8² = 64 cm². A_lat = (1/2)×(4×8)×6 = (1/2)×32×6 = 96 cm². A_tot = 64+96 = 160 cm²"},
+      {id:8,  niveau:"Moyen",     enonce:"Calculer l'aire totale d'un cylindre de rayon 7 cm et hauteur 14 cm. (π ≈ 22/7)", solution:"A_lat = 2×(22/7)×7×14 = 2×22×14 = 616 cm². A_base = (22/7)×49 = 154 cm². A_tot = 616+2×154 = 924 cm²"},
+      {id:9,  niveau:"Moyen",     enonce:"On veut fabriquer une boîte (sans couvercle) en carton de dimensions 20 cm × 15 cm × 8 cm. Calculer la surface de carton nécessaire.", solution:"Sans le couvercle (face 20×15 enlevée). A = 20×15 (fond) + 2(20×8) + 2(15×8) = 300+320+240 = 860 cm²"},
+      {id:10, niveau:"Moyen",     enonce:"Un chapeau conique en tissu a un rayon de 12 cm et une génératrice de 20 cm. Calculer la surface de tissu nécessaire. (π ≈ 3,14)", solution:"A_lat (= tissu, sans la base) = π×r×ℓ = 3,14×12×20 = 753,6 cm²"},
+      {id:11, niveau:"Difficile", enonce:"Une boîte de conserve cylindrique sans étiquette a un diamètre de 10 cm et une hauteur de 14 cm. On veut l'emballer complètement avec du papier cadeau. Calculer la surface de papier nécessaire (ajouter 15% pour les plis). (π ≈ 3,14)", solution:"r=5 cm. A_tot = 2π×5×(5+14) = 10π×19 = 190π ≈ 596,6 cm². Avec 15% : 596,6×1,15 ≈ 686,1 cm²"},
+      {id:12, niveau:"Difficile", enonce:"Un toit de maison a la forme d'une pyramide à base rectangulaire de 12 m × 8 m. L'apothème (hauteur des faces triangulaires) des grandes faces est 6 m et des petites faces est 7 m. Calculer l'aire totale du toit.", solution:"2 grandes faces (12m base) : 2×(1/2×12×6) = 72 m². 2 petites faces (8m base) : 2×(1/2×8×7) = 56 m². A_tot toit = 72+56 = 128 m²"},
+      {id:13, niveau:"Difficile", enonce:"Un silo agricole cylindrique de rayon 2 m et hauteur 6 m est surmonté d'un toit conique de même rayon et hauteur 1,5 m. Calculer la surface totale de métal nécessaire pour construire ce silo (sans la base). (π ≈ 3,14)", solution:"Cylindre (sans base) : A_lat = 2×3,14×2×6 = 75,36 m². Cône : génératrice = √(4+2,25)=√6,25=2,5 m. A_lat_cône = 3,14×2×2,5 = 15,7 m². Total = 75,36+15,7 = 91,06 m²"},
+      {id:14, niveau:"Difficile", enonce:"On veut peindre l'extérieur d'une boîte en forme de pavé droit de 50 cm × 40 cm × 30 cm. Un pot de peinture couvre 2 m². Combien de pots faut-il pour 3 couches de peinture ?", solution:"A_tot = 2(50×40+50×30+40×30) = 2(2000+1500+1200) = 2×4700 = 9400 cm² = 0,94 m². Pour 3 couches : 0,94×3 = 2,82 m². Nombre de pots = 2,82÷2 = 1,41 → 2 pots."},
+      {id:15, niveau:"Difficile", enonce:"Un fabricant de crayons produit des crayons cylindriques de rayon 0,4 cm et longueur 18 cm avec une pointe conique de rayon 0,4 cm et hauteur 1,5 cm. Calculer la surface totale d'un crayon (sans la base du cylindre). (π ≈ 3,14)", solution:"Cylindre (sans base du bas) : A = 2×3,14×0,4×18 + 3,14×0,16 = 45,216 + 0,503 ≈ 45,72 cm². Cône : génératrice = √(0,16+2,25) = √2,41 ≈ 1,55 cm. A_lat_cône = 3,14×0,4×1,55 ≈ 1,947 cm². Total ≈ 47,67 cm²"},
+    ],
+  },
+
+  22: {
+    id:22, title:"Repérage dans l'espace", duration:"2 semaines",
+    objectives:[
+      "Comprendre le repère orthogonal dans le plan (2D)",
+      "Lire et placer des points dans un repère",
+      "Calculer la distance entre deux points",
+      "Introduire les coordonnées dans l'espace (3D)",
+      "Résoudre des problèmes de repérage concrets",
+    ],
+    cours:[
+      { id:"22-1", titre:"Repérage dans le plan — le repère orthogonal",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POURQUOI UN REPÈRE ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour localiser précisément un point dans le plan, on a besoin d'un système
+de référence. C'est le rôle du REPÈRE.
+
+EXEMPLES DE REPÉRAGES DANS LA VIE COURANTE :
+• Les coordonnées GPS (latitude, longitude) pour se localiser sur Terre
+• La grille d'une carte routière (A3, B5...)
+• Les cases d'un échiquier (A1, E4...)
+• Le plan d'une salle de cinéma (rangée C, siège 12)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE REPÈRE ORTHOGONAL (O, I, J)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un REPÈRE ORTHOGONAL est formé de :
+• Un point ORIGINE O (point de référence)
+• Un axe horizontal : l'axe des ABSCISSES (axe des x) → axe (Ox)
+• Un axe vertical : l'axe des ORDONNÉES (axe des y) → axe (Oy)
+• Les deux axes sont PERPENDICULAIRES entre eux
+
+REPRÉSENTATION :
+         y
+         │
+       4 │        • B(2,4)
+       3 │
+       2 │   • A(1,2)
+       1 │
+         │
+  ───────┼──────────────→ x
+         O  1  2  3  4
+        -1
+        -2 │      • C(3,-2)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COORDONNÉES D'UN POINT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Chaque point du plan est repéré par un COUPLE de nombres (x ; y) :
+• x = ABSCISSE : position horizontale (lire sur l'axe des x)
+• y = ORDONNÉE : position verticale (lire sur l'axe des y)
+
+NOTATION : M(x ; y) — on lit "M de coordonnées x et y"
+
+CONVENTION : On lit TOUJOURS l'abscisse (x) EN PREMIER, puis l'ordonnée (y).
+
+EXEMPLES :
+• A(3 ; 2) → 3 vers la droite, 2 vers le haut
+• B(-2 ; 4) → 2 vers la gauche, 4 vers le haut
+• C(0 ; -3) → sur l'axe des y, 3 vers le bas
+• D(4 ; 0) → sur l'axe des x, à droite
+• O(0 ; 0) → l'origine
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LES 4 QUADRANTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Les deux axes divisent le plan en 4 QUADRANTS :
+
+         y
+         │
+   Q2    │    Q1
+ (−,+)   │  (+,+)
+─────────┼─────────→ x
+   Q3    │    Q4
+ (−,−)   │  (+,−)
+         │
+
+• Quadrant 1 (Q1) : x > 0 et y > 0 (en haut à droite)
+• Quadrant 2 (Q2) : x < 0 et y > 0 (en haut à gauche)
+• Quadrant 3 (Q3) : x < 0 et y < 0 (en bas à gauche)
+• Quadrant 4 (Q4) : x > 0 et y < 0 (en bas à droite)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PLACER UN POINT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE pour placer M(3 ; -2) :
+1. Partir de l'origine O
+2. Se déplacer de 3 unités vers la DROITE (x = +3)
+3. Puis de 2 unités vers le BAS (y = -2)
+4. Placer le point et l'étiqueter M
+
+MÉTHODE pour lire les coordonnées d'un point P :
+1. Tracer une verticale depuis P jusqu'à l'axe des x → lire x
+2. Tracer une horizontale depuis P jusqu'à l'axe des y → lire y
+
+🌍 EXEMPLES AFRICAINS :
+• Sur un plan de Libreville, l'origine est la mairie.
+  L'axe des x est le boulevard Omar Bongo (horizontal).
+  L'axe des y est l'avenue de l'Indépendance (vertical).
+  Le stade d'Angondjé serait aux coordonnées approximatives (8 ; 12) km.
+• Un navire à Pointe-Noire : sa position GPS est (latitude 4°S, longitude 12°E)
+  → sur une carte simplifiée : P(-4 ; 12)`,
+        exemples:[
+          {question:"Placer les points A(4;3), B(-2;1), C(0;-4), D(-3;-2) dans un repère.", reponse:"A : 4 à droite et 3 en haut. B : 2 à gauche et 1 en haut. C : sur l'axe y, 4 en bas. D : 3 à gauche et 2 en bas."},
+          {question:"Dans quel quadrant se trouve le point P(-3 ; 5) ?", reponse:"x=-3 < 0 et y=5 > 0 → Quadrant 2 (Q2 : en haut à gauche)."},
+          {question:"Quelles sont les coordonnées de l'origine O ?", reponse:"O(0 ; 0) — l'origine est à l'intersection des deux axes."},
+        ]
+      },
+      { id:"22-2", titre:"Distance entre deux points et milieu",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DISTANCE ENTRE DEUX POINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La distance entre deux points A(xₐ ; yₐ) et B(x_b ; y_b) est donnée
+par la FORMULE DE LA DISTANCE (issue du théorème de Pythagore) :
+
+  AB = √[(x_b − xₐ)² + (y_b − yₐ)²]
+
+DÉMONSTRATION :
+Tracer le triangle rectangle ABC où C est à (x_b ; yₐ).
+• AC = |x_b − xₐ| (distance horizontale)
+• BC = |y_b − yₐ| (distance verticale)
+• AB² = AC² + BC² (Pythagore)
+• AB = √(AC² + BC²) = √[(x_b−xₐ)² + (y_b−yₐ)²]
+
+EXEMPLE 1 : Distance entre A(1 ; 2) et B(4 ; 6)
+AB = √[(4−1)² + (6−2)²]
+   = √[3² + 4²]
+   = √[9 + 16]
+   = √25 = 5
+
+EXEMPLE 2 : Distance entre C(-2 ; 1) et D(3 ; -3)
+CD = √[(3−(−2))² + (−3−1)²]
+   = √[5² + (−4)²]
+   = √[25 + 16]
+   = √41 ≈ 6,4
+
+CAS PARTICULIERS :
+• Points sur le même axe horizontal (yₐ = y_b) :
+  AB = |x_b − xₐ|
+
+• Points sur le même axe vertical (xₐ = x_b) :
+  AB = |y_b − yₐ|
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MILIEU D'UN SEGMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le MILIEU M du segment [AB] avec A(xₐ ; yₐ) et B(x_b ; y_b) est :
+
+       xₐ + x_b       yₐ + y_b
+  M = (─────────  ;  ─────────)
+           2               2
+
+EXEMPLE : Milieu de [AB] avec A(2 ; 4) et B(6 ; 2)
+M = ((2+6)/2 ; (4+2)/2) = (8/2 ; 6/2) = (4 ; 3)
+
+VÉRIFICATION : AM = √[(4−2)²+(3−4)²] = √[4+1] = √5
+               MB = √[(6−4)²+(2−3)²] = √[4+1] = √5 ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ALIGNEMENT DE TROIS POINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Trois points A, B, C sont alignés si et seulement si :
+AB + BC = AC  (ou toute combinaison)
+
+EXEMPLE : A(0;0), B(2;2), C(4;4)
+AB = √(4+4) = √8 = 2√2
+BC = √(4+4) = √8 = 2√2
+AC = √(16+16) = √32 = 4√2
+AB + BC = 2√2 + 2√2 = 4√2 = AC ✓ → A, B, C sont alignés !
+
+🌍 EXEMPLES AFRICAINS :
+• Sur un plan, Libreville est à O(0;0), la plage des Cocotiers à P(3;2) km.
+  Distance = √(9+4) = √13 ≈ 3,6 km à vol d'oiseau.
+• Trois villages A(0;0), B(4;3), C(8;6). Sont-ils alignés ?
+  AB=5, BC=5, AC=10 → AB+BC=10=AC ✓ → Oui, alignés sur la même route !`,
+        exemples:[
+          {question:"Calculer la distance entre A(3;1) et B(7;4).", reponse:"AB = √[(7−3)²+(4−1)²] = √[16+9] = √25 = 5"},
+          {question:"Trouver le milieu de [CD] avec C(-4;2) et D(2;-6).", reponse:"M = ((-4+2)/2 ; (2-6)/2) = (-2/2 ; -4/2) = (-1 ; -2)"},
+          {question:"A(0;3) et B(0;-5) sont-ils sur le même axe ? Calculer AB.", reponse:"Oui, même abscisse x=0 → sur l'axe des y. AB = |(-5)−3| = |-8| = 8"},
+        ]
+      },
+      { id:"22-3", titre:"Repérage dans l'espace (3D)",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXTENSION AU REPÈRE 3D
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dans l'ESPACE (3 dimensions), un repère est formé de :
+• Un point ORIGINE O
+• Trois axes PERPENDICULAIRES entre eux : Ox, Oy, Oz
+
+Chaque point est repéré par un TRIPLET de coordonnées : M(x ; y ; z)
+• x = abscisse
+• y = ordonnée
+• z = cote (hauteur)
+
+REPRÉSENTATION :
+              z
+              │
+              │
+              │
+              O────────── y
+             ╱
+            ╱
+           x
+
+EXEMPLES :
+• O(0 ; 0 ; 0) → l'origine
+• A(3 ; 2 ; 5) → 3 selon x, 2 selon y, 5 selon z (à 5 d'altitude)
+• B(4 ; 0 ; 0) → sur l'axe Ox
+• C(0 ; 3 ; 0) → sur l'axe Oy
+• D(0 ; 0 ; 7) → sur l'axe Oz (à 7 de hauteur)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COORDONNÉES D'UN PAVÉ DROIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Si O est un sommet d'un pavé droit (L × ℓ × h), les 8 sommets ont
+pour coordonnées :
+
+O(0;0;0), A(L;0;0), B(L;ℓ;0), C(0;ℓ;0) — base inférieure
+D(0;0;h), E(L;0;h), F(L;ℓ;h), G(0;ℓ;h) — base supérieure
+
+EXEMPLE : Pavé 4 × 3 × 2 :
+O(0;0;0), A(4;0;0), B(4;3;0), C(0;3;0)
+D(0;0;2), E(4;0;2), F(4;3;2), G(0;3;2)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DISTANCE DANS L'ESPACE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La distance entre A(xₐ;yₐ;zₐ) et B(x_b;y_b;z_b) :
+
+  AB = √[(x_b−xₐ)² + (y_b−yₐ)² + (z_b−zₐ)²]
+
+EXEMPLE : Distance entre O(0;0;0) et A(3;4;0) :
+OA = √(9+16+0) = √25 = 5
+
+Distance entre O(0;0;0) et P(3;4;12) :
+OP = √(9+16+144) = √169 = 13
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+APPLICATIONS PRATIQUES DU REPÉRAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. CARTOGRAPHIE ET GPS :
+   La position d'un lieu est donnée par (longitude ; latitude ; altitude).
+   Libreville ≈ (9,45°E ; 0,39°N ; 0 m)
+
+2. JEUX VIDÉO ET MODÉLISATION 3D :
+   Chaque objet a des coordonnées (x ; y ; z) dans l'espace virtuel.
+
+3. ARCHITECTURE ET CONSTRUCTION :
+   Les plans d'un bâtiment utilisent un repère pour situer les pièces.
+   Plan 2D : (x ; y) = (largeur ; longueur)
+   Plan 3D : (x ; y ; z) = (largeur ; longueur ; hauteur)
+
+4. NAVIGATION MARITIME :
+   La position d'un bateau : (longitude ; latitude).
+   Exemple : Libreville est à environ (9°E ; 0°N) sur la carte mondiale.
+
+🌍 EXEMPLES AFRICAINS :
+• Plan d'un village : O = entrée du village, x = route principale,
+  y = chemin secondaire. École à E(200 ; 150) m, marché à M(350 ; 80) m.
+  Distance école-marché = √[(350−200)²+(80−150)²]
+                        = √[150²+70²] = √[22500+4900] = √27400 ≈ 165 m
+
+• Coordonnées des capitales africaines (approximatives, par rapport à Libreville) :
+  Libreville : (0 ; 0)
+  Brazzaville : (610 km Est ; 390 km Sud) → B(610 ; -390)
+  Yaoundé : (610 km NE ; 210 km N) → Y(610 ; 210)`,
+        exemples:[
+          {question:"Placer les points A(2;3), B(-1;-2), C(4;-1) dans un repère et identifier leur quadrant.", reponse:"A(2;3) : Q1 (x>0, y>0). B(-1;-2) : Q3 (x<0, y<0). C(4;-1) : Q4 (x>0, y<0)."},
+          {question:"Calculer la distance entre A(1;1;1) et B(4;5;1) dans l'espace.", reponse:"AB = √[(4−1)²+(5−1)²+(1−1)²] = √[9+16+0] = √25 = 5"},
+          {question:"Un avion est en A(3;4;10) km. La tour de contrôle est à O(0;0;0). Calculer la distance OA.", reponse:"OA = √(9+16+100) = √125 = 5√5 ≈ 11,18 km"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Placer dans un repère les points : A(3;2), B(-1;4), C(0;-3), D(-2;-1).", solution:"A : 3 droite, 2 haut. B : 1 gauche, 4 haut. C : sur axe y, 3 bas. D : 2 gauche, 1 bas."},
+      {id:2,  niveau:"Facile",    enonce:"Lire les coordonnées de points sur un repère où : P est à 4 droite et 3 haut, Q est à 2 gauche et 0 haut.", solution:"P(4;3), Q(-2;0). Q est sur l'axe des abscisses."},
+      {id:3,  niveau:"Facile",    enonce:"Dans quel quadrant se trouve chaque point : A(-3;5), B(2;-4), C(-1;-6), D(7;3) ?", solution:"A(-3;5) : Q2. B(2;-4) : Q4. C(-1;-6) : Q3. D(7;3) : Q1."},
+      {id:4,  niveau:"Facile",    enonce:"Calculer la distance entre A(0;0) et B(3;4).", solution:"AB = √(9+16) = √25 = 5"},
+      {id:5,  niveau:"Facile",    enonce:"Trouver le milieu de [AB] avec A(2;6) et B(8;2).", solution:"M = ((2+8)/2 ; (6+2)/2) = (5;4)"},
+      {id:6,  niveau:"Moyen",     enonce:"Calculer la distance entre C(-3;1) et D(5;-5).", solution:"CD = √[(5-(-3))²+(-5-1)²] = √[64+36] = √100 = 10"},
+      {id:7,  niveau:"Moyen",     enonce:"M est le milieu de [AB] avec A(−4;3) et B(6;−1). Calculer les coordonnées de M.", solution:"M = ((-4+6)/2 ; (3-1)/2) = (2/2 ; 2/2) = (1;1)"},
+      {id:8,  niveau:"Moyen",     enonce:"Les points A(0;0), B(3;4) et C(6;8) sont-ils alignés ?", solution:"AB = √(9+16) = 5. BC = √(9+16) = 5. AC = √(36+64) = √100 = 10. AB+BC=10=AC ✓ → alignés !"},
+      {id:9,  niveau:"Moyen",     enonce:"Un village est à V(4;3) et une école à E(8;6) sur un plan (en km). Calculer la distance village-école.", solution:"VE = √[(8-4)²+(6-3)²] = √[16+9] = √25 = 5 km"},
+      {id:10, niveau:"Moyen",     enonce:"ABCD est un rectangle avec A(1;1), B(5;1), C(5;4). Trouver D et calculer le périmètre.", solution:"D est à (1;4) (même x que A, même y que C). AB=4, BC=3. P = 2(4+3) = 14 unités."},
+      {id:11, niveau:"Difficile", enonce:"Trouver un point M sur l'axe des abscisses équidistant de A(2;4) et B(6;2).", solution:"M(x;0). MA² = (x-2)²+16. MB² = (x-6)²+4. MA=MB → (x-2)²+16=(x-6)²+4. x²-4x+4+16=x²-12x+36+4 → 8x=20 → x=2,5. M(2,5;0)."},
+      {id:12, niveau:"Difficile", enonce:"Un triangle ABC a A(0;0), B(6;0), C(3;4). Calculer les longueurs des 3 côtés, le périmètre et déterminer le type de triangle.", solution:"AB=6. AC=√(9+16)=5. BC=√(9+16)=5. P=16. AC=BC → isocèle. AB²=36, AC²+BC²... Non, 5²+5²=50≠36 → pas rectangle. Acutangle."},
+      {id:13, niveau:"Difficile", enonce:"Calculer la diagonale d'un pavé droit de 12 cm × 5 cm × 4 cm. (La diagonale va d'un sommet au sommet opposé)", solution:"Diagonale = √(12²+5²+4²) = √(144+25+16) = √185 ≈ 13,6 cm"},
+      {id:14, niveau:"Difficile", enonce:"Sur un plan de ville (en km), l'hôpital est à H(2;5), la mairie à M(8;1), l'école à E(5;3). Calculer les 3 distances et trouver quel bâtiment est le plus proche de l'école.", solution:"HE=√(9+4)=√13≈3,6. ME=√(9+4)=√13≈3,6. HE=ME → l'hôpital et la mairie sont à égale distance de l'école !"},
+      {id:15, niveau:"Difficile", enonce:"Un GPS repère Libreville à L(9,45;0,39) et Yaoundé à Y(11,52;3,87) (en degrés de coordonnées géographiques). En utilisant la formule de distance, calculer la distance approximative LY. Sachant qu'un degré vaut environ 111 km, convertir en km.", solution:"LY_degrés = √[(11,52-9,45)²+(3,87-0,39)²] = √[2,07²+3,48²] = √[4,28+12,11] = √16,39 ≈ 4,05 degrés. Distance réelle ≈ 4,05 × 111 ≈ 450 km."},
+    ],
+  },
+
+  23: {
+    id:23, title:"Tableaux et graphiques", duration:"3 semaines",
+    objectives:[
+      "Comprendre le vocabulaire statistique de base",
+      "Lire et construire un tableau d effectifs et de frequences",
+      "Construire et lire un tableau a double entree",
+      "Representer des donnees par un diagramme en barres",
+      "Representer des donnees par un diagramme circulaire avec calcul des angles",
+      "Representer et lire un graphique en courbe",
+      "Choisir la representation adaptee et interpreter un graphique",
+    ],
+    cours:[
+      { id:"23-1", titre:"Vocabulaire statistique et tableaux",
+        contenu:`La STATISTIQUE collecte, organise, represente et interprete des donnees.
+
+VOCABULAIRE FONDAMENTAL :
+POPULATION : ensemble de tous les individus etudies.
+INDIVIDU : chaque element de la population.
+ECHANTILLON : une partie representative de la population.
+CARACTERE : propriete etudiee (qualitatif, quantitatif discret, quantitatif continu).
+VALEUR : chaque resultat possible du caractere.
+EFFECTIF (n_i) : nombre d individus ayant une valeur donnee.
+EFFECTIF TOTAL (N) : nombre total d individus.
+FREQUENCE : f_i = n_i / N (entre 0 et 1)
+FREQUENCE % : f_i x 100
+
+TABLEAU D EFFECTIFS ET DE FREQUENCES - METHODE :
+1. Recenser toutes les valeurs differentes.
+2. Compter l effectif de chaque valeur (traits de comptage).
+3. Calculer la frequence (n_i divise N).
+4. Calculer la frequence en % (x100).
+5. Verifier : somme effectifs = N et somme frequences = 1 (100%).
+
+EXEMPLE : Notes de 30 eleves :
+8,12,15,10,18,12,14,8,12,16,10,14,12,18,20,15,10,12,14,8,16,12,10,15,14,12,18,10,16,20
+
+Note  Effectif  Frequence  Freq%
+8       3        0,10       10%
+10      5        0,17       17%
+12      7        0,23       23%
+14      4        0,13       13%
+15      3        0,10       10%
+16      3        0,10       10%
+18      3        0,10       10%
+20      2        0,07        7%
+Total  30        1,00      100%
+
+Verification : 3+5+7+4+3+3+3+2=30 OK | somme frequences = 1 OK
+
+TABLEAU A DOUBLE ENTREE (CROISE) :
+Croise deux caracteres simultanement.
+Structure : lignes = valeurs caractere 1 | colonnes = valeurs caractere 2.
+Cases = effectifs croises | Totaux en marge.
+
+EXEMPLE : 40 eleves, genre x matiere preferee :
+          Maths  Francais  SVT  Total
+Garcons    12       5       7    24
+Filles      8       6       2    16
+Total      20      11       9    40
+
+Lecture : 12 garcons preferent maths (12/40=30%). 12/24=50% des garcons aiment maths.
+Verification : 24+16=40 | 20+11+9=40 OK
+
+TYPES DE CARACTERES :
+QUALITATIF : categories (genre, pays, couleur) - pas de calcul numerique
+QUANTITATIF DISCRET : valeurs entieres denombr ables (notes, nb enfants)
+QUANTITATIF CONTINU : toutes valeurs reelles (taille, masse, temperature)
+
+AFRICAIN : Lycee de Libreville - pays d origine 50 eleves :
+Gabon(25=50%), Cameroun(8=16%), Congo(5=10%), RDC(4=8%), Benin(3=6%), Autre(5=10%)`,
+        exemples:[
+          {question:"8 eleves, tailles (cm) : 152,165,158,165,172,158,165,148. Construire le tableau.", reponse:"148: eff=1, f=12,5%. 152: eff=1, 12,5%. 158: eff=2, 25%. 165: eff=3, 37,5%. 172: eff=1, 12,5%. Total: 8, 100%."},
+          {question:"Dans un tableau a double entree, totaux de lignes : 18, 22, 15. Effectif total ?", reponse:"Effectif total = 18+22+15 = 55"},
+          {question:"Quelle difference entre effectif et frequence ?", reponse:"Effectif = nombre brut (ex: 12 eleves). Frequence = proportion (12/30=0,4=40%). La frequence permet de comparer des series de tailles differentes."},
+          {question:"Verifier : effectifs 5, 8, 7, 4 sur un total annonce de 25.", reponse:"Somme = 5+8+7+4 = 24 DIFFERENT de 25 -> tableau INCORRECT !"},
+        ]
+      },
+      { id:"23-2", titre:"Diagrammes en barres et circulaires",
+        contenu:`DIAGRAMME EN BARRES :
+Chaque valeur/categorie = une barre dont la HAUTEUR est proportionnelle a l effectif.
+Quand l utiliser : comparer des effectifs de differentes categories.
+
+REGLES DE CONSTRUCTION :
+1. Axe horizontal -> valeurs/categories
+2. Axe vertical -> effectifs ou frequences
+3. Barres de meme LARGEUR
+4. Barres separees par des espaces (donnees discretes)
+5. Titre clair, axes legendes avec unites
+
+VARIANTES :
+- Diagramme en barres horizontal : barres vers la droite
+- Diagramme groupe : plusieurs series cote a cote
+- Diagramme empile : barres superposees
+
+SCHEMA (notes de la classe) :
+Eff.
+7 |    ##
+5 |  ####
+4 |  ##  ##
+3 |########  ####
+2 |              ##
+  +-----------------  Notes
+   8  10 12 14 15 16 18 20
+
+DIAGRAMME CIRCULAIRE (CAMEMBERT) :
+Cercle divise en SECTEURS dont les ANGLES sont proportionnels aux effectifs.
+Quand l utiliser : montrer la REPARTITION d un TOUT en parts.
+
+PRINCIPE : Cercle entier = population entiere = 360 degres = 100%
+
+FORMULE DE L ANGLE :
+Angle = (Effectif / Effectif total) x 360
+Angle = Frequence x 360
+
+METHODE DE CONSTRUCTION :
+1. Calculer chaque angle.
+2. Tracer un cercle.
+3. Tracer un rayon de depart (vers le haut = 12h).
+4. Placer le rapporteur sur le centre, aligner le zero.
+5. Marquer chaque angle et tracer le rayon.
+6. Colorier, legendes, titre.
+7. VERIFIER : somme des angles = 360 degres
+
+EXEMPLE COMPLET : Pays d origine de 50 eleves :
+Gabon(25), Cameroun(8), Congo(5), RDC(4), Benin(3), Autre(5)
+Gabon    : 25/50 x 360 = 180,0 degres
+Cameroun :  8/50 x 360 =  57,6 degres
+Congo    :  5/50 x 360 =  36,0 degres
+RDC      :  4/50 x 360 =  28,8 degres
+Benin    :  3/50 x 360 =  21,6 degres
+Autre    :  5/50 x 360 =  36,0 degres
+TOTAL                   = 360,0 degres OK
+
+LIRE UN DIAGRAMME CIRCULAIRE :
+- 180 degres = 50% | 90 degres = 25% | 120 degres = 33%
+- Identifier le plus grand secteur (categorie majoritaire)
+
+QUAND NE PAS UTILISER LE CAMEMBERT :
+- Plus de 6-7 categories -> petits secteurs illisibles
+- Pour montrer une evolution dans le temps -> utiliser une courbe !
+
+AFRICAIN - Budget familial gabonais :
+Loyer 35%, Nourriture 30%, Transport 15%, Education 12%, Loisirs 8%
+Angles : 126, 108, 54, 43,2, 28,8 degres`,
+        exemples:[
+          {question:"25 eleves preferent maths, 15 francais, 10 SVT. Calculer les angles du diagramme circulaire.", reponse:"Total=50. Maths: 25/50x360=180 degres. Francais: 15/50x360=108 degres. SVT: 10/50x360=72 degres. Verif: 180+108+72=360 OK"},
+          {question:"Secteur d un diagramme = 72 degres. Quel pourcentage ? Si N=150, quel effectif ?", reponse:"Frequence = 72/360 = 0,2 = 20%. Effectif = 150x0,2 = 30 individus."},
+          {question:"Pourquoi le diagramme circulaire est-il inappropriate pour les temperatures mensuelles ?", reponse:"Les temperatures ne forment pas un TOUT a repartir. Elles evoluent dans le temps -> graphique en courbe adapte."},
+          {question:"Dans un diagramme en barres, la barre lundi est 2x plus haute que mardi. Si lundi=60, effectif mardi ?", reponse:"Mardi = 60/2 = 30 (la hauteur est proportionnelle a l effectif)"},
+        ]
+      },
+      { id:"23-3", titre:"Graphique en courbe et interpretation",
+        contenu:`GRAPHIQUE EN COURBE (LIGNE BRISEE) :
+Suite de points relies par des SEGMENTS.
+Utilise pour montrer l EVOLUTION d une grandeur au cours du TEMPS.
+
+QUAND L UTILISER :
+- Donnees evoluant dans le temps (series chronologiques)
+- Visualiser des tendances (hausse, baisse, cycles)
+- Comparer l evolution de plusieurs series
+
+REGLES DE CONSTRUCTION :
+1. Axe horizontal (abscisses) : le TEMPS (jours, mois, annees)
+2. Axe vertical (ordonnees) : la VALEUR mesuree (avec unite)
+3. Choisir une ECHELLE adaptee (ne pas deformer la courbe)
+4. Placer chaque POINT (date ; valeur) avec precision
+5. Relier les points par des SEGMENTS droits
+6. Titre, legendes des axes, unites, graduation
+
+EXEMPLE : Abonnes AfriLearn (en milliers) :
+Mois  : Jan Fev Mar Avr Mai Juin
+Abon. :  50  80 120 160 220  310
+
+Schema :
+300 |                             *
+250 |                         *
+200 |                     *
+150 |                 *
+100 |         *
+ 50 |     *
+    +---------------------------  Mois
+     Jan Fev Mar Avr Mai Jun
+
+Interpretation : Croissance reguliere et acceleree des abonnes.
+
+METHODE D INTERPRETATION EN 6 ETAPES :
+1. TITRE -> De quoi parle ce graphique ?
+2. AXES -> Quelles grandeurs ? Quelles unites ?
+3. ECHELLE -> Quelle graduation ? Axe tronque ?
+4. TENDANCES -> Monte ? Descend ? Stable ? Oscillante ?
+5. POINTS REMARQUABLES -> Maximum, minimum, changements brusques
+6. CONCLUSION -> Reponse en lien avec la realite
+
+VOCABULAIRE :
+CROISSANT/EN HAUSSE : valeurs qui augmentent
+DECROISSANT/EN BAISSE : valeurs qui diminuent
+STABLE/CONSTANT : valeurs qui restent proches
+MAXIMUM (pic) : valeur la plus haute
+MINIMUM (creux) : valeur la plus basse
+AMPLITUDE : difference entre max et min
+TENDANCE GENERALE : direction globale sur toute la periode
+VARIATION ABSOLUE : valeur finale - valeur initiale
+VARIATION RELATIVE (%) : (val_finale - val_initiale) / val_initiale x 100
+
+AXES TRONQUES - DANGER !
+Un graphique peut TROMPER si l axe vertical ne commence pas a 0 !
+Ventes 1000 et 1050 FCFA :
+- Axe 0 a 2000 -> variation minime (realiste)
+- Axe 900 a 1100 -> variation IMMENSE (trompeur !)
+BONNE PRATIQUE : Toujours regarder l origine des axes !
+
+CLIMAGRAMME : represente sur le meme graphique :
+- Temperatures mensuelles (courbe)
+- Precipitations mensuelles (barres)
+
+AFRICAIN - Donnees climatiques de Libreville :
+Mois : Jan Fev Mar Avr Mai Jun Jul Aou Sep Oct Nov Dec
+T(C) :  27  27  27  27  27  26  25  25  26  27  27  27
+P(mm): 250 200 380 340 220  40  10  30  80 280 430 230
+
+Interpretation :
+- Temperature stable toute l annee (25-27 C) -> CLIMAT EQUATORIAL
+- Deux saisons seches (juin-aout, janv-fev) et deux saisons des pluies
+- Amplitude thermique = 2 C (tres faible, caracteristique equatorial)`,
+        exemples:[
+          {question:"Un graphique de temperatures : janv=18C, juin=34C. Amplitude thermique ? Type de climat ?", reponse:"Amplitude = 34-18 = 16 C. Grande amplitude -> CLIMAT TROPICAL ou SAHELIEN avec saison froide et chaude distincte."},
+          {question:"Ventes : Jan=200, Fev=250, Mar=180, Avr=300. Quand les ventes ont-elles baisse ? Variation Jan->Avr ?", reponse:"Baisse entre Fev (250) et Mar (180). Variation Jan->Avr = 300-200 = +100 (hausse de 50%)."},
+          {question:"Pourquoi un axe ne commencant pas a 0 peut tromper ?", reponse:"Exagere visuellement les variations. Hausse de 5% semble enormes si axe va de 95 a 105, alors que minime sur axe 0 a 200."},
+          {question:"Difference entre variation absolue et relative ?", reponse:"Absolue = difference brute (ex: +50). Relative = en % par rapport valeur initiale (200->250: +50 absolue, +25% relative)."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Notes de 10 eleves : 8, 12, 15, 12, 10, 15, 8, 18, 12, 10. Construire le tableau complet d effectifs et de frequences.", solution:"Note 8: eff=2, f=20%. Note 10: eff=2, f=20%. Note 12: eff=3, f=30%. Note 15: eff=2, f=20%. Note 18: eff=1, f=10%. Total: 10, 100%. Verif: 2+2+3+2+1=10 OK"},
+      {id:2,  niveau:"Facile",    enonce:"Dans un diagramme circulaire, une categorie represente 40% du total. Quel est son angle ?", solution:"40% x 360 = 144 degres"},
+      {id:3,  niveau:"Facile",    enonce:"Un secteur circulaire a un angle de 90 degres. Quel pourcentage ? Et si N=120, quel effectif ?", solution:"Frequence = 90/360 = 0,25 = 25%. Effectif = 120x0,25 = 30 individus."},
+      {id:4,  niveau:"Facile",    enonce:"Courbe de ventes : janv=50, fev=80, mars=60. Calculer la variation absolue entre janvier et mars.", solution:"Variation = 60-50 = +10. Hausse de 10 (malgre une baisse intermediaire en mars par rapport a fevrier)."},
+      {id:5,  niveau:"Facile",    enonce:"Quel type de graphique utiliser : (a) repartition des eleves par pays, (b) evolution de la population, (c) comparaison des notes de 5 matieres ?", solution:"(a) Circulaire (repartition d un tout). (b) Courbe (evolution dans le temps). (c) Barres (comparaison de categories)."},
+      {id:6,  niveau:"Moyen",     enonce:"40 eleves : 15 aiment foot, 10 natation, 8 basketball, 7 athletisme. Tableau complet et angles du diagramme circulaire.", solution:"Foot: 15, 37,5%, 135 deg. Natation: 10, 25%, 90 deg. Basket: 8, 20%, 72 deg. Athle: 7, 17,5%, 63 deg. Total: 40, 100%, 360 deg OK"},
+      {id:7,  niveau:"Moyen",     enonce:"50 eleves : Gabon 30, Cameroun 10, Congo 5, Autres 5. Frequences % et angles du diagramme circulaire.", solution:"Gabon: 60%, 216 deg. Cameroun: 20%, 72 deg. Congo: 10%, 36 deg. Autres: 10%, 36 deg. Total: 100%, 360 deg OK. Pays majoritaire : Gabon."},
+      {id:8,  niveau:"Moyen",     enonce:"Precipitations mensuelles a Yaounde (mm) : Jan=20, Fev=35, Mar=120, Avr=180, Mai=200, Jun=60, Jul=10. Mois le plus pluvieux ? Le plus sec ? Variation Mars->Mai en absolu et en relatif.", solution:"Max: Mai (200mm). Min: Juillet (10mm). Variation Mar->Mai : absolu = +80mm, relatif = 80/120x100 = +66,7%."},
+      {id:9,  niveau:"Moyen",     enonce:"60 eleves, tableau croise genre x matiere : Garcons(maths=20, francais=15), Filles(maths=12, francais=13). Verifier tous les totaux et calculer la frequence de garcons-maths parmi tous.", solution:"Total maths=32, francais=28, total=60 OK. Garcons=35 OK, filles=25 OK. Frequence garcons-maths = 20/60 = 1/3 = 33,3%."},
+      {id:10, niveau:"Moyen",     enonce:"Production cacao (t) : 2019=2,1 ; 2020=2,4 ; 2021=1,8 ; 2022=2,6 ; 2023=3,1. Variation 2021->2023 en absolu et en relatif.", solution:"Variation absolue = 3,1-1,8 = +1,3t. Variation relative = 1,3/1,8x100 = +72,2%. La production a presque double en 2 ans."},
+      {id:11, niveau:"Difficile", enonce:"Budget mensuel Libreville : Loyer=150 000, Nourriture=120 000, Transport=60 000, Education=45 000, Loisirs=25 000 FCFA. Tableau complet (effectifs, frequences %, angles). Poste le plus important ?", solution:"Total=400 000 FCFA. Loyer: 37,5%, 135 deg. Nourr: 30%, 108 deg. Transp: 15%, 54 deg. Educ: 11,25%, 40,5 deg. Lois: 6,25%, 22,5 deg. Total: 100%, 360 deg OK. Poste le plus important : le loyer (37,5%)."},
+      {id:12, niveau:"Difficile", enonce:"Temperatures a Libreville : 25-27 C toute l annee. Amplitude thermique ? Comparer avec N Djamena (Tchad) : 15-42 C. Expliquer la difference climatique.", solution:"Amplitude Libreville = 2 C -> CLIMAT EQUATORIAL tres stable. N Djamena = 42-15 = 27 C -> CLIMAT SAHELIEN avec hiver froid et ete tres chaud. La latitude explique : Libreville est a l equateur, N Djamena bien plus au nord."},
+      {id:13, niveau:"Difficile", enonce:"Comparer classes A et B. Classe A (25 eleves) : <10: 5, 10-14: 12, >=15: 8. Classe B (30 eleves) : <10: 8, 10-14: 14, >=15: 8. Calculer les frequences et conclure.", solution:"Classe A : <10: 20%, 10-14: 48%, >=15: 32%. Classe B : <10: 26,7%, 10-14: 46,7%, >=15: 26,7%. Classe A a plus de tres bons (32% vs 27%) et moins d echec (20% vs 27%) -> Classe A meilleurs resultats."},
+      {id:14, niveau:"Difficile", enonce:"200 eleves africains : Maths=80, SVT=50, Francais=40, Hist-Geo=20, Anglais=10. Tableau complet. Quel diagramme choisir pour representer ces donnees ? Pourquoi ?", solution:"Maths: 80, 40%, 144 deg. SVT: 50, 25%, 90 deg. Francais: 40, 20%, 72 deg. Hist-Geo: 20, 10%, 36 deg. Anglais: 10, 5%, 18 deg. Total OK. Les deux graphiques sont possibles : Circulaire pour montrer les proportions (40% pour maths), Barres pour comparer les effectifs absolus."},
+      {id:15, niveau:"Difficile", enonce:"Population africaine (milliards) : 1950=0,22 ; 1975=0,41 ; 2000=0,81 ; 2010=1,04 ; 2020=1,34 ; 2024=1,46. Variations absolues et relatives entre chaque periode. Quelle periode a la plus forte croissance relative ? Tendance generale ?", solution:"1950->75: +0,19 Md, +86%. 1975->00: +0,40 Md, +98%. 2000->10: +0,23 Md, +28%. 2010->20: +0,30 Md, +29%. 2020->24: +0,12 Md, +9%. Plus forte croissance RELATIVE : 1975->2000 (+98%). Tendance : croissance continue mais taux ralentit. Population multipliee par 6,6 en 74 ans !"},
+    ],
+  },
+
+
+  24: {
+    id:24, title:"Moyennes", duration:"2 semaines",
+    objectives:[
+      "Calculer la moyenne arithmetique d une serie statistique",
+      "Calculer la moyenne a partir d un tableau d effectifs",
+      "Calculer la moyenne ponderee avec coefficients",
+      "Calculer l etendue, la mediane et le mode d une serie",
+      "Distinguer moyenne, mediane et mode et choisir le bon indicateur",
+      "Resoudre des problemes concrets faisant intervenir ces indicateurs",
+    ],
+    cours:[
+      { id:"24-1", titre:"Moyenne arithmetique",
+        contenu:`LA MOYENNE ARITHMETIQUE :
+La valeur qui, si elle remplacait toutes les valeurs, donnerait la meme somme totale.
+
+FORMULE :
+x_barre = (x1 + x2 + ... + xn) / n
+        = Somme de toutes les valeurs / Nombre de valeurs
+
+EXEMPLE 1 - Simple :
+Notes de Kofi : 12, 15, 8, 14, 11
+Somme = 12+15+8+14+11 = 60
+n = 5
+Moyenne = 60 / 5 = 12
+
+EXEMPLE 2 - Masses de sacs :
+48 kg, 52 kg, 50 kg, 50 kg
+Moyenne = (48+52+50+50) / 4 = 200 / 4 = 50 kg
+
+PROPRIETES IMPORTANTES :
+1. La moyenne est toujours comprise entre MIN et MAX :  min <= x_barre <= max
+2. Si on ajoute k a chaque valeur -> moyenne augmente de k
+3. Si on soustrait k a chaque valeur -> moyenne diminue de k
+4. Si on multiplie chaque valeur par k -> moyenne est multipliee par k
+5. La somme des ecarts a la moyenne est toujours nulle :
+   Somme(xi - x_barre) = 0
+
+EXEMPLE PROPRIETE 5 : valeurs 8, 10, 12 ; moyenne = 10
+Ecarts : (8-10) + (10-10) + (12-10) = -2 + 0 + 2 = 0 OK
+
+MOYENNE A PARTIR D UN TABLEAU D EFFECTIFS :
+Quand les donnees sont donnees avec leurs effectifs :
+
+Formule : Moyenne = Somme(valeur x effectif) / Effectif total
+          x_barre = [Somme(xi x ni)] / N
+
+EXEMPLE : Notes d une classe de 30 eleves :
+Note  Eff    Note x Eff
+  8    3        24
+ 10    5        50
+ 12    7        84
+ 14    4        56
+ 15    3        45
+ 16    3        48
+ 18    3        54
+ 20    2        40
+Total 30       401
+
+Moyenne = 401 / 30 = 13,37 / 20
+
+TROUVER UNE VALEUR MANQUANTE :
+Si la moyenne est connue et une valeur manque :
+Valeur manquante = (Moyenne x n) - Somme des autres valeurs
+
+EXEMPLE : 4 notes, moyenne = 14. Notes connues : 12, 15, 13.
+Somme totale = 14 x 4 = 56
+Note manquante = 56 - 12 - 15 - 13 = 56 - 40 = 16
+
+AFRICAIN :
+- Moyenne de temperature annuelle de Libreville = 26 C
+- Salaire moyen au Gabon = environ 200 000 FCFA/mois
+- Taille moyenne des eleves de 6eme = environ 1,52 m
+- Consommation moyenne eau par famille = 8 m3/mois`,
+        exemples:[
+          {question:"Calculer la moyenne : 7, 14, 9, 12, 8", reponse:"Somme = 7+14+9+12+8 = 50. Moyenne = 50/5 = 10"},
+          {question:"La moyenne de 4 notes est 13. La somme de 3 de ces notes est 37. Quelle est la 4eme note ?", reponse:"Somme totale = 13x4 = 52. 4eme note = 52-37 = 15"},
+          {question:"Calculer la moyenne : valeurs 5, 10, 15 avec effectifs 2, 5, 3.", reponse:"Somme(vxe) = 5x2+10x5+15x3 = 10+50+45 = 105. Total eff = 10. Moyenne = 105/10 = 10,5"},
+          {question:"Verifier : notes 8,10,12 de moyenne 10. La somme des ecarts a la moyenne vaut-elle 0 ?", reponse:"Ecarts : (8-10)+(10-10)+(12-10) = -2+0+2 = 0 OK. Propriete verifiee."},
+        ]
+      },
+      { id:"24-2", titre:"Etendue, mediane et mode",
+        contenu:`L ETENDUE :
+L etendue est la difference entre la valeur MAXIMALE et la valeur MINIMALE.
+e = valeur max - valeur min
+
+Elle mesure la DISPERSION de la serie (comment les valeurs sont etalees).
+
+EXEMPLE : 3, 7, 12, 5, 18, 9
+Etendue = 18 - 3 = 15
+
+Grande etendue -> valeurs tres dispersees (serie heterogene)
+Petite etendue -> valeurs groupees (serie homogene)
+
+EXEMPLE AFRICAIN : Temperatures de Libreville (25-27 C) -> etendue = 2 C (homogene)
+Temperatures de N Djamena (15-42 C) -> etendue = 27 C (tres dispersee)
+
+LA MEDIANE :
+La valeur qui PARTAGE la serie ORDONNEE en deux parties EGALES.
+- 50% des valeurs sont inferieures ou egales a la mediane
+- 50% des valeurs sont superieures ou egales a la mediane
+
+METHODE - n IMPAIR :
+1. Classer les valeurs dans l ordre CROISSANT
+2. La mediane est la valeur du rang (n+1)/2
+
+EXEMPLE : Serie (n=5) : 8, 3, 12, 7, 15
+Ordonnee : 3, 7, 8, 12, 15
+Rang median = (5+1)/2 = 3 -> mediane = 8 (3eme valeur)
+
+METHODE - n PAIR :
+1. Classer dans l ordre croissant
+2. La mediane est la MOYENNE des deux valeurs centrales (rangs n/2 et n/2+1)
+
+EXEMPLE : Serie (n=6) : 4, 7, 9, 11, 14, 18
+Rangs centraux : 3 et 4 -> valeurs 9 et 11
+Mediane = (9+11)/2 = 10
+
+LE MODE :
+La valeur qui apparait le PLUS SOUVENT dans la serie.
+
+EXEMPLE 1 : 3, 5, 7, 5, 9, 5, 3 -> mode = 5 (3 fois)
+EXEMPLE 2 : 2, 4, 4, 6, 6 -> deux modes = 4 et 6 (serie bimodale)
+EXEMPLE 3 : 1, 2, 3, 4, 5 -> PAS de mode (chaque valeur une seule fois)
+
+Le mode existe toujours dans un tableau d effectifs (valeur d effectif max).
+
+QUELLE MESURE CHOISIR ?
+
+MOYENNE :
+- Quand les valeurs sont homogenes, sans valeurs extremes
+- Exemple : notes d un eleve regulier
+
+MEDIANE :
+- Quand il y a des valeurs extremes (tres grandes ou tres petites)
+- Exemple : salaires (quelques tres riches faussent la moyenne)
+- Exemple : prix immobiliers (quelques mansions faussent la moyenne)
+
+MODE :
+- Pour les donnees qualitatives (categories)
+- Pour trouver la valeur la plus typique/populaire
+- Exemple : taille de vetement la plus vendue
+
+EXEMPLE COMPARATIF :
+Salaires de 5 employes (FCFA) : 180 000, 190 000, 200 000, 210 000, 1 500 000
+
+Moyenne = (180+190+200+210+1500) x 1000 / 5 = 456 000 FCFA
+(faussee par le gros salaire !)
+
+Ordonnee : 180 000, 190 000, 200 000, 210 000, 1 500 000
+Mediane = 200 000 FCFA (valeur centrale)
+(representatif des salaires typiques !)
+
+Conclusion : La MEDIANE represente mieux les salaires de cette serie.
+
+AFRICAIN :
+- Bulletin scolaire gabonais : moyenne ponderee par coefficients
+- Salaire median en Afrique : meilleur indicateur que la moyenne
+- Pointure de chaussure la plus vendue au marche : le mode`,
+        exemples:[
+          {question:"Calculer l etendue de la serie : 15, 8, 22, 11, 18, 5", reponse:"Etendue = max - min = 22 - 5 = 17"},
+          {question:"Trouver la mediane de : 5, 12, 3, 8, 15, 7, 10", reponse:"Ordonnee : 3, 5, 7, 8, 10, 12, 15. n=7 impair. Rang = (7+1)/2 = 4. Mediane = 8 (4eme valeur)."},
+          {question:"Trouver la mediane de : 12, 8, 15, 10, 14, 9", reponse:"Ordonnee : 8, 9, 10, 12, 14, 15. n=6 pair. Valeurs centrales = rang 3 et 4 = 10 et 12. Mediane = (10+12)/2 = 11."},
+          {question:"Serie : 8, 12, 15, 12, 8, 12, 15. Trouver moyenne, mediane, mode et etendue.", reponse:"Somme=82, n=7. Moyenne=82/7=11,7. Ordonnee: 8,8,12,12,12,15,15. Mediane=12 (rang 4). Mode=12 (3 fois). Etendue=15-8=7."},
+        ]
+      },
+      { id:"24-3", titre:"Moyenne ponderee",
+        contenu:`POURQUOI LA MOYENNE PONDEREE ?
+Dans certaines situations, certaines valeurs ont plus d IMPORTANCE que d autres.
+On leur attribue un COEFFICIENT (ou POIDS).
+
+FORMULE :
+x_barre_pond = Somme(valeur x coefficient) / Somme(coefficients)
+             = [Somme(xi x ci)] / [Somme(ci)]
+
+EXEMPLE SCOLAIRE COMPLET :
+Notes du trimestre d Aminata :
+Matiere      Note  Coeff  Note x Coeff
+Maths          14    4      56
+Francais       12    4      48
+SVT            15    2      30
+Hist-Geo       13    2      26
+Anglais        11    2      22
+EPS            16    1      16
+Total                15    198
+
+Moyenne ponderee = 198 / 15 = 13,2 / 20
+
+COMPARAISON AVEC MOYENNE SIMPLE :
+Sans ponderation : (14+12+15+13+11+16)/6 = 81/6 = 13,5
+Avec ponderation :                                 13,2
+-> La ponderation favorise les matieres importantes (Maths et Francais coeff 4) !
+
+EXEMPLE ATHLETISME :
+Un coureur fait 3 courses : 9,8s, 10,2s, 9,9s
+Course 1 (finale) a coefficient 3, courses 2 et 3 a coefficient 1.
+Moyenne ponderee = (9,8x3 + 10,2x1 + 9,9x1) / (3+1+1)
+                = (29,4 + 10,2 + 9,9) / 5
+                = 49,5 / 5 = 9,9 s
+
+EXEMPLE COMMERCIAL :
+Un vendeur de riz : 100 kg a 500 FCFA/kg, 50 kg a 600 FCFA/kg.
+Prix moyen pondere = (100x500 + 50x600) / (100+50)
+                   = (50 000 + 30 000) / 150
+                   = 80 000 / 150
+                   = 533,33 FCFA/kg
+
+Ce n est PAS la meme chose que (500+600)/2 = 550 FCFA/kg !
+La ponderation par les quantites donne le vrai prix moyen.
+
+TROUVER UNE NOTE POUR ATTEINDRE UNE MOYENNE CIBLE :
+Probleme : Kofi a en maths : 14 (coeff 2), 10 (coeff 1). Il veut une moyenne de 13.
+Somme cible = 13 x (2+1+1) = 52 (avec un prochain devoir coeff 1)
+Somme actuelle = 14x2 + 10x1 = 38
+Note necessaire = 52 - 38 = 14 / 20
+
+AFRICAIN :
+- Bulletin scolaire au Gabon : coefficients standard
+  Maths coeff 4, Francais coeff 4, SVT coeff 2, Hist-Geo coeff 2,
+  Anglais coeff 2, Physique coeff 2, EPS coeff 1
+- Indice des prix a la consommation : moyenne ponderee de nombreux produits
+- Moyenne ponderee des recoltes : tenir compte des surfaces plantees`,
+        exemples:[
+          {question:"Notes avec coefficients : Maths 15 (coeff 3), Francais 12 (coeff 2), SVT 14 (coeff 1). Calculer la moyenne ponderee.", reponse:"(15x3+12x2+14x1)/(3+2+1) = (45+24+14)/6 = 83/6 = 13,83/20"},
+          {question:"Un magasin vend : 200 kg de tomates a 800 FCFA/kg et 100 kg a 1000 FCFA/kg. Prix moyen pondere ?", reponse:"(200x800+100x1000)/(200+100) = (160000+100000)/300 = 260000/300 = 866,67 FCFA/kg"},
+          {question:"Kofi a 12 et 15 en maths (coeff 1 chacun). Pour avoir une moyenne de 14 sur 3 devoirs (coeff 1 chacun), quelle note faut-il au 3eme ?", reponse:"Somme cible = 14x3 = 42. Somme actuelle = 12+15 = 27. Note 3 = 42-27 = 15/20"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Calculer la moyenne : 10, 14, 8, 16, 12", solution:"Somme=60. Moyenne=60/5=12"},
+      {id:2,  niveau:"Facile",    enonce:"5 eleves : tailles 1,50m ; 1,62m ; 1,55m ; 1,48m ; 1,60m. Taille moyenne et etendue.", solution:"Somme=7,75m. Moyenne=7,75/5=1,55m. Etendue=1,62-1,48=0,14m=14cm"},
+      {id:3,  niveau:"Facile",    enonce:"Trouver le mode de : 3, 7, 5, 3, 8, 3, 5, 7, 3.", solution:"3 apparait 4 fois -> MODE = 3"},
+      {id:4,  niveau:"Facile",    enonce:"Trouver la mediane de : 4, 9, 2, 7, 11", solution:"Ordonnee : 2, 4, 7, 9, 11. n=5 impair. Mediane = rang 3 = 7"},
+      {id:5,  niveau:"Facile",    enonce:"La moyenne de 3 notes est 14. Quelle est la somme de ces 3 notes ?", solution:"Somme = 14x3 = 42"},
+      {id:6,  niveau:"Moyen",     enonce:"Notes de Jean avec coefficients : Maths 16 (c4), Francais 12 (c3), SVT 14 (c2), Anglais 10 (c1). Calculer la moyenne ponderee.", solution:"Somme(nxc) = 64+36+28+10 = 138. Somme c = 10. Moyenne = 138/10 = 13,8/20"},
+      {id:7,  niveau:"Moyen",     enonce:"Calculer l etendue et la mediane de : 12, 8, 15, 10, 14, 9.", solution:"Ordonnee : 8, 9, 10, 12, 14, 15. n=6. Mediane = (10+12)/2 = 11. Etendue = 15-8 = 7"},
+      {id:8,  niveau:"Moyen",     enonce:"Tableau : valeurs 5, 10, 15, 20 avec effectifs 4, 6, 5, 5. Calculer la moyenne et le mode.", solution:"Somme(vxe) = 20+60+75+100 = 255. N = 20. Moyenne = 255/20 = 12,75. Mode = 10 (effectif 6, le plus grand)."},
+      {id:9,  niveau:"Moyen",     enonce:"Aminata a eu 12, 14, et une note manquante en maths. Sa moyenne de maths est 13. Quelle est la note manquante ?", solution:"Somme = 13x3 = 39. Note manquante = 39-12-14 = 13"},
+      {id:10, niveau:"Moyen",     enonce:"Temperatures max a Libreville : Lun=29, Mar=31, Mer=28, Jeu=32, Ven=30 C. Moyenne, mode, mediane et etendue.", solution:"Somme=150. Moyenne=30 C. Mode=aucun (valeurs toutes differentes). Ordonnee: 28,29,30,31,32. Mediane=30 C. Etendue=32-28=4 C."},
+      {id:11, niveau:"Difficile", enonce:"Un eleve doit avoir une moyenne >= 12 en maths. Il a 4 notes : 10, 14, 8, 13. Quelle note minimale doit-il obtenir au 5eme devoir (coeff 1 chacun) ?", solution:"Somme actuelle = 45. Pour moyenne >= 12 sur 5 : somme >= 60. Note minimale = 60-45 = 15/20."},
+      {id:12, niveau:"Difficile", enonce:"Salaires de 5 employes (en FCFA) : 180 000, 200 000, 190 000, 210 000, 1 500 000. Calculer la moyenne, la mediane et l etendue. Laquelle represente le mieux les salaires typiques ? Pourquoi ?", solution:"Somme=2 280 000. Moyenne=456 000 FCFA (faussee). Ordonnee: 180k,190k,200k,210k,1500k. Mediane=200 000 FCFA. Etendue=1 500 000-180 000=1 320 000 FCFA. La MEDIANE (200 000) represente mieux : la moyenne est tiree vers le haut par le salaire exceptionnel de 1,5M FCFA."},
+      {id:13, niveau:"Difficile", enonce:"Bulletin de Kofi : Maths 15 (c4), Francais 11 (c3), SVT 13 (c2), Hist-Geo 14 (c2), Anglais 12 (c2), EPS 17 (c1). Sa soeur a une moyenne de 13,5. Qui a la meilleure moyenne ?", solution:"Somme(nxc) = 60+33+26+28+24+17 = 188. Somme c = 14. Moyenne Kofi = 188/14 = 13,43. Soeur = 13,5 > 13,43 -> la soeur a la meilleure moyenne (d une courte tete !)."},
+      {id:14, niveau:"Difficile", enonce:"Une plantation (en kg) : 2020=1200, 2021=1450, 2022=980, 2023=1650, 2024=1120. Calculer moyenne, mediane, mode et etendue. En 2025 on veut une moyenne sur 6 ans de 1300 kg. Quelle production faut-il en 2025 ?", solution:"Somme=6400. Moyenne=1280 kg. Ordonnee: 980,1120,1200,1450,1650 -> mediane=(1200+1450)/2=1325 kg. Etendue=1650-980=670 kg. Pas de mode. Pour moy 1300 sur 6 ans : somme=7800. Prod 2025=7800-6400=1400 kg."},
+      {id:15, niveau:"Difficile", enonce:"Classe de 30 eleves : 10 ont une moyenne de 15 et les 20 autres ont une moyenne de 11. Calculer la moyenne de la classe entiere et comparer avec la moyenne simple des deux groupes.", solution:"Somme groupe 1 = 10x15=150. Somme groupe 2 = 20x11=220. Somme totale=370. Moyenne classe = 370/30 = 12,33. Moyenne simple = (15+11)/2 = 13. Ces deux resultats sont DIFFERENTS car les groupes n ont pas le meme effectif -> la moyenne ponderee (12,33) est la bonne."},
+    ],
+  },
+
+
+  25: {
+    id:25, title:"Proportionnalite", duration:"3 semaines",
+    objectives:[
+      "Reconnaitre une situation de proportionnalite",
+      "Calculer le coefficient de proportionnalite",
+      "Completer un tableau de proportionnalite",
+      "Utiliser la regle de trois pour trouver une valeur inconnue",
+      "Connaitre les grandeurs inversement proportionnelles",
+      "Calculer des pourcentages et des taux d evolution",
+      "Appliquer la proportionnalite dans des situations concretes",
+    ],
+    cours:[
+      { id:"25-1", titre:"Proportionnalite directe",
+        contenu:`DEFINITION :
+Deux grandeurs x et y sont PROPORTIONNELLES si leurs valeurs correspondantes
+ont toujours le meme RAPPORT (quotient constant).
+
+COEFFICIENT DE PROPORTIONNALITE (k) :
+Si y est proportionnel a x : y = k x x pour tout x
+Le coefficient k = y / x est CONSTANT.
+
+RECONNAITRE UN TABLEAU PROPORTIONNEL :
+- Calculer tous les rapports y/x
+- S ils sont tous egaux -> PROPORTIONNEL
+- S ils different -> PAS proportionnel
+
+EXEMPLE PROPORTIONNEL :
+x   2    5    8   11
+y   6   15   24   33
+Rapports : 6/2=3 ; 15/5=3 ; 24/8=3 ; 33/11=3 -> tous egaux -> k=3
+
+EXEMPLE NON PROPORTIONNEL :
+x   1    2    3
+y   3    6   10
+Rapports : 3/1=3 ; 6/2=3 ; 10/3=3,33 -> PAS egaux -> non proportionnel
+
+PROPRIETE FONDAMENTALE (PRODUITS EN CROIX) :
+Si x1/y1 = x2/y2 (rapport constant), alors :
+x1 x y2 = x2 x y1
+
+Cela permet de trouver une valeur manquante !
+Si y1 est inconnue : y1 = (x1 x y2) / x2
+
+COMPLETER UN TABLEAU PROPORTIONNEL :
+Methode 1 : Trouver k puis calculer y = k x x
+Methode 2 : Produits en croix
+
+EXEMPLE :
+x   3   ?   9   15
+y  12  20  36    ?
+k = 12/3 = 4 -> y = 4x
+x=5 : y=20 -> x manquant = 20/4 = 5 OK
+y manquant = 4 x 15 = 60
+
+SITUATIONS PROPORTIONNELLES COURANTES :
+- Prix proportionnel a la quantite (prix unitaire constant)
+- Distance proportionnelle au temps (vitesse constante)
+- Recette et nombre de portions
+- Conversion de devises (taux fixe)
+- Echelle sur une carte
+
+SITUATIONS NON PROPORTIONNELLES :
+- Aire d un carre et son cote (A = c^2, pas lineaire)
+- Prix avec remise fixe (100 FCFA de reduction)
+- Age et taille (la taille ne double pas si l age double)
+- Temperature en C et en F (T_F = 9/5 x T_C + 32, pas y = kx)
+
+AFRICAIN :
+- Taux de change : 1 euro = 655,957 FCFA (fixe) -> proportionnel !
+  50 euros = 50 x 655,957 = 32 797,85 FCFA
+- Prix au marche : 3 kg de tomates = 900 FCFA -> k = 300 FCFA/kg
+  7 kg = 7 x 300 = 2 100 FCFA
+- Distance Libreville-Oyem = 476 km en 7h -> vitesse = 68 km/h
+  10h de route -> 10 x 68 = 680 km`,
+        exemples:[
+          {question:"Ce tableau est-il proportionnel ? x: 2, 4, 6, 8 et y: 7, 14, 21, 28", reponse:"7/2=3,5 ; 14/4=3,5 ; 21/6=3,5 ; 28/8=3,5 -> tous egaux -> OUI, proportionnel (k=3,5)"},
+          {question:"Ce tableau est-il proportionnel ? x: 1, 2, 3 et y: 3, 6, 10", reponse:"3/1=3 ; 6/2=3 ; 10/3=3,33 -> PAS egaux -> NON, pas proportionnel"},
+          {question:"k=4. Completer : x: 3, ?, 8 et y: ?, 20, ?", reponse:"y=k x x : y=12 (3x4). x=5 (20/4). y=32 (8x4)."},
+          {question:"Verifier par produits en croix : 3/12 = 7/28", reponse:"3 x 28 = 84 et 12 x 7 = 84. 84 = 84 -> OK, les rapports sont egaux."},
+        ]
+      },
+      { id:"25-2", titre:"Regle de trois et grandeurs inverses",
+        contenu:`LA REGLE DE TROIS :
+Methode pour trouver une valeur manquante dans un tableau de proportionnalite.
+
+FORMULE :
+Tableau :
+x1  |  y1
+x2  |  y?
+
+y? = (x2 x y1) / x1
+
+Ou encore : y? = y1 x (x2/x1)
+(on multiplie y1 par le rapport des x)
+
+EXEMPLES DETAILLES :
+
+EXEMPLE 1 - Prix :
+3 kg de riz coutent 2 400 FCFA. Quel est le prix de 7 kg ?
+  3 kg  |  2 400 FCFA
+  7 kg  |  ?
+Prix = (7 x 2 400) / 3 = 16 800 / 3 = 5 600 FCFA
+
+EXEMPLE 2 - Recette :
+Pour 4 personnes : 600 g de farine. Pour 10 personnes ?
+  4 pers  |  600 g
+ 10 pers  |  ?
+Farine = (10 x 600) / 4 = 6 000 / 4 = 1 500 g = 1,5 kg
+
+EXEMPLE 3 - Quantite :
+5 cahiers coutent 1 250 FCFA. Combien de cahiers pour 2 000 FCFA ?
+  5 cahiers  |  1 250 FCFA
+  ?          |  2 000 FCFA
+Cahiers = (5 x 2 000) / 1 250 = 10 000 / 1 250 = 8 cahiers
+
+QUATRIEME PROPORTIONNELLE :
+La quatrieme proportionnelle de a, b, c est x tel que a/b = c/x
+-> x = (b x c) / a
+
+EXEMPLE : Quatrieme proportionnelle de 4, 6 et 10 :
+4/6 = 10/x -> x = (6 x 10) / 4 = 60 / 4 = 15
+
+GRANDEURS INVERSEMENT PROPORTIONNELLES :
+Deux grandeurs sont INVERSEMENT PROPORTIONNELLES si leur PRODUIT est constant.
+x x y = k (constante)
+
+Quand l une double, l autre est divisee par deux.
+
+EXEMPLE 1 - Vitesse et temps :
+Pour parcourir 120 km :
+60 km/h -> 2h       (60 x 2 = 120)
+80 km/h -> 1,5h     (80 x 1,5 = 120)
+40 km/h -> 3h       (40 x 3 = 120)
+Produit toujours = 120 -> INVERSEMENT PROPORTIONNEL
+
+FORMULE : t = D/v (temps = distance / vitesse)
+Ou : v = D/t (vitesse = distance / temps)
+
+EXEMPLE 2 - Ouvriers et temps :
+6 ouvriers construisent un mur en 8 jours.
+En combien de jours 12 ouvriers font-ils le meme travail ?
+Produit constant = 6 x 8 = 48
+12 ouvriers -> 48/12 = 4 jours
+(2x plus d ouvriers -> 2x moins de jours)
+
+REGLE DE TROIS INVERSE :
+Tableau inverse :
+x1  |  y1
+x2  |  y?
+
+y? = (x1 x y1) / x2 (on inverse le rapport !)
+
+AFRICAIN :
+- Recette de sauce pour 6 personnes : 800g poulet, 400g gombo, 200g tomates.
+  Pour 9 personnes : tout x 9/6 = x 1,5
+  Poulet=1200g, Gombo=600g, Tomates=300g.
+- Taux de change : 1 USD = 600 FCFA.
+  250 USD = 150 000 FCFA.
+- Vitesse Libreville-Mouila (230 km) : a 80 km/h -> 230/80 = 2h52min.
+  A 100 km/h -> 230/100 = 2h18min.`,
+        exemples:[
+          {question:"4 kg de cafe coutent 12 000 FCFA. Prix de 6 kg ?", reponse:"(6 x 12 000) / 4 = 72 000 / 4 = 18 000 FCFA"},
+          {question:"5 ouvriers font un travail en 12 jours. En combien de jours 8 ouvriers font-ils le meme travail ?", reponse:"Inversement proportionnel. Produit constant = 5 x 12 = 60. 8 ouvriers : 60/8 = 7,5 jours."},
+          {question:"Quatrieme proportionnelle de 3, 9 et 5.", reponse:"3/9 = 5/x -> x = (9x5)/3 = 45/3 = 15"},
+          {question:"Un robinet remplit un reservoir en 4h. Avec 2 robinets identiques, en combien de temps ?", reponse:"Inversement proportionnel. 1 robinet -> 4h. 2 robinets -> 4/2 = 2h."},
+        ]
+      },
+      { id:"25-3", titre:"Pourcentages et taux d evolution",
+        contenu:`DEFINITION :
+Le POURCENTAGE exprime une proportion sur 100.
+p % signifie p pour cent, soit la fraction p/100.
+
+FORMULES ESSENTIELLES :
+
+1. CALCULER p% D UNE VALEUR V :
+Resultat = V x p / 100 = V x (p/100)
+Coefficient multiplicateur = p/100
+
+EXEMPLE : 20% de 15 000 FCFA = 15 000 x 20/100 = 3 000 FCFA
+
+2. CALCULER LE POURCENTAGE QUE REPRESENTE a PAR RAPPORT A b :
+p% = (a / b) x 100
+
+EXEMPLE : 12 filles sur 30 eleves -> (12/30) x 100 = 40%
+
+3. AUGMENTATION DE p% :
+Nouvelle valeur = V x (1 + p/100)
+Coefficient multiplicateur = 1 + p/100
+
+EXEMPLE : Article 8 000 FCFA augmente de 15% :
+Nouveau prix = 8 000 x 1,15 = 9 200 FCFA
+
+4. REDUCTION DE p% :
+Nouvelle valeur = V x (1 - p/100)
+Coefficient multiplicateur = 1 - p/100
+
+EXEMPLE : Article 12 000 FCFA solde a -25% :
+Prix solde = 12 000 x 0,75 = 9 000 FCFA
+
+5. RETROUVER LA VALEUR INITIALE :
+Si V_finale = V_initiale x k, alors V_initiale = V_finale / k
+
+EXEMPLE : Prix apres 20% de hausse = 9 600 FCFA. Prix initial ?
+V_initiale = 9 600 / 1,20 = 8 000 FCFA
+
+TAUX D EVOLUTION :
+Mesure la variation relative entre une valeur initiale et une valeur finale.
+
+Formule :
+Taux = [(V_finale - V_initiale) / V_initiale] x 100%
+
+Taux > 0 -> AUGMENTATION (hausse)
+Taux < 0 -> DIMINUTION (baisse)
+
+EXEMPLE :
+Population passe de 1 200 000 a 1 500 000.
+Taux = [(1 500 000 - 1 200 000) / 1 200 000] x 100 = 25%
+-> Augmentation de 25%
+
+POURCENTAGES SUCCESSIFS - PIEGE !
+Une hausse de p% SUIVIE d une baisse de p% NE REDONNE PAS la valeur initiale !
+
+DEMONSTRATION :
+Prix initial = 10 000 FCFA
++20% -> 10 000 x 1,20 = 12 000 FCFA
+-20% -> 12 000 x 0,80 = 9 600 FCFA
+Valeur finale = 9 600 DIFFERENT de 10 000 !
+Variation globale = -4% (perte !)
+
+CALCUL DE LA VARIATION GLOBALE :
+Coefficient global = produit des coefficients multiplicateurs
+= 1,20 x 0,80 = 0,96
+Variation = (0,96 - 1) x 100 = -4%
+
+POURCENTAGES EN CHAÎNE :
++10% puis +20% puis -5% :
+Coefficient = 1,10 x 1,20 x 0,95 = 1,254
+Variation globale = +25,4% (et non +25%)
+
+TVA ET PRIX HT/TTC :
+Prix TTC = Prix HT x (1 + taux TVA/100)
+Prix HT = Prix TTC / (1 + taux TVA/100)
+
+EXEMPLE : TVA au Gabon = 18%
+Prix HT = 50 000 FCFA
+Prix TTC = 50 000 x 1,18 = 59 000 FCFA
+
+AFRICAIN :
+- Soldes fin de saison : -30% sur un pagne a 15 000 FCFA
+  Prix solde = 15 000 x 0,70 = 10 500 FCFA
+- Croissance population Gabon : 2010 (1,5M) -> 2020 (2,2M)
+  Taux = (2,2-1,5)/1,5 x 100 = 46,7%
+- Commission vendeur : 5% sur ventes de 800 000 FCFA
+  Commission = 800 000 x 0,05 = 40 000 FCFA
+- Prix du carburant : +12% en 2023.
+  Si prix initial = 500 FCFA/L : nouveau prix = 500 x 1,12 = 560 FCFA/L`,
+        exemples:[
+          {question:"Calculer 35% de 20 000 FCFA.", reponse:"20 000 x 35/100 = 7 000 FCFA"},
+          {question:"Un article passe de 5 000 a 6 500 FCFA. Quel est le taux d augmentation ?", reponse:"Taux = (6 500-5 000)/5 000 x 100 = 1 500/5 000 x 100 = 30%"},
+          {question:"Prix apres 20% de hausse = 12 000 FCFA. Quel etait le prix initial ?", reponse:"V_initiale = 12 000 / 1,20 = 10 000 FCFA"},
+          {question:"Un prix augmente de 10% puis baisse de 10%. Quelle est la variation globale ?", reponse:"Coefficient = 1,10 x 0,90 = 0,99 -> -1% (perte de 1%, PAS 0% !)"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Ce tableau est-il proportionnel ? x: 3, 6, 9 et y: 9, 18, 27", solution:"9/3=3 ; 18/6=3 ; 27/9=3 -> tous egaux -> OUI (k=3)"},
+      {id:2,  niveau:"Facile",    enonce:"3 kg de tomates coutent 900 FCFA. Quel est le prix de 5 kg ?", solution:"Regle de trois : (5 x 900) / 3 = 1 500 FCFA"},
+      {id:3,  niveau:"Facile",    enonce:"Calculer 20% de 45 000 FCFA.", solution:"45 000 x 20/100 = 9 000 FCFA"},
+      {id:4,  niveau:"Facile",    enonce:"18 eleves sur 30 ont la moyenne. Quel pourcentage est-ce ?", solution:"18/30 x 100 = 60%"},
+      {id:5,  niveau:"Facile",    enonce:"Un article a 8 000 FCFA est solde a -25%. Quel est son prix final ?", solution:"8 000 x (1-25/100) = 8 000 x 0,75 = 6 000 FCFA"},
+      {id:6,  niveau:"Moyen",     enonce:"Completer le tableau de proportionnalite (k=7) : x: 4, ?, 9 et y: ?, 42, ?", solution:"y = k x x : y=28 (4x7), x=6 (42/7), y=63 (9x7)"},
+      {id:7,  niveau:"Moyen",     enonce:"8 ouvriers construisent un mur en 15 jours. En combien de jours 12 ouvriers construisent-ils le meme mur ?", solution:"Inversement proportionnel. Produit constant = 8 x 15 = 120. 12 ouvriers : 120/12 = 10 jours."},
+      {id:8,  niveau:"Moyen",     enonce:"Un prix passe de 12 000 a 15 000 FCFA. Calculer le taux d augmentation en %.", solution:"Taux = (15 000-12 000)/12 000 x 100 = 3 000/12 000 x 100 = 25%"},
+      {id:9,  niveau:"Moyen",     enonce:"1 USD = 600 FCFA. Combien de dollars pour 150 000 FCFA ?", solution:"x = 150 000 / 600 = 250 USD"},
+      {id:10, niveau:"Moyen",     enonce:"Recette pour 6 personnes : 450 g de riz, 300 g de poisson, 120 g d oignons. Adapter pour 10 personnes.", solution:"Facteur = 10/6 = 5/3. Riz = 450 x 5/3 = 750 g. Poisson = 300 x 5/3 = 500 g. Oignons = 120 x 5/3 = 200 g."},
+      {id:11, niveau:"Difficile", enonce:"Un commercant achete des pagnes a 5 000 FCFA et les revend avec une marge de 30%. Si en plus il applique une TVA de 18%, quel est le prix TTC final ?", solution:"Prix vente HT = 5 000 x 1,30 = 6 500 FCFA. Prix TTC = 6 500 x 1,18 = 7 670 FCFA."},
+      {id:12, niveau:"Difficile", enonce:"Un article augmente de 20% en janvier, puis baisse de 15% en juin. Calculer le coefficient global et la variation finale en %.", solution:"Coefficient = 1,20 x 0,85 = 1,02 -> AUGMENTATION globale de 2% (et non 5% !). Le piege des pourcentages successifs."},
+      {id:13, niveau:"Difficile", enonce:"Population de Douala : 2 500 000 en 2010 et 3 800 000 en 2020. Calculer le taux de croissance sur 10 ans. A ce rythme, quelle sera la population en 2030 ?", solution:"Taux = (3 800 000-2 500 000)/2 500 000 x 100 = 1 300 000/2 500 000 x 100 = 52%. En 2030 = 3 800 000 x 1,52 = 5 776 000 habitants."},
+      {id:14, niveau:"Difficile", enonce:"Un eleve a 72 bonnes reponses sur 90 questions. Quel est son pourcentage de reussite ? Il faut 75% pour passer. A-t-il reussi ? Combien de bonnes reponses lui auraient suffi exactement ?", solution:"72/90 x 100 = 80% >= 75% -> OUI, il a reussi. Minimum requis = 75% x 90 = 67,5 -> 68 bonnes reponses minimales (arrondi superieur). Il avait 4 bonnes reponses de marge."},
+      {id:15, niveau:"Difficile", enonce:"AfriLearn avait 500 abonnes en janvier. En mars les abonnes ont augmente de 40%. En mai encore +25%. En juillet une promo a attire 200 abonnes supplementaires. Nombre final ? Taux de croissance global de janvier a juillet ?", solution:"Janv: 500. Mars: 500 x 1,40 = 700. Mai: 700 x 1,25 = 875. Juil: 875+200 = 1 075. Taux global = (1 075-500)/500 x 100 = 115%. Les abonnes ont plus que double ! (de janvier a juillet soit 6 mois)."},
+    ],
+  },
+
+
 };
 
 // ─── DONNÉES ──────────────────────────────────────────────────────────────────

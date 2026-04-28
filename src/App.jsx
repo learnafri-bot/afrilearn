@@ -3843,6 +3843,1574 @@ Disque (r)     │ 2πr                  │ πr²
       {id:15, niveau:"Difficile", enonce:"Une figure est composée d'un demi-disque de diamètre 8 cm posé sur un rectangle de 8 cm × 5 cm. Calculer son périmètre et son aire. (π ≈ 3,14)", solution:"PÉRIMÈTRE : 3 côtés du rectangle (pas le côté sur lequel est le demi-disque) + demi-circonférence. P = 8+5+5 + (2π×4)÷2 = 18 + 4π ≈ 18+12,56 = 30,56 cm. AIRE : Aire rectangle + Aire demi-disque = 8×5 + (π×4²)÷2 = 40 + 8π ≈ 40+25,12 = 65,12 cm²."},
     ],
   },
+
+  15: {
+    id:15, title:"Longueurs", duration:"2 semaines",
+    objectives:[
+      "Connaître les unités de longueur du système international",
+      "Convertir des longueurs d'une unité à une autre",
+      "Mesurer une longueur avec précision",
+      "Calculer des périmètres en utilisant les bonnes unités",
+      "Résoudre des problèmes concrets faisant intervenir des longueurs",
+    ],
+    cours:[
+      { id:"15-1", titre:"Unités de longueur et conversions",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LE SYSTÈME INTERNATIONAL DE LONGUEUR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+L'unité de base de longueur dans le Système International (SI) est le MÈTRE (m).
+Toutes les autres unités en dérivent.
+
+TABLEAU DES UNITÉS (du plus grand au plus petit) :
+
+km    hm    dam    m    dm    cm    mm
+│      │      │     │     │     │     │
+×10   ×10   ×10   ×10   ×10   ×10
+
+• km  = kilomètre      = 1 000 m
+• hm  = hectomètre     = 100 m
+• dam = décamètre      = 10 m
+• m   = mètre          = unité de base
+• dm  = décimètre      = 0,1 m
+• cm  = centimètre     = 0,01 m
+• mm  = millimètre     = 0,001 m
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RÈGLE DE CONVERSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Pour convertir vers une unité PLUS PETITE → on MULTIPLIE par 10
+  (à chaque pas vers la droite dans le tableau)
+• Pour convertir vers une unité PLUS GRANDE → on DIVISE par 10
+  (à chaque pas vers la gauche dans le tableau)
+
+ASTUCE : Compter le nombre de "pas" entre les deux unités, puis
+multiplier ou diviser par 10, 100, 1 000, 10 000...
+
+CONVERSIONS DIRECTES UTILES :
+• 1 km = 1 000 m              (3 pas → ×1 000)
+• 1 m  = 100 cm               (2 pas → ×100)
+• 1 m  = 1 000 mm             (3 pas → ×1 000)
+• 1 cm = 10 mm                (1 pas → ×10)
+• 1 km = 100 000 cm           (5 pas → ×100 000)
+
+EXEMPLES DE CONVERSIONS :
+• 3,5 km = 3,5 × 1 000 = 3 500 m
+• 250 cm = 250 ÷ 100 = 2,5 m
+• 4,7 m  = 4,7 × 1 000 = 4 700 mm
+• 85 mm  = 85 ÷ 10 = 8,5 cm
+• 2,3 km = 2,3 × 100 000 = 230 000 cm
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE DU TABLEAU DE CONVERSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+On place le chiffre des unités dans la colonne de l'unité donnée,
+puis on lit dans la colonne de l'unité voulue.
+
+EXEMPLE : Convertir 3,75 m en cm
+  km │ hm │ dam │  m  │ dm  │  cm │ mm
+     │    │     │  3  │  7  │   5 │
+→ On lit : 375 cm
+
+EXEMPLE : Convertir 3 475 mm en m
+  km │ hm │ dam │  m  │ dm  │  cm │ mm
+     │    │     │  3  │  4  │   7 │  5
+→ On lit : 3,475 m
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UNITÉS PARTICULIÈRES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Le MICROMÈTRE (μm) = 0,001 mm (utilisé en biologie, microscopie)
+• Le NANOMÈTRE (nm) = 0,000001 mm (utilisé en physique, chimie)
+• L'ANGSTRÖM (Å) = 0,0000001 mm (rayon des atomes)
+• L'ANNÉE-LUMIÈRE = 9 461 milliards de km (distances astronomiques)
+• Le MILLE MARIN = 1 852 m (navigation maritime)
+
+📌 AU COLLÈGE, on utilise principalement : mm, cm, dm, m, km.
+
+🌍 EXEMPLES AFRICAINS :
+• Distance Libreville–Port-Gentil ≈ 110 km = 110 000 m = 11 000 000 cm
+• Hauteur du mont Cameroun : 4 095 m = 4,095 km = 409 500 cm
+• Longueur d'un crayon : 19 cm = 190 mm = 0,19 m
+• Largeur d'un grain de riz : ≈ 3 mm = 0,3 cm = 0,003 m
+• Longueur du fleuve Congo : 4 700 km = 4 700 000 m`,
+        exemples:[
+          {question:"Convertir 4,8 km en m, puis en cm.", reponse:"4,8 km = 4,8 × 1 000 = 4 800 m. 4 800 m = 4 800 × 100 = 480 000 cm."},
+          {question:"Convertir 3 250 mm en m.", reponse:"3 250 mm ÷ 1 000 = 3,25 m"},
+          {question:"Ranger dans l'ordre croissant : 2,3 m ; 185 cm ; 25 mm ; 0,002 km", reponse:"Convertissons en cm : 230 cm ; 185 cm ; 2,5 cm ; 200 cm. Ordre : 25 mm < 185 cm < 0,002 km < 2,3 m"},
+        ]
+      },
+      { id:"15-2", titre:"Mesure de longueurs et instruments",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INSTRUMENTS DE MESURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. LA RÈGLE GRADUÉE
+   • Pour mesurer des segments courts (jusqu'à 30 ou 50 cm)
+   • Précision : au millimètre (0,1 cm)
+   • MÉTHODE : Aligner le 0 de la règle avec une extrémité du segment,
+     lire la graduation en face de l'autre extrémité.
+
+2. LE MÈTRE RUBAN (décamètre)
+   • Pour mesurer de plus grandes longueurs (jusqu'à 50 m)
+   • Utilisé en menuiserie, couture, construction
+   • Précision : au centimètre ou millimètre
+
+3. L'ODOMÈTRE (roue de comptage)
+   • Pour mesurer de longues distances sur le terrain
+   • On roule la roue le long du chemin
+
+4. LE GPS / TÉLÉMÈTRE LASER
+   • Pour des mesures précises à grande distance
+   • Utilisé en architecture, géomètre
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MESURE AVEC UNE RÈGLE — PRÉCAUTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Bien aligner le ZÉRO (pas le bord de la règle) avec l'extrémité du segment
+2. Regarder la graduation PERPENDICULAIREMENT (éviter l'erreur de parallaxe)
+3. Lire la graduation la plus proche
+4. Indiquer l'UNITÉ dans la réponse
+
+ERREUR FRÉQUENTE : Commencer à mesurer depuis le bord de la règle
+(qui n'est pas forcément le zéro !) → toujours partir du 0 !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CALCULER AVEC DES LONGUEURS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RÈGLE ESSENTIELLE : On ne peut additionner/soustraire des longueurs
+qu'en les exprimant dans la MÊME UNITÉ !
+
+EXEMPLE : 3 km + 500 m = ?
+→ On convertit : 3 km = 3 000 m
+→ 3 000 m + 500 m = 3 500 m = 3,5 km ✓
+
+EXEMPLE FAUX : 3 km + 500 m = 3,500 km (FAUX si on garde les unités différentes)
+
+EXEMPLE : 2,5 m − 30 cm = ?
+→ On convertit : 30 cm = 0,30 m
+→ 2,5 m − 0,3 m = 2,2 m ✓
+→ Ou : 2,5 m = 250 cm → 250 − 30 = 220 cm = 2,2 m ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ÉCHELLE ET DISTANCES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Une CARTE ou un PLAN utilise une ÉCHELLE pour représenter des distances réelles.
+
+ÉCHELLE = distance sur la carte ÷ distance réelle
+
+EXEMPLE : Échelle 1:50 000 signifie
+1 cm sur la carte = 50 000 cm = 500 m = 0,5 km dans la réalité.
+
+FORMULES :
+• Distance réelle = Distance carte × Dénominateur de l'échelle
+• Distance carte = Distance réelle ÷ Dénominateur de l'échelle
+
+EXEMPLE : Sur une carte à l'échelle 1:25 000, deux villes sont à 8 cm.
+Distance réelle = 8 × 25 000 = 200 000 cm = 2 000 m = 2 km.
+
+🌍 EXEMPLES AFRICAINS :
+• Plan de Libreville à l'échelle 1:10 000 :
+  1 cm sur le plan = 10 000 cm = 100 m dans la réalité.
+  Distance sur le plan = 5 cm → distance réelle = 5 × 100 = 500 m.
+• Carte du Gabon à l'échelle 1:1 000 000 :
+  1 cm sur la carte = 10 km dans la réalité.
+  Libreville–Franceville ≈ 85 cm sur la carte → 850 km réels.`,
+        exemples:[
+          {question:"Calculer 2 km + 350 m + 45 cm (réponse en m)", reponse:"2 km = 2 000 m ; 45 cm = 0,45 m. Total = 2 000 + 350 + 0,45 = 2 350,45 m"},
+          {question:"Sur une carte à l'échelle 1:50 000, la distance entre deux villages est 6 cm. Quelle est la distance réelle ?", reponse:"6 × 50 000 = 300 000 cm = 3 000 m = 3 km"},
+          {question:"La distance Libreville–Oyem est 476 km. Sur une carte à l'échelle 1:2 000 000, quelle longueur représente cette distance ?", reponse:"476 km = 47 600 000 cm. Distance carte = 47 600 000 ÷ 2 000 000 = 23,8 cm"},
+        ]
+      },
+      { id:"15-3", titre:"Périmètres et longueurs en contexte",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PÉRIMÈTRE ET CHOIX DE L'UNITÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le choix de l'unité dépend de la taille de la figure :
+• Figures en classe : mm ou cm
+• Terrain, chambre : m
+• Ville, route : km
+
+RÈGLE : Toujours exprimer le périmètre dans l'unité la plus adaptée au contexte.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LONGUEUR D'UN CHEMIN OU D'UN TRAJET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La longueur d'un chemin = somme de tous les tronçons.
+
+EXEMPLE : Un chemin passe par A→B (2,5 km), B→C (1 800 m), C→D (450 m).
+Longueur totale = 2,5 km + 1 800 m + 450 m
+               = 2 500 m + 1 800 m + 450 m
+               = 4 750 m = 4,75 km
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROBLÈMES TYPES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPE 1 — CLÔTURE :
+"Combien de mètres de grillage pour entourer un terrain ?"
+→ Calculer le PÉRIMÈTRE du terrain.
+
+TYPE 2 — NOMBRE DE POTEAUX :
+"Combien de poteaux espacés de d mètres pour une clôture de L mètres ?"
+→ Nombre d'intervalles = L ÷ d
+→ Nombre de poteaux = (L ÷ d) + 1 (si le circuit n'est pas fermé)
+→ Nombre de poteaux = L ÷ d (si le circuit est fermé)
+
+TYPE 3 — ROUE QUI ROULE :
+"Combien de tours fait une roue de circonférence C pour parcourir D ?"
+→ Nombre de tours = D ÷ C
+
+TYPE 4 — ÉCHELLE :
+Voir leçon 2.
+
+🌍 EXEMPLES AFRICAINS :
+• Clôturer un terrain rectangulaire de 45 m × 30 m avec des poteaux tous les 3 m.
+  Périmètre = 2×(45+30) = 150 m. Poteaux = 150÷3 = 50 poteaux (circuit fermé).
+
+• Un taxi-brousse parcourt Libreville–Lambaréné (250 km).
+  Les roues ont un diamètre de 70 cm → circonférence = π × 70 ≈ 220 cm = 2,2 m.
+  Nombre de tours = 250 000 m ÷ 2,2 m ≈ 113 636 tours !
+
+• Un tissu de 5 m de long. On coupe 12 morceaux de 38 cm chacun.
+  Longueur coupée = 12 × 38 = 456 cm = 4,56 m.
+  Longueur restante = 5 m − 4,56 m = 0,44 m = 44 cm.`,
+        exemples:[
+          {question:"Un terrain rectangulaire de 60 m × 40 m doit être clôturé. Calculer la longueur de grillage nécessaire.", reponse:"P = 2×(60+40) = 2×100 = 200 m de grillage"},
+          {question:"Une roue de vélo a un diamètre de 66 cm. Combien de tours fait-elle pour parcourir 1 km ? (π ≈ 3,14)", reponse:"Circonférence = π×66 ≈ 207,24 cm = 2,0724 m. Tours = 1 000÷2,0724 ≈ 483 tours"},
+          {question:"Un chemin fait A→B = 1,5 km, B→C = 800 m, C→A = 0,9 km. Quelle est sa longueur totale ?", reponse:"Total = 1 500+800+900 = 3 200 m = 3,2 km"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Convertir 5,3 km en m.", solution:"5,3 × 1 000 = 5 300 m"},
+      {id:2,  niveau:"Facile",    enonce:"Convertir 850 cm en m.", solution:"850 ÷ 100 = 8,5 m"},
+      {id:3,  niveau:"Facile",    enonce:"Convertir 4,2 m en mm.", solution:"4,2 × 1 000 = 4 200 mm"},
+      {id:4,  niveau:"Facile",    enonce:"Ranger du plus petit au plus grand : 3 m ; 250 cm ; 0,004 km ; 3 200 mm", solution:"Convertir en cm : 300 ; 250 ; 400 ; 320. Ordre : 250 cm < 300 cm < 320 cm < 400 cm → 250 cm < 3 m < 3 200 mm < 0,004 km"},
+      {id:5,  niveau:"Facile",    enonce:"Calculer : 2 m + 35 cm + 8 mm (réponse en cm).", solution:"200 cm + 35 cm + 0,8 cm = 235,8 cm"},
+      {id:6,  niveau:"Moyen",     enonce:"Sur une carte à l'échelle 1:25 000, la distance entre deux villages est 7,2 cm. Calculer la distance réelle en km.", solution:"7,2 × 25 000 = 180 000 cm = 1 800 m = 1,8 km"},
+      {id:7,  niveau:"Moyen",     enonce:"La distance réelle Brazzaville–Kinshasa est 4 km. Sur une carte à l'échelle 1:100 000, quelle est la distance sur la carte ?", solution:"4 km = 400 000 cm. Distance carte = 400 000 ÷ 100 000 = 4 cm"},
+      {id:8,  niveau:"Moyen",     enonce:"Un menuisier coupe 8 planches de 75 cm dans une planche de 7 m. Quelle longueur reste-t-il ?", solution:"Longueur coupée = 8 × 75 = 600 cm = 6 m. Reste = 7 − 6 = 1 m = 100 cm."},
+      {id:9,  niveau:"Moyen",     enonce:"Un terrain rectangulaire de 80 m × 50 m doit être clôturé avec des poteaux espacés de 4 m. Calculer le nombre de poteaux nécessaires.", solution:"Périmètre = 2×(80+50) = 260 m. Nombre de poteaux = 260÷4 = 65 poteaux (circuit fermé)."},
+      {id:10, niveau:"Moyen",     enonce:"Jean habite à 2,4 km de son école. Il fait le trajet aller-retour 5 jours par semaine. Quelle distance parcourt-il par semaine ?", solution:"Aller-retour = 2 × 2,4 = 4,8 km. Par semaine = 4,8 × 5 = 24 km."},
+      {id:11, niveau:"Difficile", enonce:"Une roue de camion a un diamètre de 1,2 m. Le camion part de Libreville et roule 156 km. Combien de tours fait la roue ? (π ≈ 3,14)", solution:"Circonférence = π × 1,2 = 3,14 × 1,2 = 3,768 m. Distance = 156 km = 156 000 m. Nombre de tours = 156 000 ÷ 3,768 ≈ 41 401 tours."},
+      {id:12, niveau:"Difficile", enonce:"Un tissu de 12 m doit être coupé en morceaux. On veut faire des morceaux de 85 cm pour des pagnes. Combien de pagnes peut-on faire ? Quelle longueur reste-t-il ?", solution:"12 m = 1 200 cm. Nombre de pagnes = 1 200 ÷ 85 = 14 pagnes complets (14×85=1190 cm). Reste = 1 200 − 1 190 = 10 cm."},
+      {id:13, niveau:"Difficile", enonce:"Un plan de maison est dessiné à l'échelle 1:50. Une pièce mesure 6 cm × 4,5 cm sur le plan. Calculer les dimensions réelles de la pièce et son périmètre réel.", solution:"Longueur réelle = 6 × 50 = 300 cm = 3 m. Largeur réelle = 4,5 × 50 = 225 cm = 2,25 m. Périmètre = 2×(3+2,25) = 2×5,25 = 10,5 m."},
+      {id:14, niveau:"Difficile", enonce:"Un randonneur part du point A. Il marche 3,5 km vers le nord, puis 2 800 m vers l'est, puis 1,2 km vers le sud, puis 400 m vers l'ouest. Calculer la longueur totale de son trajet.", solution:"3,5 km + 2 800 m + 1,2 km + 400 m = 3 500 m + 2 800 m + 1 200 m + 400 m = 7 900 m = 7,9 km"},
+      {id:15, niveau:"Difficile", enonce:"La piste d'athlétisme du lycée de Libreville est un rectangle aux coins arrondis. Les lignes droites mesurent 84,39 m chacune et les demi-cercles ont un rayon de 36,8 m. Calculer la longueur d'un tour de piste. (π ≈ 3,14)", solution:"2 lignes droites = 2 × 84,39 = 168,78 m. 2 demi-cercles = 1 cercle complet = 2π×36,8 = 2×3,14×36,8 = 231,1 m. Tour complet = 168,78 + 231,1 ≈ 399,88 m ≈ 400 m (piste standard !)."},
+    ],
+  },
+
+  16: {
+    id:16, title:"Masses", duration:"2 semaines",
+    objectives:[
+      "Distinguer masse et poids (notions différentes)",
+      "Connaître les unités de masse du système international",
+      "Convertir des masses d'une unité à une autre",
+      "Utiliser les instruments de mesure de masse",
+      "Résoudre des problèmes concrets faisant intervenir des masses",
+    ],
+    cours:[
+      { id:"16-1", titre:"Masse et poids — une distinction importante",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MASSE vs POIDS — NE PAS CONFONDRE !
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+En langage courant, on dit souvent "peser" pour désigner les deux.
+En sciences, ce sont deux notions DIFFÉRENTES :
+
+MASSE :
+• Quantité de matière contenue dans un objet
+• Ne change JAMAIS, quel que soit l'endroit où on se trouve
+• Unité : kilogramme (kg)
+• Mesurée avec une BALANCE
+
+POIDS :
+• Force exercée par la pesanteur sur un objet
+• Dépend du lieu (sur la Lune, on pèse 6 fois moins !)
+• Unité : Newton (N) — étudié en physique
+• Mesuré avec un DYNAMOMÈTRE (ressort)
+
+RELATION : Poids (N) = Masse (kg) × g
+où g ≈ 9,8 N/kg sur Terre (accélération de la pesanteur)
+
+📌 AU COLLÈGE EN MATHÉMATIQUES, on travaille avec la MASSE.
+   On dit "la masse d'un objet est 5 kg" et non "son poids est 5 kg"
+   (même si dans la vie courante on dit souvent "il pèse 5 kg").
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UNITÉS DE MASSE — TABLEAU COMPLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+L'unité de base de masse dans le SI est le KILOGRAMME (kg).
+
+t      kg     hg     dag     g     dg     cg     mg
+│       │       │      │      │      │      │      │
+  ×1000  ×10   ×10    ×10    ×10   ×10    ×10
+
+UNITÉS PRINCIPALES ET LEURS VALEURS :
+• t   = tonne           = 1 000 kg
+• kg  = kilogramme      = unité de base (1 000 g)
+• hg  = hectogramme     = 100 g
+• dag = décagramme      = 10 g
+• g   = gramme          = unité courante
+• dg  = décigramme      = 0,1 g
+• cg  = centigramme     = 0,01 g
+• mg  = milligramme     = 0,001 g
+
+CONVERSIONS DIRECTES LES PLUS UTILES :
+• 1 t   = 1 000 kg
+• 1 kg  = 1 000 g
+• 1 g   = 1 000 mg
+• 1 t   = 1 000 000 g
+• 1 kg  = 1 000 000 mg
+
+⚠️ PARTICULARITÉ : Entre la tonne et le kilogramme, il y a 1 000
+(pas 10 comme entre les autres unités successives) !
+
+📌 UNITÉS MOINS COURANTES :
+• quintal (q) = 100 kg (utilisé en agriculture)
+• once (oz) = environ 28,35 g (système anglo-saxon)
+• livre (lb) = environ 453,6 g (système anglo-saxon)
+• carat = 0,2 g (utilisé pour les pierres précieuses et l'or)`,
+        exemples:[
+          {question:"Convertir 3,5 kg en g.", reponse:"3,5 × 1 000 = 3 500 g"},
+          {question:"Convertir 4 250 g en kg.", reponse:"4 250 ÷ 1 000 = 4,25 kg"},
+          {question:"Convertir 2,4 t en kg.", reponse:"2,4 × 1 000 = 2 400 kg"},
+          {question:"Quelle différence entre la masse et le poids ?", reponse:"La masse est une quantité de matière (en kg), constante partout. Le poids est une force due à la pesanteur (en Newton), qui varie selon le lieu (Terre, Lune...)."},
+        ]
+      },
+      { id:"16-2", titre:"Conversions de masses et instruments",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RÈGLE DE CONVERSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Même méthode que pour les longueurs :
+• Vers une unité plus PETITE → MULTIPLIER par 10 (ou 1 000 pour t→kg)
+• Vers une unité plus GRANDE → DIVISER par 10 (ou 1 000 pour kg→t)
+
+MÉTHODE DU TABLEAU :
+On place les chiffres dans les colonnes du tableau.
+
+EXEMPLE : Convertir 2,75 kg en g
+  t  │  kg  │  hg  │  dag  │  g  │  dg  │  cg  │  mg
+     │   2  │   7  │   5   │  0  │      │      │
+→ On lit : 2 750 g
+
+EXEMPLE : Convertir 3 450 mg en g
+  t  │  kg  │  hg  │  dag  │  g  │  dg  │  cg  │  mg
+     │      │      │       │  3  │   4  │   5  │  0
+→ On lit : 3,450 g = 3,45 g
+
+EXEMPLES DE CONVERSIONS :
+• 5,8 kg  = 5 800 g          (×1 000)
+• 0,35 kg = 350 g            (×1 000)
+• 7 200 g = 7,2 kg           (÷1 000)
+• 3,5 t   = 3 500 kg         (×1 000)
+• 850 kg  = 0,85 t           (÷1 000)
+• 2,4 kg  = 2 400 000 mg     (×1 000 000)
+• 15 dag  = 150 g = 0,15 kg  (dag→g : ×10 ; g→kg : ÷1000)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INSTRUMENTS DE MESURE DE MASSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. BALANCE À PLATEAUX (balance de Roberval) :
+   • Principe : compare deux masses (objet + masses marquées)
+   • L'équilibre indique l'égalité des masses
+   • Très précise, utilisée en laboratoire et joaillerie
+   • Masse minimale lisible : dépend des masses marquées disponibles
+
+2. BALANCE ROMAINE :
+   • Bras gradué avec un curseur mobile
+   • Utilisée historiquement pour peser des marchandises
+   • Encore utilisée sur les marchés africains
+
+3. BALANCE ELECTRONIQUE / PÈSE-PERSONNE :
+   • Affichage numérique direct
+   • Très pratique, précision variable selon le modèle
+   • Utilisée en médecine, cuisine, commerce
+
+4. BALANCE DE MÉNAGE :
+   • Pour cuisine : précision au gramme ou 5 g
+   • Capacité généralement 5 kg
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CALCULER AVEC DES MASSES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RÈGLE : Toujours convertir dans la même unité avant de calculer !
+
+EXEMPLE : 3,5 kg + 800 g − 250 g = ?
+En grammes : 3 500 + 800 − 250 = 4 050 g = 4,05 kg
+
+EXEMPLE : Un camion de 3,5 t charge 750 kg de marchandises.
+Masse totale = 3 500 kg + 750 kg = 4 250 kg = 4,25 t
+
+MASSE VOLUMIQUE (notion) :
+La MASSE VOLUMIQUE (ρ) d'un matériau indique la masse d'un litre (ou cm³) de ce matériau.
+• ρ de l'eau = 1 kg/L = 1 000 g/L
+• ρ du fer ≈ 7,87 kg/dm³
+• ρ du bois (teck) ≈ 0,65 kg/dm³
+
+FORMULE : masse = masse volumique × volume
+
+🌍 EXEMPLES AFRICAINS :
+• Un sac de cacao du Cameroun pèse 60 kg = 60 000 g
+• Le léopard africain pèse environ 60 kg, le gorille 180 kg
+• Un régime de bananes plantain pèse environ 15 kg = 15 000 g
+• Un camion de riz : 40 sacs × 50 kg = 2 000 kg = 2 t
+• L'éléphant d'Afrique pèse 4 à 7 t = 4 000 à 7 000 kg`,
+        exemples:[
+          {question:"Convertir 4,25 t en kg puis en g.", reponse:"4,25 t = 4 250 kg = 4 250 000 g"},
+          {question:"Calculer : 2,5 kg + 300 g + 75 dag (réponse en g)", reponse:"2 500 g + 300 g + 750 g = 3 550 g (75 dag = 750 g car 1 dag = 10 g)"},
+          {question:"Un camion vide pèse 4,2 t. Il charge 12 caisses de 85 kg chacune. Quelle est la masse totale ?", reponse:"Caisses : 12 × 85 = 1 020 kg. Total = 4 200 + 1 020 = 5 220 kg = 5,22 t"},
+        ]
+      },
+      { id:"16-3", titre:"Problèmes de masses en contexte africain",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROBLÈMES TYPES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPE 1 — PARTAGE ET RÉPARTITION :
+"On répartit N kg en parts de p g. Combien de parts ?"
+→ Convertir en même unité, puis diviser.
+
+TYPE 2 — MÉLANGE :
+"On mélange a kg de café à b g de chicorée. Masse totale ?"
+→ Convertir, additionner.
+
+TYPE 3 — RECETTE / PROPORTION :
+"Une recette pour 4 personnes utilise 300 g de farine. Pour 10 personnes ?"
+→ Règle de trois : 300 × 10 ÷ 4 = 750 g
+
+TYPE 4 — TARIF AU KG :
+"1 kg coûte p FCFA. Combien coûte m grammes ?"
+→ Convertir m en kg, multiplier par p.
+
+TYPE 5 — CHARGE MAXIMALE :
+"Un camion peut porter au maximum M kg. Il charge n colis de p kg chacun.
+Est-ce autorisé ?"
+→ Comparer n×p avec M.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MASSES DE RÉFÉRENCE À CONNAÎTRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OBJETS DU QUOTIDIEN :
+• Grain de riz ≈ 25 mg
+• Pièce de 100 FCFA ≈ 7 g
+• Œuf de poule ≈ 60 g
+• Téléphone portable ≈ 200 g
+• Bouteille d'eau 1,5 L ≈ 1,5 kg (eau + bouteille)
+• Sac de riz (standard) = 25 kg ou 50 kg
+• Sac de ciment = 50 kg
+
+ANIMAUX AFRICAINS :
+• Poule ≈ 2 kg
+• Mouton ≈ 40 kg
+• Cochon ≈ 100 kg
+• Bœuf ≈ 500 kg
+• Hippopotame ≈ 1,5 t = 1 500 kg
+• Éléphant ≈ 5 t = 5 000 kg
+
+🌍 PROBLÈMES AFRICAINS :
+PROBLÈME 1 : "Au marché de Libreville, un kilo de poisson frais coûte 2 500 FCFA.
+Aminata achète 750 g de poisson. Combien paie-t-elle ?"
+→ 750 g = 0,75 kg → 0,75 × 2 500 = 1 875 FCFA
+
+PROBLÈME 2 : "Un camion de 5 t de charge maximale doit transporter
+des sacs de ciment de 50 kg chacun. Combien de sacs peut-il prendre ?"
+→ 5 t = 5 000 kg → 5 000 ÷ 50 = 100 sacs
+
+PROBLÈME 3 : "Une recette de taro pour 6 personnes : 900 g de taro,
+200 g de viande, 150 g de tomates. Pour 4 personnes ?"
+→ Tout ÷ 6 × 4 : taro=600g, viande≈133g, tomates=100g`,
+        exemples:[
+          {question:"750 g de viande de bœuf à 4 000 FCFA/kg. Quel est le prix ?", reponse:"750 g = 0,75 kg. Prix = 0,75 × 4 000 = 3 000 FCFA"},
+          {question:"Un sac de 50 kg de riz est réparti en petits sachets de 500 g. Combien de sachets ?", reponse:"50 kg = 50 000 g. Sachets = 50 000 ÷ 500 = 100 sachets"},
+          {question:"Une recette pour 8 personnes utilise 1,2 kg de farine. Quelle quantité pour 5 personnes ?", reponse:"1 200 g ÷ 8 × 5 = 150 × 5 = 750 g"},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Convertir 6,4 kg en g.", solution:"6,4 × 1 000 = 6 400 g"},
+      {id:2,  niveau:"Facile",    enonce:"Convertir 850 g en kg.", solution:"850 ÷ 1 000 = 0,85 kg"},
+      {id:3,  niveau:"Facile",    enonce:"Convertir 3,2 t en kg.", solution:"3,2 × 1 000 = 3 200 kg"},
+      {id:4,  niveau:"Facile",    enonce:"Ranger du plus léger au plus lourd : 2 kg ; 1 800 g ; 0,003 t ; 2 500 000 mg", solution:"Convertir en g : 2 000 ; 1 800 ; 3 000 ; 2 500. Ordre : 1 800 g < 2 000 g < 2 500 g < 3 000 g → 1 800 g < 2 kg < 2 500 000 mg < 0,003 t"},
+      {id:5,  niveau:"Facile",    enonce:"Calculer : 3 kg + 500 g (réponse en g).", solution:"3 000 + 500 = 3 500 g"},
+      {id:6,  niveau:"Moyen",     enonce:"Au marché, le poisson coûte 3 000 FCFA/kg. Aminata achète 600 g. Combien paie-t-elle ?", solution:"600 g = 0,6 kg. Prix = 0,6 × 3 000 = 1 800 FCFA"},
+      {id:7,  niveau:"Moyen",     enonce:"Un sac de 25 kg de riz est réparti en sachets de 500 g. Combien de sachets obtient-on ?", solution:"25 kg = 25 000 g. Sachets = 25 000 ÷ 500 = 50 sachets"},
+      {id:8,  niveau:"Moyen",     enonce:"Calculer la masse totale : 3 sacs de 50 kg + 12 caisses de 15 kg + 5 cartons de 8 500 g.", solution:"3×50=150 kg + 12×15=180 kg + 5×8,5=42,5 kg = 150+180+42,5 = 372,5 kg"},
+      {id:9,  niveau:"Moyen",     enonce:"Un camion peut transporter au maximum 3,5 t. Il charge 45 sacs de 70 kg. La charge est-elle autorisée ?", solution:"45 × 70 = 3 150 kg = 3,15 t < 3,5 t ✓ → Oui, la charge est autorisée."},
+      {id:10, niveau:"Moyen",     enonce:"Une recette de ndolé pour 6 personnes : 800 g de feuilles, 400 g de viande, 300 g d'arachides. Calculer les quantités pour 9 personnes.", solution:"Pour 9 personnes (×9÷6=×1,5) : feuilles=800×1,5=1 200 g, viande=400×1,5=600 g, arachides=300×1,5=450 g."},
+      {id:11, niveau:"Difficile", enonce:"Un éléphant pèse 4,8 t et un hippopotame pèse 1 650 kg. Quelle est la différence de masse en kg et en t ?", solution:"4 800 − 1 650 = 3 150 kg = 3,15 t. L'éléphant est plus lourd de 3 150 kg."},
+      {id:12, niveau:"Difficile", enonce:"Un commerçant achète 200 kg de mangues à 150 FCFA/kg. Il les revend 250 FCFA/kg. Mais 15 kg sont abîmés et invendables. Calculer son bénéfice.", solution:"Coût : 200 × 150 = 30 000 FCFA. Quantité vendue = 200 − 15 = 185 kg. Recette : 185 × 250 = 46 250 FCFA. Bénéfice = 46 250 − 30 000 = 16 250 FCFA."},
+      {id:13, niveau:"Difficile", enonce:"Un camion-citerne contient 8 000 litres d'eau. La masse volumique de l'eau est 1 kg/L. Calculer la masse de l'eau en kg et en t. Si la citerne vide pèse 4,5 t, quelle est la masse totale du camion chargé ?", solution:"Masse eau = 8 000 × 1 = 8 000 kg = 8 t. Masse totale = 8 + 4,5 = 12,5 t."},
+      {id:14, niveau:"Difficile", enonce:"Une plantation produit 2,4 t de cacao par hectare. La plantation fait 15 hectares. Le cacao se vend 1 800 FCFA/kg. Calculer la recette totale.", solution:"Production totale = 2,4 × 15 = 36 t = 36 000 kg. Recette = 36 000 × 1 800 = 64 800 000 FCFA."},
+      {id:15, niveau:"Difficile", enonce:"Un bébé pèse 3,2 kg à la naissance. Il prend 25 g par jour pendant les 3 premiers mois (90 jours). Quelle sera sa masse au bout de 3 mois ? Convertir en kg.", solution:"Prise de masse = 25 × 90 = 2 250 g = 2,25 kg. Masse finale = 3,2 + 2,25 = 5,45 kg."},
+    ],
+  },
+
+  17: {
+    id:17, title:"Durées", duration:"3 semaines",
+    objectives:[
+      "Connaître les unités de durée et leurs relations",
+      "Convertir des durées d'une unité à une autre",
+      "Lire l'heure sur une montre analogique et numérique",
+      "Calculer des durées (addition, soustraction)",
+      "Résoudre des problèmes faisant intervenir des durées",
+      "Utiliser les notations 24h et am/pm",
+    ],
+    cours:[
+      { id:"17-1", titre:"Unités de durée et relations",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PARTICULARITÉ DES DURÉES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ ATTENTION : Les durées NE SUIVENT PAS le système décimal !
+On n'utilise PAS le même tableau que pour les longueurs ou les masses.
+Les conversions sont basées sur 60, 24, 7, 30/31, 12, 365...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU DES UNITÉS DE DURÉE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TRÈS PETITES DURÉES (sciences) :
+• ms  = milliseconde = 0,001 s
+• μs  = microseconde = 0,000001 s
+• ns  = nanoseconde  = 0,000000001 s
+
+UNITÉS COURANTES :
+• s   = seconde       = unité de base du SI
+• min = minute        = 60 secondes
+• h   = heure         = 60 minutes = 3 600 secondes
+• j   = jour          = 24 heures = 86 400 secondes
+
+UNITÉS CALENDAIRES :
+• semaine = 7 jours
+• mois    = 28, 29, 30 ou 31 jours (selon le mois)
+• année   = 365 jours (ou 366 pour les années bissextiles)
+• décennie = 10 ans
+• siècle   = 100 ans
+• millénaire = 1 000 ans
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONVERSIONS FONDAMENTALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1 min = 60 s          → s en min : ÷ 60
+1 h   = 60 min        → min en h : ÷ 60
+1 h   = 3 600 s       → s en h : ÷ 3 600
+1 j   = 24 h          → h en j : ÷ 24
+1 j   = 1 440 min     → min en j : ÷ 1 440
+1 j   = 86 400 s      → s en j : ÷ 86 400
+1 sem = 7 j
+1 an  = 365 j (366 si bissextile)
+1 an  = 52 semaines + 1 jour
+1 an  = 12 mois
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LES MOIS ET LEURS DURÉES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+31 jours : Janvier, Mars, Mai, Juillet, Août, Octobre, Décembre
+30 jours : Avril, Juin, Septembre, Novembre
+28 ou 29 : Février (29 si année bissextile)
+
+MOYEN MNÉMOTECHNIQUE (les jointures des doigts) :
+→ Fermer le poing. Les bosses = 31 jours ; les creux = 30 jours ou moins.
+→ Pouce = Janvier (31), creux = Février (28/29), 2e bosse = Mars (31)...
+
+ANNÉES BISSEXTILES :
+Une année est bissextile si elle est divisible par 4,
+SAUF si elle est divisible par 100, SAUF si elle est divisible par 400.
+Ex : 2024 ✓ (÷4) ; 1900 ✗ (÷100 mais pas ÷400) ; 2000 ✓ (÷400)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLES DE CONVERSIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 3h 45min = (3 × 60) + 45 = 180 + 45 = 225 min
+• 3h 45min = (3 × 3 600) + (45 × 60) = 10 800 + 2 700 = 13 500 s
+• 195 min = 195 ÷ 60 = 3h + reste 15 min = 3h15
+• 7 530 s = 7 530 ÷ 60 = 125 min + reste 30 s = 125 min 30 s
+           = 2h + reste 5 min 30 s = 2h05min30s
+• 2,5 h = 2h + 0,5 × 60 min = 2h30min
+
+⚠️ ERREUR FRÉQUENTE :
+2,5 h ≠ 2h50min (FAUX !)
+2,5 h = 2h + 0,5 × 60 = 2h30min (CORRECT !)
+
+🌍 EXEMPLES AFRICAINS :
+• Un match de football dure 90 min = 1h30min = 5 400 s
+• La nuit à Libreville dure environ 12 h = 720 min = 43 200 s
+• Un voyage Libreville–Franceville dure environ 8h
+  = 8 × 60 = 480 min = 28 800 s
+• Un siècle = 100 ans. L'Afrique a connu la colonisation pendant environ 1 siècle.`,
+        exemples:[
+          {question:"Convertir 3h45min en minutes.", reponse:"3×60 + 45 = 180 + 45 = 225 min"},
+          {question:"Convertir 195 min en heures et minutes.", reponse:"195 ÷ 60 = 3 (quotient) reste 15 → 3h15min"},
+          {question:"Convertir 2,5 h en heures et minutes.", reponse:"2,5 h = 2h + 0,5×60min = 2h30min (PAS 2h50 !)"},
+          {question:"Combien de secondes y a-t-il dans 1 heure ?", reponse:"1h = 60 min = 60×60 s = 3 600 s"},
+        ]
+      },
+      { id:"17-2", titre:"Lire l'heure et les notations",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LECTURE DE L'HEURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MONTRE ANALOGIQUE (aiguilles) :
+• Petite aiguille → heures
+• Grande aiguille → minutes
+• Très fine aiguille → secondes (si présente)
+
+La grande aiguille fait 1 tour en 60 min.
+Chaque graduation = 1 minute.
+Chaque chiffre = 5 minutes (5, 10, 15... 55, 60).
+
+LECTURE :
+→ On lit d'abord les HEURES (petite aiguille)
+→ Puis les MINUTES (grande aiguille × 5)
+
+HEURES PARTICULIÈRES :
+• Aiguilles à 12 et 12 → midi (12h00) ou minuit (0h00)
+• Aiguilles à 12 et 3  → 3h00 ou 15h00
+• Aiguilles à 3 et 6   → 3h30 (mi-chemin)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTATION 12H vs 24H
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTATION 12H (avec am/pm) :
+• am = avant midi (0h01 à 11h59)
+• pm = après midi (12h01 à 23h59)
+• 12h00 am = minuit ; 12h00 pm = midi
+
+NOTATION 24H (officielle en Europe et Afrique) :
+• 0h00 = minuit
+• 12h00 = midi
+• 23h59 = une minute avant minuit
+
+TABLEAU DE CORRESPONDANCE :
+  12h  │  24h       12h  │  24h
+───────┼────────  ───────┼────────
+minuit │  0h00    midi   │ 12h00
+1h am  │  1h00    1h pm  │ 13h00
+6h am  │  6h00    6h pm  │ 18h00
+11h am │ 11h00    11h pm │ 23h00
+
+CONVERSIONS 12H → 24H :
+• am : garder le même nombre (sauf minuit = 0h00)
+• pm : ajouter 12 (sauf midi = 12h00)
+Ex : 3h pm = 3 + 12 = 15h00
+
+CONVERSIONS 24H → 12H :
+• 0h à 11h → am (0h = minuit)
+• 12h à 23h → soustraire 12 → pm (12h = midi)
+Ex : 19h00 = 19 − 12 = 7h pm = 7h du soir
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ÉCRITURE DES DURÉES ET DES HEURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HEURE D'UN MOMENT :
+• 14h30 = quatorze heures trente = 2h30 pm
+• 8h05  = huit heures cinq
+• 0h00  = minuit
+• 12h00 = midi
+
+DURÉE :
+• 2h30min = deux heures trente minutes
+• 1h05min30s = une heure cinq minutes trente secondes
+
+NOTATION DÉCIMALE DES DURÉES (à éviter mais parfois utilisée) :
+• 1,5 h = 1h30min (PAS 1h50min !)
+• 2,25 h = 2h15min (0,25 × 60 = 15 min)
+• 0,75 h = 45 min (0,75 × 60 = 45 min)
+
+🌍 EXEMPLES AFRICAINS :
+• Les cours au lycée gabonais : 8h00 → 16h00 (horaire 24h)
+• RFI Afrique diffuse les informations à 7h am = 7h00
+• Le journal télévisé de Gabon1ère à 20h00 = 8h pm
+• La prière de l'aube (fajr) vers 5h30 am = 5h30`,
+        exemples:[
+          {question:"Écrire 15h30 en notation 12h.", reponse:"15h − 12 = 3h pm = 3h30 de l'après-midi"},
+          {question:"Écrire 9h45 am en notation 24h.", reponse:"9h45 am = 9h45 (on garde, c'est am)"},
+          {question:"Écrire 2,75 h en heures et minutes.", reponse:"2h + 0,75×60 = 2h + 45min = 2h45min"},
+          {question:"Quelle heure est-il si la grande aiguille est sur le 9 et la petite entre le 3 et le 4 ?", reponse:"Grandes aiguille sur 9 → 45 min. Petite entre 3 et 4 → 3h. Il est 3h45 (ou 15h45 en 24h)."},
+        ]
+      },
+      { id:"17-3", titre:"Calculs sur les durées",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ADDITION DE DURÉES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE : Additionner heures avec heures, minutes avec minutes, secondes avec secondes.
+Si les secondes dépassent 60 → retenir 1 minute.
+Si les minutes dépassent 60 → retenir 1 heure.
+
+EXEMPLE 1 : 2h35min + 1h50min
+  heures : 2 + 1 = 3h
+  minutes : 35 + 50 = 85 min
+  85 min = 60 min + 25 min = 1h25min
+  Total = 3h + 1h25min = 4h25min ✓
+
+EXEMPLE 2 : 3h45min30s + 1h25min45s
+  secondes : 30 + 45 = 75 s = 1min15s
+  minutes : 45 + 25 + 1 (retenue) = 71 min = 1h11min
+  heures : 3 + 1 + 1 (retenue) = 5h
+  Total = 5h11min15s ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOUSTRACTION DE DURÉES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE : Soustraire heures avec heures, minutes avec minutes.
+Si les minutes du bas > minutes du haut → emprunter 1h = 60 min.
+
+EXEMPLE 1 : 5h20min − 2h45min
+  minutes : 20 < 45 → on emprunte 1h : 80 − 45 = 35 min
+  heures : 5 − 1 (emprunté) − 2 = 2h
+  Résultat = 2h35min ✓
+  VÉRIF : 2h35 + 2h45 = 4h80min = 5h20min ✓
+
+EXEMPLE 2 : 4h − 1h35min
+  4h = 3h60min
+  minutes : 60 − 35 = 25 min
+  heures : 3 − 1 = 2h
+  Résultat = 2h25min ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CALCUL D'UNE HEURE D'ARRIVÉE OU DE DÉPART
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPE 1 — HEURE D'ARRIVÉE :
+Heure d'arrivée = Heure de départ + Durée du trajet
+
+EXEMPLE : Un bus part à 7h35 et met 2h50min pour arriver.
+7h35 + 2h50 :
+  minutes : 35 + 50 = 85 min = 1h25min
+  heures : 7 + 2 + 1 = 10h
+  Arrivée : 10h25min ✓
+
+TYPE 2 — DURÉE :
+Durée = Heure d'arrivée − Heure de départ
+
+EXEMPLE : Un avion décolle à 9h40 et atterrit à 14h15.
+14h15 − 9h40 :
+  minutes : 15 < 40 → emprunt : 75 − 40 = 35 min
+  heures : 14 − 1 − 9 = 4h
+  Durée = 4h35min ✓
+
+TYPE 3 — HEURE DE DÉPART :
+Heure de départ = Heure d'arrivée − Durée
+
+EXEMPLE : On veut arriver à 8h00. Le trajet dure 1h35.
+8h00 − 1h35 :
+  minutes : 0 < 35 → emprunt : 60 − 35 = 25 min
+  heures : 8 − 1 − 1 = 6h
+  Départ : 6h25min ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DURÉE ENTRE DEUX DATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE : Compter les jours, semaines, mois.
+
+EXEMPLE : Du 15 mars au 8 juin, combien de jours ?
+• Du 15 mars au 31 mars : 31 − 15 = 16 jours
+• Avril : 30 jours
+• Mai : 31 jours
+• Du 1er juin au 8 juin : 8 jours
+• Total : 16 + 30 + 31 + 8 = 85 jours
+
+🌍 EXEMPLES AFRICAINS :
+• Bus Libreville–Oyem : départ 6h00, arrivée 14h30.
+  Durée = 14h30 − 6h00 = 8h30min
+
+• Cours du matin : 8h00→12h00. Cours de l'après-midi : 14h30→17h30.
+  Matin : 12h00−8h00 = 4h00
+  Après-midi : 17h30−14h30 = 3h00
+  Total école : 4h + 3h = 7h par jour
+
+• Ramadan 2024 : du 11 mars au 9 avril.
+  Du 11 mars au 31 mars : 20 jours
+  Du 1er au 9 avril : 9 jours
+  Total = 29 jours`,
+        exemples:[
+          {question:"Calculer : 3h45min + 2h30min", reponse:"min : 45+30=75=60+15 → 1h15. h : 3+2+1=6. Résultat : 6h15min"},
+          {question:"Calculer : 7h20min − 3h50min", reponse:"min : 20<50 → emprunt : 80−50=30. h : 7−1−3=3. Résultat : 3h30min"},
+          {question:"Un film commence à 20h45 et dure 2h15min. À quelle heure se termine-t-il ?", reponse:"20h45 + 2h15 : min=45+15=60=1h00 ; h=20+2+1=23. Le film se termine à 23h00."},
+          {question:"Un élève arrive à l'école à 7h50 et en repart à 17h15. Combien de temps a-t-il passé à l'école ?", reponse:"17h15 − 7h50 : min=15<50→emprunt : 75−50=25 ; h=17−1−7=9. Durée = 9h25min."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Convertir 3h20min en minutes.", solution:"3×60 + 20 = 180 + 20 = 200 min"},
+      {id:2,  niveau:"Facile",    enonce:"Convertir 150 min en heures et minutes.", solution:"150 ÷ 60 = 2 reste 30 → 2h30min"},
+      {id:3,  niveau:"Facile",    enonce:"Convertir 18h00 en notation 12h.", solution:"18 − 12 = 6h pm = 6h du soir"},
+      {id:4,  niveau:"Facile",    enonce:"Convertir 9h30 am en notation 24h.", solution:"9h30 am = 9h30 (am, on garde)"},
+      {id:5,  niveau:"Facile",    enonce:"Calculer : 2h40min + 1h35min", solution:"min : 40+35=75=1h15. h : 2+1+1=4. Résultat : 4h15min"},
+      {id:6,  niveau:"Moyen",     enonce:"Calculer : 5h10min − 2h45min", solution:"min : 10<45 → emprunt : 70−45=25. h : 5−1−2=2. Résultat : 2h25min. Vérif : 2h25+2h45=4h70=5h10 ✓"},
+      {id:7,  niveau:"Moyen",     enonce:"Un bus part à 6h45 et arrive à 11h20. Calculer la durée du trajet.", solution:"11h20 − 6h45 : min=20<45→emprunt : 80−45=35 ; h=11−1−6=4. Durée = 4h35min."},
+      {id:8,  niveau:"Moyen",     enonce:"Un film commence à 20h15 et dure 1h50min. À quelle heure se termine-t-il ?", solution:"20h15 + 1h50 : min=15+50=65=1h05 ; h=20+1+1=22. Fin à 22h05."},
+      {id:9,  niveau:"Moyen",     enonce:"Aminata travaille 7h30min par jour, 5 jours par semaine. Combien d'heures travaille-t-elle par semaine ? Par mois (4 semaines) ?", solution:"Par semaine : 7h30 × 5 = 35h150min = 35h + 2h30 = 37h30min. Par mois : 37h30 × 4 = 148h120min = 148h + 2h = 150h."},
+      {id:10, niveau:"Moyen",     enonce:"Du 20 avril au 15 juin, combien y a-t-il de jours ?", solution:"Du 20 au 30 avril : 30−20=10j. Mai : 31j. Du 1er au 15 juin : 15j. Total = 10+31+15 = 56 jours."},
+      {id:11, niveau:"Difficile", enonce:"Un avion décolle de Libreville (Gabon, UTC+1) à 10h00 heure locale et atterrit à Paris (France, UTC+1 en hiver) après 7h30min de vol. À quelle heure atterrit-il à Paris (heure locale) ?", solution:"Même fuseau horaire (UTC+1). Arrivée = 10h00 + 7h30 = 17h30 heure locale. L'avion atterrit à 17h30."},
+      {id:12, niveau:"Difficile", enonce:"Kofi naît le 15 juillet 2010. Quelle est son âge exact le 1er janvier 2025 ? (en années, mois et jours)", solution:"De juillet 2010 à juillet 2024 : 14 ans. De juillet 2024 au 1er janvier 2025 : 5 mois + 17 jours (du 15 juil au 31 juil = 16j ; août=31j ; sept=30j ; oct=31j ; nov=30j ; déc=31j ; 1er jan=1j → 16+31+30+31+30+31+1=170j = 5 mois 17 jours). Âge : 14 ans, 5 mois, 17 jours."},
+      {id:13, niveau:"Difficile", enonce:"Un train part à 22h45 et arrive le lendemain à 6h20. Quelle est la durée du trajet ?", solution:"De 22h45 à minuit (0h00) = 1h15min. De minuit à 6h20 = 6h20min. Durée totale = 1h15 + 6h20 = 7h35min."},
+      {id:14, niveau:"Difficile", enonce:"Un bébé dort 16h par jour. Quelle fraction du temps dort-il ? Combien de temps est-il éveillé par semaine ?", solution:"Fraction = 16/24 = 2/3. Éveillé par jour = 24−16 = 8h. Par semaine = 8×7 = 56h éveillé."},
+      {id:15, niveau:"Difficile", enonce:"Le soleil se lève à Libreville à 6h12 et se couche à 18h24. Calculer la durée du jour, de la nuit, et exprimer chacune en fraction de 24h.", solution:"Durée du jour = 18h24 − 6h12 = 12h12min. Durée de la nuit = 24h − 12h12min = 11h48min. Fraction jour = 12h12min ÷ 24h = 732min ÷ 1440min = 732/1440 = 61/120. Fraction nuit = 708/1440 = 59/120."},
+    ],
+  },
+
+  18: {
+    id:18, title:"Aires", duration:"3 semaines",
+    objectives:[
+      "Maîtriser le tableau de conversion des unités d'aire",
+      "Convertir des aires entre mm², cm², dm², m², dam², hm², km²",
+      "Utiliser les unités agraires (are, hectare)",
+      "Calculer et comparer des aires en changeant d'unité",
+      "Résoudre des problèmes complexes faisant intervenir des aires",
+    ],
+    cours:[
+      { id:"18-1", titre:"Unités d'aire et tableau de conversion",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RAPPEL : QU'EST-CE QUE L'AIRE ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+L'AIRE mesure la surface occupée par une figure plane.
+Elle s'exprime en UNITÉS CARRÉES.
+
+UNITÉ DE BASE : le mètre carré (m²)
+1 m² = la surface d'un carré dont le côté mesure 1 m.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POURQUOI ×100 ET PAS ×10 ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+C'est LA question essentielle de ce chapitre !
+
+Rappel : 1 m = 10 dm (en longueur, ×10)
+Mais : 1 m² = 100 dm² (en aire, ×100)
+
+POURQUOI ? Parce qu'une aire est un carré de longueurs !
+1 m² = 1 m × 1 m = 10 dm × 10 dm = 100 dm²
+
+Schéma :
+  1 m = 10 dm
+  ┌────────────────────────┐
+  │ 1dm²│ 1dm²│...         │ 1 m
+  │     │     │            │
+  │─────┼─────┼────────────│ = 10 dm
+  │     │     │            │
+  │─────┼─────┼────────────│
+  └────────────────────────┘
+  → 10 rangées de 10 dm² = 100 dm²
+
+DONC : à chaque fois qu'on change d'unité de longueur (×10 ou ÷10),
+les unités d'AIRE changent de ×100 ou ÷100.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU DES UNITÉS D'AIRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+mm²   cm²   dm²    m²    dam²   hm²    km²
+  ×100  ×100  ×100  ×100   ×100   ×100
+  ÷100  ÷100  ÷100  ÷100   ÷100   ÷100
+
+CHAQUE CASE DU TABLEAU CONTIENT 2 CHIFFRES :
+(car on divise/multiplie par 100 = 10² à chaque pas)
+
+EXEMPLE : convertir 3,75 m² en cm²
+m² → dm² → cm² = 2 pas → ×100² = ×10 000
+3,75 × 10 000 = 37 500 cm²
+
+OU avec le tableau (2 chiffres par case) :
+  km² │ hm² │ dam² │  m²  │ dm²  │  cm² │ mm²
+      │     │      │  3,  │  75  │  00  │
+→ 37 500 cm²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONVERSIONS DIRECTES UTILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 1 cm²  = 100 mm²
+• 1 dm²  = 100 cm²        = 10 000 mm²
+• 1 m²   = 100 dm²        = 10 000 cm²      = 1 000 000 mm²
+• 1 dam² = 100 m²
+• 1 hm²  = 100 dam²       = 10 000 m²
+• 1 km²  = 100 hm²        = 10 000 dam²     = 1 000 000 m²
+
+EXEMPLES DÉTAILLÉS :
+• 4,5 m²  = 4,5 × 10 000 = 45 000 cm²    (2 pas, ×100² = ×10 000)
+• 250 cm² = 250 ÷ 10 000 = 0,025 m²      (2 pas, ÷10 000)
+• 3 km²   = 3 × 1 000 000 = 3 000 000 m² (3 pas, ×100³)
+• 75 000 m² = 75 000 ÷ 1 000 000 = 0,075 km²
+
+📌 ASTUCE PRATIQUE : Doubler le nombre de zéros par rapport aux longueurs.
+Pour les longueurs : 1 m = 100 cm (2 zéros)
+Pour les aires : 1 m² = 10 000 cm² (4 zéros = 2 × 2)`,
+        exemples:[
+          {question:"Convertir 2,8 m² en cm².", reponse:"2 pas → ×10 000 : 2,8 × 10 000 = 28 000 cm²"},
+          {question:"Convertir 45 000 mm² en cm².", reponse:"1 pas → ÷100 : 45 000 ÷ 100 = 450 cm²"},
+          {question:"Convertir 0,35 km² en m².", reponse:"3 pas → ×100³ = ×1 000 000 : 0,35 × 1 000 000 = 350 000 m²"},
+          {question:"Pourquoi 1 m² = 10 000 cm² et non 100 cm² ?", reponse:"Car 1 m = 100 cm, donc 1 m² = (100 cm)² = 100×100 = 10 000 cm². L'aire est le carré d'une longueur, donc on élève aussi le facteur de conversion au carré."},
+        ]
+      },
+      { id:"18-2", titre:"Unités agraires et applications",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UNITÉS AGRAIRES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Les unités agraires sont utilisées pour mesurer les SURFACES DE TERRAIN.
+
+ARE (a) :
+• 1 are = 1 dam² = 100 m²
+• C'est la surface d'un carré de 10 m de côté
+• Utilisé pour les petits terrains, jardins, parcelles
+
+HECTARE (ha) :
+• 1 hectare = 100 ares = 10 000 m²
+• C'est la surface d'un carré de 100 m de côté
+• C'est l'unité la plus utilisée pour les grandes surfaces agricoles
+
+RELATIONS :
+• 1 ha = 100 a = 10 000 m² = 1 hm²
+• 1 km² = 100 ha = 10 000 a = 1 000 000 m²
+
+EXEMPLES DE SURFACES :
+• Terrain résidentiel à Libreville : ≈ 400 à 800 m² = 4 à 8 ares
+• Champ de manioc : ≈ 2 ha = 20 000 m²
+• Parc National de la Lopé (Gabon) : 491 000 ha ≈ 4 910 km²
+• Superficie du Gabon : 26,8 millions d'ha = 268 000 km²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONVERSIONS AVEC LES UNITÉS AGRAIRES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLES :
+• 3,5 ha  = 3,5 × 10 000 = 35 000 m²
+• 2,5 ha  = 2,5 × 100 = 250 ares
+• 12 500 m² = 12 500 ÷ 10 000 = 1,25 ha
+• 350 a   = 350 ÷ 100 = 3,5 ha
+• 0,25 km² = 0,25 × 100 = 25 ha
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU RÉCAPITULATIF COMPLET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+km²    hm²     dam²     m²
+        (ha)    (a)
+ │       │       │       │
+×100   ×100    ×100
+÷100   ÷100    ÷100
+
+1 km² = 100 hm² = 10 000 dam² = 1 000 000 m²
+        100 ha     10 000 a
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PRIX AU M² ET À L'HECTARE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROBLÈME TYPE :
+"Un terrain de 3 500 m² coûte 52 500 000 FCFA. Quel est le prix au m² ? Au are ? À l'hectare ?"
+
+→ Prix au m²  : 52 500 000 ÷ 3 500 = 15 000 FCFA/m²
+→ Prix au are : 15 000 × 100 = 1 500 000 FCFA/are
+→ Prix à l'ha : 15 000 × 10 000 = 150 000 000 FCFA/ha
+
+🌍 EXEMPLES AFRICAINS :
+• Une parcelle à Libreville de 500 m² = 5 ares = 0,05 ha
+• Une plantation de palmiers à huile : 120 ha = 1 200 000 m²
+• Un terrain de foot (standard) : 68 m × 105 m = 7 140 m² ≈ 71,4 ares
+• La forêt équatoriale du Gabon couvre 22 000 000 ha = 220 000 km²`,
+        exemples:[
+          {question:"Convertir 4,2 ha en m².", reponse:"4,2 × 10 000 = 42 000 m²"},
+          {question:"Convertir 75 000 m² en ha.", reponse:"75 000 ÷ 10 000 = 7,5 ha"},
+          {question:"Un terrain de 2 500 m². Combien d'ares ? Combien d'hectares ?", reponse:"2 500 ÷ 100 = 25 ares. 2 500 ÷ 10 000 = 0,25 ha."},
+        ]
+      },
+      { id:"18-3", titre:"Calculs d'aires et problèmes complexes",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RAPPEL DES FORMULES D'AIRE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Carré (c)          : A = c²
+• Rectangle (L, ℓ)   : A = L × ℓ
+• Parallélogramme    : A = base × hauteur
+• Triangle           : A = (base × hauteur) ÷ 2
+• Trapèze (B, b, h)  : A = (B + b) × h ÷ 2
+• Disque (r)         : A = π × r²
+
+⚠️ LES FORMULES DONNENT L'AIRE DANS L'UNITÉ DES MESURES UTILISÉES.
+Si les mesures sont en cm → l'aire est en cm²
+Si les mesures sont en m → l'aire est en m²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FIGURES COMPOSÉES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour calculer l'aire d'une figure composée :
+MÉTHODE 1 — ADDITION : décomposer en figures simples et additionner.
+MÉTHODE 2 — SOUSTRACTION : partir d'une grande figure et soustraire.
+
+EXEMPLE — MÉTHODE ADDITION :
+Un L majuscule = rectangle 1 + rectangle 2
+A = A₁ + A₂
+
+EXEMPLE — MÉTHODE SOUSTRACTION :
+Un cadre = grand rectangle − petit rectangle (le trou)
+A cadre = A grand − A petit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CHANGER D'UNITÉ DANS UN CALCUL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BONNE PRATIQUE : Convertir TOUTES les mesures dans la MÊME UNITÉ
+AVANT de calculer l'aire.
+
+EXEMPLE : Rectangle de 1,2 m × 85 cm. Calculer l'aire en cm².
+→ Convertir 1,2 m en cm : 1,2 × 100 = 120 cm
+→ A = 120 × 85 = 10 200 cm²
+→ En m² : 10 200 ÷ 10 000 = 1,02 m²
+
+ERREUR FRÉQUENTE :
+A = 1,2 × 85 = 102 (SANS convertir) → résultat sans unité cohérente !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROBLÈMES PRATIQUES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPE 1 — CARRELAGE, PEINTURE, GAZON :
+"Combien de carreaux de 30 cm × 30 cm pour une pièce de 4 m × 3,5 m ?"
+→ Aire pièce = 4 × 3,5 = 14 m² = 140 000 cm²
+→ Aire carreau = 30 × 30 = 900 cm²
+→ Nombre = 140 000 ÷ 900 ≈ 155,6 → 156 carreaux (arrondir au supérieur !)
+→ En pratique, ajouter 10% pour les découpes → 156 × 1,1 ≈ 172 carreaux
+
+TYPE 2 — RENDEMENT AGRICOLE :
+"Un champ de 2 ha produit 4,8 t de manioc. Quel est le rendement en t/ha ?"
+→ Rendement = 4,8 ÷ 2 = 2,4 t/ha
+
+TYPE 3 — COÛT AU M² :
+Voir leçon 2.
+
+🌍 EXEMPLES AFRICAINS :
+• Peindre une façade rectangulaire 8 m × 3,5 m.
+  Un pot de peinture couvre 12 m².
+  Aire = 8 × 3,5 = 28 m². Pots nécessaires = 28 ÷ 12 ≈ 2,33 → 3 pots.
+
+• Un champ de 3 ha de cacao produit 7,2 t par an.
+  Rendement = 7,2 ÷ 3 = 2,4 t/ha/an.
+  Prix du cacao = 1 800 FCFA/kg → Recette = 7 200 × 1 800 = 12 960 000 FCFA.`,
+        exemples:[
+          {question:"Un rectangle a des dimensions 2,5 m × 80 cm. Calculer son aire en m² et en cm².", reponse:"80 cm = 0,8 m. A = 2,5 × 0,8 = 2 m². En cm² : 2 × 10 000 = 20 000 cm² (ou 250cm × 80cm = 20 000 cm²)."},
+          {question:"Combien de carreaux de 20 cm × 20 cm faut-il pour couvrir 15 m² ?", reponse:"15 m² = 150 000 cm². Carreau = 20×20 = 400 cm². Nombre = 150 000 ÷ 400 = 375 carreaux."},
+          {question:"Une plantation de 4,5 ha produit 13,5 t de café. Quel est le rendement en kg/are ?", reponse:"4,5 ha = 450 ares. Rendement = 13 500 kg ÷ 450 = 30 kg/are."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Convertir 5 m² en cm².", solution:"5 × 10 000 = 50 000 cm²"},
+      {id:2,  niveau:"Facile",    enonce:"Convertir 35 000 cm² en m².", solution:"35 000 ÷ 10 000 = 3,5 m²"},
+      {id:3,  niveau:"Facile",    enonce:"Convertir 2,5 ha en m².", solution:"2,5 × 10 000 = 25 000 m²"},
+      {id:4,  niveau:"Facile",    enonce:"Convertir 45 000 m² en ha.", solution:"45 000 ÷ 10 000 = 4,5 ha"},
+      {id:5,  niveau:"Facile",    enonce:"Ranger du plus petit au plus grand : 50 000 cm² ; 4 m² ; 0,0005 km² ; 60 dm²", solution:"Convertir en m² : 5 ; 4 ; 500 ; 0,6. Ordre : 4 m² < 50 000 cm² < 60 dm² ... Attends : 50 000cm²=5m², 60dm²=0,6m². Ordre : 60dm²(0,6) < 4m²(4) < 50 000cm²(5) < 0,0005km²(500). Soit : 60 dm² < 4 m² < 50 000 cm² < 0,0005 km²"},
+      {id:6,  niveau:"Moyen",     enonce:"Calculer l'aire d'un rectangle de 3,5 m × 120 cm en m², puis en cm².", solution:"120 cm = 1,2 m. A = 3,5 × 1,2 = 4,2 m² = 4,2 × 10 000 = 42 000 cm²."},
+      {id:7,  niveau:"Moyen",     enonce:"Un terrain triangulaire a une base de 60 m et une hauteur de 45 m. Calculer son aire en m² et en ares.", solution:"A = (60×45)÷2 = 1 350 m² = 1 350÷100 = 13,5 ares."},
+      {id:8,  niveau:"Moyen",     enonce:"Combien de carreaux de 25 cm × 25 cm faut-il pour carreler une pièce de 4 m × 3 m ?", solution:"Pièce = 400×300 = 120 000 cm². Carreau = 25×25 = 625 cm². Nombre = 120 000÷625 = 192 carreaux."},
+      {id:9,  niveau:"Moyen",     enonce:"Un champ rectangulaire de 120 m × 80 m. Calculer son aire en ha.", solution:"A = 120×80 = 9 600 m² = 9 600÷10 000 = 0,96 ha."},
+      {id:10, niveau:"Moyen",     enonce:"Le terrain d'un stade de foot mesure 68 m × 105 m. Exprimer son aire en ares et en hectares.", solution:"A = 68×105 = 7 140 m² = 71,4 ares = 0,714 ha."},
+      {id:11, niveau:"Difficile", enonce:"Une maison a un plan rectangulaire de 12 m × 9 m. Les murs (4 côtés) ont une hauteur de 3 m. On veut peindre les murs intérieurs. Il y a 3 fenêtres de 1,2 m × 1 m et 2 portes de 2 m × 0,9 m. Un pot de peinture couvre 8 m². Combien de pots faut-il ?", solution:"Surface totale murs : 2×(12×3) + 2×(9×3) = 72+54 = 126 m². Fenêtres : 3×(1,2×1) = 3,6 m². Portes : 2×(2×0,9) = 3,6 m². Surface à peindre = 126−3,6−3,6 = 118,8 m². Pots = 118,8÷8 = 14,85 → 15 pots."},
+      {id:12, niveau:"Difficile", enonce:"Un agriculteur possède une plantation de forme trapézoïdale : grandes bases 250 m, petite base 180 m, hauteur 120 m. Calculer l'aire en ha. Sachant qu'il produit 1,8 t/ha de cacao, calculer la production totale.", solution:"A = (250+180)×120÷2 = 430×60 = 25 800 m² = 2,58 ha. Production = 2,58 × 1,8 = 4,644 t ≈ 4,6 t."},
+      {id:13, niveau:"Difficile", enonce:"Une route fait 15 km de long et 8 m de large. Calculer l'aire de la route en m², en ares et en ha.", solution:"A = 15 000 × 8 = 120 000 m² = 1 200 ares = 12 ha."},
+      {id:14, niveau:"Difficile", enonce:"Un disque de rayon 7 m est inscrit dans un carré. Calculer : l'aire du carré, l'aire du disque, et l'aire des 4 coins (en dehors du disque). (π ≈ 22/7)", solution:"Côté du carré = diamètre = 14 m. Aire carré = 14² = 196 m². Aire disque = π×7² = (22/7)×49 = 22×7 = 154 m². Coins = 196−154 = 42 m²."},
+      {id:15, niveau:"Difficile", enonce:"La superficie du Gabon est 267 667 km². Exprimer en ha et en m². Le Parc National de l'Ivindo occupe 300 000 ha. Quelle fraction de la superficie totale représente-t-il ?", solution:"267 667 km² = 267 667 × 10 000 = 2 676 670 000 ha... Erreur : 1 km²=100 ha. Donc 267 667 km² = 267 667 × 100 = 26 766 700 ha = 2 676 670 000 000 m². Fraction Ivindo = 300 000 ÷ 26 766 700 ≈ 1/89 ≈ 1,1% du Gabon."},
+    ],
+  },
+
+  19: {
+    id:19, title:"Volumes", duration:"3 semaines",
+    objectives:[
+      "Comprendre la notion de volume et de capacité",
+      "Connaître les unités de volume (mm³, cm³, dm³, m³)",
+      "Connaître les unités de capacité (mL, cL, dL, L)",
+      "Convertir entre unités de volume et de capacité",
+      "Calculer le volume d'un pavé droit et d'un cube",
+      "Résoudre des problèmes concrets faisant intervenir des volumes",
+    ],
+    cours:[
+      { id:"19-1", titre:"Volume — définition et unités",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITION DU VOLUME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Le VOLUME d'un solide est la mesure de l'ESPACE qu'il occupe.
+Le volume est une grandeur en 3 dimensions (longueur × largeur × hauteur).
+
+ANALOGIE :
+• Longueur → 1D (une ligne)
+• Aire      → 2D (une surface)
+• Volume    → 3D (un espace)
+
+UNITÉ DE BASE : le mètre cube (m³)
+1 m³ = l'espace occupé par un cube dont le côté mesure 1 m.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+POURQUOI ×1 000 ENTRE LES UNITÉS ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Rappel : 1 m = 10 dm (longueur, ×10)
+         1 m² = 100 dm² (aire, ×100 = 10²)
+         1 m³ = 1 000 dm³ (volume, ×1 000 = 10³)
+
+DÉMONSTRATION :
+1 m³ = 1 m × 1 m × 1 m = 10 dm × 10 dm × 10 dm = 1 000 dm³
+
+Schéma :
+  1 m = 10 dm
+  ┌──────────────┐ ┐
+  │   ┌──┐       │ │
+  │   │  │       │ │  1 m = 10 dm
+  │   └──┘       │ │
+  │   1 dm³      │ │
+  └──────────────┘ ┘
+  10 × 10 × 10 = 1 000 petits cubes dm³ dans 1 m³
+
+DONC : à chaque changement d'unité de longueur (×10),
+les unités de VOLUME changent de ×1 000.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU DES UNITÉS DE VOLUME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+mm³    cm³    dm³     m³    dam³   hm³    km³
+  ×1000  ×1000  ×1000  ×1000  ×1000  ×1000
+  ÷1000  ÷1000  ÷1000  ÷1000  ÷1000  ÷1000
+
+CHAQUE CASE DU TABLEAU CONTIENT 3 CHIFFRES
+(car on multiplie/divise par 1 000 = 10³)
+
+CONVERSIONS DIRECTES UTILES :
+• 1 cm³  = 1 000 mm³
+• 1 dm³  = 1 000 cm³      = 1 000 000 mm³
+• 1 m³   = 1 000 dm³      = 1 000 000 cm³    = 1 000 000 000 mm³
+• 1 km³  = 1 000 000 000 m³
+
+EXEMPLES :
+• 2,5 m³  = 2 500 dm³ = 2 500 000 cm³
+• 4 500 cm³ = 4,5 dm³ = 0,0045 m³
+• 0,35 m³ = 350 dm³ = 350 000 cm³
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MÉTHODE DU TABLEAU (3 CHIFFRES PAR CASE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXEMPLE : Convertir 4,25 dm³ en cm³
+  m³  │   dm³  │   cm³  │   mm³
+      │  4,250 │   000  │
+→ 4 250 cm³... NON !
+
+MÉTHODE CORRECTE :
+dm³ → cm³ = 1 pas = ×1 000
+4,25 × 1 000 = 4 250 cm³ ✓
+
+Avec le tableau (3 chiffres par case) :
+  m³  │  dm³  │  cm³  │  mm³
+      │  4  , │  2 5 0│
+→ On lit : 4 250 cm³ ✓
+
+🌍 EXEMPLES AFRICAINS :
+• Un aquarium de 60 cm × 30 cm × 40 cm :
+  V = 60 × 30 × 40 = 72 000 cm³ = 72 dm³
+• Un container maritime : environ 33 m³
+• Capacité d'un puits africain : quelques m³
+• Graine de café : ≈ 0,5 cm³`,
+        exemples:[
+          {question:"Convertir 3,7 m³ en dm³, puis en cm³.", reponse:"3,7 m³ = 3 700 dm³ (×1000). 3 700 dm³ = 3 700 000 cm³ (×1000)."},
+          {question:"Convertir 8 500 cm³ en dm³.", reponse:"8 500 ÷ 1 000 = 8,5 dm³"},
+          {question:"Pourquoi 1 m³ = 1 000 000 cm³ et non 10 000 cm³ ?", reponse:"1 m = 100 cm, donc 1 m³ = (100 cm)³ = 100 × 100 × 100 = 1 000 000 cm³. Le volume élève le facteur au cube."},
+        ]
+      },
+      { id:"19-2", titre:"Capacité et lien avec le volume",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CAPACITÉ — DÉFINITION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+La CAPACITÉ est le volume de liquide qu'un récipient peut contenir.
+L'unité de capacité est le LITRE (L).
+
+DISTINCTION :
+• VOLUME → mesure l'espace occupé par un solide (en m³, cm³...)
+• CAPACITÉ → mesure ce que contient un récipient (en L, mL...)
+En pratique : même grandeur, unités différentes selon le contexte.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LIEN FONDAMENTAL : 1 L = 1 dm³
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+C'est le lien le plus important du chapitre !
+
+1 litre = 1 décimètre cube
+1 L = 1 dm³
+
+CONSÉQUENCES :
+• 1 mL = 1 cm³        (1 millilitre = 1 centimètre cube)
+• 1 cL = 10 cm³
+• 1 dL = 100 cm³
+• 1 L  = 1 000 cm³ = 1 dm³
+• 1 kL = 1 000 L = 1 m³
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU DES UNITÉS DE CAPACITÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+mL    cL    dL     L    daL   hL    kL
+│      │      │     │     │     │     │
+  ×10   ×10   ×10   ×10   ×10   ×10
+  ÷10   ÷10   ÷10   ÷10   ÷10   ÷10
+
+CONVERSIONS :
+• 1 L   = 10 dL  = 100 cL = 1 000 mL
+• 1 kL  = 1 000 L
+• 1 hL  = 100 L
+
+EXEMPLES :
+• 2,5 L = 25 dL = 250 cL = 2 500 mL
+• 3 500 mL = 3,5 L
+• 0,75 L = 750 mL (bouteille classique d'eau ≈ 750 mL)
+• 1,5 L = 1 500 mL (grande bouteille d'eau)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONVERSIONS VOLUME ↔ CAPACITÉ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU RÉCAPITULATIF :
+Volume  │  Capacité  │  Valeur
+───────────────────────────────
+1 mm³   │  0,001 mL  │
+1 cm³   │  1 mL      │  = 1/1000 L
+1 dm³   │  1 L       │  = 1 000 cm³
+1 m³    │  1 000 L   │  = 1 kL
+
+EXEMPLES DE CONVERSIONS :
+• 5 dm³ = 5 L
+• 2,4 m³ = 2 400 L
+• 350 L = 350 dm³ = 0,35 m³
+• 75 cL = 75 cm³ = 0,075 dm³ = 0,075 L
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MASSE VOLUMIQUE DE L'EAU
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+L'eau a une propriété remarquable :
+1 L d'eau = 1 kg = 1 dm³
+
+Cette relation simplifie beaucoup les calculs :
+• 1 m³ d'eau = 1 000 L = 1 000 kg = 1 tonne
+• 1 cm³ d'eau = 1 mL = 1 g
+
+EXEMPLE :
+Un réservoir de 2,5 m³ rempli d'eau contient :
+→ 2 500 L d'eau → masse = 2 500 kg = 2,5 t
+
+🌍 EXEMPLES AFRICAINS :
+• Bouteille d'eau de 1,5 L = 1 500 mL = 1 500 cm³
+• Citerne familiale de 500 L = 0,5 m³
+• Bassin d'eau de 2 m × 1,5 m × 0,8 m :
+  V = 2 × 1,5 × 0,8 = 2,4 m³ = 2 400 L
+  Masse de l'eau = 2 400 kg = 2,4 t`,
+        exemples:[
+          {question:"Convertir 4,5 L en mL.", reponse:"4,5 × 1 000 = 4 500 mL"},
+          {question:"Convertir 350 cL en L.", reponse:"350 ÷ 100 = 3,5 L"},
+          {question:"Un récipient contient 2 400 cm³ d'eau. Combien de litres ? Combien de kg ?", reponse:"2 400 cm³ = 2 400 mL = 2,4 L. Masse = 2,4 kg (1 L d'eau = 1 kg)."},
+          {question:"Un aquarium de 80 cm × 40 cm × 35 cm. Calculer sa capacité en litres.", reponse:"V = 80×40×35 = 112 000 cm³ = 112 000 mL = 112 L."},
+        ]
+      },
+      { id:"19-3", titre:"Calcul de volumes et problèmes",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VOLUME DU CUBE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORMULE : V = c × c × c = c³   (c = arête)
+
+EXEMPLE : Cube d'arête 5 cm → V = 5³ = 125 cm³
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VOLUME DU PAVÉ DROIT (RECTANGULAR BOX)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un PAVÉ DROIT est un solide avec 6 faces rectangulaires.
+(Aussi appelé parallélépipède rectangle)
+
+REPRÉSENTATION :
+        ┌──────────────┐
+       /|              /│
+      / |    h        / │
+     /  |            /  │
+    └──────────────┘    │
+    │   └ ─ ─ ─ ─ ─│─ ─┘
+    │        ℓ      │   /
+    │               │  /
+    └───────────────┘ /
+           L
+
+FORMULE : V = L × ℓ × h
+(Longueur × Largeur × Hauteur)
+
+DÉMONSTRATION :
+V = (Aire de la base) × hauteur
+  = (L × ℓ) × h
+
+EXEMPLES :
+• Pavé 6 cm × 4 cm × 3 cm : V = 6 × 4 × 3 = 72 cm³
+• Boîte 20 cm × 15 cm × 10 cm : V = 20 × 15 × 10 = 3 000 cm³ = 3 dm³ = 3 L
+
+⚠️ UNITÉS : Si L, ℓ, h sont en cm → V est en cm³
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TROUVER UNE DIMENSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Si V = L × ℓ × h, alors :
+L = V ÷ (ℓ × h)
+ℓ = V ÷ (L × h)
+h = V ÷ (L × ℓ)
+
+EXEMPLE : Pavé de volume 240 cm³, longueur 10 cm, largeur 6 cm.
+h = 240 ÷ (10 × 6) = 240 ÷ 60 = 4 cm
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VOLUME DU CYLINDRE (INTRODUCTION)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un CYLINDRE droit a deux bases circulaires parallèles et égales.
+
+FORMULE : V = π × r² × h
+(Aire de la base circulaire × hauteur)
+
+EXEMPLE : Cylindre de rayon 4 cm et hauteur 10 cm.
+V = π × 4² × 10 = 160π ≈ 502,4 cm³
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REMPLISSAGE ET VIDAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROBLÈME TYPE :
+"Un réservoir de V litres se remplit au débit de d L/min. En combien de temps est-il plein ?"
+Temps = V ÷ d
+
+"Un robinet débite d L/min et fuit de f L/h. En combien de temps se vide un réservoir de V L ?"
+Débit net = d × 60 − f (en L/h)
+Temps = V ÷ débit net
+
+🌍 EXEMPLES AFRICAINS :
+• Une citerne rectangulaire 2 m × 1,5 m × 1,2 m :
+  V = 2 × 1,5 × 1,2 = 3,6 m³ = 3 600 L
+  Masse de l'eau = 3 600 kg = 3,6 t
+
+• Un puits cylindrique de rayon 0,6 m et profondeur 8 m :
+  V = π × 0,36 × 8 = 2,88π ≈ 9,05 m³ ≈ 9 050 L
+
+• Remplir une citerne de 500 L avec un robinet débitant 25 L/min :
+  Temps = 500 ÷ 25 = 20 minutes
+
+• Une bouteille de gaz cylindrique de rayon 15 cm et hauteur 50 cm :
+  V = π × 225 × 50 = 11 250π ≈ 35 325 cm³ ≈ 35,3 L`,
+        exemples:[
+          {question:"Calculer le volume d'un pavé droit de 12 cm × 8 cm × 5 cm.", reponse:"V = 12 × 8 × 5 = 480 cm³"},
+          {question:"Un cube a un volume de 216 cm³. Quelle est la longueur de son arête ?", reponse:"c³ = 216 → c = ∛216 = 6 cm (car 6×6×6=216)"},
+          {question:"Calculer le volume d'un cylindre de rayon 3 cm et hauteur 7 cm. (π ≈ 3,14)", reponse:"V = π × 9 × 7 = 63π ≈ 197,82 cm³"},
+          {question:"Un aquarium de 60 cm × 25 cm × 30 cm est rempli aux 3/4. Combien de litres contient-il ?", reponse:"V total = 60×25×30 = 45 000 cm³ = 45 L. V aux 3/4 = 45 × 3/4 = 33,75 L."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Convertir 4 dm³ en cm³.", solution:"4 × 1 000 = 4 000 cm³"},
+      {id:2,  niveau:"Facile",    enonce:"Convertir 5 000 cm³ en dm³.", solution:"5 000 ÷ 1 000 = 5 dm³ = 5 L"},
+      {id:3,  niveau:"Facile",    enonce:"Convertir 3,5 L en mL.", solution:"3,5 × 1 000 = 3 500 mL"},
+      {id:4,  niveau:"Facile",    enonce:"Calculer le volume d'un cube d'arête 6 cm.", solution:"V = 6³ = 216 cm³"},
+      {id:5,  niveau:"Facile",    enonce:"Calculer le volume d'un pavé droit de 10 cm × 5 cm × 4 cm.", solution:"V = 10 × 5 × 4 = 200 cm³"},
+      {id:6,  niveau:"Moyen",     enonce:"Un aquarium de 50 cm × 30 cm × 25 cm. Calculer son volume en cm³ et en litres.", solution:"V = 50×30×25 = 37 500 cm³ = 37,5 L."},
+      {id:7,  niveau:"Moyen",     enonce:"Une citerne rectangulaire contient 1 200 L. Sa base mesure 1,5 m × 0,8 m. Calculer sa hauteur.", solution:"V = 1 200 L = 1,2 m³. h = V ÷ (L×ℓ) = 1,2 ÷ (1,5×0,8) = 1,2 ÷ 1,2 = 1 m."},
+      {id:8,  niveau:"Moyen",     enonce:"Un robinet débite 12 L/min. Combien de temps faut-il pour remplir une citerne de 300 L ?", solution:"Temps = 300 ÷ 12 = 25 minutes."},
+      {id:9,  niveau:"Moyen",     enonce:"Un récipient cylindrique a un rayon de 5 cm et une hauteur de 20 cm. Calculer son volume en cm³ et en litres. (π ≈ 3,14)", solution:"V = π×25×20 = 500π ≈ 1 570 cm³ = 1,57 L."},
+      {id:10, niveau:"Moyen",     enonce:"Quelle est la masse d'eau contenue dans une piscine de 10 m × 5 m × 1,5 m ? (1 L d'eau = 1 kg)", solution:"V = 10×5×1,5 = 75 m³ = 75 000 L. Masse = 75 000 kg = 75 t."},
+      {id:11, niveau:"Difficile", enonce:"Une boîte de conserve cylindrique a un diamètre de 8 cm et une hauteur de 11 cm. Calculer son volume en cm³ et en mL. (π ≈ 3,14)", solution:"r = 4 cm. V = π×16×11 = 176π ≈ 552,64 cm³ ≈ 552,64 mL ≈ 0,55 L."},
+      {id:12, niveau:"Difficile", enonce:"Un château d'eau cylindrique a un rayon de 3 m et une hauteur de 8 m. Il est rempli aux 2/3. Calculer le volume d'eau en m³ et en litres. Calculer la masse de l'eau. (π ≈ 3,14)", solution:"V total = π×9×8 = 72π ≈ 226,08 m³. V eau = 2/3 × 226,08 ≈ 150,72 m³ = 150 720 L. Masse ≈ 150 720 kg ≈ 150,72 t."},
+      {id:13, niveau:"Difficile", enonce:"Un container maritime standard mesure 6,1 m × 2,44 m × 2,59 m. Calculer son volume interne en m³. Si on empile des caisses de 0,5 m × 0,5 m × 0,5 m, combien peut-on en mettre ?", solution:"V container = 6,1×2,44×2,59 ≈ 38,57 m³. V caisse = 0,5³ = 0,125 m³. Nombre = 38,57÷0,125 ≈ 308 caisses."},
+      {id:14, niveau:"Difficile", enonce:"Un puits cylindrique au Gabon a un diamètre de 1,2 m et une profondeur de 6 m. Quelle masse de terre a-t-il fallu extraire pour le creuser ? (densité de la terre = 1 800 kg/m³, π ≈ 3,14)", solution:"r = 0,6 m. V = π×0,36×6 = 2,16π ≈ 6,786 m³. Masse = 6,786 × 1 800 ≈ 12 215 kg ≈ 12,2 t."},
+      {id:15, niveau:"Difficile", enonce:"Une piscine en forme de pavé droit (25 m × 10 m × 1,8 m) est remplie par deux pompes : la première débite 500 L/min, la deuxième 300 L/min. En combien de temps (en heures et minutes) la piscine sera-t-elle pleine ?", solution:"V piscine = 25×10×1,8 = 450 m³ = 450 000 L. Débit total = 500+300 = 800 L/min. Temps = 450 000 ÷ 800 = 562,5 min = 9h22min30s."},
+    ],
+  },
+
+  20: {
+    id:20, title:"Solides", duration:"3 semaines",
+    objectives:[
+      "Reconnaître et nommer les solides usuels",
+      "Identifier les faces, arêtes et sommets d'un solide",
+      "Vérifier la relation d'Euler",
+      "Calculer le volume et l'aire latérale des solides usuels",
+      "Distinguer solides de révolution et polyèdres",
+    ],
+    cours:[
+      { id:"20-1", titre:"Les polyèdres — faces, arêtes et sommets",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉFINITIONS FONDAMENTALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un SOLIDE est une figure géométrique à 3 dimensions (3D).
+Il occupe un volume dans l'espace.
+
+POLYÈDRE : solide dont toutes les faces sont des POLYGONES plats.
+(Du grec : poly = plusieurs, hedra = face)
+
+ÉLÉMENTS D'UN POLYÈDRE :
+• FACES : les surfaces polygonales qui délimitent le solide
+• ARÊTES : les segments où deux faces se rencontrent
+• SOMMETS : les points où au moins trois arêtes se rejoignent
+
+REPRÉSENTATION (PAVÉ DROIT) :
+         D──────────C
+        /│          /│
+       / │         / │
+      A──────────B   │
+      │  │       │   │
+      │  H───────│───G
+      │ /        │  /
+      │/         │ /
+      E──────────F
+
+• Sommets : A, B, C, D, E, F, G, H = 8 sommets
+• Arêtes : AB, BC, CD, DA (face du haut), EF, FG, GH, HE (face du bas),
+           AE, BF, CG, DH (arêtes verticales) = 12 arêtes
+• Faces : ABCD, EFGH, ABFE, DCGH, ADHE, BCGF = 6 faces
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RELATION D'EULER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pour tout polyèdre CONVEXE, la relation suivante est toujours vraie :
+
+  Sommets − Arêtes + Faces = 2
+  S − A + F = 2
+
+VÉRIFICATIONS :
+• Cube : S=8, A=12, F=6 → 8−12+6 = 2 ✓
+• Tétraèdre : S=4, A=6, F=4 → 4−6+4 = 2 ✓
+• Pyramide à base carrée : S=5, A=8, F=5 → 5−8+5 = 2 ✓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LES POLYÈDRES USUELS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. LE CUBE :
+   • 6 faces carrées toutes ÉGALES
+   • 12 arêtes toutes ÉGALES
+   • 8 sommets
+   • Toutes les faces sont perpendiculaires aux faces adjacentes
+   • Arête : a
+   Représentation :
+     ┌───────┐
+    /│      /│
+   / │     / │
+  └──┼────┘  │
+  │  └────│──┘
+  │ /     │ /
+  │/      │/
+  └───────┘
+
+2. LE PAVÉ DROIT (PARALLÉLÉPIPÈDE RECTANGLE) :
+   • 6 faces rectangulaires (en 3 paires parallèles égales)
+   • 12 arêtes (en 3 groupes de 4 arêtes égales)
+   • 8 sommets
+   • Dimensions : L (longueur), ℓ (largeur), h (hauteur)
+
+3. LE PRISME DROIT :
+   • 2 bases polygonales parallèles et égales (les BASES)
+   • Des faces latérales rectangulaires (les FACES LATÉRALES)
+   • Les arêtes latérales sont perpendiculaires aux bases
+   Exemples : prisme triangulaire, prisme pentagonal...
+
+4. LA PYRAMIDE :
+   • Une base polygonale
+   • Des faces latérales triangulaires qui se rejoignent en un SOMMET (APEX)
+   Pyramide à base carrée : 5 sommets, 8 arêtes, 5 faces
+   Pyramide à base triangulaire (tétraèdre) : 4 sommets, 6 arêtes, 4 faces
+
+🌍 EXEMPLES AFRICAINS :
+• Les pyramides d'Égypte : pyramides à base carrée ≈ 230 m de côté
+• Une case traditionnelle africaine : les murs forment un prisme droit, le toit une pyramide
+• Les boîtes de marchandises au marché : des pavés droits
+• Un pétale de fleur de frangipanier : peut être modélisé comme un triangle`,
+        exemples:[
+          {question:"Vérifier la relation d'Euler pour un cube.", reponse:"S=8 sommets, A=12 arêtes, F=6 faces. 8−12+6=2 ✓"},
+          {question:"Une pyramide a une base pentagonale (5 côtés). Combien de faces, arêtes et sommets ?", reponse:"Faces = 5 (latérales) + 1 (base) = 6. Sommets = 5 (base) + 1 (apex) = 6. Arêtes = 5 (base) + 5 (latérales) = 10. Vérif Euler : 6−10+6=2 ✓"},
+          {question:"Quelle différence entre un cube et un pavé droit ?", reponse:"Le cube a TOUTES ses arêtes égales et TOUTES ses faces carrées. Le pavé droit peut avoir des arêtes de longueurs différentes et ses faces sont des rectangles (pas forcément des carrés)."},
+        ]
+      },
+      { id:"20-2", titre:"Solides de révolution et volumes",
+        contenu:`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOLIDES DE RÉVOLUTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Un SOLIDE DE RÉVOLUTION est obtenu en faisant tourner une figure plane
+autour d'un axe (appelé AXE DE RÉVOLUTION).
+
+LES PRINCIPAUX SOLIDES DE RÉVOLUTION :
+
+1. LE CYLINDRE DROIT :
+   Obtenu en faisant tourner un rectangle autour d'un de ses côtés.
+   • 2 bases circulaires parallèles et égales
+   • 1 face latérale (la surface courbe)
+   • Rayon r, hauteur h
+        ┌────────────┐
+       ╱              ╲
+      │       r        │  h
+       ╲              ╱
+        └────────────┘
+
+   FORMULES :
+   • Volume : V = π × r² × h
+   • Aire latérale : A_lat = 2 × π × r × h (surface de la tranche)
+   • Aire totale : A_tot = 2πr² + 2πrh = 2πr(r + h)
+
+2. LE CÔNE DROIT :
+   Obtenu en faisant tourner un triangle rectangle autour d'un de ses cathètes.
+   • 1 base circulaire
+   • 1 face latérale courbe
+   • Un sommet (APEX)
+   • Rayon r, hauteur h, apothème ℓ (génératrice)
+       /\
+      /  \   ← h (hauteur)
+     /    \
+    /──────\  ← r (rayon)
+
+   FORMULES :
+   • Apothème : ℓ = √(r² + h²) (Pythagore)
+   • Volume : V = (1/3) × π × r² × h
+   • Aire latérale : A_lat = π × r × ℓ
+
+3. LA SPHÈRE :
+   Obtenue en faisant tourner un demi-cercle autour de son diamètre.
+   • Pas de face plane, entièrement courbe
+   • Rayon r
+
+   FORMULES :
+   • Volume : V = (4/3) × π × r³
+   • Aire : A = 4 × π × r²
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VOLUME DU PRISME ET DE LA PYRAMIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PRISME DROIT :
+V = Aire de la base × hauteur
+V = A_base × h
+
+PYRAMIDE :
+V = (1/3) × Aire de la base × hauteur
+V = (1/3) × A_base × h
+
+📌 Le volume d'une pyramide est TOUJOURS le tiers du volume
+   du prisme de même base et même hauteur !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TABLEAU RÉCAPITULATIF DES VOLUMES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Solide               │ Volume
+─────────────────────┼──────────────────────────
+Cube (a)             │ a³
+Pavé droit (L,ℓ,h)  │ L × ℓ × h
+Prisme (base B, h)   │ B × h
+Pyramide (base B, h) │ (1/3) × B × h
+Cylindre (r, h)      │ π × r² × h
+Cône (r, h)          │ (1/3) × π × r² × h
+Sphère (r)           │ (4/3) × π × r³
+
+🌍 EXEMPLES AFRICAINS :
+• La grande Pyramide de Khéops : base 230m×230m, hauteur 146m.
+  V = (1/3) × 230² × 146 = (1/3) × 52 900 × 146 ≈ 2 574 133 m³ !
+
+• Un château d'eau cylindrique : r=2m, h=6m.
+  V = π×4×6 = 24π ≈ 75,36 m³ = 75 360 L ≈ 75,4 t d'eau
+
+• Un toit conique de case africaine : r=3m, h=2m.
+  V = (1/3)×π×9×2 = 6π ≈ 18,85 m³`,
+        exemples:[
+          {question:"Calculer le volume d'un cylindre de rayon 5 cm et hauteur 12 cm. (π ≈ 3,14)", reponse:"V = π × 25 × 12 = 300π ≈ 942 cm³"},
+          {question:"Calculer le volume d'une pyramide à base carrée de côté 6 cm et hauteur 8 cm.", reponse:"A_base = 6² = 36 cm². V = (1/3) × 36 × 8 = 96 cm³"},
+          {question:"Comparer le volume d'un cône et d'un cylindre de mêmes dimensions (r=3 cm, h=10 cm).", reponse:"V_cylindre = π×9×10 = 90π. V_cône = (1/3)×π×9×10 = 30π. Le cône occupe 1/3 du cylindre."},
+        ]
+      },
+    ],
+    exercices:[
+      {id:1,  niveau:"Facile",    enonce:"Combien de faces, arêtes et sommets a un cube ? Vérifier la relation d'Euler.", solution:"Faces=6, Arêtes=12, Sommets=8. Euler : 8−12+6=2 ✓"},
+      {id:2,  niveau:"Facile",    enonce:"Calculer le volume d'un cube d'arête 4 cm.", solution:"V = 4³ = 64 cm³"},
+      {id:3,  niveau:"Facile",    enonce:"Calculer le volume d'un pavé droit de 8 cm × 5 cm × 3 cm.", solution:"V = 8×5×3 = 120 cm³"},
+      {id:4,  niveau:"Facile",    enonce:"Quelle est la différence entre un prisme et une pyramide ?", solution:"Le prisme a 2 bases identiques et parallèles avec des faces latérales rectangulaires. La pyramide a 1 seule base et des faces latérales triangulaires qui se rejoignent en un sommet (apex)."},
+      {id:5,  niveau:"Facile",    enonce:"Calculer le volume d'un cylindre de rayon 3 cm et hauteur 10 cm. (π ≈ 3,14)", solution:"V = π×9×10 = 90π ≈ 282,6 cm³"},
+      {id:6,  niveau:"Moyen",     enonce:"Une pyramide a une base carrée de côté 8 cm et une hauteur de 9 cm. Calculer son volume.", solution:"A_base = 8² = 64 cm². V = (1/3)×64×9 = 192 cm³"},
+      {id:7,  niveau:"Moyen",     enonce:"Un prisme triangulaire a une base triangulaire de base 6 cm et hauteur 4 cm, et une longueur de 15 cm. Calculer son volume.", solution:"A_base = (6×4)÷2 = 12 cm². V = 12×15 = 180 cm³"},
+      {id:8,  niveau:"Moyen",     enonce:"Un cylindre a un volume de 785 cm³ et une hauteur de 10 cm. Calculer son rayon. (π ≈ 3,14)", solution:"V = πr²h → r² = V÷(πh) = 785÷(3,14×10) = 785÷31,4 = 25. r = 5 cm"},
+      {id:9,  niveau:"Moyen",     enonce:"Combien de faces, arêtes et sommets a une pyramide à base hexagonale ? Vérifier Euler.", solution:"Base hexagonale : 6 côtés. Faces = 6(lat)+1(base)=7. Sommets = 6+1=7. Arêtes = 6(base)+6(lat)=12. Euler : 7−12+7=2 ✓"},
+      {id:10, niveau:"Moyen",     enonce:"Un toit en forme de pyramide à base carrée de côté 8 m et hauteur 3 m. Calculer le volume d'air qu'il contient.", solution:"V = (1/3)×8²×3 = (1/3)×64×3 = 64 m³"},
+      {id:11, niveau:"Difficile", enonce:"Un cylindre et un cône ont le même rayon de 6 cm et la même hauteur de 10 cm. Calculer leurs volumes et leur rapport. (π ≈ 3,14)", solution:"V_cyl = π×36×10 = 360π ≈ 1 130,4 cm³. V_cône = (1/3)×π×36×10 = 120π ≈ 376,8 cm³. Rapport = 1/3 : le cône occupe toujours 1/3 du cylindre de mêmes dimensions."},
+      {id:12, niveau:"Difficile", enonce:"La grande pyramide de Khéops a une base carrée de 230 m de côté et une hauteur de 146 m. Calculer son volume en m³ et en km³.", solution:"V = (1/3)×230²×146 = (1/3)×52 900×146 = (1/3)×7 723 400 ≈ 2 574 467 m³ ≈ 0,00257 km³"},
+      {id:13, niveau:"Difficile", enonce:"Un château d'eau cylindrique de rayon 2,5 m et hauteur 8 m est rempli aux 3/4. Calculer le volume d'eau en m³ et en litres. (π ≈ 3,14)", solution:"V_total = π×6,25×8 = 50π ≈ 157 m³. V_eau = 3/4×157 ≈ 117,75 m³ = 117 750 L."},
+      {id:14, niveau:"Difficile", enonce:"Un solide est composé d'un cylindre de rayon 4 cm et hauteur 10 cm, sur lequel est posé un cône de même rayon et de hauteur 6 cm. Calculer le volume total. (π ≈ 3,14)", solution:"V_cyl = π×16×10 = 160π ≈ 502,4 cm³. V_cône = (1/3)×π×16×6 = 32π ≈ 100,48 cm³. V_total ≈ 602,88 cm³."},
+      {id:15, niveau:"Difficile", enonce:"Une case africaine traditionnelle est composée d'un cylindre (murs) de rayon 3 m et hauteur 2,5 m, surmonté d'un cône (toit) de même rayon et hauteur 2 m. Calculer le volume total de la case et l'aire latérale des murs. (π ≈ 3,14)", solution:"V_cyl = π×9×2,5 = 22,5π ≈ 70,65 m³. V_cône = (1/3)×π×9×2 = 6π ≈ 18,84 m³. V_total ≈ 89,49 m³. A_lat_murs = 2×π×3×2,5 = 15π ≈ 47,1 m²."},
+    ],
+  },
 };
 
 // ─── DONNÉES ──────────────────────────────────────────────────────────────────

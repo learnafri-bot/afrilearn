@@ -33,7 +33,7 @@ function useChapters(levelId = 1, subjectId = 1) {
 
         // Charger les parties
         const { data: partsData, error: partsError } = await supabase
-          .from("parties")
+          .from("parts")
           .select("*")
           .eq("level_id", levelId)
           .eq("subject_id", subjectId)
@@ -43,8 +43,8 @@ function useChapters(levelId = 1, subjectId = 1) {
 
         // Charger les chapitres
         const { data: chaptersData, error: chaptersError } = await supabase
-          .from("chapitres")
-          .select("*, parties(name, icon, color)")
+          .from("chapters")
+          .select("*, parts(name, icon, color, order_num)")
           .eq("level_id", levelId)
           .eq("subject_id", subjectId)
           .order("order_num");
@@ -61,9 +61,9 @@ function useChapters(levelId = 1, subjectId = 1) {
 
         const formattedChapters = chaptersData.map(c => ({
           id: c.order_num,
-          part: c.parties?.order_num || 1,
+          part: c.parts?.order_num || 1,
           title: c.title,
-          partName: c.parties?.name || "",
+          partName: c.parts?.name || "",
           dbId: c.id,
         }));
 

@@ -85,6 +85,74 @@ function useChapters(levelId = 1, subjectId = 1) {
   return { chapters, parts, loading, error };
 }
 
+
+// ─── HOOK : Chargement du contenu d'un chapitre depuis Supabase ──────────────
+function useChapterContent(chapterId) {
+  const [lessons, setLessons] = useState(null);
+  const [exercises, setExercises] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!chapterId) return;
+    async function load() {
+      try {
+        setLoading(true);
+
+        // Charger les leçons avec leurs exemples
+        const { data: lessonsData, error: lessonsError } = await supabase
+          .from("lessons")
+          .select("*, lesson_examples(*)")
+          .eq("chapter_id", chapterId)
+          .order("order_num");
+
+        if (lessonsError) throw lessonsError;
+
+        // Charger les exercices
+        const { data: exoData, error: exoError } = await supabase
+          .from("exercises")
+          .select("*")
+          .eq("chapter_id", chapterId)
+          .order("order_num");
+
+        if (exoError) throw exoError;
+
+        // Formater pour correspondre à l'ancienne structure
+        const formattedLessons = lessonsData.map(l => ({
+          id: `${chapterId}-${l.order_num}`,
+          titre: l.title,
+          contenu: l.content,
+          exemples: (l.lesson_examples || [])
+            .sort((a,b) => a.order_num - b.order_num)
+            .map(e => ({ question: e.question, reponse: e.answer })),
+        }));
+
+        const formattedExos = exoData.map(e => ({
+          id: e.order_num,
+          niveau: e.level,
+          enonce: e.question,
+          solution: e.solution,
+        }));
+
+        setLessons(formattedLessons);
+        setExercises(formattedExos);
+      } catch (err) {
+        console.error("Erreur chargement contenu:", err);
+        // Fallback sur CHAPTERS_CONTENT statique
+        const staticContent = CHAPTERS_CONTENT[chapterId];
+        if (staticContent) {
+          setLessons(staticContent.cours);
+          setExercises(staticContent.exercices);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [chapterId]);
+
+  return { lessons, exercises, loading };
+}
+
 // ─── DONNÉES STATIQUES (fallback si Supabase indisponible) ───────────────────
 const CHAPTERS_STATIC = [
   {id:1,  part:1, title:"Nombres entiers",          partName:"Nombres & Calculs"},
@@ -7578,19 +7646,40 @@ const Chapters = ({user, onChapter}) => {
 const ChapterContent = ({chapter, user, onBack, onTutor}) => {
   const [tab, setTab] = useState("cours");
   const [shown, setShown] = useState({});
-  const content = CHAPTERS_CONTENT[chapter.id];
-  const part = PARTS.find(p => p.id===chapter.part);
+
+  // Chargement depuis Supabase (avec fallback sur données statiques)
+  const { lessons: dbLessons, exercises: dbExercises, loading: contentLoading } = useChapterContent(chapter.id);
+  const staticContent = CHAPTERS_CONTENT[chapter.id];
+
+  // Utiliser les données Supabase si disponibles, sinon les données statiques
+  const activeLessons = dbLessons || (staticContent ? staticContent.cours : null);
+  const activeExercises = dbExercises || (staticContent ? staticContent.exercices : null);
+  const activeObjectives = staticContent ? staticContent.objectives : [];
+
+  const part = PARTS_STATIC.find(p => p.id===chapter.part);
   const hasPremium = user.plan==="Premium" || user.isPreview;
   const tp = user.isPreview ? 48 : 0;
 
-  if (!content) return (
+  // Afficher chargement
+  if (contentLoading) return (
+    <div style={{ padding:`${24+tp}px 20px`, textAlign:"center" }}>
+      <div style={{ marginTop:60 }}>
+        <div className="shimmer" style={{ width:250, height:22, borderRadius:8, margin:"0 auto 12px" }}/>
+        <div className="shimmer" style={{ width:180, height:14, borderRadius:8, margin:"0 auto 8px" }}/>
+        <div className="shimmer" style={{ width:300, height:14, borderRadius:8, margin:"0 auto" }}/>
+        <p style={{ marginTop:20, color:"var(--muted)", fontSize:12 }}>Chargement du contenu...</p>
+      </div>
+    </div>
+  );
+
+  if (!activeLessons) return (
     <div style={{ padding:`${24+tp}px 20px`, maxWidth:700, margin:"0 auto" }}>
       <button onClick={onBack} style={{ background:"none", border:"none", color:"var(--muted)", cursor:"pointer", fontSize:13, marginBottom:16, fontFamily:"'DM Sans',sans-serif", display:"flex", alignItems:"center", gap:6 }}>← Retour</button>
       <Surface style={{ textAlign:"center", padding:48 }}>
         <p style={{ fontSize:40, marginBottom:16 }}>🚧</p>
         <h3 style={{ fontFamily:"'Fraunces',serif", fontSize:22, fontWeight:700, marginBottom:8 }}>Contenu en préparation</h3>
         <p style={{ color:"var(--muted)", fontSize:14 }}>Ce chapitre sera disponible très prochainement.</p>
-        <div style={{ marginTop:20 }}><Chip color="var(--gold)">Partie 2 — Bientôt</Chip></div>
+        <div style={{ marginTop:20 }}><Chip color="var(--gold)">Bientôt disponible</Chip></div>
       </Surface>
     </div>
   );
@@ -7612,7 +7701,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor}) => {
       <Surface style={{ marginBottom:20, padding:18, borderLeft:`3px solid ${part.color}` }}>
         <p style={{ fontSize:11, fontWeight:700, color:part.color, textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:10 }}>Objectifs</p>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:6 }}>
-          {content.objectives.map((o,i) => (
+          {activeObjectives.map((o,i) => (
             <div key={i} style={{ display:"flex", gap:8, alignItems:"flex-start", fontSize:13, color:"#94A3B8" }}>
               <span style={{ color:part.color, flexShrink:0, marginTop:1 }}>✓</span>{o}
             </div>
@@ -7635,7 +7724,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor}) => {
       {/* COURS */}
       {tab==="cours" && (
         <div className="fade">
-          {content.cours.map((lecon, idx) => (
+          {activeLessons.map((lecon, idx) => (
             <div key={lecon.id} style={{ marginBottom:32 }}>
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
                 <div style={{ width:26, height:26, borderRadius:"50%", background:part.color, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:700, color:"#fff", flexShrink:0 }}>{idx+1}</div>
@@ -7665,9 +7754,9 @@ const ChapterContent = ({chapter, user, onBack, onTutor}) => {
       {/* EXERCICES */}
       {tab==="exercices" && (
         <div className="fade">
-          <p style={{ fontSize:13, color:"var(--muted)", marginBottom:16 }}>{content.exercices.length} exercices — 3 niveaux de difficulté</p>
+          <p style={{ fontSize:13, color:"var(--muted)", marginBottom:16 }}>{activeExercises.length} exercices — 3 niveaux de difficulté</p>
           {["Facile","Moyen","Difficile"].map(niveau => {
-            const exos = content.exercices.filter(e => e.niveau===niveau);
+            const exos = activeExercises.filter(e => e.niveau===niveau);
             if (!exos.length) return null;
             const colors = {Facile:"var(--green)", Moyen:"var(--gold)", Difficile:"var(--red)"};
             return (
@@ -7716,7 +7805,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor}) => {
           ) : (
             <>
               <p style={{ fontSize:13, color:"var(--muted)", marginBottom:16 }}>Tous les corrigés détaillés</p>
-              {content.exercices.map(ex => (
+              {activeExercises.map(ex => (
                 <Surface key={ex.id} style={{ marginBottom:10, padding:18, borderLeft:"2px solid var(--green)" }}>
                   <div style={{ display:"flex", gap:10, alignItems:"center", marginBottom:8 }}>
                     <p style={{ fontSize:12, fontWeight:700, color:part.color }}>Ex. {ex.id}</p>

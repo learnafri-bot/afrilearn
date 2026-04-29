@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { supabase } from "./supabaseClient";
 
 // ─── CONFIGURATION ────────────────────────────────────────────────────────────
 const SUPER_ADMIN = { email: "superadmin@afrilearn.com", password: "AfriLearn@2026!", role: "superadmin" };
@@ -16,6 +17,109 @@ const COUNTRIES = [
   "Madagascar","Comores","Maurice","Seychelles","Mozambique","Zimbabwe","Zambie","Malawi","Angola","Namibie","Botswana","Lesotho","Eswatini","Afrique du Sud",
   // Autres
   "Autre pays",
+];
+
+// ─── HOOK : Chargement des chapitres depuis Supabase ─────────────────────────
+function useChapters(levelId = 1, subjectId = 1) {
+  const [chapters, setChapters] = useState([]);
+  const [parts, setParts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        setLoading(true);
+
+        // Charger les parties
+        const { data: partsData, error: partsError } = await supabase
+          .from("parties")
+          .select("*")
+          .eq("level_id", levelId)
+          .eq("subject_id", subjectId)
+          .order("order_num");
+
+        if (partsError) throw partsError;
+
+        // Charger les chapitres
+        const { data: chaptersData, error: chaptersError } = await supabase
+          .from("chapitres")
+          .select("*, parties(name, icon, color)")
+          .eq("level_id", levelId)
+          .eq("subject_id", subjectId)
+          .order("order_num");
+
+        if (chaptersError) throw chaptersError;
+
+        // Formater les données pour correspondre à l'ancienne structure
+        const formattedParts = partsData.map(p => ({
+          id: p.order_num,
+          name: p.name,
+          icon: p.icon,
+          color: p.color,
+        }));
+
+        const formattedChapters = chaptersData.map(c => ({
+          id: c.order_num,
+          part: c.parties?.order_num || 1,
+          title: c.title,
+          partName: c.parties?.name || "",
+          dbId: c.id,
+        }));
+
+        setParts(formattedParts);
+        setChapters(formattedChapters);
+      } catch (err) {
+        console.error("Erreur chargement Supabase:", err);
+        setError(err.message);
+        // Fallback sur les données statiques en cas d'erreur
+        setParts(PARTS_STATIC);
+        setChapters(CHAPTERS_STATIC);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [levelId, subjectId]);
+
+  return { chapters, parts, loading, error };
+}
+
+// ─── DONNÉES STATIQUES (fallback si Supabase indisponible) ───────────────────
+const CHAPTERS_STATIC = [
+  {id:1,  part:1, title:"Nombres entiers",          partName:"Nombres & Calculs"},
+  {id:2,  part:1, title:"Nombres décimaux",         partName:"Nombres & Calculs"},
+  {id:3,  part:1, title:"Arrondir les nombres",     partName:"Nombres & Calculs"},
+  {id:4,  part:1, title:"Addition et soustraction", partName:"Nombres & Calculs"},
+  {id:5,  part:1, title:"Multiplication",           partName:"Nombres & Calculs"},
+  {id:6,  part:1, title:"Division",                 partName:"Nombres & Calculs"},
+  {id:7,  part:1, title:"Priorités opératoires",    partName:"Nombres & Calculs"},
+  {id:8,  part:1, title:"Fractions",                partName:"Nombres & Calculs"},
+  {id:9,  part:2, title:"Droites et angles",        partName:"Géométrie plane"},
+  {id:10, part:2, title:"Triangles",                partName:"Géométrie plane"},
+  {id:11, part:2, title:"Quadrilatères",            partName:"Géométrie plane"},
+  {id:12, part:2, title:"Cercle",                   partName:"Géométrie plane"},
+  {id:13, part:2, title:"Symétrie axiale",          partName:"Géométrie plane"},
+  {id:14, part:2, title:"Périmètre et aire",        partName:"Géométrie plane"},
+  {id:15, part:3, title:"Longueurs",                partName:"Grandeurs & Mesures"},
+  {id:16, part:3, title:"Masses",                   partName:"Grandeurs & Mesures"},
+  {id:17, part:3, title:"Durées",                   partName:"Grandeurs & Mesures"},
+  {id:18, part:3, title:"Aires",                    partName:"Grandeurs & Mesures"},
+  {id:19, part:3, title:"Volumes",                  partName:"Grandeurs & Mesures"},
+  {id:20, part:4, title:"Solides",                  partName:"Géométrie dans l'espace"},
+  {id:21, part:4, title:"Patrons",                  partName:"Géométrie dans l'espace"},
+  {id:22, part:4, title:"Repérage dans l'espace",   partName:"Géométrie dans l'espace"},
+  {id:23, part:5, title:"Tableaux et graphiques",   partName:"Données & Statistiques"},
+  {id:24, part:5, title:"Moyennes",                 partName:"Données & Statistiques"},
+  {id:25, part:5, title:"Proportionnalité",         partName:"Données & Statistiques"},
+];
+
+const PARTS_STATIC = [
+  {id:1, name:"Nombres & Calculs",       icon:"🔢", color:"#E8A838"},
+  {id:2, name:"Géométrie plane",         icon:"📐", color:"#4A9EF5"},
+  {id:3, name:"Grandeurs & Mesures",     icon:"📏", color:"#3EC98B"},
+  {id:4, name:"Géométrie dans l'espace", icon:"🔷", color:"#9B7FE8"},
+  {id:5, name:"Données & Statistiques",  icon:"📊", color:"#F56565"},
 ];
 
 // ─── CONTENU PARTIE 1 ─────────────────────────────────────────────────────────
@@ -7404,8 +7508,19 @@ const Dashboard = ({user, onNav}) => {
 // ─── CHAPTERS ────────────────────────────────────────────────────────────────
 const Chapters = ({user, onChapter}) => {
   const [filter, setFilter] = useState(0);
-  const filtered = filter===0 ? CHAPTERS : CHAPTERS.filter(c => c.part===filter);
+  const { chapters, parts, loading } = useChapters(1, 1);
+  const filtered = filter===0 ? chapters : chapters.filter(c => c.part===filter);
   const tp = user.isPreview ? 48 : 0;
+
+  if (loading) return (
+    <div style={{ padding:`${24+tp}px 20px`, textAlign:"center" }}>
+      <div style={{ marginTop:60 }}>
+        <div className="shimmer" style={{ width:200, height:20, borderRadius:8, margin:"0 auto 12px" }}/>
+        <div className="shimmer" style={{ width:150, height:14, borderRadius:8, margin:"0 auto" }}/>
+        <p style={{ marginTop:20, color:"var(--muted)", fontSize:12 }}>Chargement des chapitres...</p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="fade" style={{ padding:`${24+tp}px 20px 24px`, maxWidth:800, margin:"0 auto" }}>
@@ -7415,10 +7530,10 @@ const Chapters = ({user, onChapter}) => {
       {/* Filters */}
       <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:24, overflowX:"auto", paddingBottom:4 }}>
         <Pill active={filter===0} onClick={() => setFilter(0)}>Tout voir</Pill>
-        {PARTS.map(p => <Pill key={p.id} active={filter===p.id} color={p.color} onClick={() => setFilter(p.id)}>{p.icon} {p.name}</Pill>)}
+        {parts.map(p => <Pill key={p.id} active={filter===p.id} color={p.color} onClick={() => setFilter(p.id)}>{p.icon} {p.name}</Pill>)}
       </div>
 
-      {(filter===0 ? PARTS : PARTS.filter(p=>p.id===filter)).map(part => {
+      {(filter===0 ? parts : parts.filter(p=>p.id===filter)).map(part => {
         const chs = filtered.filter(c => c.part===part.id);
         if (!chs.length) return null;
         return (

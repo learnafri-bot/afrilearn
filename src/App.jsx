@@ -7221,14 +7221,97 @@ const Auth = ({mode, onAuth, onSwitch}) => {
   const [showCGU, setShowCGU] = useState(false);
   const [cguAccepted, setCguAccepted] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!form.email || !form.password) { setError("Veuillez remplir tous les champs."); return; }
     if (mode==="register" && !cguAccepted) { setError("Vous devez accepter les CGU pour continuer."); return; }
-    if (form.email===SUPER_ADMIN.email && form.password===SUPER_ADMIN.password) { onAuth({name:"Super Administrateur", email:form.email, role:"superadmin", plan:"SuperAdmin", country:"Gabon", level:"Admin"}); return; }
+
+    // Vérification Super Admin (local)
+    if (form.email===SUPER_ADMIN.email && form.password===SUPER_ADMIN.password) {
+      onAuth({name:"Super Administrateur", email:form.email, role:"superadmin", plan:"SuperAdmin", country:"Gabon", level:"Admin"});
+      return;
+    }
+    // Vérification Admin (local)
     const admin = ADMIN_ACCOUNTS.find(a => a.email===form.email && a.password===form.password);
     if (admin) { onAuth({...admin, plan:"Admin", country:"Gabon", level:"Admin"}); return; }
-    onAuth({name:form.name||"Élève", email:form.email, country:form.country, level:form.level, plan:"Gratuit", role:"user"});
+
+    setLoading(true);
+    setError("");
+
+    try {
+      if (mode==="register") {
+        // Inscription via Supabase Auth
+        const { data, error: signUpError } = await supabase.auth.signUp({
+          email: form.email,
+          password: form.password,
+          options: {
+            data: {
+              name: form.name || "Élève",
+              country: form.country,
+              level: form.level,
+            }
+          }
+        });
+        if (signUpError) throw signUpError;
+
+        if (data.user) {
+          // Créer le profil dans la table profiles
+          await supabase.from("profiles").upsert({
+            id: data.user.id,
+            name: form.name || "Élève",
+            country: form.country,
+            level: form.level,
+            plan: "Gratuit",
+          });
+          onAuth({
+            id: data.user.id,
+            name: form.name || "Élève",
+            email: form.email,
+            country: form.country,
+            level: form.level,
+            plan: "Gratuit",
+            role: "user",
+          });
+        }
+      } else {
+        // Connexion via Supabase Auth
+        const { data, error: signInError } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+        if (signInError) throw signInError;
+
+        if (data.user) {
+          // Charger le profil depuis Supabase
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("*")
+            .eq("id", data.user.id)
+            .single();
+
+          onAuth({
+            id: data.user.id,
+            name: profile?.name || "Élève",
+            email: form.email,
+            country: profile?.country || "Gabon",
+            level: profile?.level || "6ème",
+            plan: profile?.plan || "Gratuit",
+            role: "user",
+          });
+        }
+      }
+    } catch (err) {
+      // Traduire les erreurs Supabase en français
+      const msg = err.message || "";
+      if (msg.includes("Invalid login credentials")) setError("Email ou mot de passe incorrect.");
+      else if (msg.includes("User already registered")) setError("Un compte existe déjà avec cet email.");
+      else if (msg.includes("Password should be at least")) setError("Le mot de passe doit faire au moins 6 caractères.");
+      else if (msg.includes("Unable to validate email")) setError("Adresse email invalide.");
+      else setError("Une erreur est survenue. Réessayez.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -7280,8 +7363,8 @@ const Auth = ({mode, onAuth, onSwitch}) => {
               </label>
             </>}
             {error && <p style={{ color:"var(--red)", fontSize:13, background:"rgba(245,101,101,0.08)", padding:"10px 14px", borderRadius:8, border:"1px solid rgba(245,101,101,0.2)" }}>{error}</p>}
-            <Btn onClick={handleSubmit} color="var(--gold)" style={{ marginTop:4, padding:"14px", fontSize:15, borderRadius:12 }}>
-              {mode==="login" ? "Se connecter" : "Créer mon compte"}
+            <Btn onClick={handleSubmit} color="var(--gold)" style={{ marginTop:4, padding:"14px", fontSize:15, borderRadius:12 }} disabled={loading}>
+              {loading ? "Chargement..." : mode==="login" ? "Se connecter" : "Créer mon compte"}
             </Btn>
           </div>
         </Surface>
@@ -8049,15 +8132,55 @@ const Profile = ({user, onLogout}) => {
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [screen, setScreen] = useState("landing");
+  const [screen, setScreen] = useState("loading");
   const [user, setUser] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [isPreview, setIsPreview] = useState(false);
+
+  // Vérifier la session au démarrage
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        // Utilisateur déjà connecté — charger son profil
+        supabase.from("profiles").select("*").eq("id", session.user.id).single()
+          .then(({ data: profile }) => {
+            setUser({
+              id: session.user.id,
+              name: profile?.name || "Élève",
+              email: session.user.email,
+              country: profile?.country || "Gabon",
+              level: profile?.level || "6ème",
+              plan: profile?.plan || "Gratuit",
+              role: "user",
+            });
+            setScreen("dashboard");
+          });
+      } else {
+        setScreen("landing");
+      }
+    });
+
+    // Écouter les changements de session (déconnexion, etc.)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT") {
+        setUser(null);
+        setScreen("landing");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const handleAuth = (form) => {
     setUser(form);
     if (form.role==="superadmin" || form.role==="admin") { setScreen("admin"); return; }
     setScreen("dashboard");
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setScreen("landing");
   };
 
   const nav = (s) => { setChapter(null); setScreen(s); };
@@ -8067,13 +8190,25 @@ export default function App() {
   const previewUser = user ? {...user, name:"Super Admin", plan:"Premium", level:"6ème", country:"Gabon", isPreview:true} : null;
   const activeUser = isPreview ? previewUser : user;
 
+  // Écran de chargement initial
+  if (screen === "loading") return (
+    <div style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"var(--bg)" }}>
+      <style>{css}</style>
+      <div style={{ textAlign:"center" }}>
+        <p style={{ fontSize:40, marginBottom:16 }}>🌍</p>
+        <div className="shimmer" style={{ width:120, height:14, borderRadius:8, margin:"0 auto 8px" }}/>
+        <div className="shimmer" style={{ width:80, height:10, borderRadius:8, margin:"0 auto" }}/>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <style>{css}</style>
       {screen==="landing" && <Landing onEnter={s=>setScreen(s)}/>}
       {screen==="login" && <Auth mode="login" onAuth={handleAuth} onSwitch={()=>setScreen("register")}/>}
       {screen==="register" && <Auth mode="register" onAuth={handleAuth} onSwitch={()=>setScreen("login")}/>}
-      {screen==="admin" && !isPreview && user && <SuperAdmin user={user} onLogout={()=>{setUser(null);setScreen("landing");}} onPreview={()=>{setIsPreview(true);setScreen("dashboard");}}/>}
+      {screen==="admin" && !isPreview && user && <SuperAdmin user={user} onLogout={handleLogout} onPreview={()=>{setIsPreview(true);setScreen("dashboard");}}/>}
 
       {activeUser && !["landing","login","register","admin"].includes(screen) && (
         <div style={{ paddingBottom:80 }}>
@@ -8085,7 +8220,7 @@ export default function App() {
           {screen==="tutor"          && <Tutor          user={activeUser} chapter={chapter}/>}
           {screen==="competition"    && <Competition    user={activeUser}/>}
           {screen==="pricing"        && <Pricing        user={activeUser} onUpgrade={!isPreview?upgrade:null}/>}
-          {screen==="profile"        && <Profile        user={activeUser} onLogout={!isPreview?()=>{setUser(null);setScreen("landing");}:null}/>}
+          {screen==="profile"        && <Profile        user={activeUser} onLogout={!isPreview?handleLogout:null}/>}
           <NavBar active={screen} onNav={nav}/>
         </div>
       )}

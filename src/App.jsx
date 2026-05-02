@@ -153,6 +153,70 @@ function useChapterContent(chapterId) {
   return { lessons, exercises, loading };
 }
 
+
+// ─── HOOK : Suivi de progression ─────────────────────────────────────────────
+function useProgress(userId) {
+  const [progress, setProgress] = useState({});
+  const [stats, setStats] = useState({ completed: 0, total: 25, percent: 0 });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!userId) { setLoading(false); return; }
+    async function load() {
+      try {
+        const { data } = await supabase
+          .from("progress")
+          .select("*")
+          .eq("user_id", userId);
+
+        if (data) {
+          const progressMap = {};
+          data.forEach(p => { progressMap[p.chapter_id] = p; });
+          setProgress(progressMap);
+          const completed = data.filter(p => p.completed).length;
+          setStats({ completed, total: 25, percent: Math.round((completed / 25) * 100) });
+        }
+      } catch (err) {
+        console.error("Erreur chargement progression:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [userId]);
+
+  // Sauvegarder la progression d'un chapitre
+  const saveProgress = async (userId, chapterId, score, completed) => {
+    if (!userId) return;
+    try {
+      await supabase.from("progress").upsert({
+        user_id: userId,
+        chapter_id: chapterId,
+        score: score,
+        completed: completed,
+        last_visited: new Date().toISOString(),
+      }, { onConflict: "user_id,chapter_id" });
+
+      // Mettre à jour l'état local
+      setProgress(prev => ({
+        ...prev,
+        [chapterId]: { chapter_id: chapterId, score, completed }
+      }));
+
+      if (completed) {
+        setStats(prev => {
+          const newCompleted = prev.completed + (progress[chapterId]?.completed ? 0 : 1);
+          return { ...prev, completed: newCompleted, percent: Math.round((newCompleted / 25) * 100) };
+        });
+      }
+    } catch (err) {
+      console.error("Erreur sauvegarde progression:", err);
+    }
+  };
+
+  return { progress, stats, loading, saveProgress };
+}
+
 // ─── DONNÉES STATIQUES (fallback si Supabase indisponible) ───────────────────
 const CHAPTERS_STATIC = [
   {id:1,  part:1, title:"Nombres entiers",          partName:"Nombres & Calculs"},
@@ -7587,8 +7651,11 @@ const NavBar = ({active, onNav}) => (
 );
 
 // ─── DASHBOARD ────────────────────────────────────────────────────────────────
-const Dashboard = ({user, onNav}) => {
+const Dashboard = ({user, onNav, stats={completed:0, total:25, percent:0}, progress={}}) => {
   const tp = user.isPreview ? 48 : 0;
+  const completedChapters = Object.values(progress).filter(p => p.completed).length;
+  const progressPercent = Math.round((completedChapters / 25) * 100);
+
   return (
     <div className="fade" style={{ padding:`${24+tp}px 20px 24px`, maxWidth:800, margin:"0 auto" }}>
       {/* Welcome */}
@@ -7602,16 +7669,20 @@ const Dashboard = ({user, onNav}) => {
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:16 }}>
           <div>
             <p style={{ fontWeight:600, marginBottom:4 }}>Maths 6ème</p>
-            <p style={{ fontSize:13, color:"var(--muted)" }}>Partie 1 complète — 8 chapitres disponibles</p>
+            <p style={{ fontSize:13, color:"var(--muted)" }}>
+              {completedChapters === 0 ? "Commence ton premier chapitre !" :
+               completedChapters === 25 ? "🎉 Tous les chapitres complétés !" :
+               `${completedChapters} chapitre${completedChapters > 1 ? "s" : ""} complété${completedChapters > 1 ? "s" : ""}`}
+            </p>
           </div>
-          <Chip>8 / 25</Chip>
+          <Chip color={completedChapters > 0 ? "var(--green)" : "var(--muted)"}>{completedChapters} / 25</Chip>
         </div>
         <div style={{ background:"var(--surface2)", borderRadius:999, height:6, overflow:"hidden" }}>
-          <div style={{ width:"32%", height:"100%", background:"linear-gradient(90deg, var(--gold), var(--green))", borderRadius:999, transition:"width 1s ease" }}/>
+          <div style={{ width:`${progressPercent}%`, height:"100%", background:"linear-gradient(90deg, var(--gold), var(--green))", borderRadius:999, transition:"width 1s ease" }}/>
         </div>
         <div style={{ display:"flex", justifyContent:"space-between", marginTop:10 }}>
-          <span style={{ fontSize:12, color:"var(--muted)" }}>32% complété</span>
-          <span style={{ fontSize:12, color:"var(--green)", fontWeight:600 }}>✓ Partie 1 terminée</span>
+          <span style={{ fontSize:12, color:"var(--muted)" }}>{progressPercent}% complété</span>
+          {completedChapters > 0 && <span style={{ fontSize:12, color:"var(--green)", fontWeight:600 }}>✓ Continuer à progresser !</span>}
         </div>
       </Surface>
 
@@ -7657,7 +7728,7 @@ const Dashboard = ({user, onNav}) => {
 };
 
 // ─── CHAPTERS ────────────────────────────────────────────────────────────────
-const Chapters = ({user, onChapter}) => {
+const Chapters = ({user, onChapter, progress={}}) => {
   const [filter, setFilter] = useState(0);
   const { chapters, parts, loading } = useChapters(1, 1);
   const filtered = filter===0 ? chapters : chapters.filter(c => c.part===filter);
@@ -7712,7 +7783,11 @@ const Chapters = ({user, onChapter}) => {
                         {locked ? "Abonnement Essentiel requis" : hasContent ? "Cours · Exercices · Corrigés · Kodjo" : "Bientôt disponible"}
                       </p>
                     </div>
-                    {locked ? <Chip>Essentiel</Chip> : hasContent ? <span style={{ color:"var(--muted)", fontSize:20 }}>›</span> : <Chip color="var(--muted)">Soon</Chip>}
+                    {locked ? <Chip>Essentiel</Chip> : 
+                     progress[ch.id]?.completed ? <span style={{ color:"var(--green)", fontSize:16, fontWeight:700 }}>✅</span> :
+                     progress[ch.id]?.score > 0 ? <Chip color="var(--gold)">{progress[ch.id].score}/15</Chip> :
+                     hasContent ? <span style={{ color:"var(--muted)", fontSize:20 }}>›</span> : 
+                     <Chip color="var(--muted)">Soon</Chip>}
                   </div>
                 );
               })}
@@ -7726,9 +7801,32 @@ const Chapters = ({user, onChapter}) => {
 };
 
 // ─── CHAPTER CONTENT ─────────────────────────────────────────────────────────
-const ChapterContent = ({chapter, user, onBack, onTutor}) => {
+const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapterProgress}) => {
   const [tab, setTab] = useState("cours");
   const [shown, setShown] = useState({});
+  const [answeredExos, setAnsweredExos] = useState({});
+
+  // Sauvegarder la visite du chapitre au chargement
+  useEffect(() => {
+    if (user?.id && chapter?.id && onSaveProgress) {
+      const currentScore = chapterProgress?.score || 0;
+      onSaveProgress(user.id, chapter.id, currentScore, chapterProgress?.completed || false);
+    }
+  }, [chapter?.id]);
+
+  // Marquer un exercice comme vu et sauvegarder le score
+  const handleShowSolution = (exoId) => {
+    setShown(s => ({...s, [exoId]: true}));
+    const newAnswered = {...answeredExos, [exoId]: true};
+    setAnsweredExos(newAnswered);
+
+    // Calculer le nouveau score
+    if (user?.id && activeExercises && onSaveProgress) {
+      const score = Object.keys(newAnswered).length;
+      const completed = score >= activeExercises.length;
+      onSaveProgress(user.id, chapter.id, score, completed);
+    }
+  };
 
   // Chargement depuis Supabase (avec fallback sur données statiques)
   const { lessons: dbLessons, exercises: dbExercises, loading: contentLoading } = useChapterContent(chapter.id);
@@ -7862,7 +7960,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor}) => {
                             </div>
                           )}
                         </div>
-                        <Btn onClick={() => setShown(p => ({...p,[ex.id]:!p[ex.id]}))} variant="outline" color={shown[ex.id]?"var(--muted)":"var(--gold)"} style={{ padding:"7px 14px", fontSize:12, flexShrink:0, borderRadius:8 }}>
+                        <Btn onClick={() => handleShowSolution(ex.id)} variant="outline" color={shown[ex.id]?"var(--muted)":"var(--gold)"} style={{ padding:"7px 14px", fontSize:12, flexShrink:0, borderRadius:8 }}>
                           {shown[ex.id]?"Masquer":"Solution"}
                         </Btn>
                       </div>
@@ -8139,31 +8237,48 @@ export default function App() {
 
   // Vérifier la session au démarrage
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        // Utilisateur déjà connecté — charger son profil
-        supabase.from("profiles").select("*").eq("id", session.user.id).single()
-          .then(({ data: profile }) => {
+    // Écouter les changements de session en temps réel
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === "SIGNED_IN" || event === "INITIAL_SESSION") {
+        if (session?.user) {
+          // Charger le profil de l'utilisateur
+          try {
+            const { data: profile } = await supabase
+              .from("profiles")
+              .select("*")
+              .eq("id", session.user.id)
+              .single();
+
             setUser({
               id: session.user.id,
-              name: profile?.name || "Élève",
+              name: profile?.name || session.user.user_metadata?.name || "Élève",
               email: session.user.email,
-              country: profile?.country || "Gabon",
-              level: profile?.level || "6ème",
+              country: profile?.country || session.user.user_metadata?.country || "Gabon",
+              level: profile?.level || session.user.user_metadata?.level || "6ème",
               plan: profile?.plan || "Gratuit",
               role: "user",
             });
             setScreen("dashboard");
-          });
-      } else {
-        setScreen("landing");
-      }
-    });
-
-    // Écouter les changements de session (déconnexion, etc.)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_OUT") {
+          } catch (err) {
+            // Si le profil n'existe pas encore, utiliser les métadonnées
+            setUser({
+              id: session.user.id,
+              name: session.user.user_metadata?.name || "Élève",
+              email: session.user.email,
+              country: session.user.user_metadata?.country || "Gabon",
+              level: session.user.user_metadata?.level || "6ème",
+              plan: "Gratuit",
+              role: "user",
+            });
+            setScreen("dashboard");
+          }
+        } else {
+          setScreen("landing");
+        }
+      } else if (event === "SIGNED_OUT") {
         setUser(null);
+        setScreen("landing");
+      } else if (event === "NO_SESSION") {
         setScreen("landing");
       }
     });
@@ -8190,6 +8305,9 @@ export default function App() {
   const previewUser = user ? {...user, name:"Super Admin", plan:"Premium", level:"6ème", country:"Gabon", isPreview:true} : null;
   const activeUser = isPreview ? previewUser : user;
 
+  // Suivi de progression
+  const { progress, stats, saveProgress } = useProgress(user?.id);
+
   // Écran de chargement initial
   if (screen === "loading") return (
     <div style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"var(--bg)" }}>
@@ -8214,9 +8332,9 @@ export default function App() {
         <div style={{ paddingBottom:80 }}>
           {isPreview && <AdminBar onBack={()=>{setIsPreview(false);setScreen("admin");}}/>}
           <TopBar user={activeUser} screen={screen} onNav={nav}/>
-          {screen==="dashboard"      && <Dashboard      user={activeUser} onNav={nav}/>}
-          {screen==="chapters"       && <Chapters       user={activeUser} onChapter={openChapter}/>}
-          {screen==="chapterContent" && chapter && <ChapterContent chapter={chapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")}/>}
+          {screen==="dashboard"      && <Dashboard      user={activeUser} onNav={nav} stats={stats} progress={progress}/>}
+          {screen==="chapters"       && <Chapters       user={activeUser} onChapter={openChapter} progress={progress}/>}
+          {screen==="chapterContent" && chapter && <ChapterContent chapter={chapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} onSaveProgress={saveProgress} chapterProgress={progress[chapter?.id]}/>}
           {screen==="tutor"          && <Tutor          user={activeUser} chapter={chapter}/>}
           {screen==="competition"    && <Competition    user={activeUser}/>}
           {screen==="pricing"        && <Pricing        user={activeUser} onUpgrade={!isPreview?upgrade:null}/>}

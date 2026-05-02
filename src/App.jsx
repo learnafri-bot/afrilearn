@@ -8237,53 +8237,77 @@ export default function App() {
 
   // Vérifier la session au démarrage
   useEffect(() => {
-    // Écouter les changements de session en temps réel
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === "SIGNED_IN" || event === "INITIAL_SESSION") {
-        if (session?.user) {
-          // Charger le profil de l'utilisateur
-          try {
-            const { data: profile } = await supabase
-              .from("profiles")
-              .select("*")
-              .eq("id", session.user.id)
-              .single();
+    let mounted = true;
 
-            setUser({
-              id: session.user.id,
-              name: profile?.name || session.user.user_metadata?.name || "Élève",
-              email: session.user.email,
-              country: profile?.country || session.user.user_metadata?.country || "Gabon",
-              level: profile?.level || session.user.user_metadata?.level || "6ème",
-              plan: profile?.plan || "Gratuit",
-              role: "user",
-            });
-            setScreen("dashboard");
-          } catch (err) {
-            // Si le profil n'existe pas encore, utiliser les métadonnées
-            setUser({
-              id: session.user.id,
-              name: session.user.user_metadata?.name || "Élève",
-              email: session.user.email,
-              country: session.user.user_metadata?.country || "Gabon",
-              level: session.user.user_metadata?.level || "6ème",
-              plan: "Gratuit",
-              role: "user",
-            });
-            setScreen("dashboard");
-          }
+    const loadSession = async () => {
+      try {
+        // Vérifier la session existante
+        const { data: { session } } = await supabase.auth.getSession();
+
+        if (!mounted) return;
+
+        if (session?.user) {
+          // Charger le profil
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("*")
+            .eq("id", session.user.id)
+            .single();
+
+          if (!mounted) return;
+
+          setUser({
+            id: session.user.id,
+            name: profile?.name || session.user.user_metadata?.name || "Élève",
+            email: session.user.email,
+            country: profile?.country || session.user.user_metadata?.country || "Gabon",
+            level: profile?.level || session.user.user_metadata?.level || "6ème",
+            plan: profile?.plan || "Gratuit",
+            role: "user",
+          });
+          setScreen("dashboard");
         } else {
           setScreen("landing");
         }
-      } else if (event === "SIGNED_OUT") {
+      } catch (err) {
+        console.error("Erreur session:", err);
+        if (mounted) setScreen("landing");
+      }
+    };
+
+    loadSession();
+
+    // Écouter les changements de session
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (!mounted) return;
+      if (event === "SIGNED_OUT") {
         setUser(null);
         setScreen("landing");
-      } else if (event === "NO_SESSION") {
-        setScreen("landing");
+      } else if (event === "SIGNED_IN" && session?.user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", session.user.id)
+          .single();
+
+        if (!mounted) return;
+        setUser({
+          id: session.user.id,
+          name: profile?.name || session.user.user_metadata?.name || "Élève",
+          email: session.user.email,
+          country: profile?.country || session.user.user_metadata?.country || "Gabon",
+          level: profile?.level || session.user.user_metadata?.level || "6ème",
+          plan: profile?.plan || "Gratuit",
+          role: "user",
+        });
+        setScreen("dashboard");
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const handleAuth = (form) => {

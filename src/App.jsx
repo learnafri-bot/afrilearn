@@ -7055,12 +7055,12 @@ const PARTS = [
 ];
 
 const SUBJECTS = [
-  {id:"maths",   name:"Mathématiques",  icon:"🔢", available:true },
-  {id:"french",  name:"Français",       icon:"📝", available:false},
-  {id:"svt",     name:"SVT",            icon:"🌿", available:false},
-  {id:"histgeo", name:"Histoire-Géo",   icon:"🌍", available:false},
-  {id:"phys",    name:"Physique-Chimie",icon:"⚗️",  available:false},
-  {id:"english", name:"Anglais",        icon:"🇬🇧", available:false},
+  {id:"maths",   name:"Mathématiques",  icon:"🔢", available:true,  subjectId:1},
+  {id:"french",  name:"Français",       icon:"📝", available:true,  subjectId:2},
+  {id:"svt",     name:"SVT",            icon:"🌿", available:false, subjectId:3},
+  {id:"histgeo", name:"Histoire-Géo",   icon:"🌍", available:false, subjectId:4},
+  {id:"phys",    name:"Physique-Chimie",icon:"⚗️",  available:false, subjectId:5},
+  {id:"english", name:"Anglais",        icon:"🇬🇧", available:false, subjectId:6},
 ];
 
 const PLANS = [
@@ -7715,7 +7715,7 @@ const Dashboard = ({user, onNav, stats={completed:0, total:25, percent:0}, progr
       <p style={{ fontSize:11, fontWeight:600, color:"var(--muted)", textTransform:"uppercase", letterSpacing:"0.08em", marginBottom:14 }}>Matières</p>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8 }}>
         {SUBJECTS.map(s=>(
-          <Surface key={s.id} hover={s.available} onClick={s.available?()=>onNav("chapters"):null} style={{ padding:14, textAlign:"center", opacity:s.available?1:0.45 }}>
+          <Surface key={s.id} hover={s.available} onClick={s.available?()=>onNav("chapters", s):null} style={{ padding:14, textAlign:"center", opacity:s.available?1:0.45 }}>
             <div style={{ fontSize:20, marginBottom:6 }}>{s.icon}</div>
             <p style={{ fontSize:12, fontWeight:s.available?600:400 }}>{s.name}</p>
             {s.available && <p style={{ fontSize:10, color:"var(--green)", marginTop:4 }}>● Disponible</p>}
@@ -7728,9 +7728,9 @@ const Dashboard = ({user, onNav, stats={completed:0, total:25, percent:0}, progr
 };
 
 // ─── CHAPTERS ────────────────────────────────────────────────────────────────
-const Chapters = ({user, onChapter, progress={}}) => {
+const Chapters = ({user, onChapter, progress={}, subject={id:'maths', name:'Mathématiques', subjectId:1}}) => {
   const [filter, setFilter] = useState(0);
-  const { chapters, parts, loading } = useChapters(1, 1);
+  const { chapters, parts, loading } = useChapters(1, subject.subjectId || 1);
   const filtered = filter===0 ? chapters : chapters.filter(c => c.part===filter);
   const tp = user.isPreview ? 48 : 0;
 
@@ -7746,8 +7746,8 @@ const Chapters = ({user, onChapter, progress={}}) => {
 
   return (
     <div className="fade" style={{ padding:`${24+tp}px 20px 24px`, maxWidth:800, margin:"0 auto" }}>
-      <h2 style={{ fontFamily:"'Fraunces',serif", fontSize:24, fontWeight:700, letterSpacing:"-0.02em", marginBottom:4 }}>Mathématiques <span style={{ color:"var(--gold)" }}>6ème</span></h2>
-      <p style={{ color:"var(--muted)", fontSize:13, marginBottom:20 }}>25 chapitres · 5 parties</p>
+      <h2 style={{ fontFamily:"'Fraunces',serif", fontSize:24, fontWeight:700, letterSpacing:"-0.02em", marginBottom:4 }}>{subject.icon} {subject.name} <span style={{ color:"var(--gold)" }}>6ème</span></h2>
+      <p style={{ color:"var(--muted)", fontSize:13, marginBottom:20 }}>{chapters.length} chapitres · {parts.length} parties</p>
 
       {/* Filters */}
       <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:24, overflowX:"auto", paddingBottom:4 }}>
@@ -8242,6 +8242,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [isPreview, setIsPreview] = useState(false);
+  const [currentSubject, setCurrentSubject] = useState({id:"maths", name:"Mathématiques", icon:"🔢", subjectId:1});
 
   // Vérifier la session au démarrage (approche simple et fiable)
   useEffect(() => {
@@ -8318,7 +8319,11 @@ export default function App() {
     setScreen("landing");
   };
 
-  const nav = (s) => { setChapter(null); setScreen(s); };
+  const nav = (s, subject=null) => {
+    setChapter(null);
+    if (subject) setCurrentSubject(subject);
+    setScreen(s);
+  };
   const openChapter = (ch) => { setChapter(ch); setScreen("chapterContent"); };
   const upgrade = (id) => { const n={free:"Gratuit",essential:"Essentiel",premium:"Premium"}; setUser(u=>({...u,plan:n[id]})); };
 
@@ -8343,7 +8348,7 @@ export default function App() {
           {isPreview && <AdminBar onBack={()=>{setIsPreview(false);setScreen("admin");}}/>}
           <TopBar user={activeUser} screen={screen} onNav={nav}/>
           {screen==="dashboard"      && <Dashboard      user={activeUser} onNav={nav} stats={stats} progress={progress}/>}
-          {screen==="chapters"       && <Chapters       user={activeUser} onChapter={openChapter} progress={progress}/>}
+          {screen==="chapters"       && <Chapters       user={activeUser} onChapter={openChapter} progress={progress} subject={currentSubject}/>}
           {screen==="chapterContent" && chapter && <ChapterContent chapter={chapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} onSaveProgress={saveProgress} chapterProgress={progress[chapter?.id]}/>}
           {screen==="tutor"          && <Tutor          user={activeUser} chapter={chapter}/>}
           {screen==="competition"    && <Competition    user={activeUser}/>}

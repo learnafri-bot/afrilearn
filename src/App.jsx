@@ -99,6 +99,7 @@ function useChapterContent(chapterId) {
         setLoading(true);
 
         // Charger les leçons avec leurs exemples
+        // On utilise chapterId qui est le vrai ID en base (dbId)
         const { data: lessonsData, error: lessonsError } = await supabase
           .from("lessons")
           .select("*, lesson_examples(*)")
@@ -137,12 +138,9 @@ function useChapterContent(chapterId) {
         setExercises(formattedExos);
       } catch (err) {
         console.error("Erreur chargement contenu:", err);
-        // Fallback sur CHAPTERS_CONTENT statique
-        const staticContent = CHAPTERS_CONTENT[chapterId];
-        if (staticContent) {
-          setLessons(staticContent.cours);
-          setExercises(staticContent.exercices);
-        }
+        // Pas de fallback statique — afficher message "contenu en préparation"
+        setLessons(null);
+        setExercises(null);
       } finally {
         setLoading(false);
       }
@@ -7784,8 +7782,8 @@ const Chapters = ({user, onChapter, progress={}, subject={id:'maths', name:'Math
                       </p>
                     </div>
                     {locked ? <Chip>Essentiel</Chip> : 
-                     progress[ch.id]?.completed ? <span style={{ color:"var(--green)", fontSize:16, fontWeight:700 }}>✅</span> :
-                     progress[ch.id]?.score > 0 ? <Chip color="var(--gold)">{progress[ch.id].score}/15</Chip> :
+                     progress[ch.dbId || ch.id]?.completed ? <span style={{ color:"var(--green)", fontSize:16, fontWeight:700 }}>✅</span> :
+                     progress[ch.dbId || ch.id]?.score > 0 ? <Chip color="var(--gold)">{progress[ch.dbId || ch.id].score}/15</Chip> :
                      hasContent ? <span style={{ color:"var(--muted)", fontSize:20 }}>›</span> : 
                      <Chip color="var(--muted)">Soon</Chip>}
                   </div>
@@ -7810,7 +7808,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
   useEffect(() => {
     if (user?.id && chapter?.id && onSaveProgress) {
       const currentScore = chapterProgress?.score || 0;
-      onSaveProgress(user.id, chapter.id, currentScore, chapterProgress?.completed || false);
+      onSaveProgress(user.id, chapter.dbId || chapter.id, currentScore, chapterProgress?.completed || false);
     }
   }, [chapter?.id]);
 
@@ -7831,13 +7829,13 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
         const score = Object.keys(newAnswered).length;
         const completed = score >= activeExercises.length;
         console.log("Saving progress:", user.id, chapter.id, score, completed);
-        onSaveProgress(user.id, chapter.id, score, completed);
+        onSaveProgress(user.id, chapter.dbId || chapter.id, score, completed);
       }
     }
   };
 
   // Chargement depuis Supabase (avec fallback sur données statiques)
-  const { lessons: dbLessons, exercises: dbExercises, loading: contentLoading } = useChapterContent(chapter.id);
+  const { lessons: dbLessons, exercises: dbExercises, loading: contentLoading } = useChapterContent(chapter.dbId || chapter.id);
   const staticContent = CHAPTERS_CONTENT[chapter.id];
 
   // Utiliser les données Supabase si disponibles, sinon les données statiques
@@ -8349,7 +8347,7 @@ export default function App() {
           <TopBar user={activeUser} screen={screen} onNav={nav}/>
           {screen==="dashboard"      && <Dashboard      user={activeUser} onNav={nav} stats={stats} progress={progress}/>}
           {screen==="chapters"       && <Chapters       user={activeUser} onChapter={openChapter} progress={progress} subject={currentSubject}/>}
-          {screen==="chapterContent" && chapter && <ChapterContent chapter={chapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} onSaveProgress={saveProgress} chapterProgress={progress[chapter?.id]}/>}
+          {screen==="chapterContent" && chapter && <ChapterContent chapter={chapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} onSaveProgress={saveProgress} chapterProgress={progress[chapter?.dbId || chapter?.id]}/>}
           {screen==="tutor"          && <Tutor          user={activeUser} chapter={chapter}/>}
           {screen==="competition"    && <Competition    user={activeUser}/>}
           {screen==="pricing"        && <Pricing        user={activeUser} onUpgrade={!isPreview?upgrade:null}/>}

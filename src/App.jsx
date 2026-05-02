@@ -8230,51 +8230,64 @@ const Profile = ({user, onLogout}) => {
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [screen, setScreen] = useState("loading");
+  const [screen, setScreen] = useState("landing");
   const [user, setUser] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [isPreview, setIsPreview] = useState(false);
 
-  // Vérifier la session au démarrage
+  // Vérifier la session au démarrage (approche simple et fiable)
   useEffect(() => {
     let mounted = true;
 
-    // Fonction pour créer l'objet user depuis session + profil
-    const buildUser = (session, profile) => ({
-      id: session.user.id,
-      name: profile?.name || session.user.user_metadata?.name || "Élève",
-      email: session.user.email,
-      country: profile?.country || session.user.user_metadata?.country || "Gabon",
-      level: profile?.level || session.user.user_metadata?.level || "6ème",
-      plan: profile?.plan || "Gratuit",
-      role: "user",
-    });
-
-    // Charger le profil depuis Supabase
-    const loadProfile = async (session) => {
+    const checkSession = async () => {
       try {
-        const { data: profile } = await supabase
-          .from("profiles").select("*").eq("id", session.user.id).single();
-        return profile;
-      } catch (e) { return null; }
+        // getSession() lit directement le localStorage — instantané
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!mounted) return;
+
+        if (session?.user) {
+          // Construire l'user depuis les métadonnées (disponibles immédiatement)
+          const u = session.user;
+          setUser({
+            id: u.id,
+            name: u.user_metadata?.name || "Élève",
+            email: u.email,
+            country: u.user_metadata?.country || "Gabon",
+            level: u.user_metadata?.level || "6ème",
+            plan: "Gratuit",
+            role: "user",
+          });
+          setScreen("dashboard");
+
+          // Enrichir avec le profil Supabase en arrière-plan (sans bloquer)
+          supabase.from("profiles").select("*").eq("id", u.id).single()
+            .then(({ data: profile }) => {
+              if (mounted && profile) {
+                setUser(prev => ({
+                  ...prev,
+                  name: profile.name || prev.name,
+                  country: profile.country || prev.country,
+                  level: profile.level || prev.level,
+                  plan: profile.plan || prev.plan,
+                }));
+              }
+            });
+        } else {
+          setScreen("landing");
+        }
+      } catch (err) {
+        console.error("Erreur session:", err);
+        if (mounted) setScreen("landing");
+      }
     };
 
-    // Écouter les changements de session (connexion, déconnexion, refresh)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (!mounted) return;
+    checkSession();
 
+    // Écouter déconnexion
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!mounted) return;
       if (event === "SIGNED_OUT") {
         setUser(null);
-        setScreen("landing");
-        return;
-      }
-
-      if (session?.user) {
-        const profile = await loadProfile(session);
-        if (!mounted) return;
-        setUser(buildUser(session, profile));
-        setScreen("dashboard");
-      } else {
         setScreen("landing");
       }
     });
@@ -8307,17 +8320,7 @@ export default function App() {
   // Suivi de progression
   const { progress, stats, saveProgress } = useProgress(user?.id);
 
-  // Écran de chargement initial
-  if (screen === "loading") return (
-    <div style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"var(--bg)" }}>
-      <style>{css}</style>
-      <div style={{ textAlign:"center" }}>
-        <p style={{ fontSize:40, marginBottom:16 }}>🌍</p>
-        <div className="shimmer" style={{ width:120, height:14, borderRadius:8, margin:"0 auto 8px" }}/>
-        <div className="shimmer" style={{ width:80, height:10, borderRadius:8, margin:"0 auto" }}/>
-      </div>
-    </div>
-  );
+  // Pas d'écran de chargement — on démarre directement sur landing
 
   return (
     <>

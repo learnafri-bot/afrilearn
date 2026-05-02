@@ -44,7 +44,7 @@ function useChapters(levelId = 1, subjectId = 1) {
         // Charger les chapitres
         const { data: chaptersData, error: chaptersError } = await supabase
           .from("chapters")
-          .select("*, parts(name, icon, color, order_num)")
+          .select("id, title, order_num, duration, objectives, parts(name, icon, color, order_num)")
           .eq("level_id", levelId)
           .eq("subject_id", subjectId)
           .order("order_num");
@@ -64,7 +64,11 @@ function useChapters(levelId = 1, subjectId = 1) {
           part: c.parts?.order_num || 1,
           title: c.title,
           partName: c.parts?.name || "",
+          partIcon: c.parts?.icon || "📚",
+          partColor: c.parts?.color || "var(--gold)",
           dbId: c.id,
+          objectives: c.objectives || [],
+          duration: c.duration || "",
         }));
 
         setParts(formattedParts);
@@ -7841,7 +7845,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
   // Utiliser les données Supabase si disponibles, sinon les données statiques
   const activeLessons = dbLessons || (staticContent ? staticContent.cours : null);
   const activeExercises = dbExercises || (staticContent ? staticContent.exercices : null);
-  const activeObjectives = staticContent ? staticContent.objectives : [];
+  const activeObjectives = chapter.objectives?.length > 0 ? chapter.objectives : (staticContent ? staticContent.objectives : []);
 
   const part = PARTS_STATIC.find(p => p.id===chapter.part);
   const hasPremium = user.plan==="Premium" || user.isPreview;
@@ -7879,7 +7883,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
       <div style={{ display:"flex", alignItems:"center", gap:14, marginBottom:20 }}>
         <div style={{ width:48, height:48, borderRadius:14, background:`${part.color}15`, border:`1px solid ${part.color}25`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:22 }}>{part.icon}</div>
         <div>
-          <p style={{ fontSize:12, color:part.color, fontWeight:600, letterSpacing:"0.04em", textTransform:"uppercase", marginBottom:4 }}>{part.name} · Ch. {chapter.id}</p>
+          <p style={{ fontSize:12, color:part.color, fontWeight:600, letterSpacing:"0.04em", textTransform:"uppercase", marginBottom:4 }}>{chapter.partName || part?.name || "Chapitre"} · Ch. {chapter.id}</p>
           <h2 style={{ fontFamily:"'Fraunces',serif", fontSize:22, fontWeight:700, letterSpacing:"-0.02em" }}>{chapter.title}</h2>
         </div>
       </div>
@@ -7914,7 +7918,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
           {activeLessons.map((lecon, idx) => (
             <div key={lecon.id} style={{ marginBottom:32 }}>
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
-                <div style={{ width:26, height:26, borderRadius:"50%", background:part.color, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:700, color:"#fff", flexShrink:0 }}>{idx+1}</div>
+                <div style={{ width:26, height:26, borderRadius:"50%", background:(chapter.partColor || part?.color || "var(--gold)"), display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:700, color:"#fff", flexShrink:0 }}>{idx+1}</div>
                 <h3 style={{ fontFamily:"'Fraunces',serif", fontSize:18, fontWeight:600 }}>{lecon.titre}</h3>
               </div>
               <Surface style={{ marginBottom:14, padding:20, borderLeft:`2px solid ${part.color}40` }}>

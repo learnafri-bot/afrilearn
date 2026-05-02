@@ -8239,23 +8239,34 @@ export default function App() {
   useEffect(() => {
     let mounted = true;
 
+    // Timeout de sécurité — si rien ne répond en 4s, afficher la landing page
+    const safetyTimeout = setTimeout(() => {
+      if (mounted) {
+        console.warn("Timeout session — affichage landing page");
+        setScreen("landing");
+      }
+    }, 4000);
+
     const loadSession = async () => {
       try {
-        // Vérifier la session existante
         const { data: { session } } = await supabase.auth.getSession();
-
+        clearTimeout(safetyTimeout);
         if (!mounted) return;
 
         if (session?.user) {
-          // Charger le profil
-          const { data: profile } = await supabase
-            .from("profiles")
-            .select("*")
-            .eq("id", session.user.id)
-            .single();
+          // Charger le profil avec timeout
+          let profile = null;
+          try {
+            const { data } = await Promise.race([
+              supabase.from("profiles").select("*").eq("id", session.user.id).single(),
+              new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 3000))
+            ]);
+            profile = data;
+          } catch (e) {
+            console.warn("Profil non chargé, utilisation des métadonnées");
+          }
 
           if (!mounted) return;
-
           setUser({
             id: session.user.id,
             name: profile?.name || session.user.user_metadata?.name || "Élève",
@@ -8267,9 +8278,10 @@ export default function App() {
           });
           setScreen("dashboard");
         } else {
-          setScreen("landing");
+          if (mounted) setScreen("landing");
         }
       } catch (err) {
+        clearTimeout(safetyTimeout);
         console.error("Erreur session:", err);
         if (mounted) setScreen("landing");
       }
@@ -8284,28 +8296,29 @@ export default function App() {
         setUser(null);
         setScreen("landing");
       } else if (event === "SIGNED_IN" && session?.user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", session.user.id)
-          .single();
-
-        if (!mounted) return;
-        setUser({
-          id: session.user.id,
-          name: profile?.name || session.user.user_metadata?.name || "Élève",
-          email: session.user.email,
-          country: profile?.country || session.user.user_metadata?.country || "Gabon",
-          level: profile?.level || session.user.user_metadata?.level || "6ème",
-          plan: profile?.plan || "Gratuit",
-          role: "user",
-        });
-        setScreen("dashboard");
+        try {
+          const { data: profile } = await supabase
+            .from("profiles").select("*").eq("id", session.user.id).single();
+          if (!mounted) return;
+          setUser({
+            id: session.user.id,
+            name: profile?.name || session.user.user_metadata?.name || "Élève",
+            email: session.user.email,
+            country: profile?.country || session.user.user_metadata?.country || "Gabon",
+            level: profile?.level || session.user.user_metadata?.level || "6ème",
+            plan: profile?.plan || "Gratuit",
+            role: "user",
+          });
+          setScreen("dashboard");
+        } catch(e) {
+          if (mounted) setScreen("landing");
+        }
       }
     });
 
     return () => {
       mounted = false;
+      clearTimeout(safetyTimeout);
       subscription.unsubscribe();
     };
   }, []);

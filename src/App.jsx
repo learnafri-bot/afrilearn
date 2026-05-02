@@ -7816,15 +7816,23 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
 
   // Marquer un exercice comme vu et sauvegarder le score
   const handleShowSolution = (exoId) => {
-    setShown(s => ({...s, [exoId]: true}));
-    const newAnswered = {...answeredExos, [exoId]: true};
-    setAnsweredExos(newAnswered);
+    const isAlreadyShown = shown[exoId];
+    
+    // Toggle l'affichage
+    setShown(s => ({...s, [exoId]: !s[exoId]}));
+    
+    // Sauvegarder seulement si c'est la première fois qu'on révèle
+    if (!isAlreadyShown) {
+      const newAnswered = {...answeredExos, [exoId]: true};
+      setAnsweredExos(newAnswered);
 
-    // Calculer le nouveau score
-    if (user?.id && activeExercises && onSaveProgress) {
-      const score = Object.keys(newAnswered).length;
-      const completed = score >= activeExercises.length;
-      onSaveProgress(user.id, chapter.id, score, completed);
+      // Calculer le nouveau score et sauvegarder
+      if (user?.id && activeExercises && onSaveProgress) {
+        const score = Object.keys(newAnswered).length;
+        const completed = score >= activeExercises.length;
+        console.log("Saving progress:", user.id, chapter.id, score, completed);
+        onSaveProgress(user.id, chapter.id, score, completed);
+      }
     }
   };
 

@@ -7166,92 +7166,82 @@ const Pill = ({children, onClick, active, color="var(--gold)"}) => (
 );
 
 
-// Composant de rendu du contenu de leçon avec mise en forme intelligente
+// Composant de rendu du contenu de lecon
 const LessonContent = ({ content, color }) => {
   if (!content) return null;
   const c = color || "var(--gold)";
 
-  // Découper le texte en segments logiques
-  const segments = [];
-  let remaining = content;
+  // Formatter le texte brut en ajoutant des sauts de ligne intelligents
+  const format = (text) => {
+    let t = text;
+    // Puces et fleches
+    t = t.split("• ").join("\n• ");
+    t = t.split("-> ").join("\n-> ");
+    // Marqueurs courants
+    const markers = [
+      "LES CLASSES", "LE NOM", "LE VERBE", "LES MOTS",
+      "DEFINITION :", "METHODE :", "EXEMPLES :", "EXEMPLE :",
+      "ATTENTION :", "REMARQUE :", "TABLEAU ", "PIEGE ",
+      "ETAPE 1", "ETAPE 2", "ETAPE 3", "ETAPE 4", "ETAPE 5",
+      "CAS 1", "CAS 2", "CAS 3", "CAS 4",
+      "TECHNIQUE 1", "TECHNIQUE 2", "TECHNIQUE 3",
+      "FORMATION ", "EMPLOIS ", "TYPES ", "REGLE ",
+      "Exemples africains :", "EXEMPLES AFRICAINS :",
+      "1. LE ", "2. LE ", "3. LE ", "4. LE ", "5. LE ",
+      "1. LA ", "2. LA ", "3. LA ",
+      "1. L ", "2. L ", "3. L ",
+      "NOM COMMUN", "NOM PROPRE", "MASCULIN", "FEMININ",
+      "SINGULIER", "PLURIEL", "VERBE D ACTION", "VERBE D ETAT",
+    ];
+    markers.forEach(function(m) {
+      t = t.split(m).join("\n\n" + m);
+    });
+    // Nettoyer
+    while (t.indexOf("\n\n\n") >= 0) t = t.split("\n\n\n").join("\n\n");
+    return t.trim();
+  };
 
-  // Marqueurs qui indiquent un nouveau bloc
-  const BLOC_MARKERS = [
-    "LES ", "LE ", "LA ", "L ", "UN ", "UNE ",
-    "DEFINITION", "EXEMPLES", "EXEMPLE :", "REMARQUE",
-    "ATTENTION", "METHODE", "TABLEAU", "PIEGE",
-    "ETAPE", "CAS ", "TECHNIQUE", "REGLE",
-    "FORMATION", "EMPLOIS", "TYPES", "RAPPEL",
-    "CARACTERISTIQUES", "STRUCTURE", "DISTINC",
-  ];
-
-  // Séparer par les puces et flèches d'abord
-  const parts = remaining
-    .split(/(?=• |→ |✅ |❌ |⚠️ |🌍|━+)/)
-    .filter(Boolean);
+  const lines = format(content).split("\n");
 
   return (
     <div style={{ fontSize:13, lineHeight:1.8, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif" }}>
-      {parts.map(function(part, i) {
-        const t = part.trim();
-        if (!t) return null;
+      {lines.map(function(line, i) {
+        const t = line.trim();
+        if (!t) return <div key={i} style={{ height:6 }} />;
 
-        // Séparateur ━━━
-        if (t.indexOf("━") === 0) {
-          const rest = t.replace(/━+/g, "").trim();
-          return (
-            <div key={i}>
-              <div style={{ borderTop:"1px solid " + c + "30", margin:"16px 0 8px" }} />
-              {rest && <div style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.06em", marginBottom:6 }}>{rest}</div>}
-            </div>
-          );
-        }
-
-        // Puce •
-        if (t.indexOf("•") === 0) return (
-          <div key={i} style={{ display:"flex", gap:8, paddingLeft:8, marginBottom:4 }}>
-            <span style={{ color:c, flexShrink:0, marginTop:2 }}>{"•"}</span>
-            <span>{t.substring(1).trim()}</span>
+        // Puce
+        if (t.indexOf("• ") === 0) return (
+          <div key={i} style={{ display:"flex", gap:8, paddingLeft:8, marginBottom:3 }}>
+            <span style={{ color:c, flexShrink:0 }}>{"•"}</span>
+            <span>{t.substring(2)}</span>
           </div>
         );
 
-        // Flèche →
-        if (t.indexOf("→") === 0) return (
-          <div key={i} style={{ display:"flex", gap:8, paddingLeft:16, marginBottom:4, color:"#94A3B8" }}>
-            <span style={{ color:c, flexShrink:0 }}>{"→"}</span>
-            <span>{t.substring(1).trim()}</span>
+        // Fleche
+        if (t.indexOf("-> ") === 0) return (
+          <div key={i} style={{ display:"flex", gap:8, paddingLeft:16, marginBottom:3, color:"#94A3B8" }}>
+            <span style={{ color:c }}>{"→"}</span>
+            <span>{t.substring(3)}</span>
           </div>
         );
 
-        // Icônes ✅ ❌ ⚠️
-        if (t.indexOf("✅") === 0 || t.indexOf("❌") === 0 || t.indexOf("⚠️") === 0) return (
-          <div key={i} style={{ paddingLeft:8, marginBottom:4 }}>{t}</div>
-        );
-
-        // Bloc africain 🌍
-        if (t.indexOf("🌍") === 0) return (
-          <div key={i} style={{ background:c + "12", borderRadius:8, padding:"10px 14px", margin:"12px 0", fontSize:12, fontWeight:600 }}>{t}</div>
-        );
-
-        // Texte normal - détecter les titres en majuscules
-        // Si le premier mot est en majuscules et court -> titre de section
-        const firstWord = t.split(" ")[0];
-        const isTitle = firstWord === firstWord.toUpperCase() 
-          && firstWord.length > 2 
-          && t.length < 80
-          && !t.includes("(")
-          && t.split(" ").every(function(w){ return !w || w === w.toUpperCase(); });
-
-        // Détecter les lignes qui commencent par un mot-clé en majuscules suivi de : 
-        const isSectionTitle = (function(str){ return str === str.toUpperCase() && str.length >= 4 && str.length <= 60 && str.indexOf(".") < 0 && str.indexOf(",") < 0; })(t) && !t.includes(".");
-
-        if (isSectionTitle) return (
-          <div key={i} style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.05em", marginTop:14, marginBottom:6, borderLeft:"2px solid " + c, paddingLeft:8 }}>
+        // Titre de section (tout en majuscules, court)
+        const isMaj = t === t.toUpperCase() && t.length > 3 && t.length < 70 && t.split(" ").length < 10;
+        if (isMaj) return (
+          <div key={i} style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.05em", marginTop:16, marginBottom:6, borderLeft:"3px solid " + c, paddingLeft:10 }}>
             {t}
           </div>
         );
 
-        return <div key={i} style={{ marginBottom:6, lineHeight:1.8 }}>{t}</div>;
+        // Ligne avec ":" en debut = titre de sous-section
+        if (t.endsWith(":") && t.length < 60) return (
+          <div key={i} style={{ fontWeight:600, color:"#E2E8F0", marginTop:10, marginBottom:4 }}>
+            {t}
+          </div>
+        );
+
+        // Texte normal
+        return <div key={i} style={{ marginBottom:4 }}>{t}</div>;
       })}
     </div>
   );

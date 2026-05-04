@@ -7165,6 +7165,97 @@ const Pill = ({children, onClick, active, color="var(--gold)"}) => (
   </button>
 );
 
+
+// Composant de rendu du contenu de leçon avec mise en forme
+const LessonContent = ({ content, color = "var(--gold)" }) => {
+  if (!content) return null;
+
+  // Reconstituer les sauts de ligne depuis les marqueurs textuels
+  const formatted = content
+    .replace(/━+/g, (m) => `
+${m}
+`)
+    .replace(/ETAPE /g, '
+ETAPE ')
+    .replace(/REGLE /g, '
+REGLE ')
+    .replace(/CAS [0-9]/g, (m) => `
+${m}`)
+    .replace(/[0-9]+\. /g, (m) => `
+${m}`)
+    .replace(/• /g, '
+• ')
+    .replace(/✅ /g, '
+✅ ')
+    .replace(/❌ /g, '
+❌ ')
+    .replace(/⚠️ /g, '
+⚠️ ')
+    .replace(/→ /g, '
+→ ')
+    .replace(/EXEMPLES? /g, '
+EXEMPLES ')
+    .replace(/AFRICAIN[S]? :/g, '
+🌍 AFRICAINS :')
+    .replace(/
+{3,}/g, '
+
+');
+
+  const lines = formatted.split('
+');
+
+  return (
+    <div style={{ fontSize:13, lineHeight:1.9, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif" }}>
+      {lines.map((line, i) => {
+        const trimmed = line.trim();
+        if (!trimmed) return <div key={i} style={{ height:8 }} />;
+
+        // Titres avec ━━━
+        if (trimmed.match(/^━+$/)) return (
+          <div key={i} style={{ borderTop:`1px solid ${color}40`, margin:"12px 0 6px" }} />
+        );
+
+        // Titres en MAJUSCULES (lignes courtes)
+        if (trimmed === trimmed.toUpperCase() && trimmed.length > 3 && trimmed.length < 60 && !trimmed.startsWith('→') && !trimmed.startsWith('•')) return (
+          <div key={i} style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.06em", marginTop:14, marginBottom:4 }}>
+            {trimmed}
+          </div>
+        );
+
+        // Lignes avec →
+        if (trimmed.startsWith('→')) return (
+          <div key={i} style={{ paddingLeft:16, color:"#94A3B8", marginBottom:2 }}>
+            <span style={{ color:color, marginRight:6 }}>→</span>
+            {trimmed.substring(1).trim()}
+          </div>
+        );
+
+        // Lignes avec •
+        if (trimmed.startsWith('•')) return (
+          <div key={i} style={{ paddingLeft:16, marginBottom:2, display:"flex", gap:6 }}>
+            <span style={{ color:color, flexShrink:0 }}>•</span>
+            <span>{trimmed.substring(1).trim()}</span>
+          </div>
+        );
+
+        // Lignes ✅ ❌ ⚠️
+        if (trimmed.startsWith('✅') || trimmed.startsWith('❌') || trimmed.startsWith('⚠️')) return (
+          <div key={i} style={{ paddingLeft:8, marginBottom:3 }}>{trimmed}</div>
+        );
+
+        // Lignes 🌍
+        if (trimmed.startsWith('🌍')) return (
+          <div key={i} style={{ background:`${color}10`, borderRadius:8, padding:"8px 12px", margin:"10px 0", fontWeight:600, fontSize:12 }}>{trimmed}</div>
+        );
+
+        // Texte normal
+        return <div key={i} style={{ marginBottom:2 }}>{trimmed}</div>;
+      })}
+    </div>
+  );
+};
+
 const Btn = ({children, onClick, variant="solid", color="var(--gold)", disabled=false, style={}}) => {
   const base = { fontFamily:"'DM Sans',sans-serif", fontWeight:600, fontSize:14, borderRadius:12, padding:"11px 22px", cursor:disabled?"not-allowed":"pointer", border:"none", transition:"all 0.18s ease", opacity:disabled?0.5:1, ...style };
   if (variant==="solid") return <button onClick={onClick} disabled={disabled} className="btn-hover" style={{ ...base, background:color, color:"#fff" }}>{children}</button>;
@@ -7922,7 +8013,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
                 <h3 style={{ fontFamily:"'Fraunces',serif", fontSize:18, fontWeight:600 }}>{lecon.titre}</h3>
               </div>
               <Surface style={{ marginBottom:14, padding:20, borderLeft:`2px solid ${part.color}40` }}>
-                <pre style={{ whiteSpace:"pre-wrap", fontSize:13, lineHeight:2, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif" }}>{lecon.contenu}</pre>
+                <LessonContent content={lecon.contenu} color={part.color} />
               </Surface>
               {lecon.exemples && (
                 <>
@@ -8327,7 +8418,145 @@ export default function App() {
     setScreen(s);
   };
   const openChapter = (ch) => { setChapter(ch); setScreen("chapterContent"); };
-  const upgrade = (id) => { const n={free:"Gratuit",essential:"Essentiel",premium:"Premium"}; setUser(u=>({...u,plan:n[id]})); };
+  // ── CINETPAY INTEGRATION ──────────────────────────────────────────────────────
+  // ⚠️  Remplacez ces valeurs par vos vraies clés CinetPay quand disponibles
+  const CINETPAY_API_KEY  = "VOTRE_API_KEY_CINETPAY";   // Ex: "123456789012345678901234"
+  const CINETPAY_SITE_ID  = "VOTRE_SITE_ID_CINETPAY";   // Ex: "123456789"
+  const APP_URL           = "https://afrilearn-rust.vercel.app";
+
+  // État du paiement
+  const [paymentLoading, setPaymentLoading] = React.useState(false);
+  const [paymentError,   setPaymentError]   = React.useState(null);
+  const [paymentSuccess, setPaymentSuccess] = React.useState(false);
+
+  // Vérifier le retour de CinetPay (après redirection)
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const txId    = params.get("transaction_id");
+    const status  = params.get("status");
+
+    if (txId && status === "success") {
+      // Paiement réussi — vérifier dans Supabase
+      checkPaymentStatus(txId);
+      // Nettoyer l'URL
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  }, []);
+
+  // Vérifier le statut d'un paiement dans Supabase
+  const checkPaymentStatus = async (transactionId) => {
+    try {
+      const { data } = await supabase
+        .from("payments")
+        .select("status, plan")
+        .eq("transaction_id", transactionId)
+        .single();
+
+      if (data?.status === "completed") {
+        const planNames = { Essentiel: "Essentiel", Premium: "Premium" };
+        setUser(u => ({ ...u, plan: planNames[data.plan] || u.plan }));
+        setPaymentSuccess(true);
+        setTimeout(() => setPaymentSuccess(false), 5000);
+      }
+    } catch (err) {
+      console.error("Erreur vérification paiement:", err);
+    }
+  };
+
+  // Lancer un paiement CinetPay
+  const upgrade = async (planId) => {
+    if (planId === "free") return;
+    if (!user?.id) { nav("auth"); return; }
+
+    const planConfig = {
+      essential: { name: "Essentiel", price: 1995, label: "AfriLearn Essentiel - 1 mois" },
+      premium:   { name: "Premium",   price: 2995, label: "AfriLearn Premium - 1 mois" },
+    };
+
+    const plan = planConfig[planId];
+    if (!plan) return;
+
+    setPaymentLoading(true);
+    setPaymentError(null);
+
+    try {
+      // Générer un ID de transaction unique
+      const transactionId = `AFL-${user.id.substring(0,8)}-${Date.now()}`;
+
+      // Enregistrer la tentative de paiement dans Supabase
+      const { error: insertError } = await supabase
+        .from("payments")
+        .insert({
+          user_id:        user.id,
+          transaction_id: transactionId,
+          plan:           plan.name,
+          amount:         plan.price,
+          currency:       "XAF",
+          status:         "pending",
+        });
+
+      if (insertError) throw insertError;
+
+      // ── MODE SIMULATION (avant d'avoir les clés CinetPay réelles) ──────────
+      // Décommentez ce bloc pour tester sans CinetPay
+      if (CINETPAY_API_KEY === "VOTRE_API_KEY_CINETPAY") {
+        console.log("⚠️  Mode simulation CinetPay — Remplacez les clés API pour le vrai paiement");
+        // Simuler un paiement réussi après 2 secondes
+        await new Promise(r => setTimeout(r, 2000));
+        setUser(u => ({ ...u, plan: plan.name }));
+        await supabase.from("payments").update({ status: "completed" }).eq("transaction_id", transactionId);
+        await supabase.from("profiles").update({ plan: plan.name }).eq("id", user.id);
+        setPaymentSuccess(true);
+        setTimeout(() => setPaymentSuccess(false), 5000);
+        setPaymentLoading(false);
+        return;
+      }
+      // ── FIN MODE SIMULATION ──────────────────────────────────────────────────
+
+      // ── VRAI PAIEMENT CINETPAY ───────────────────────────────────────────────
+      const response = await fetch("https://api-checkout.cinetpay.com/v2/payment", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          apikey:         CINETPAY_API_KEY,
+          site_id:        CINETPAY_SITE_ID,
+          transaction_id: transactionId,
+          amount:         plan.price,
+          currency:       "XAF",
+          description:    plan.label,
+          notify_url:     `${APP_URL}/api/cinetpay-webhook`,
+          return_url:     `${APP_URL}?transaction_id=${transactionId}&status=success`,
+          channels:       "ALL",
+          lang:           "fr",
+          metadata:       JSON.stringify({ user_id: user.id, plan: plan.name }),
+          customer_name:  user.name || "Élève",
+          customer_email: user.email || "",
+          customer_phone_number: "",
+          customer_address: "Libreville",
+          customer_city:  "Libreville",
+          customer_country: "GA",
+          customer_state: "GA",
+          customer_zip_code: "00225",
+          invoice_data: {},
+          alternative_currency: "",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.code === "201") {
+        // Rediriger vers la page de paiement CinetPay
+        window.location.href = data.data.payment_url;
+      } else {
+        throw new Error(data.message || "Erreur CinetPay");
+      }
+
+    } catch (err) {
+      console.error("Erreur paiement:", err);
+      setPaymentError("Erreur lors du paiement. Veuillez réessayer.");
+      setPaymentLoading(false);
+    }
+  };
 
   const previewUser = user ? {...user, name:"Super Admin", plan:"Premium", level:"6ème", country:"Gabon", isPreview:true} : null;
   const activeUser = isPreview ? previewUser : user;
@@ -8354,7 +8583,27 @@ export default function App() {
           {screen==="chapterContent" && chapter && <ChapterContent chapter={chapter} user={activeUser} onBack={()=>setScreen("chapters")} onTutor={()=>setScreen("tutor")} onSaveProgress={saveProgress} chapterProgress={progress[chapter?.dbId || chapter?.id]}/>}
           {screen==="tutor"          && <Tutor          user={activeUser} chapter={chapter}/>}
           {screen==="competition"    && <Competition    user={activeUser}/>}
-          {screen==="pricing"        && <Pricing        user={activeUser} onUpgrade={!isPreview?upgrade:null}/>}
+          {/* ── NOTIFICATIONS DE PAIEMENT ─────────────────────────────────── */}
+      {paymentLoading && (
+        <div style={{ position:"fixed", top:0, left:0, right:0, bottom:0, background:"rgba(0,0,0,0.7)", zIndex:9999, display:"flex", alignItems:"center", justifyContent:"center" }}>
+          <div style={{ background:"var(--surface)", borderRadius:20, padding:32, textAlign:"center", maxWidth:300 }}>
+            <div style={{ fontSize:40, marginBottom:16 }}>💳</div>
+            <p style={{ fontWeight:700, marginBottom:8 }}>Traitement en cours...</p>
+            <p style={{ fontSize:13, color:"var(--muted)" }}>Connexion à CinetPay</p>
+          </div>
+        </div>
+      )}
+      {paymentSuccess && (
+        <div style={{ position:"fixed", top:20, left:"50%", transform:"translateX(-50%)", background:"var(--green)", color:"#fff", borderRadius:12, padding:"14px 24px", zIndex:9999, fontWeight:700, fontSize:14, boxShadow:"0 4px 20px rgba(0,0,0,0.3)" }}>
+          ✅ Paiement confirmé ! Votre plan a été activé.
+        </div>
+      )}
+      {paymentError && (
+        <div style={{ position:"fixed", top:20, left:"50%", transform:"translateX(-50%)", background:"#E53E3E", color:"#fff", borderRadius:12, padding:"14px 24px", zIndex:9999, fontSize:13, maxWidth:320, textAlign:"center" }}>
+          ❌ {paymentError} <button onClick={()=>setPaymentError(null)} style={{ marginLeft:8, background:"none", border:"none", color:"#fff", cursor:"pointer" }}>✕</button>
+        </div>
+      )}
+      {screen==="pricing"        && <Pricing        user={activeUser} onUpgrade={!isPreview?upgrade:null}/>}
           {screen==="profile"        && <Profile        user={activeUser} onLogout={!isPreview?handleLogout:null}/>}
           <NavBar active={screen} onNav={nav}/>
         </div>

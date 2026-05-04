@@ -7166,66 +7166,13 @@ const Pill = ({children, onClick, active, color="var(--gold)"}) => (
 );
 
 
-// Composant de rendu du contenu de leçon avec mise en forme
+// Composant de rendu du contenu de leçon
 const LessonContent = ({ content, color }) => {
-  const c = color || "var(--gold)";
   if (!content) return null;
-
-  // Reconstituer les sauts de ligne intelligemment
-  let formatted = content;
-  formatted = formatted.split("━━").join("\n━━");
-  formatted = formatted.split("ETAPE ").join("\nETAPE ");
-  formatted = formatted.split("REGLE ").join("\nREGLE ");
-  formatted = formatted.split("• ").join("\n• ");
-  formatted = formatted.split("✅ ").join("\n✅ ");
-  formatted = formatted.split("❌ ").join("\n❌ ");
-  formatted = formatted.split("→ ").join("\n→ ");
-  formatted = formatted.split("🌍").join("\n🌍");
-  formatted = formatted.split("EXEMPLES AFRICAINS").join("\n🌍 EXEMPLES AFRICAINS");
-
-  const lines = formatted.split("\n");
-
   return (
-    <div style={{ fontSize:13, lineHeight:1.9, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif" }}>
-      {lines.map(function(line, i) {
-        const t = line.trim();
-        if (!t) return <div key={i} style={{ height:8 }} />;
-
-        if (t.indexOf("━") === 0) return (
-          <div key={i} style={{ borderTop:"1px solid " + c + "40", margin:"12px 0 6px" }} />
-        );
-
-        if (t === t.toUpperCase() && t.length > 3 && t.length < 60 && t.indexOf("→") !== 0 && t.indexOf("•") !== 0 && t.indexOf("✅") !== 0 && t.indexOf("❌") !== 0) return (
-          <div key={i} style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.06em", marginTop:14, marginBottom:4 }}>
-            {t}
-          </div>
-        );
-
-        if (t.indexOf("→") === 0) return (
-          <div key={i} style={{ paddingLeft:16, color:"#94A3B8", marginBottom:2 }}>
-            <span style={{ color:c, marginRight:6 }}>{"→"}</span>
-            {t.substring(1).trim()}
-          </div>
-        );
-
-        if (t.indexOf("•") === 0) return (
-          <div key={i} style={{ paddingLeft:16, marginBottom:2, display:"flex", gap:6 }}>
-            <span style={{ color:c, flexShrink:0 }}>{"•"}</span>
-            <span>{t.substring(1).trim()}</span>
-          </div>
-        );
-
-        if (t.indexOf("✅") === 0 || t.indexOf("❌") === 0 || t.indexOf("⚠") === 0) return (
-          <div key={i} style={{ paddingLeft:8, marginBottom:3 }}>{t}</div>
-        );
-
-        if (t.indexOf("🌍") === 0) return (
-          <div key={i} style={{ background:c + "18", borderRadius:8, padding:"8px 12px", margin:"10px 0", fontWeight:600, fontSize:12 }}>{t}</div>
-        );
-
-        return <div key={i} style={{ marginBottom:2 }}>{t}</div>;
-      })}
-    </div>
+    <pre style={{ whiteSpace:"pre-wrap", fontSize:13, lineHeight:1.9, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif", margin:0 }}>
+      {content}
+    </pre>
   );
 };
 

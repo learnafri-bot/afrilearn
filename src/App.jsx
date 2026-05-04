@@ -7166,13 +7166,94 @@ const Pill = ({children, onClick, active, color="var(--gold)"}) => (
 );
 
 
-// Composant de rendu du contenu de leçon
+// Composant de rendu du contenu de leçon avec mise en forme intelligente
 const LessonContent = ({ content, color }) => {
   if (!content) return null;
+  const c = color || "var(--gold)";
+
+  // Découper le texte en segments logiques
+  const segments = [];
+  let remaining = content;
+
+  // Marqueurs qui indiquent un nouveau bloc
+  const BLOC_MARKERS = [
+    "LES ", "LE ", "LA ", "L ", "UN ", "UNE ",
+    "DEFINITION", "EXEMPLES", "EXEMPLE :", "REMARQUE",
+    "ATTENTION", "METHODE", "TABLEAU", "PIEGE",
+    "ETAPE", "CAS ", "TECHNIQUE", "REGLE",
+    "FORMATION", "EMPLOIS", "TYPES", "RAPPEL",
+    "CARACTERISTIQUES", "STRUCTURE", "DISTINC",
+  ];
+
+  // Séparer par les puces et flèches d'abord
+  const parts = remaining
+    .split(/(?=• |→ |✅ |❌ |⚠️ |🌍|━+)/)
+    .filter(Boolean);
+
   return (
-    <pre style={{ whiteSpace:"pre-wrap", fontSize:13, lineHeight:1.9, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif", margin:0 }}>
-      {content}
-    </pre>
+    <div style={{ fontSize:13, lineHeight:1.8, color:"#CBD5E1", fontFamily:"'DM Sans',sans-serif" }}>
+      {parts.map(function(part, i) {
+        const t = part.trim();
+        if (!t) return null;
+
+        // Séparateur ━━━
+        if (t.indexOf("━") === 0) {
+          const rest = t.replace(/━+/g, "").trim();
+          return (
+            <div key={i}>
+              <div style={{ borderTop:"1px solid " + c + "30", margin:"16px 0 8px" }} />
+              {rest && <div style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.06em", marginBottom:6 }}>{rest}</div>}
+            </div>
+          );
+        }
+
+        // Puce •
+        if (t.indexOf("•") === 0) return (
+          <div key={i} style={{ display:"flex", gap:8, paddingLeft:8, marginBottom:4 }}>
+            <span style={{ color:c, flexShrink:0, marginTop:2 }}>{"•"}</span>
+            <span>{t.substring(1).trim()}</span>
+          </div>
+        );
+
+        // Flèche →
+        if (t.indexOf("→") === 0) return (
+          <div key={i} style={{ display:"flex", gap:8, paddingLeft:16, marginBottom:4, color:"#94A3B8" }}>
+            <span style={{ color:c, flexShrink:0 }}>{"→"}</span>
+            <span>{t.substring(1).trim()}</span>
+          </div>
+        );
+
+        // Icônes ✅ ❌ ⚠️
+        if (t.indexOf("✅") === 0 || t.indexOf("❌") === 0 || t.indexOf("⚠️") === 0) return (
+          <div key={i} style={{ paddingLeft:8, marginBottom:4 }}>{t}</div>
+        );
+
+        // Bloc africain 🌍
+        if (t.indexOf("🌍") === 0) return (
+          <div key={i} style={{ background:c + "12", borderRadius:8, padding:"10px 14px", margin:"12px 0", fontSize:12, fontWeight:600 }}>{t}</div>
+        );
+
+        // Texte normal - détecter les titres en majuscules
+        // Si le premier mot est en majuscules et court -> titre de section
+        const firstWord = t.split(" ")[0];
+        const isTitle = firstWord === firstWord.toUpperCase() 
+          && firstWord.length > 2 
+          && t.length < 80
+          && !t.includes("(")
+          && t.split(" ").every(function(w){ return !w || w === w.toUpperCase(); });
+
+        // Détecter les lignes qui commencent par un mot-clé en majuscules suivi de : 
+        const isSectionTitle = (function(str){ return str === str.toUpperCase() && str.length >= 4 && str.length <= 60 && str.indexOf(".") < 0 && str.indexOf(",") < 0; })(t) && !t.includes(".");
+
+        if (isSectionTitle) return (
+          <div key={i} style={{ fontWeight:700, color:"#F8FAFC", fontSize:12, letterSpacing:"0.05em", marginTop:14, marginBottom:6, borderLeft:"2px solid " + c, paddingLeft:8 }}>
+            {t}
+          </div>
+        );
+
+        return <div key={i} style={{ marginBottom:6, lineHeight:1.8 }}>{t}</div>;
+      })}
+    </div>
   );
 };
 

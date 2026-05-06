@@ -7929,7 +7929,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
   const activeExercises = dbExercises || (staticContent ? staticContent.exercices : null);
   const activeObjectives = chapter.objectives?.length > 0 ? chapter.objectives : (staticContent ? staticContent.objectives : []);
 
-  const part = PARTS_STATIC.find(p => p.id===chapter.part);
+  const part = PARTS_STATIC.find(p => p.id===chapter.part) || { color: chapter.partColor || 'var(--gold)', icon: chapter.partIcon || '📚', name: chapter.partName || '' };
   const hasPremium = user.plan==="Premium" || user.isPreview;
   const tp = user.isPreview ? 48 : 0;
 
@@ -8003,7 +8003,7 @@ const ChapterContent = ({chapter, user, onBack, onTutor, onSaveProgress, chapter
                 <div style={{ width:26, height:26, borderRadius:"50%", background:(chapter.partColor || part?.color || "var(--gold)"), display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:700, color:"#fff", flexShrink:0 }}>{idx+1}</div>
                 <h3 style={{ fontFamily:"'Fraunces',serif", fontSize:18, fontWeight:600 }}>{lecon.titre}</h3>
               </div>
-              <Surface style={{ marginBottom:14, padding:20, borderLeft:`2px solid ${part.color}40` }}>
+              <Surface style={{ marginBottom:14, padding:20, borderLeft:`2px solid ${(part?.color || chapter.partColor || 'var(--gold)')}40` }}>
                 <LessonContent content={lecon.contenu} color={part.color} />
               </Surface>
               {lecon.exemples && (

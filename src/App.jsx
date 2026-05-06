@@ -7855,7 +7855,7 @@ const Chapters = ({user, onChapter, progress={}, subject={id:'maths', name:'Math
             <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
               {chs.map(ch => {
                 const locked = !user.isPreview && user.plan==="Gratuit" && ch.id>3;
-                const hasContent = !!CHAPTERS_CONTENT[ch.id];
+                const hasContent = !!CHAPTERS_CONTENT[ch.id] || subjectId === 2;
                 return (
                   <div key={ch.id} onClick={() => !locked && onChapter(ch)} className={!locked?"card-hover":""} style={{ display:"flex", alignItems:"center", gap:14, padding:"14px 16px", background:"var(--surface)", border:"1px solid var(--border)", borderRadius:12, cursor:locked?"not-allowed":"pointer", opacity:locked?0.4:1 }}>
                     <div style={{ width:34, height:34, borderRadius:10, background:locked?"var(--surface2)":`${part.color}15`, border:`1px solid ${locked?"var(--border)":`${part.color}25`}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:13, fontWeight:700, color:locked?"var(--muted)":part.color, flexShrink:0 }}>
